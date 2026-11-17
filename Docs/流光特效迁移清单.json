@@ -1,0 +1,64 @@
+{
+  "assets": [
+    {
+      "old": "/Game/StarterContent/Textures/T_Fire_Tiled_D",
+      "new": "/Game/场景资源特效/流光特效_Dependencies/StarterContent/Textures/T_Fire_Tiled_D",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/StarterContent/Textures/T_Perlin_Noise_M",
+      "new": "/Game/场景资源特效/流光特效_Dependencies/StarterContent/Textures/T_Perlin_Noise_M",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/流光特效/BluePurpleSmudge_MatCap",
+      "new": "/Game/场景资源特效/流光特效/BluePurpleSmudge_MatCap",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/流光特效/matcap_blender节点",
+      "new": "/Game/场景资源特效/流光特效/matcap_blender节点",
+      "class": "StaticMesh"
+    },
+    {
+      "old": "/Game/流光特效/matcap测试",
+      "new": "/Game/场景资源特效/流光特效/matcap测试",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/流光特效/大保健",
+      "new": "/Game/场景资源特效/流光特效/大保健",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/流光特效/大保健_Normal",
+      "new": "/Game/场景资源特效/流光特效/大保健_Normal",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/流光特效/无标题",
+      "new": "/Game/场景资源特效/流光特效/无标题",
+      "class": "StaticMesh"
+    },
+    {
+      "old": "/Game/流光特效/流光效果测试",
+      "new": "/Game/场景资源特效/流光特效/流光效果测试",
+      "class": "World"
+    },
+    {
+      "old": "/Game/流光特效/流光特效",
+      "new": "/Game/场景资源特效/流光特效/流光特效",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/流光特效/烈火降临",
+      "new": "/Game/场景资源特效/流光特效/烈火降临",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/流光特效/生成宝剑",
+      "new": "/Game/场景资源特效/流光特效/生成宝剑",
+      "class": "Texture2D"
+    }
+  ]
+}

@@ -1,0 +1,908 @@
+{
+  "scope": "editor worlds only; no PIE/game; no modified maps saved",
+  "meshes": [
+    {
+      "asset": "/SpiritWFC/Samples/Meshes/SM_WFC_Door.SM_WFC_Door",
+      "min_cm": [
+        -100.00000762939453,
+        -100.00005340576172,
+        -60.00007247924805
+      ],
+      "max_cm": [
+        100.00000762939453,
+        100.00004577636719,
+        105.10680389404297
+      ]
+    },
+    {
+      "asset": "/SpiritWFC/Samples/Meshes/SM_WFC_EnclosedStairs.SM_WFC_EnclosedStairs",
+      "min_cm": [
+        -100.00001525878906,
+        -99.99999237060547,
+        -100.00791931152344
+      ],
+      "max_cm": [
+        100.00005340576172,
+        100.00003814697266,
+        100.00006866455078
+      ]
+    },
+    {
+      "asset": "/SpiritWFC/Samples/Meshes/SM_WFC_Floor.SM_WFC_Floor",
+      "min_cm": [
+        -100.00000762939453,
+        -100.00004577636719,
+        -60.000057220458984
+      ],
+      "max_cm": [
+        100.00000762939453,
+        99.9999771118164,
+        -59.99995040893555
+      ]
+    },
+    {
+      "asset": "/SpiritWFC/Samples/Meshes/SM_WFC_Fountain.SM_WFC_Fountain",
+      "min_cm": [
+        -100.00000762939453,
+        -100.00004577636719,
+        -60.68360137939453
+      ],
+      "max_cm": [
+        100.00000762939453,
+        99.9999771118164,
+        69.37471771240234
+      ]
+    },
+    {
+      "asset": "/SpiritWFC/Samples/Meshes/SM_WFC_InteriorFloor.SM_WFC_InteriorFloor",
+      "min_cm": [
+        -100.00000762939453,
+        -100.00006866455078,
+        -60.000057220458984
+      ],
+      "max_cm": [
+        100.00000762939453,
+        99.9999771118164,
+        136.11741638183594
+      ]
+    },
+    {
+      "asset": "/SpiritWFC/Samples/Meshes/SM_WFC_Roof.SM_WFC_Roof",
+      "min_cm": [
+        -100.00000762939453,
+        -100.00000762939453,
+        10.418288230895996
+      ],
+      "max_cm": [
+        100.00000762939453,
+        100.00000762939453,
+        176.81680297851562
+      ]
+    },
+    {
+      "asset": "/SpiritWFC/Samples/Meshes/SM_WFC_Stairs.SM_WFC_Stairs",
+      "min_cm": [
+        -100.00000762939453,
+        -100.00005340576172,
+        -60.00007247924805
+      ],
+      "max_cm": [
+        99.99999237060547,
+        99.9999771118164,
+        100.00008392333984
+      ]
+    },
+    {
+      "asset": "/SpiritWFC/Samples/Meshes/SM_WFC_StairsCeiling.SM_WFC_StairsCeiling",
+      "min_cm": [
+        -100.0,
+        -100.0,
+        -100.00791931152344
+      ],
+      "max_cm": [
+        100.00005340576172,
+        100.0000228881836,
+        100.0000228881836
+      ]
+    },
+    {
+      "asset": "/SpiritWFC/Samples/Meshes/SM_WFC_StairsLower.SM_WFC_StairsLower",
+      "min_cm": [
+        -100.00000762939453,
+        -100.0,
+        -60.00001525878906
+      ],
+      "max_cm": [
+        100.00005340576172,
+        100.0000228881836,
+        100.00003814697266
+      ]
+    },
+    {
+      "asset": "/SpiritWFC/Samples/Meshes/SM_WFC_Wall.SM_WFC_Wall",
+      "min_cm": [
+        -100.00000762939453,
+        -100.00007629394531,
+        -60.00006866455078
+      ],
+      "max_cm": [
+        99.99999237060547,
+        100.00005340576172,
+        100.00006866455078
+      ]
+    },
+    {
+      "asset": "/SpiritWFC/Samples/Meshes/SM_WFC_WallCorner.SM_WFC_WallCorner",
+      "min_cm": [
+        -100.00005340576172,
+        -99.99999237060547,
+        -59.99997329711914
+      ],
+      "max_cm": [
+        99.99999237060547,
+        100.00003051757812,
+        100.00009155273438
+      ]
+    },
+    {
+      "asset": "/SpiritWFC/Samples/Meshes/SM_WFC_Window.SM_WFC_Window",
+      "min_cm": [
+        -100.00006866455078,
+        -100.00005340576172,
+        -60.00004577636719
+      ],
+      "max_cm": [
+        100.00007629394531,
+        99.99996185302734,
+        103.8183364868164
+      ]
+    }
+  ],
+  "maps": [
+    {
+      "map": "L_WFC_Planar",
+      "saved_instances": 144,
+      "hism_groups": 9,
+      "persistence": true,
+      "socket_and_connectivity_check": true,
+      "invalid_input_preserves_previous": true,
+      "missing_mesh_staging_rollback": true,
+      "replace_and_clear": true,
+      "tile_counts": {
+        "Courtyard": 60,
+        "BuildingCorner": 5,
+        "Fountain": 3,
+        "BuildingWall": 5,
+        "RoadCorner": 24,
+        "RoadStraight": 23,
+        "BuildingDoor": 6,
+        "RoadEnd": 16,
+        "RoadCross": 2
+      }
+    },
+    {
+      "map": "L_WFC_ThreeLayers",
+      "saved_instances": 192,
+      "hism_groups": 10,
+      "persistence": true,
+      "socket_and_connectivity_check": true,
+      "invalid_input_preserves_previous": true,
+      "missing_mesh_staging_rollback": true,
+      "replace_and_clear": true,
+      "tile_counts": {
+        "BottomFloor": 52,
+        "BottomHall": 9,
+        "BottomStair": 3,
+        "MiddleFloor": 53,
+        "MiddleHall": 8,
+        "MiddleStair": 3,
+        "TopFloor": 44,
+        "TopHall": 13,
+        "TopStair": 3,
+        "TopRoof": 4
+      }
+    }
+  ],
+  "seed_sweeps": [
+    {
+      "map": "L_WFC_Planar",
+      "runs": [
+        {
+          "seed": 0,
+          "attempts": 1,
+          "effective_seed": 0,
+          "ms": 0.5805999971926212,
+          "steps": 26020
+        },
+        {
+          "seed": 1,
+          "attempts": 1,
+          "effective_seed": 1,
+          "ms": 0.5653999978676438,
+          "steps": 25874
+        },
+        {
+          "seed": 2,
+          "attempts": 1,
+          "effective_seed": 2,
+          "ms": 0.5453000194393098,
+          "steps": 26326
+        },
+        {
+          "seed": 3,
+          "attempts": 1,
+          "effective_seed": 3,
+          "ms": 0.388599990401417,
+          "steps": 25458
+        },
+        {
+          "seed": 4,
+          "attempts": 1,
+          "effective_seed": 4,
+          "ms": 0.5543999723158777,
+          "steps": 26057
+        },
+        {
+          "seed": 5,
+          "attempts": 1,
+          "effective_seed": 5,
+          "ms": 0.6006999756209552,
+          "steps": 26663
+        },
+        {
+          "seed": 6,
+          "attempts": 1,
+          "effective_seed": 6,
+          "ms": 0.5936999805271626,
+          "steps": 24305
+        },
+        {
+          "seed": 7,
+          "attempts": 1,
+          "effective_seed": 7,
+          "ms": 0.5845999694429338,
+          "steps": 26978
+        },
+        {
+          "seed": 8,
+          "attempts": 1,
+          "effective_seed": 8,
+          "ms": 0.7059999625198543,
+          "steps": 26218
+        },
+        {
+          "seed": 9,
+          "attempts": 1,
+          "effective_seed": 9,
+          "ms": 0.5420000525191426,
+          "steps": 26522
+        },
+        {
+          "seed": 10,
+          "attempts": 1,
+          "effective_seed": 10,
+          "ms": 0.5379000212997198,
+          "steps": 25178
+        },
+        {
+          "seed": 11,
+          "attempts": 1,
+          "effective_seed": 11,
+          "ms": 0.3324000281281769,
+          "steps": 25323
+        },
+        {
+          "seed": 12,
+          "attempts": 1,
+          "effective_seed": 12,
+          "ms": 0.7030999986454844,
+          "steps": 24542
+        },
+        {
+          "seed": 13,
+          "attempts": 1,
+          "effective_seed": 13,
+          "ms": 0.5382000235840678,
+          "steps": 26220
+        },
+        {
+          "seed": 14,
+          "attempts": 1,
+          "effective_seed": 14,
+          "ms": 0.5359000060707331,
+          "steps": 25104
+        },
+        {
+          "seed": 15,
+          "attempts": 1,
+          "effective_seed": 15,
+          "ms": 0.5578999989666045,
+          "steps": 24664
+        },
+        {
+          "seed": 16,
+          "attempts": 1,
+          "effective_seed": 16,
+          "ms": 0.6756999646313488,
+          "steps": 27188
+        },
+        {
+          "seed": 17,
+          "attempts": 1,
+          "effective_seed": 17,
+          "ms": 0.3451000084169209,
+          "steps": 25388
+        },
+        {
+          "seed": 18,
+          "attempts": 1,
+          "effective_seed": 18,
+          "ms": 0.41989999590441585,
+          "steps": 25627
+        },
+        {
+          "seed": 19,
+          "attempts": 1,
+          "effective_seed": 19,
+          "ms": 0.3519000019878149,
+          "steps": 26558
+        },
+        {
+          "seed": 20,
+          "attempts": 1,
+          "effective_seed": 20,
+          "ms": 0.4594000056385994,
+          "steps": 26168
+        },
+        {
+          "seed": 21,
+          "attempts": 1,
+          "effective_seed": 21,
+          "ms": 0.5247999797575176,
+          "steps": 26315
+        },
+        {
+          "seed": 22,
+          "attempts": 1,
+          "effective_seed": 22,
+          "ms": 0.5492999916896224,
+          "steps": 26131
+        },
+        {
+          "seed": 23,
+          "attempts": 2,
+          "effective_seed": -1640531504,
+          "ms": 1.0299999848939478,
+          "steps": 52877
+        },
+        {
+          "seed": 24,
+          "attempts": 1,
+          "effective_seed": 24,
+          "ms": 0.5398999783210456,
+          "steps": 26679
+        },
+        {
+          "seed": 25,
+          "attempts": 1,
+          "effective_seed": 25,
+          "ms": 0.5358000053092837,
+          "steps": 27408
+        },
+        {
+          "seed": 26,
+          "attempts": 1,
+          "effective_seed": 26,
+          "ms": 0.539699976798147,
+          "steps": 25024
+        },
+        {
+          "seed": 27,
+          "attempts": 1,
+          "effective_seed": 27,
+          "ms": 0.3431999939493835,
+          "steps": 27071
+        },
+        {
+          "seed": 28,
+          "attempts": 1,
+          "effective_seed": 28,
+          "ms": 0.6021000444889069,
+          "steps": 25484
+        },
+        {
+          "seed": 29,
+          "attempts": 1,
+          "effective_seed": 29,
+          "ms": 0.630499969702214,
+          "steps": 25570
+        },
+        {
+          "seed": 30,
+          "attempts": 2,
+          "effective_seed": -1640531497,
+          "ms": 1.186200010124594,
+          "steps": 51618
+        },
+        {
+          "seed": 31,
+          "attempts": 1,
+          "effective_seed": 31,
+          "ms": 0.528500007931143,
+          "steps": 24428
+        },
+        {
+          "seed": 32,
+          "attempts": 1,
+          "effective_seed": 32,
+          "ms": 0.5297000170685351,
+          "steps": 26761
+        },
+        {
+          "seed": 33,
+          "attempts": 1,
+          "effective_seed": 33,
+          "ms": 0.5158999701961875,
+          "steps": 24896
+        },
+        {
+          "seed": 34,
+          "attempts": 1,
+          "effective_seed": 34,
+          "ms": 0.5429000011645257,
+          "steps": 26099
+        },
+        {
+          "seed": 35,
+          "attempts": 2,
+          "effective_seed": -1640531492,
+          "ms": 1.0640000109560788,
+          "steps": 51684
+        },
+        {
+          "seed": 36,
+          "attempts": 1,
+          "effective_seed": 36,
+          "ms": 0.6538000307045877,
+          "steps": 25740
+        },
+        {
+          "seed": 37,
+          "attempts": 1,
+          "effective_seed": 37,
+          "ms": 0.5646999925374985,
+          "steps": 27238
+        },
+        {
+          "seed": 38,
+          "attempts": 1,
+          "effective_seed": 38,
+          "ms": 0.527600001078099,
+          "steps": 24650
+        },
+        {
+          "seed": 39,
+          "attempts": 1,
+          "effective_seed": 39,
+          "ms": 0.5486999871209264,
+          "steps": 25654
+        },
+        {
+          "seed": 40,
+          "attempts": 1,
+          "effective_seed": 40,
+          "ms": 0.5513000069186091,
+          "steps": 24112
+        },
+        {
+          "seed": 41,
+          "attempts": 1,
+          "effective_seed": 41,
+          "ms": 0.5568999913521111,
+          "steps": 25187
+        },
+        {
+          "seed": 42,
+          "attempts": 1,
+          "effective_seed": 42,
+          "ms": 0.5240000318735838,
+          "steps": 25729
+        },
+        {
+          "seed": 43,
+          "attempts": 1,
+          "effective_seed": 43,
+          "ms": 0.5639000446535647,
+          "steps": 25478
+        },
+        {
+          "seed": 44,
+          "attempts": 1,
+          "effective_seed": 44,
+          "ms": 0.5657000001519918,
+          "steps": 27056
+        },
+        {
+          "seed": 45,
+          "attempts": 2,
+          "effective_seed": -1640531482,
+          "ms": 1.0415000142529607,
+          "steps": 51834
+        },
+        {
+          "seed": 46,
+          "attempts": 1,
+          "effective_seed": 46,
+          "ms": 0.5610000225715339,
+          "steps": 25733
+        },
+        {
+          "seed": 47,
+          "attempts": 1,
+          "effective_seed": 47,
+          "ms": 0.35609997576102614,
+          "steps": 26307
+        }
+      ]
+    },
+    {
+      "map": "L_WFC_ThreeLayers",
+      "runs": [
+        {
+          "seed": 0,
+          "attempts": 1,
+          "effective_seed": 0,
+          "ms": 0.3800999838858843,
+          "steps": 5367
+        },
+        {
+          "seed": 1,
+          "attempts": 1,
+          "effective_seed": 1,
+          "ms": 0.3846999607048929,
+          "steps": 5373
+        },
+        {
+          "seed": 2,
+          "attempts": 1,
+          "effective_seed": 2,
+          "ms": 0.3842000151053071,
+          "steps": 5352
+        },
+        {
+          "seed": 3,
+          "attempts": 1,
+          "effective_seed": 3,
+          "ms": 0.3819999983534217,
+          "steps": 5402
+        },
+        {
+          "seed": 4,
+          "attempts": 1,
+          "effective_seed": 4,
+          "ms": 0.36210002144798636,
+          "steps": 5359
+        },
+        {
+          "seed": 5,
+          "attempts": 1,
+          "effective_seed": 5,
+          "ms": 0.36120001459494233,
+          "steps": 5400
+        },
+        {
+          "seed": 6,
+          "attempts": 1,
+          "effective_seed": 6,
+          "ms": 0.3564999788068235,
+          "steps": 5379
+        },
+        {
+          "seed": 7,
+          "attempts": 1,
+          "effective_seed": 7,
+          "ms": 0.3942999755963683,
+          "steps": 5349
+        },
+        {
+          "seed": 8,
+          "attempts": 1,
+          "effective_seed": 8,
+          "ms": 0.35450002178549767,
+          "steps": 5398
+        },
+        {
+          "seed": 9,
+          "attempts": 1,
+          "effective_seed": 9,
+          "ms": 0.3464000183157623,
+          "steps": 5322
+        },
+        {
+          "seed": 10,
+          "attempts": 1,
+          "effective_seed": 10,
+          "ms": 0.35800004843622446,
+          "steps": 5408
+        },
+        {
+          "seed": 11,
+          "attempts": 1,
+          "effective_seed": 11,
+          "ms": 0.35610003396868706,
+          "steps": 5375
+        },
+        {
+          "seed": 12,
+          "attempts": 1,
+          "effective_seed": 12,
+          "ms": 0.34790002973750234,
+          "steps": 5438
+        },
+        {
+          "seed": 13,
+          "attempts": 1,
+          "effective_seed": 13,
+          "ms": 0.39000000106170774,
+          "steps": 5410
+        },
+        {
+          "seed": 14,
+          "attempts": 1,
+          "effective_seed": 14,
+          "ms": 0.37319998955354095,
+          "steps": 5389
+        },
+        {
+          "seed": 15,
+          "attempts": 1,
+          "effective_seed": 15,
+          "ms": 0.41149999015033245,
+          "steps": 5356
+        },
+        {
+          "seed": 16,
+          "attempts": 1,
+          "effective_seed": 16,
+          "ms": 0.34469994716346264,
+          "steps": 5415
+        },
+        {
+          "seed": 17,
+          "attempts": 1,
+          "effective_seed": 17,
+          "ms": 0.3449000068940222,
+          "steps": 5411
+        },
+        {
+          "seed": 18,
+          "attempts": 1,
+          "effective_seed": 18,
+          "ms": 0.34140003845095634,
+          "steps": 5428
+        },
+        {
+          "seed": 19,
+          "attempts": 1,
+          "effective_seed": 19,
+          "ms": 0.34929998219013214,
+          "steps": 5384
+        },
+        {
+          "seed": 20,
+          "attempts": 1,
+          "effective_seed": 20,
+          "ms": 0.34819997381418943,
+          "steps": 5361
+        },
+        {
+          "seed": 21,
+          "attempts": 1,
+          "effective_seed": 21,
+          "ms": 0.345699954777956,
+          "steps": 5408
+        },
+        {
+          "seed": 22,
+          "attempts": 1,
+          "effective_seed": 22,
+          "ms": 0.3434999962337315,
+          "steps": 5402
+        },
+        {
+          "seed": 23,
+          "attempts": 1,
+          "effective_seed": 23,
+          "ms": 0.3567999810911715,
+          "steps": 5355
+        },
+        {
+          "seed": 24,
+          "attempts": 1,
+          "effective_seed": 24,
+          "ms": 0.35550002939999104,
+          "steps": 5394
+        },
+        {
+          "seed": 25,
+          "attempts": 1,
+          "effective_seed": 25,
+          "ms": 0.3717999788932502,
+          "steps": 5377
+        },
+        {
+          "seed": 26,
+          "attempts": 1,
+          "effective_seed": 26,
+          "ms": 0.3606000100262463,
+          "steps": 5374
+        },
+        {
+          "seed": 27,
+          "attempts": 1,
+          "effective_seed": 27,
+          "ms": 0.35319995367899537,
+          "steps": 5424
+        },
+        {
+          "seed": 28,
+          "attempts": 1,
+          "effective_seed": 28,
+          "ms": 0.368200009688735,
+          "steps": 5413
+        },
+        {
+          "seed": 29,
+          "attempts": 1,
+          "effective_seed": 29,
+          "ms": 0.34470000537112355,
+          "steps": 5340
+        },
+        {
+          "seed": 30,
+          "attempts": 1,
+          "effective_seed": 30,
+          "ms": 0.3497999859973788,
+          "steps": 5391
+        },
+        {
+          "seed": 31,
+          "attempts": 1,
+          "effective_seed": 31,
+          "ms": 0.23329997202381492,
+          "steps": 5388
+        },
+        {
+          "seed": 32,
+          "attempts": 1,
+          "effective_seed": 32,
+          "ms": 0.2245999639853835,
+          "steps": 5355
+        },
+        {
+          "seed": 33,
+          "attempts": 1,
+          "effective_seed": 33,
+          "ms": 0.3629999700933695,
+          "steps": 5394
+        },
+        {
+          "seed": 34,
+          "attempts": 1,
+          "effective_seed": 34,
+          "ms": 0.38139999378472567,
+          "steps": 5403
+        },
+        {
+          "seed": 35,
+          "attempts": 1,
+          "effective_seed": 35,
+          "ms": 0.24730002041906118,
+          "steps": 5414
+        },
+        {
+          "seed": 36,
+          "attempts": 1,
+          "effective_seed": 36,
+          "ms": 0.44870004057884216,
+          "steps": 5440
+        },
+        {
+          "seed": 37,
+          "attempts": 1,
+          "effective_seed": 37,
+          "ms": 0.3446000046096742,
+          "steps": 5394
+        },
+        {
+          "seed": 38,
+          "attempts": 1,
+          "effective_seed": 38,
+          "ms": 0.44620002154260874,
+          "steps": 5403
+        },
+        {
+          "seed": 39,
+          "attempts": 1,
+          "effective_seed": 39,
+          "ms": 0.36750000435858965,
+          "steps": 5400
+        },
+        {
+          "seed": 40,
+          "attempts": 1,
+          "effective_seed": 40,
+          "ms": 0.23790000705048442,
+          "steps": 5316
+        },
+        {
+          "seed": 41,
+          "attempts": 1,
+          "effective_seed": 41,
+          "ms": 0.45579997822642326,
+          "steps": 5413
+        },
+        {
+          "seed": 42,
+          "attempts": 1,
+          "effective_seed": 42,
+          "ms": 0.34089997643604875,
+          "steps": 5373
+        },
+        {
+          "seed": 43,
+          "attempts": 1,
+          "effective_seed": 43,
+          "ms": 0.3637999761849642,
+          "steps": 5378
+        },
+        {
+          "seed": 44,
+          "attempts": 1,
+          "effective_seed": 44,
+          "ms": 0.2253999700769782,
+          "steps": 5395
+        },
+        {
+          "seed": 45,
+          "attempts": 1,
+          "effective_seed": 45,
+          "ms": 0.228899996727705,
+          "steps": 5406
+        },
+        {
+          "seed": 46,
+          "attempts": 1,
+          "effective_seed": 46,
+          "ms": 0.21499994909390807,
+          "steps": 5390
+        },
+        {
+          "seed": 47,
+          "attempts": 1,
+          "effective_seed": 47,
+          "ms": 0.34630001755431294,
+          "steps": 5382
+        }
+      ]
+    }
+  ],
+  "instanced_material_usage": true,
+  "layer_variants": [
+    {
+      "layers": 1,
+      "cells": 16,
+      "components": 1
+    },
+    {
+      "layers": 2,
+      "cells": 32,
+      "components": 1
+    },
+    {
+      "layers": 3,
+      "cells": 48,
+      "components": 1
+    }
+  ]
+}

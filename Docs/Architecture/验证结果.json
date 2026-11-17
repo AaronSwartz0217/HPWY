@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "classCount": 69,
+  "classDocumentationCount": 69,
+  "reportRows": 69,
+  "assetsScanned": 4250,
+  "reachablePackages": 3793,
+  "scriptModuleReferencers": 127,
+  "builds": [
+    {
+      "log": "Saved/Logs/ArchitectureEditorBuild.log",
+      "passed": true
+    },
+    {
+      "log": "Saved/Logs/ArchitectureGameBuild.log",
+      "passed": true
+    },
+    {
+      "log": "Saved/Logs/ArchitectureShippingBuild.log",
+      "passed": true
+    }
+  ],
+  "gameStarted": false,
+  "assetsSaved": false,
+  "cookPerformed": false
+}

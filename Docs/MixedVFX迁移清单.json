@@ -1,0 +1,1469 @@
+{
+  "assets": [
+    {
+      "old": "/Game/Characters/Mannequins/Animations/ABP_Manny",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Animations/ABP_Manny",
+      "class": "AnimBlueprint"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Animations/Manny/BS_MM_WalkRun",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Animations/Manny/BS_MM_WalkRun",
+      "class": "BlendSpace1D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Animations/Manny/MM_Fall_Loop",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Animations/Manny/MM_Fall_Loop",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Animations/Manny/MM_Idle",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Animations/Manny/MM_Idle",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Animations/Manny/MM_Jump",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Animations/Manny/MM_Jump",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Animations/Manny/MM_Land",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Animations/Manny/MM_Land",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Animations/Manny/MM_Run_Fwd",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Animations/Manny/MM_Run_Fwd",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Animations/Manny/MM_Walk_Fwd",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Animations/Manny/MM_Walk_Fwd",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Animations/Manny/MM_Walk_InPlace",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Animations/Manny/MM_Walk_InPlace",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Materials/Functions/CA_Mannequin",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Materials/Functions/CA_Mannequin",
+      "class": "CurveLinearColorAtlas"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Materials/Functions/ChromaticCurve",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Materials/Functions/ChromaticCurve",
+      "class": "CurveLinearColor"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Materials/Functions/MF_Diffraction",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Materials/Functions/MF_Diffraction",
+      "class": "MaterialFunction"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Materials/Functions/MF_logo3layers",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Materials/Functions/MF_logo3layers",
+      "class": "MaterialFunction"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Materials/Functions/ML_BaseColorFallOff",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Materials/Functions/ML_BaseColorFallOff",
+      "class": "MaterialFunction"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Materials/Instances/Manny/MI_Manny_01",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Materials/Instances/Manny/MI_Manny_01",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Materials/Instances/Manny/MI_Manny_02",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Materials/Instances/Manny/MI_Manny_02",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Materials/Instances/Quinn/MI_Quinn_01",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Materials/Instances/Quinn/MI_Quinn_01",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Materials/Instances/Quinn/MI_Quinn_02",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Materials/Instances/Quinn/MI_Quinn_02",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Materials/M_Mannequin",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Materials/M_Mannequin",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Meshes/SKM_Manny",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Meshes/SKM_Manny",
+      "class": "SkeletalMesh"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Meshes/SKM_Manny_Simple",
+      "class": "SkeletalMesh"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Meshes/SKM_Quinn",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Meshes/SKM_Quinn",
+      "class": "SkeletalMesh"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Meshes/SKM_Quinn_Simple",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Meshes/SKM_Quinn_Simple",
+      "class": "SkeletalMesh"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Meshes/SK_Mannequin",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Meshes/SK_Mannequin",
+      "class": "Skeleton"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/ABP_Manny_PostProcess",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/ABP_Manny_PostProcess",
+      "class": "AnimBlueprint"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/ABP_Quinn_PostProcess",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/ABP_Quinn_PostProcess",
+      "class": "AnimBlueprint"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK",
+      "class": "ControlRigBlueprint"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/CR_Mannequin_Body",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/CR_Mannequin_Body",
+      "class": "ControlRigBlueprint"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/CR_Mannequin_Procedural",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/CR_Mannequin_Procedural",
+      "class": "ControlRigBlueprint"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/PA_Mannequin",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/PA_Mannequin",
+      "class": "PhysicsAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_calf_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_calf_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_calf_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_calf_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_calf_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_calf_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_calf_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_calf_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_clavicle_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_clavicle_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_clavicle_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_clavicle_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_clavicle_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_clavicle_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_clavicle_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_clavicle_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_foot_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_foot_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_foot_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_foot_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_foot_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_foot_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_foot_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_foot_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_hand_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_hand_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_hand_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_hand_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_hand_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_hand_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_hand_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_hand_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_lowerarm_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_lowerarm_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_lowerarm_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_lowerarm_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_lowerarm_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_lowerarm_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_lowerarm_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_lowerarm_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_thigh_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_thigh_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_thigh_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_thigh_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_thigh_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_thigh_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_thigh_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_thigh_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_upperarm_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_upperarm_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_upperarm_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_upperarm_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_upperarm_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_upperarm_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Manny/Manny_upperarm_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Manny/Manny_upperarm_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_calf_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_calf_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_calf_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_calf_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_calf_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_calf_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_calf_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_calf_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_clavicle_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_clavicle_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_clavicle_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_clavicle_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_clavicle_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_clavicle_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_clavicle_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_clavicle_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_foot_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_foot_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_foot_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_foot_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_foot_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_foot_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_foot_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_foot_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_hand_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_hand_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_hand_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_hand_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_hand_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_hand_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_hand_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_hand_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_lowerarm_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_lowerarm_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_lowerarm_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_lowerarm_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_lowerarm_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_lowerarm_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_lowerarm_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_lowerarm_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_thigh_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_thigh_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_thigh_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_thigh_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_thigh_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_thigh_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_thigh_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_thigh_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_upperarm_l_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_upperarm_l_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_upperarm_l_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_upperarm_l_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_upperarm_r_anim",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_upperarm_r_anim",
+      "class": "AnimSequence"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_upperarm_r_pose",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_upperarm_r_pose",
+      "class": "PoseAsset"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_01_ASAOPMASK_MSK",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_01_ASAOPMASK_MSK",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_01_BN",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_01_BN",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_01_CCRCCPlastic_MSK",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_01_CCRCCPlastic_MSK",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_01_D",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_01_D",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_01_MSR_MSK",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_01_MSR_MSK",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_01_N",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_01_N",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_01_Tan",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_01_Tan",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_02_ASAOPMASK_MSK",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_02_ASAOPMASK_MSK",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_02_BN",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_02_BN",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_02_CCRCCPlastic_MSK",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_02_CCRCCPlastic_MSK",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_02_D",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_02_D",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_02_MSR_MSK",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_02_MSR_MSK",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_02_N",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_02_N",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Manny/T_Manny_02_Tan",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Manny/T_Manny_02_Tan",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_BN",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_BN",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_D",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_D",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_MSR_MSK",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_MSR_MSK",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_N",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_N",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_Tan",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_Tan",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_01_ASAOMASK_MSK",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_01_ASAOMASK_MSK",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_01_CCRCCPlastic_MSK",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_01_CCRCCPlastic_MSK",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_BN",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_BN",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_D",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_D",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_MSR_MSK",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_MSR_MSK",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_N",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_N",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_Tan",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_Tan",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_02_ASAOMASK_MSK",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_02_ASAOMASK_MSK",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Quinn/T_Quinn_02_CCRCCPlastic_MSK",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Quinn/T_Quinn_02_CCRCCPlastic_MSK",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/Characters/Mannequins/Textures/Shared/T_UE_Logo_M",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/Characters/Mannequins/Textures/Shared/T_UE_Logo_M",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/FirstPerson/Input/Actions/IA_Jump",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/FirstPerson/Input/Actions/IA_Jump",
+      "class": "InputAction"
+    },
+    {
+      "old": "/Game/FirstPerson/Input/Actions/IA_Look",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/FirstPerson/Input/Actions/IA_Look",
+      "class": "InputAction"
+    },
+    {
+      "old": "/Game/FirstPerson/Input/Actions/IA_Move",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/FirstPerson/Input/Actions/IA_Move",
+      "class": "InputAction"
+    },
+    {
+      "old": "/Game/FirstPerson/Input/IMC_Default",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/FirstPerson/Input/IMC_Default",
+      "class": "InputMappingContext"
+    },
+    {
+      "old": "/Game/MixedVFX/Blueprints/BP_MainCamera",
+      "new": "/Game/场景资源特效/MixedVFX/Blueprints/BP_MainCamera",
+      "class": "Blueprint"
+    },
+    {
+      "old": "/Game/MixedVFX/Blueprints/BP_ParticleSpawner",
+      "new": "/Game/场景资源特效/MixedVFX/Blueprints/BP_ParticleSpawner",
+      "class": "Blueprint"
+    },
+    {
+      "old": "/Game/MixedVFX/Blueprints/BP_Projectile",
+      "new": "/Game/场景资源特效/MixedVFX/Blueprints/BP_Projectile",
+      "class": "Blueprint"
+    },
+    {
+      "old": "/Game/MixedVFX/Blueprints/WD_MainWidget",
+      "new": "/Game/场景资源特效/MixedVFX/Blueprints/WD_MainWidget",
+      "class": "WidgetBlueprint"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/M_DissolverMaster",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/M_DissolverMaster",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/M_SimpleDissolver",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/M_SimpleDissolver",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/M_Slash_Master",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/M_Slash_Master",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/M_TrailMaster",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/M_TrailMaster",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/M_TranslucentUnlitMaster",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/M_TranslucentUnlitMaster",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/M_WPO",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/M_WPO",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialFunctions/MF_Dissolve",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialFunctions/MF_Dissolve",
+      "class": "MaterialFunction"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialFunctions/MF_Distortion",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialFunctions/MF_Distortion",
+      "class": "MaterialFunction"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialFunctions/MF_TillingAndOffset",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialFunctions/MF_TillingAndOffset",
+      "class": "MaterialFunction"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialFunctions/MF_WPO",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialFunctions/MF_WPO",
+      "class": "MaterialFunction"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Aura_01",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Aura_01",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Bat",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Bat",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Circle_01",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Circle_01",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Cross",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Cross",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Dissolver_01",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Dissolver_01",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Dissolver_02",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Dissolver_02",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Dissolver_03",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Dissolver_03",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Dissolver_04",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Dissolver_04",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Embers",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Embers",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Feath",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Feath",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Fire",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Fire",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_FireFlipbook1",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_FireFlipbook1",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Flare",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Flare",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Leaf",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Leaf",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Lightning",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Lightning",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_SlashLine_01",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_SlashLine_01",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Slash_01",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Slash_01",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Smoke",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Smoke",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Star",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Star",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Trail_01",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Trail_01",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Trail_02",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Trail_02",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Trail_03",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Trail_03",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Trail_04",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Trail_04",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Trail_05",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Trail_05",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_Trail_06",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_Trail_06",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_TranslucentMesh",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_TranslucentMesh",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_WPO_01",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_WPO_01",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_WPO_02",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_WPO_02",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Materials/MaterialInstances/MI_WPO_03",
+      "new": "/Game/场景资源特效/MixedVFX/Materials/MaterialInstances/MI_WPO_03",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/Meshes/SM_Arrow",
+      "new": "/Game/场景资源特效/MixedVFX/Meshes/SM_Arrow",
+      "class": "StaticMesh"
+    },
+    {
+      "old": "/Game/MixedVFX/Meshes/SM_Shuriken",
+      "new": "/Game/场景资源特效/MixedVFX/Meshes/SM_Shuriken",
+      "class": "StaticMesh"
+    },
+    {
+      "old": "/Game/MixedVFX/Meshes/SM_Slash_01",
+      "new": "/Game/场景资源特效/MixedVFX/Meshes/SM_Slash_01",
+      "class": "StaticMesh"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Explosions/NS_ExplosionGroundBig",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Explosions/NS_ExplosionGroundBig",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Explosions/NS_ExplosionGroundMedium",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Explosions/NS_ExplosionGroundMedium",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Explosions/NS_ExplosionGroundSmall",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Explosions/NS_ExplosionGroundSmall",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Explosions/NS_ExplosionMidAirBig",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Explosions/NS_ExplosionMidAirBig",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Explosions/NS_ExplosionMidAirSmall",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Explosions/NS_ExplosionMidAirSmall",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Fires/NS_BigFire",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Fires/NS_BigFire",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Fires/NS_Campfire",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Fires/NS_Campfire",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Fires/NS_FireBarrier",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Fires/NS_FireBarrier",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Fires/NS_FireMeteorShower",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Fires/NS_FireMeteorShower",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Fires/NS_FlameThrower",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Fires/NS_FlameThrower",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Fires/NS_FlameTornado",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Fires/NS_FlameTornado",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Fires/NS_TorchFire",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Fires/NS_TorchFire",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Mix/NS_ElectricField",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Mix/NS_ElectricField",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Mix/NS_HealingAura",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Mix/NS_HealingAura",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Mix/NS_Mix_01",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Mix/NS_Mix_01",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Mix/NS_Mix_02",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Mix/NS_Mix_02",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Mix/NS_Mix_03",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Mix/NS_Mix_03",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Mix/NS_Wind",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Mix/NS_Wind",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_CursedArrow_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_CursedArrow_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_FairyArrow_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_FairyArrow_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_FireArrow_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_FireArrow_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_GalaxyArrow_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_GalaxyArrow_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_HolyArrow_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_HolyArrow_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_LightningArrow_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_LightningArrow_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_LightningBolt_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_LightningBolt_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_Projectile_01_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_Projectile_01_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_Projectile_02_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_Projectile_02_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_Projectile_03_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_Projectile_03_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_Projectile_04_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_Projectile_04_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_Projectile_05_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_Projectile_05_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_Shuriken_01_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_Shuriken_01_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_Shuriken_02_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_Shuriken_02_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_Shuriken_03_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_Shuriken_03_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_Shuriken_04_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_Shuriken_04_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/Hits/NS_VampireArrow_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/Hits/NS_VampireArrow_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_CursedArrow",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_CursedArrow",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_FairyArrow",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_FairyArrow",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_FireArrow",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_FireArrow",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_GalaxyArrow",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_GalaxyArrow",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_HolyArrow",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_HolyArrow",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_LightningArrow",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_LightningArrow",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_LightningBolt",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_LightningBolt",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_Projectile_01",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_Projectile_01",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_Projectile_02",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_Projectile_02",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_Projectile_03",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_Projectile_03",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_Projectile_04",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_Projectile_04",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_Projectile_05",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_Projectile_05",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_Shuriken_01",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_Shuriken_01",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_Shuriken_02",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_Shuriken_02",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_Shuriken_03",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_Shuriken_03",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_Shuriken_04",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_Shuriken_04",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Projectiles/NS_VampireArrow",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Projectiles/NS_VampireArrow",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/NS_FireSlash",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/NS_FireSlash",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/NS_GalaxySlash",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/NS_GalaxySlash",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/NS_HolySlash",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/NS_HolySlash",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/NS_LightningSlash",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/NS_LightningSlash",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/NS_VampireSlash",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/NS_VampireSlash",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/SeparateParts/Hits/NS_FireSlash_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/SeparateParts/Hits/NS_FireSlash_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/SeparateParts/Hits/NS_GalaxySlash_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/SeparateParts/Hits/NS_GalaxySlash_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/SeparateParts/Hits/NS_HolySlash_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/SeparateParts/Hits/NS_HolySlash_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/SeparateParts/Hits/NS_LightningSlash_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/SeparateParts/Hits/NS_LightningSlash_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/SeparateParts/Hits/NS_VampireSlash_Hit",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/SeparateParts/Hits/NS_VampireSlash_Hit",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/SeparateParts/Slashes/NS_FireSlash_OnlySlash",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/SeparateParts/Slashes/NS_FireSlash_OnlySlash",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/SeparateParts/Slashes/NS_GalaxySlash_OnlySlash",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/SeparateParts/Slashes/NS_GalaxySlash_OnlySlash",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/SeparateParts/Slashes/NS_HolySlash_OnlySlash",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/SeparateParts/Slashes/NS_HolySlash_OnlySlash",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/SeparateParts/Slashes/NS_LightningSlash_OnlySlash",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/SeparateParts/Slashes/NS_LightningSlash_OnlySlash",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/Particles/Slashes/SeparateParts/Slashes/NS_VampireSlash_OnlySlash",
+      "new": "/Game/场景资源特效/MixedVFX/Particles/Slashes/SeparateParts/Slashes/NS_VampireSlash_OnlySlash",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/MixedVFX/SceneAssets/DemoMap",
+      "new": "/Game/场景资源特效/MixedVFX/SceneAssets/DemoMap",
+      "class": "World"
+    },
+    {
+      "old": "/Game/MixedVFX/SceneAssets/DemoMap_BuiltData",
+      "new": "/Game/场景资源特效/MixedVFX/SceneAssets/DemoMap_BuiltData",
+      "class": "MapBuildDataRegistry"
+    },
+    {
+      "old": "/Game/MixedVFX/SceneAssets/Materials/M_Depth",
+      "new": "/Game/场景资源特效/MixedVFX/SceneAssets/Materials/M_Depth",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/MixedVFX/SceneAssets/Materials/M_SceneMaterialMaster",
+      "new": "/Game/场景资源特效/MixedVFX/SceneAssets/Materials/M_SceneMaterialMaster",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/MixedVFX/SceneAssets/Materials/MaterialInstances/MI_Grid_01",
+      "new": "/Game/场景资源特效/MixedVFX/SceneAssets/Materials/MaterialInstances/MI_Grid_01",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/SceneAssets/Materials/MaterialInstances/MI_SceneColor_Red",
+      "new": "/Game/场景资源特效/MixedVFX/SceneAssets/Materials/MaterialInstances/MI_SceneColor_Red",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/SceneAssets/Materials/MaterialInstances/MI_SceneColor_White",
+      "new": "/Game/场景资源特效/MixedVFX/SceneAssets/Materials/MaterialInstances/MI_SceneColor_White",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/SceneAssets/Materials/MaterialInstances/MI_SceneDepth",
+      "new": "/Game/场景资源特效/MixedVFX/SceneAssets/Materials/MaterialInstances/MI_SceneDepth",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/MixedVFX/SceneAssets/Meshes/SM_Mannequin",
+      "new": "/Game/场景资源特效/MixedVFX/SceneAssets/Meshes/SM_Mannequin",
+      "class": "StaticMesh"
+    },
+    {
+      "old": "/Game/MixedVFX/SceneAssets/Textures/T_Grid_01",
+      "new": "/Game/场景资源特效/MixedVFX/SceneAssets/Textures/T_Grid_01",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Bat",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Bat",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Blob",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Blob",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_CartoonStarFilled",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_CartoonStarFilled",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Circle_01",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Circle_01",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Cross",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Cross",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Embers_01",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Embers_01",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Feather",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Feather",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Fire_01",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Fire_01",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Flare",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Flare",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Flow_Tile_01",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Flow_Tile_01",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Galaxy",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Galaxy",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Gradient",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Gradient",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Gradient_02",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Gradient_02",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Leaf",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Leaf",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Lightning",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Lightning",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Mask_01",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Mask_01",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_NoiseCells",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_NoiseCells",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Noise_05",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Noise_05",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Noise_06",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Noise_06",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Slash_01",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Slash_01",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Smoke_01",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Smoke_01",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_SwordSlash_01",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_SwordSlash_01",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Trail_01",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Trail_01",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Trail_03",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Trail_03",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Trail_04",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Trail_04",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/MixedVFX/Textures/T_Trail_05",
+      "new": "/Game/场景资源特效/MixedVFX/Textures/T_Trail_05",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/关卡/传送门特效/拖尾",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/关卡/传送门特效/拖尾",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/关卡/特殊材质/呼吸灯效果",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/关卡/特殊材质/呼吸灯效果",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/初始关卡/快递机器人/001",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/初始关卡/快递机器人/001",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/初始关卡/快递机器人/Material",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/初始关卡/快递机器人/Material",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/初始关卡/快递机器人/OIP-C",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/初始关卡/快递机器人/OIP-C",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/初始关卡/快递机器人/OIP-C1",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/初始关卡/快递机器人/OIP-C1",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/初始关卡/快递机器人/m",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/初始关卡/快递机器人/m",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/初始关卡/快递机器人/m2",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/初始关卡/快递机器人/m2",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/初始关卡/快递机器人/oip",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/初始关卡/快递机器人/oip",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/初始关卡/快递机器人/机器人",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/初始关卡/快递机器人/机器人",
+      "class": "StaticMesh"
+    },
+    {
+      "old": "/Game/初始关卡/快递机器人/材质",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/初始关卡/快递机器人/材质",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/初始关卡/快递机器人/材质_001",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/初始关卡/快递机器人/材质_001",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/初始关卡/快递机器人/材质_002",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/初始关卡/快递机器人/材质_002",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/初始关卡/快递机器人/材质_003",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/初始关卡/快递机器人/材质_003",
+      "class": "MaterialInstanceConstant"
+    },
+    {
+      "old": "/Game/流光特效/BluePurpleSmudge_MatCap",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/流光特效/BluePurpleSmudge_MatCap",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/流光特效/matcap测试",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/流光特效/matcap测试",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/蓝图/topdown/ES",
+      "new": "/Game/场景资源特效/MixedVFX_Dependencies/蓝图/topdown/ES",
+      "class": "Blueprint"
+    },
+    {
+      "old": "/Game/运河传送门/BP_传送门判断",
+      "new": "/Game/场景资源特效/传送门粒子/BP_传送门判断",
+      "class": "Blueprint"
+    },
+    {
+      "old": "/Game/运河传送门/强化测试材质",
+      "new": "/Game/场景资源特效/传送门粒子/强化测试材质",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/运河传送门/测试",
+      "new": "/Game/场景资源特效/传送门粒子/测试",
+      "class": "Material"
+    },
+    {
+      "old": "/Game/运河传送门/测试图片",
+      "new": "/Game/场景资源特效/传送门粒子/测试图片",
+      "class": "Texture2D"
+    },
+    {
+      "old": "/Game/运河传送门/粒子传送门",
+      "new": "/Game/场景资源特效/传送门粒子/粒子传送门",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/运河传送门/粒子传送门强化",
+      "new": "/Game/场景资源特效/传送门粒子/粒子传送门强化",
+      "class": "NiagaraSystem"
+    },
+    {
+      "old": "/Game/运河传送门/雪中",
+      "new": "/Game/场景资源特效/传送门粒子/雪中",
+      "class": "TextureCube"
+    },
+    {
+      "old": "/Game/运河传送门/高级传送门效果测试/NewTextureRenderTargetCube",
+      "new": "/Game/场景资源特效/传送门粒子/高级传送门效果测试/NewTextureRenderTargetCube",
+      "class": "TextureRenderTargetCube"
+    }
+  ]
+}

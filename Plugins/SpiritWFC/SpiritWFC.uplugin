@@ -1,0 +1,14 @@
+{
+  "FileVersion": 3,
+ "Version": 3,
+ "VersionName": "0.3.0",
+  "FriendlyName": "Spirit WFC Maps",
+  "Description": "Independent deterministic tiled WFC for flat maps and up to three vertical layers.",
+  "Category": "Procedural Generation",
+  "CanContainContent": true,
+  "EnabledByDefault": false,
+  "Modules": [
+    { "Name": "SpiritWFC", "Type": "Runtime", "LoadingPhase": "Default" },
+    { "Name": "SpiritWFCEditor", "Type": "Editor", "LoadingPhase": "PostEngineInit" }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "scope": "editor only; no PIE/game, no test changes saved",
+  "painted_cells": 59,
+  "saved_cells": 588,
+  "saved_instances": 246,
+  "plan_and_level_reload": true,
+  "seed_checks": 24,
+  "actual_prefab_replacement": true,
+  "invalid_replacement_keeps_previous": true,
+  "strict_mode_buildings": 4,
+  "automatic_seed_cases": 80,
+  "legacy_seed_cases": 96
+}

@@ -1,0 +1,6076 @@
+{
+  "schemaVersion": 1,
+  "classes": [
+    {
+      "name": "ACC_AdventureGameMode",
+      "nativePath": "/Script/CrashCourse.CC_AdventureGameMode",
+      "parent": "AGameModeBase",
+      "header": "Source/CrashCourse/Public/World/CC_AdventureGameMode.h",
+      "line": 7,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            108
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            108
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PresentationSmoke.cpp",
+          "lines": [
+            65
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/prepare_home_and_music.py"
+      ]
+    },
+    {
+      "name": "ACC_BaseCharacter",
+      "nativePath": "/Script/CrashCourse.CC_BaseCharacter",
+      "parent": "ACharacter, IAbilitySystemInterface",
+      "header": "Source/CrashCourse/Public/Characters/CC_BaseCharacter.h",
+      "line": 25,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/CC_AttributeSet.cpp",
+          "lines": [
+            39,
+            41
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_CharacterAnimInstance.cpp",
+          "lines": [
+            8
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_LocomotionComponent.cpp",
+          "lines": [
+            41,
+            49,
+            88,
+            108
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PatrolEnemyCharacter.cpp",
+          "lines": [
+            92,
+            100,
+            104,
+            109
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            205,
+            230,
+            237,
+            244,
+            259,
+            267,
+            272,
+            275,
+            417
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ArtifactComponent.cpp",
+          "lines": [
+            27
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            91,
+            94,
+            107,
+            117,
+            151,
+            189,
+            216,
+            252
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillAbility.cpp",
+          "lines": [
+            16,
+            45,
+            55,
+            64
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            22,
+            31,
+            39,
+            47,
+            51,
+            55,
+            60,
+            87,
+            97,
+            103
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            63,
+            89,
+            102,
+            103
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillComponent.cpp",
+          "lines": [
+            24,
+            84,
+            98,
+            122,
+            138,
+            147,
+            161
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillProjectile.cpp",
+          "lines": [
+            67,
+            79
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            73,
+            86,
+            107,
+            115,
+            117,
+            118,
+            127,
+            134,
+            148
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            165,
+            244
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_ProgressionMenu.cpp",
+          "lines": [
+            90
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_SkillGalleryWidget.cpp",
+          "lines": [
+            184
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WidgetComponent.cpp",
+          "lines": [
+            35
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+          "lines": [
+            151
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Utils/CC_BlueprintLibrary.cpp",
+          "lines": [
+            58,
+            80,
+            150
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.cpp",
+          "lines": [
+            76
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_EnemyCharacter.h",
+          "lines": [
+            15
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_PatrolEnemyCharacter.h",
+          "lines": [
+            43,
+            68,
+            69
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_PlayerCharacter.h",
+          "lines": [
+            24
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ArtifactComponent.h",
+          "lines": [
+            15,
+            36
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SummonedSoldier.h",
+          "lines": [
+            15,
+            16,
+            31,
+            32,
+            38,
+            42,
+            43,
+            44,
+            45,
+            46,
+            50,
+            51,
+            52
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_WidgetComponent.h",
+          "lines": [
+            26
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.h",
+          "lines": [
+            31
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/CC_AttributeSet.cpp",
+          "lines": [
+            39,
+            41
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_CharacterAnimInstance.cpp",
+          "lines": [
+            8
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_LocomotionComponent.cpp",
+          "lines": [
+            41,
+            49,
+            88,
+            108
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PatrolEnemyCharacter.cpp",
+          "lines": [
+            92,
+            100,
+            104,
+            109
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            205,
+            230,
+            237,
+            244,
+            259,
+            267,
+            272,
+            275,
+            417
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ArtifactComponent.cpp",
+          "lines": [
+            27
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            91,
+            94,
+            107,
+            117,
+            151,
+            189,
+            216,
+            252
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillAbility.cpp",
+          "lines": [
+            16,
+            45,
+            55,
+            64
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            22,
+            31,
+            39,
+            47,
+            51,
+            55,
+            60,
+            87,
+            97,
+            103
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            63,
+            89,
+            102,
+            103
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillComponent.cpp",
+          "lines": [
+            24,
+            84,
+            98,
+            122,
+            138,
+            147,
+            161
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillProjectile.cpp",
+          "lines": [
+            67,
+            79
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            73,
+            86,
+            107,
+            115,
+            117,
+            118,
+            127,
+            134,
+            148
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            165,
+            244
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_ProgressionMenu.cpp",
+          "lines": [
+            90
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_SkillGalleryWidget.cpp",
+          "lines": [
+            184
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WidgetComponent.cpp",
+          "lines": [
+            35
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+          "lines": [
+            151
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Utils/CC_BlueprintLibrary.cpp",
+          "lines": [
+            58,
+            80,
+            150
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.cpp",
+          "lines": [
+            76
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_EnemyCharacter.h",
+          "lines": [
+            15
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_PatrolEnemyCharacter.h",
+          "lines": [
+            43,
+            68,
+            69
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_PlayerCharacter.h",
+          "lines": [
+            24
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ArtifactComponent.h",
+          "lines": [
+            15,
+            36
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SummonedSoldier.h",
+          "lines": [
+            15,
+            16,
+            31,
+            32,
+            38,
+            42,
+            43,
+            44,
+            45,
+            46,
+            50,
+            51,
+            52
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_WidgetComponent.h",
+          "lines": [
+            26
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.h",
+          "lines": [
+            31
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_AnimationSmoke.cpp",
+          "lines": [
+            39,
+            168,
+            188
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ExperienceSmoke.cpp",
+          "lines": [
+            225,
+            226
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PatrolTests.cpp",
+          "lines": [
+            38
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "ACC_CoinPickup",
+      "nativePath": "/Script/CrashCourse.CC_CoinPickup",
+      "parent": "ACharacter",
+      "header": "Source/CrashCourse/Public/Progression/CC_CoinPickup.h",
+      "line": 6,
+      "runtimeReferences": [],
+      "externalRuntimeReferences": [],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CoinPatrolSmoke.cpp",
+          "lines": [
+            27,
+            28,
+            49,
+            54,
+            56
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            62,
+            63,
+            117
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_coin_patrol.py",
+        "Scripts/configure_real_skills_and_coins.py"
+      ]
+    },
+    {
+      "name": "ACC_EnemyCharacter",
+      "nativePath": "/Script/CrashCourse.CC_EnemyCharacter",
+      "parent": "ACC_BaseCharacter",
+      "header": "Source/CrashCourse/Public/Characters/CC_EnemyCharacter.h",
+      "line": 14,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/CC_AttributeSet.cpp",
+          "lines": [
+            72
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_BaseCharacter.cpp",
+          "lines": [
+            130
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Utils/CC_BlueprintLibrary.cpp",
+          "lines": [
+            222
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.cpp",
+          "lines": [
+            33
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_PatrolEnemyCharacter.h",
+          "lines": [
+            15
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SummonedSoldier.h",
+          "lines": [
+            11
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.h",
+          "lines": [
+            29
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/CC_AttributeSet.cpp",
+          "lines": [
+            72
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_BaseCharacter.cpp",
+          "lines": [
+            130
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Utils/CC_BlueprintLibrary.cpp",
+          "lines": [
+            222
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.cpp",
+          "lines": [
+            33
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_PatrolEnemyCharacter.h",
+          "lines": [
+            15
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SummonedSoldier.h",
+          "lines": [
+            11
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.h",
+          "lines": [
+            29
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_AnimationSmoke.cpp",
+          "lines": [
+            53,
+            60,
+            107,
+            229,
+            262,
+            299,
+            302,
+            332,
+            350,
+            355
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ExperienceSmoke.cpp",
+          "lines": [
+            45,
+            135,
+            136,
+            177
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MuralMenuSmoke.cpp",
+          "lines": [
+            272
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            97
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            34,
+            79,
+            80
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_character_animation.py",
+        "Scripts/configure_combat_balance.py",
+        "Scripts/configure_enemy_melee_camera.py",
+        "Scripts/configure_experience_pickups.py",
+        "Scripts/configure_npc_art.py",
+        "Scripts/configure_real_skills_and_coins.py"
+      ]
+    },
+    {
+      "name": "ACC_ExperienceOrb",
+      "nativePath": "/Script/CrashCourse.CC_ExperienceOrb",
+      "parent": "AActor",
+      "header": "Source/CrashCourse/Public/Progression/CC_ExperienceOrb.h",
+      "line": 17,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ExperienceOrb.cpp",
+          "lines": [
+            35,
+            36,
+            37,
+            38,
+            141
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ExperiencePack.cpp",
+          "lines": [
+            47
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            414
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_FormPowerOrb.h",
+          "lines": [
+            16
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ExperiencePack.cpp",
+          "lines": [
+            47
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            414
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_FormPowerOrb.h",
+          "lines": [
+            16
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_DeveloperKeysSmoke.cpp",
+          "lines": [
+            48
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ExperienceSmoke.cpp",
+          "lines": [
+            48,
+            49,
+            50,
+            51,
+            52,
+            73,
+            75,
+            76,
+            118,
+            193,
+            231
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            106,
+            107,
+            110
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "ACC_ExperiencePack",
+      "nativePath": "/Script/CrashCourse.CC_ExperiencePack",
+      "parent": "AActor",
+      "header": "Source/CrashCourse/Public/Progression/CC_ExperiencePack.h",
+      "line": 11,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            296,
+            330,
+            337
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ExperiencePack.cpp",
+          "lines": [
+            27,
+            28
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Player/CC_PlayerController.h",
+          "lines": [
+            101
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            296,
+            330,
+            337
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Player/CC_PlayerController.h",
+          "lines": [
+            101
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ExperienceSmoke.cpp",
+          "lines": [
+            46,
+            137,
+            245
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InteractionSmoke.cpp",
+          "lines": [
+            62,
+            63
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_experience_pickups.py"
+      ]
+    },
+    {
+      "name": "ACC_FormArtifact",
+      "nativePath": "/Script/CrashCourse.CC_FormArtifact",
+      "parent": "AActor",
+      "header": "Source/CrashCourse/Public/Progression/CC_ArtifactComponent.h",
+      "line": 46,
+      "runtimeReferences": [],
+      "externalRuntimeReferences": [],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InitialInkNatureTests.cpp",
+          "lines": [
+            37,
+            39,
+            67
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InteractionSmoke.cpp",
+          "lines": [
+            39,
+            40
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            65
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            89
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_form_routes.py",
+        "Scripts/configure_initial_ink_nature.py",
+        "Scripts/configure_npc_art.py",
+        "Scripts/setup_hpwh.py"
+      ]
+    },
+    {
+      "name": "ACC_FormPowerOrb",
+      "nativePath": "/Script/CrashCourse.CC_FormPowerOrb",
+      "parent": "ACC_ExperienceOrb",
+      "header": "Source/CrashCourse/Public/Progression/CC_FormPowerOrb.h",
+      "line": 15,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ArtifactComponent.cpp",
+          "lines": [
+            63,
+            73
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ArtifactComponent.h",
+          "lines": [
+            40,
+            42
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ProgressionComponent.h",
+          "lines": [
+            92
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ArtifactComponent.cpp",
+          "lines": [
+            63,
+            73
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ArtifactComponent.h",
+          "lines": [
+            40,
+            42
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ProgressionComponent.h",
+          "lines": [
+            92
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InitialInkNatureTests.cpp",
+          "lines": [
+            72,
+            73
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "ACC_MainMenuController",
+      "nativePath": "/Script/CrashCourse.CC_MainMenuController",
+      "parent": "APlayerController",
+      "header": "Source/CrashCourse/Public/Player/CC_MainMenuController.h",
+      "line": 7,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/World/CC_MainMenuGameMode.cpp",
+          "lines": [
+            7
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/World/CC_MainMenuGameMode.cpp",
+          "lines": [
+            7
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PresentationSmoke.cpp",
+          "lines": [
+            74
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "ACC_MainMenuGameMode",
+      "nativePath": "/Script/CrashCourse.CC_MainMenuGameMode",
+      "parent": "AGameModeBase",
+      "header": "Source/CrashCourse/Public/World/CC_MainMenuGameMode.h",
+      "line": 7,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            107
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            107
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_game_home.py",
+        "Scripts/prepare_home_and_music.py"
+      ]
+    },
+    {
+      "name": "ACC_MapPortal",
+      "nativePath": "/Script/CrashCourse.CC_MapPortal",
+      "parent": "AActor",
+      "header": "Source/CrashCourse/Public/World/CC_MapPortal.h",
+      "line": 9,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            213
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameMode.cpp",
+          "lines": [
+            66
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/World/CC_AdventureGameInstance.h",
+          "lines": [
+            64
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            213
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameMode.cpp",
+          "lines": [
+            66
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/World/CC_AdventureGameInstance.h",
+          "lines": [
+            64
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PresentationSmoke.cpp",
+          "lines": [
+            34,
+            98,
+            107
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "ACC_MinimapCapture",
+      "nativePath": "/Script/CrashCourse.CC_MinimapCapture",
+      "parent": "AActor",
+      "header": "Source/CrashCourse/Public/World/CC_MinimapCapture.h",
+      "line": 8,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            34,
+            35
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+          "lines": [
+            99
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Player/CC_PlayerController.h",
+          "lines": [
+            31,
+            33,
+            61
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_WorldNavigationWidget.h",
+          "lines": [
+            20,
+            35
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            34,
+            35
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+          "lines": [
+            99
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Player/CC_PlayerController.h",
+          "lines": [
+            31,
+            33,
+            61
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_WorldNavigationWidget.h",
+          "lines": [
+            20,
+            35
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "ACC_PatrolEnemyCharacter",
+      "nativePath": "/Script/CrashCourse.CC_PatrolEnemyCharacter",
+      "parent": "ACC_EnemyCharacter",
+      "header": "Source/CrashCourse/Public/Characters/CC_PatrolEnemyCharacter.h",
+      "line": 14,
+      "runtimeReferences": [],
+      "externalRuntimeReferences": [],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_AnimationSmoke.cpp",
+          "lines": [
+            172,
+            221,
+            308
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CoinPatrolSmoke.cpp",
+          "lines": [
+            47
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CombatBalanceTests.cpp",
+          "lines": [
+            77
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_DeveloperKeysSmoke.cpp",
+          "lines": [
+            32
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ExperienceSmoke.cpp",
+          "lines": [
+            188
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InteractionSmoke.cpp",
+          "lines": [
+            34
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MeleeCameraSmoke.cpp",
+          "lines": [
+            27,
+            38
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MuralMenuSmoke.cpp",
+          "lines": [
+            271
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PatrolSmoke.cpp",
+          "lines": [
+            27,
+            41,
+            49,
+            89
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PatrolTests.cpp",
+          "lines": [
+            20
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            55,
+            60,
+            80
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_SkillGallerySmoke.cpp",
+          "lines": [
+            29
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_SkillSettingsSmoke.cpp",
+          "lines": [
+            33,
+            50,
+            102,
+            103
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_UIContractSmoke.cpp",
+          "lines": [
+            30
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_enemy_melee_camera.py",
+        "Scripts/setup_patrol_enemy.py"
+      ]
+    },
+    {
+      "name": "ACC_PlayerCharacter",
+      "nativePath": "/Script/CrashCourse.CC_PlayerCharacter",
+      "parent": "ACC_BaseCharacter",
+      "header": "Source/CrashCourse/Public/Characters/CC_PlayerCharacter.h",
+      "line": 23,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/CC_AttributeSet.cpp",
+          "lines": [
+            70,
+            71
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/GameObjects/CC_Projectile.cpp",
+          "lines": [
+            26
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Notifies/CC_MeleeAttack.cpp",
+          "lines": [
+            75
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            167,
+            292,
+            339
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ArtifactComponent.cpp",
+          "lines": [
+            53
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_CoinPickup.cpp",
+          "lines": [
+            75,
+            85
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ExperienceOrb.cpp",
+          "lines": [
+            85,
+            95,
+            126
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ExperiencePack.cpp",
+          "lines": [
+            30,
+            41
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            31,
+            34,
+            38,
+            61,
+            90,
+            105
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            213,
+            231
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameMode.cpp",
+          "lines": [
+            22,
+            31,
+            42,
+            71
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_MapPortal.cpp",
+          "lines": [
+            36
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Player/CC_PlayerController.h",
+          "lines": [
+            56
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ArtifactComponent.h",
+          "lines": [
+            39
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_CoinPickup.h",
+          "lines": [
+            5,
+            23
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ExperienceOrb.h",
+          "lines": [
+            39
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ExperiencePack.h",
+          "lines": [
+            26,
+            27
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ProgressionComponent.h",
+          "lines": [
+            94,
+            104
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/World/CC_AdventureGameInstance.h",
+          "lines": [
+            64
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/CC_AttributeSet.cpp",
+          "lines": [
+            70,
+            71
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/GameObjects/CC_Projectile.cpp",
+          "lines": [
+            26
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Notifies/CC_MeleeAttack.cpp",
+          "lines": [
+            75
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            167,
+            292,
+            339
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ArtifactComponent.cpp",
+          "lines": [
+            53
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_CoinPickup.cpp",
+          "lines": [
+            75,
+            85
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ExperienceOrb.cpp",
+          "lines": [
+            85,
+            95,
+            126
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ExperiencePack.cpp",
+          "lines": [
+            30,
+            41
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            31,
+            34,
+            38,
+            61,
+            90,
+            105
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            213,
+            231
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameMode.cpp",
+          "lines": [
+            22,
+            31,
+            42,
+            71
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_MapPortal.cpp",
+          "lines": [
+            36
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Player/CC_PlayerController.h",
+          "lines": [
+            56
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ArtifactComponent.h",
+          "lines": [
+            39
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_CoinPickup.h",
+          "lines": [
+            5,
+            23
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ExperienceOrb.h",
+          "lines": [
+            39
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ExperiencePack.h",
+          "lines": [
+            26,
+            27
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ProgressionComponent.h",
+          "lines": [
+            94,
+            104
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/World/CC_AdventureGameInstance.h",
+          "lines": [
+            64
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_AnimationSmoke.cpp",
+          "lines": [
+            52,
+            167,
+            222,
+            256,
+            274,
+            298,
+            337
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CoinPatrolSmoke.cpp",
+          "lines": [
+            44
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CombatBalanceTests.cpp",
+          "lines": [
+            42
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_DeveloperKeysSmoke.cpp",
+          "lines": [
+            27
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ExperienceSmoke.cpp",
+          "lines": [
+            43,
+            44,
+            134,
+            156,
+            243,
+            271
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InitialInkNatureTests.cpp",
+          "lines": [
+            46
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InkExperienceTests.cpp",
+          "lines": [
+            19
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InteractionSmoke.cpp",
+          "lines": [
+            30
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MeleeCameraSmoke.cpp",
+          "lines": [
+            26,
+            37
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MuralMenuSmoke.cpp",
+          "lines": [
+            61,
+            257
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PatrolSmoke.cpp",
+          "lines": [
+            31,
+            42
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PatrolTests.cpp",
+          "lines": [
+            34
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PresentationSmoke.cpp",
+          "lines": [
+            66
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            28,
+            156
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            34,
+            53
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_SkillGallerySmoke.cpp",
+          "lines": [
+            26
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_SkillSettingsSmoke.cpp",
+          "lines": [
+            32,
+            47
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_UIContractSmoke.cpp",
+          "lines": [
+            27
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "ACC_PlayerController",
+      "nativePath": "/Script/CrashCourse.CC_PlayerController",
+      "parent": "APlayerController",
+      "header": "Source/CrashCourse/Public/Player/CC_PlayerController.h",
+      "line": 19,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PlayerCharacter.cpp",
+          "lines": [
+            85,
+            189
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            39,
+            50,
+            70,
+            93
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            161,
+            170,
+            245,
+            338
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_OptionsWidget.cpp",
+          "lines": [
+            67,
+            98,
+            122,
+            130,
+            131
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_ProgressionMenu.cpp",
+          "lines": [
+            75,
+            99,
+            108,
+            109,
+            112
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_SkillGalleryWidget.cpp",
+          "lines": [
+            184
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+          "lines": [
+            150,
+            160,
+            181,
+            186
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            230
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameMode.cpp",
+          "lines": [
+            23,
+            40
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_OptionsWidget.h",
+          "lines": [
+            44
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PlayerCharacter.cpp",
+          "lines": [
+            85,
+            189
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            39,
+            50,
+            70,
+            93
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            161,
+            170,
+            245,
+            338
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_OptionsWidget.cpp",
+          "lines": [
+            67,
+            98,
+            122,
+            130,
+            131
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_ProgressionMenu.cpp",
+          "lines": [
+            75,
+            99,
+            108,
+            109,
+            112
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_SkillGalleryWidget.cpp",
+          "lines": [
+            184
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+          "lines": [
+            150,
+            160,
+            181,
+            186
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            230
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameMode.cpp",
+          "lines": [
+            23,
+            40
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_OptionsWidget.h",
+          "lines": [
+            44
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_DeveloperKeysSmoke.cpp",
+          "lines": [
+            26
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ExperienceSmoke.cpp",
+          "lines": [
+            42,
+            147
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InteractionSmoke.cpp",
+          "lines": [
+            29
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MuralMenuSmoke.cpp",
+          "lines": [
+            60,
+            256
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            34,
+            53
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_SkillGallerySmoke.cpp",
+          "lines": [
+            26
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_SkillSettingsSmoke.cpp",
+          "lines": [
+            31,
+            47
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_UIContractSmoke.cpp",
+          "lines": [
+            25
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "ACC_PlayerState",
+      "nativePath": "/Script/CrashCourse.CC_PlayerState",
+      "parent": "APlayerState, IAbilitySystemInterface",
+      "header": "Source/CrashCourse/Public/Player/CC_PlayerState.h",
+      "line": 15,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/CC_AttributeSet.cpp",
+          "lines": [
+            74
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PlayerCharacter.cpp",
+          "lines": [
+            101,
+            109,
+            125,
+            142,
+            166
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            277,
+            281,
+            287,
+            335,
+            425,
+            430
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ArtifactComponent.cpp",
+          "lines": [
+            56
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_CoinPickup.cpp",
+          "lines": [
+            77
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            110
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ExperienceOrb.cpp",
+          "lines": [
+            97,
+            128
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ExperiencePack.cpp",
+          "lines": [
+            32,
+            47
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            33
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            55
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillComponent.cpp",
+          "lines": [
+            56,
+            101
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            165
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_OptionsWidget.cpp",
+          "lines": [
+            104,
+            134,
+            139
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_ProgressionMenu.cpp",
+          "lines": [
+            56
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_SkillGalleryWidget.cpp",
+          "lines": [
+            124,
+            138,
+            146,
+            185,
+            213
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+          "lines": [
+            150
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            170,
+            187,
+            232
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameMode.cpp",
+          "lines": [
+            24
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ExperienceOrb.h",
+          "lines": [
+            29,
+            42
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/CC_AttributeSet.cpp",
+          "lines": [
+            74
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PlayerCharacter.cpp",
+          "lines": [
+            101,
+            109,
+            125,
+            142,
+            166
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            277,
+            281,
+            287,
+            335,
+            425,
+            430
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ArtifactComponent.cpp",
+          "lines": [
+            56
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_CoinPickup.cpp",
+          "lines": [
+            77
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            110
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ExperienceOrb.cpp",
+          "lines": [
+            97,
+            128
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ExperiencePack.cpp",
+          "lines": [
+            32,
+            47
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            33
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            55
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillComponent.cpp",
+          "lines": [
+            56,
+            101
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            165
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_OptionsWidget.cpp",
+          "lines": [
+            104,
+            134,
+            139
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_ProgressionMenu.cpp",
+          "lines": [
+            56
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_SkillGalleryWidget.cpp",
+          "lines": [
+            124,
+            138,
+            146,
+            185,
+            213
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+          "lines": [
+            150
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            170,
+            187,
+            232
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameMode.cpp",
+          "lines": [
+            24
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ExperienceOrb.h",
+          "lines": [
+            29,
+            42
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CoinPatrolSmoke.cpp",
+          "lines": [
+            109
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CombatBalanceTests.cpp",
+          "lines": [
+            42
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_DeveloperKeysSmoke.cpp",
+          "lines": [
+            28
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ExperienceSmoke.cpp",
+          "lines": [
+            41,
+            73,
+            146
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InitialInkNatureTests.cpp",
+          "lines": [
+            31,
+            33,
+            45
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InkExperienceTests.cpp",
+          "lines": [
+            19
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InteractionSmoke.cpp",
+          "lines": [
+            31
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MuralMenuSmoke.cpp",
+          "lines": [
+            258
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PatrolTests.cpp",
+          "lines": [
+            33
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            27,
+            155
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            38
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_SkillGallerySmoke.cpp",
+          "lines": [
+            26
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_SkillSettingsSmoke.cpp",
+          "lines": [
+            51
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_UIContractSmoke.cpp",
+          "lines": [
+            26
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "ACC_ProgressionHUD",
+      "nativePath": "/Script/CrashCourse.CC_ProgressionHUD",
+      "parent": "AHUD",
+      "header": "Source/CrashCourse/Public/Progression/CC_ProgressionHUD.h",
+      "line": 7,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameMode.cpp",
+          "lines": [
+            25
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameMode.cpp",
+          "lines": [
+            25
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InteractionSmoke.cpp",
+          "lines": [
+            81
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/import_mural_menu_assets.py",
+        "Scripts/setup_hpwh.py"
+      ]
+    },
+    {
+      "name": "ACC_Projectile",
+      "nativePath": "/Script/CrashCourse.CC_Projectile",
+      "parent": "AActor",
+      "header": "Source/CrashCourse/Public/GameObjects/CC_Projectile.h",
+      "line": 12,
+      "runtimeReferences": [],
+      "externalRuntimeReferences": [],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "ACC_SkillProjectile",
+      "nativePath": "/Script/CrashCourse.CC_SkillProjectile",
+      "parent": "AActor",
+      "header": "Source/CrashCourse/Public/Progression/CC_SkillProjectile.h",
+      "line": 10,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            183
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            413
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillProjectile.cpp",
+          "lines": [
+            31
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            183
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            413
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_AnimationSmoke.cpp",
+          "lines": [
+            54,
+            206,
+            282
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MeleeCameraSmoke.cpp",
+          "lines": [
+            71
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "ACC_SummonedSoldier",
+      "nativePath": "/Script/CrashCourse.CC_SummonedSoldier",
+      "parent": "ACC_EnemyCharacter",
+      "header": "Source/CrashCourse/Public/Progression/CC_SummonedSoldier.h",
+      "line": 10,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            105,
+            113,
+            117
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            89
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SkillComponent.h",
+          "lines": [
+            28,
+            63
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            105,
+            113,
+            117
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SkillComponent.h",
+          "lines": [
+            28,
+            63
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            93
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/verify_summoned_soldier_assets.py"
+      ]
+    },
+    {
+      "name": "UCC_AbilitySystemComponent",
+      "nativePath": "/Script/CrashCourse.CC_AbilitySystemComponent",
+      "parent": "UAbilitySystemComponent",
+      "header": "Source/CrashCourse/Public/AbilitySystem/CC_AbilitySystemComponent.h",
+      "line": 10,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_EnemyCharacter.cpp",
+          "lines": [
+            21
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerState.cpp",
+          "lines": [
+            14
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_EnemyCharacter.cpp",
+          "lines": [
+            21
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerState.cpp",
+          "lines": [
+            14
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_AdventureGameInstance",
+      "nativePath": "/Script/CrashCourse.CC_AdventureGameInstance",
+      "parent": "UGameInstance",
+      "header": "Source/CrashCourse/Public/World/CC_AdventureGameInstance.h",
+      "line": 26,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PlayerCharacter.cpp",
+          "lines": [
+            157
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_MainMenuController.cpp",
+          "lines": [
+            11
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            32,
+            52,
+            60,
+            349
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            83,
+            249,
+            256,
+            271,
+            403
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MainMenuWidget.cpp",
+          "lines": [
+            77,
+            91,
+            100,
+            104
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_OptionsWidget.cpp",
+          "lines": [
+            104
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+          "lines": [
+            102,
+            114,
+            124,
+            137,
+            160,
+            185
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            105
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameMode.cpp",
+          "lines": [
+            45,
+            49
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_MapPortal.cpp",
+          "lines": [
+            29,
+            37
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PlayerCharacter.cpp",
+          "lines": [
+            157
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_MainMenuController.cpp",
+          "lines": [
+            11
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            32,
+            52,
+            60,
+            349
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            83,
+            249,
+            256,
+            271,
+            403
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MainMenuWidget.cpp",
+          "lines": [
+            77,
+            91,
+            100,
+            104
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_OptionsWidget.cpp",
+          "lines": [
+            104
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+          "lines": [
+            102,
+            114,
+            124,
+            137,
+            160,
+            185
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameMode.cpp",
+          "lines": [
+            45,
+            49
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_MapPortal.cpp",
+          "lines": [
+            29,
+            37
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PresentationSmoke.cpp",
+          "lines": [
+            32,
+            125
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/prepare_home_and_music.py",
+        "Scripts/verify_presentation_assets.py"
+      ]
+    },
+    {
+      "name": "UCC_AnimationSetupLibrary",
+      "nativePath": "/Script/CrashCourse.CC_AnimationSetupLibrary",
+      "parent": "UBlueprintFunctionLibrary",
+      "header": "Source/CrashCourse/Public/Characters/CC_AnimationSetupLibrary.h",
+      "line": 10,
+      "runtimeReferences": [],
+      "externalRuntimeReferences": [],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/audit_legacy_abilities.py",
+        "Scripts/configure_character_animation.py",
+        "Scripts/configure_initial_ink_nature.py",
+        "Scripts/probe_animation_graph.py",
+        "Scripts/repair_travel_presentation.py",
+        "Scripts/verify_presentation_assets.py"
+      ]
+    },
+    {
+      "name": "UCC_ArtifactComponent",
+      "nativePath": "/Script/CrashCourse.CC_ArtifactComponent",
+      "parent": "UActorComponent",
+      "header": "Source/CrashCourse/Public/Progression/CC_ArtifactComponent.h",
+      "line": 18,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            297,
+            335
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ArtifactComponent.cpp",
+          "lines": [
+            87
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            144
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            101
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_FormPowerOrb.h",
+          "lines": [
+            32
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            297,
+            335
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ArtifactComponent.cpp",
+          "lines": [
+            87
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            144
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            101
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_FormPowerOrb.h",
+          "lines": [
+            32
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MuralMenuSmoke.cpp",
+          "lines": [
+            183,
+            185
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_SkillSettingsSmoke.cpp",
+          "lines": [
+            59,
+            62
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_AttackEffect",
+      "nativePath": "/Script/CrashCourse.CC_AttackEffect",
+      "parent": "UGameplayEffect",
+      "header": "Source/CrashCourse/Public/Progression/CC_ConfiguredAbility.h",
+      "line": 18,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            197
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            72
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            197
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            72
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_AttributeChangeTask",
+      "nativePath": "/Script/CrashCourse.CC_AttributeChangeTask",
+      "parent": "UBlueprintAsyncActionBase",
+      "header": "Source/CrashCourse/Public/Tasks/CC_AttributeChangeTask.h",
+      "line": 15,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tasks/CC_AttributeChangeTask.cpp",
+          "lines": [
+            9,
+            19
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_AttributeSet",
+      "nativePath": "/Script/CrashCourse.CC_AttributeSet",
+      "parent": "UAttributeSet",
+      "header": "Source/CrashCourse/Public/AbilitySystem/CC_AttributeSet.h",
+      "line": 19,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_EnemyCharacter.cpp",
+          "lines": [
+            25,
+            81,
+            103,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PatrolEnemyCharacter.cpp",
+          "lines": [
+            53
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PlayerCharacter.cpp",
+          "lines": [
+            127,
+            144
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_SprintEffect.cpp",
+          "lines": [
+            9
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerState.cpp",
+          "lines": [
+            18
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            36,
+            40,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            99,
+            111,
+            120,
+            228
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillAbility.cpp",
+          "lines": [
+            21,
+            28,
+            58
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            27,
+            72,
+            73,
+            78,
+            91,
+            92
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            69,
+            126,
+            401
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            64,
+            104
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            80,
+            81,
+            82,
+            83,
+            168,
+            197
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_AttributeWidget.cpp",
+          "lines": [
+            10,
+            11,
+            28,
+            38
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            244
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_ProgressionMenu.cpp",
+          "lines": [
+            90
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WidgetComponent.cpp",
+          "lines": [
+            10,
+            47
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Utils/CC_BlueprintLibrary.cpp",
+          "lines": [
+            91
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_AttributeWidget.h",
+          "lines": [
+            30
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_WidgetComponent.h",
+          "lines": [
+            28
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_EnemyCharacter.cpp",
+          "lines": [
+            25,
+            81,
+            103,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PatrolEnemyCharacter.cpp",
+          "lines": [
+            53
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PlayerCharacter.cpp",
+          "lines": [
+            127,
+            144
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_SprintEffect.cpp",
+          "lines": [
+            9
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerState.cpp",
+          "lines": [
+            18
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            36,
+            40,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            99,
+            111,
+            120,
+            228
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillAbility.cpp",
+          "lines": [
+            21,
+            28,
+            58
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            27,
+            72,
+            73,
+            78,
+            91,
+            92
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            69,
+            126,
+            401
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            64,
+            104
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            80,
+            81,
+            82,
+            83,
+            168,
+            197
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_AttributeWidget.cpp",
+          "lines": [
+            10,
+            11,
+            28,
+            38
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            244
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_ProgressionMenu.cpp",
+          "lines": [
+            90
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WidgetComponent.cpp",
+          "lines": [
+            10,
+            47
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Utils/CC_BlueprintLibrary.cpp",
+          "lines": [
+            91
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_AttributeWidget.h",
+          "lines": [
+            30
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_WidgetComponent.h",
+          "lines": [
+            28
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_AnimationSmoke.cpp",
+          "lines": [
+            311,
+            334,
+            350,
+            357
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CombatBalanceTests.cpp",
+          "lines": [
+            43,
+            55,
+            57,
+            58,
+            60,
+            73,
+            78,
+            81,
+            83
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_DeveloperKeysSmoke.cpp",
+          "lines": [
+            34
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InitialInkNatureTests.cpp",
+          "lines": [
+            50,
+            57,
+            58,
+            81,
+            84,
+            85,
+            89,
+            92,
+            101,
+            102
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InkExperienceTests.cpp",
+          "lines": [
+            20
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MeleeCameraSmoke.cpp",
+          "lines": [
+            50,
+            70
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MuralMenuSmoke.cpp",
+          "lines": [
+            198,
+            279
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PatrolSmoke.cpp",
+          "lines": [
+            94
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PatrolTests.cpp",
+          "lines": [
+            23,
+            55
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            32,
+            34,
+            35,
+            36,
+            37,
+            38,
+            62,
+            80,
+            83,
+            89,
+            91,
+            99,
+            100,
+            102,
+            129,
+            160,
+            161,
+            162,
+            172,
+            175,
+            177,
+            180
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            81,
+            84,
+            85,
+            86,
+            87,
+            96,
+            99,
+            103,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_SkillSettingsSmoke.cpp",
+          "lines": [
+            74,
+            107,
+            118
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_AttributeWidget",
+      "nativePath": "/Script/CrashCourse.CC_AttributeWidget",
+      "parent": "UUserWidget",
+      "header": "Source/CrashCourse/Public/UI/CC_AttributeWidget.h",
+      "line": 14,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_BaseCharacter.cpp",
+          "lines": [
+            38
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_AttributeWidget.cpp",
+          "lines": [
+            14
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WidgetComponent.cpp",
+          "lines": [
+            81,
+            84
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_BaseCharacter.cpp",
+          "lines": [
+            38
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WidgetComponent.cpp",
+          "lines": [
+            81,
+            84
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            163
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_UIContractSmoke.cpp",
+          "lines": [
+            56,
+            59
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_BlueprintLibrary",
+      "nativePath": "/Script/CrashCourse.CC_BlueprintLibrary",
+      "parent": "UBlueprintFunctionLibrary",
+      "header": "Source/CrashCourse/Public/Utils/CC_BlueprintLibrary.h",
+      "line": 30,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Utils/CC_BlueprintLibrary.cpp",
+          "lines": [
+            125,
+            182
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.cpp",
+          "lines": [
+            74
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.cpp",
+          "lines": [
+            74
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_CharacterAnimInstance",
+      "nativePath": "/Script/CrashCourse.CC_CharacterAnimInstance",
+      "parent": "UAnimInstance",
+      "header": "Source/CrashCourse/Public/Characters/CC_CharacterAnimInstance.h",
+      "line": 7,
+      "runtimeReferences": [],
+      "externalRuntimeReferences": [],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_AnimationSmoke.cpp",
+          "lines": [
+            193
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PatrolSmoke.cpp",
+          "lines": [
+            52
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_character_animation.py",
+        "Scripts/configure_initial_ink_nature.py",
+        "Scripts/probe_animation_graph.py"
+      ]
+    },
+    {
+      "name": "UCC_CombatBalance",
+      "nativePath": "/Script/CrashCourse.CC_CombatBalance",
+      "parent": "UDataAsset",
+      "header": "Source/CrashCourse/Public/Progression/CC_GameplayData.h",
+      "line": 32,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_EnemyCharacter.h",
+          "lines": [
+            21
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_EnemyCharacter.h",
+          "lines": [
+            21
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CombatBalanceTests.cpp",
+          "lines": [
+            22,
+            36
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            57
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_combat_balance.py"
+      ]
+    },
+    {
+      "name": "UCC_ConfiguredAbility",
+      "nativePath": "/Script/CrashCourse.CC_ConfiguredAbility",
+      "parent": "UGameplayAbility",
+      "header": "Source/CrashCourse/Public/Progression/CC_ConfiguredAbility.h",
+      "line": 23,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            93
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillComponent.cpp",
+          "lines": [
+            30,
+            63,
+            163
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillProjectile.cpp",
+          "lines": [
+            68
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            121,
+            130
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            93
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillComponent.cpp",
+          "lines": [
+            30,
+            63,
+            163
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillProjectile.cpp",
+          "lines": [
+            68
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            121,
+            130
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            130
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            75,
+            99,
+            107,
+            108
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_ControlSettingsSave",
+      "nativePath": "/Script/CrashCourse.CC_ControlSettingsSave",
+      "parent": "USaveGame",
+      "header": "Source/CrashCourse/Public/Player/CC_ControlSettingsSave.h",
+      "line": 7,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            128,
+            401
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            128,
+            401
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_CooldownEffect",
+      "nativePath": "/Script/CrashCourse.CC_CooldownEffect",
+      "parent": "UGameplayEffect",
+      "header": "Source/CrashCourse/Public/Progression/CC_ConfiguredAbility.h",
+      "line": 20,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            262
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            262
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_DamageEffect",
+      "nativePath": "/Script/CrashCourse.CC_DamageEffect",
+      "parent": "UGameplayEffect",
+      "header": "Source/CrashCourse/Public/Progression/CC_ConfiguredAbility.h",
+      "line": 13,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            235
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillAbility.cpp",
+          "lines": [
+            80
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillProjectile.cpp",
+          "lines": [
+            70
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            196
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            235
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillAbility.cpp",
+          "lines": [
+            80
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillProjectile.cpp",
+          "lines": [
+            70
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            196
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CombatBalanceTests.cpp",
+          "lines": [
+            82
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ExperienceSmoke.cpp",
+          "lines": [
+            229,
+            230,
+            265
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            101,
+            103,
+            104
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            99,
+            107,
+            108
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_DefenseEffect",
+      "nativePath": "/Script/CrashCourse.CC_DefenseEffect",
+      "parent": "UGameplayEffect",
+      "header": "Source/CrashCourse/Public/Progression/CC_ConfiguredAbility.h",
+      "line": 17,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            196
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            73
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            196
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            73
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_ExperienceBackendSubsystem",
+      "nativePath": "/Script/CrashCourse.CC_ExperienceBackendSubsystem",
+      "parent": "UGameInstanceSubsystem",
+      "header": "Source/CrashCourse/Public/Backend/CC_ExperienceBackendSubsystem.h",
+      "line": 12,
+      "runtimeReferences": [],
+      "externalRuntimeReferences": [],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_ExperienceFXSetupLibrary",
+      "nativePath": "/Script/CrashCourse.CC_ExperienceFXSetupLibrary",
+      "parent": "UBlueprintFunctionLibrary",
+      "header": "Source/CrashCourse/Public/Progression/CC_ExperienceFXSetupLibrary.h",
+      "line": 11,
+      "runtimeReferences": [],
+      "externalRuntimeReferences": [],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_experience_pickups.py"
+      ]
+    },
+    {
+      "name": "UCC_FormDefinition",
+      "nativePath": "/Script/CrashCourse.CC_FormDefinition",
+      "parent": "UDataAsset",
+      "header": "Source/CrashCourse/Public/Progression/CC_GameplayData.h",
+      "line": 156,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            41,
+            92,
+            106,
+            149,
+            162,
+            172,
+            181,
+            183,
+            190,
+            192,
+            200,
+            203,
+            280,
+            283,
+            302,
+            364,
+            365,
+            368,
+            375,
+            381,
+            425
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            77
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            35
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            185,
+            232,
+            363,
+            382
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_PowerTokenWidget.cpp",
+          "lines": [
+            29
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ArtifactComponent.h",
+          "lines": [
+            25
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_FormPowerOrb.h",
+          "lines": [
+            28
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ProgressionComponent.h",
+          "lines": [
+            14,
+            40,
+            42,
+            52,
+            54,
+            57,
+            58,
+            59,
+            63,
+            74,
+            76,
+            93,
+            95,
+            98
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SummonedSoldier.h",
+          "lines": [
+            21
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            33,
+            34,
+            69,
+            76,
+            85,
+            104
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_PowerTokenWidget.h",
+          "lines": [
+            11,
+            19,
+            20,
+            25
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            41,
+            92,
+            106,
+            149,
+            162,
+            172,
+            181,
+            183,
+            190,
+            192,
+            200,
+            203,
+            280,
+            283,
+            302,
+            364,
+            365,
+            368,
+            375,
+            381,
+            425
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            77
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            35
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            185,
+            232,
+            363,
+            382
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_PowerTokenWidget.cpp",
+          "lines": [
+            29
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ArtifactComponent.h",
+          "lines": [
+            25
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_FormPowerOrb.h",
+          "lines": [
+            28
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ProgressionComponent.h",
+          "lines": [
+            14,
+            40,
+            42,
+            52,
+            54,
+            57,
+            58,
+            59,
+            63,
+            74,
+            76,
+            93,
+            95,
+            98
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SummonedSoldier.h",
+          "lines": [
+            21
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            33,
+            34,
+            69,
+            76,
+            85,
+            104
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_PowerTokenWidget.h",
+          "lines": [
+            11,
+            19,
+            20,
+            25
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CombatBalanceTests.cpp",
+          "lines": [
+            45
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InitialInkNatureTests.cpp",
+          "lines": [
+            22,
+            23,
+            24
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InkExperienceTests.cpp",
+          "lines": [
+            26
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MuralMenuSmoke.cpp",
+          "lines": [
+            46,
+            64,
+            117,
+            162,
+            170,
+            178,
+            276,
+            277,
+            278
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            47,
+            53
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_SkillSettingsSmoke.cpp",
+          "lines": [
+            57
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_UIContractSmoke.cpp",
+          "lines": [
+            35
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_initial_ink_nature.py",
+        "Scripts/setup_hpwh.py"
+      ]
+    },
+    {
+      "name": "UCC_GameplayAbility",
+      "nativePath": "/Script/CrashCourse.CC_GameplayAbility",
+      "parent": "UGameplayAbility",
+      "header": "Source/CrashCourse/Public/AbilitySystem/Abilities/CC_GameplayAbility.h",
+      "line": 12,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Public/AbilitySystem/Abilities/Enemy/CC_HitReact.h",
+          "lines": [
+            13
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.h",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/AbilitySystem/Abilities/Player/CC_Primary.h",
+          "lines": [
+            13
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Public/AbilitySystem/Abilities/Enemy/CC_HitReact.h",
+          "lines": [
+            13
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.h",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/AbilitySystem/Abilities/Player/CC_Primary.h",
+          "lines": [
+            13
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_HealthEffect",
+      "nativePath": "/Script/CrashCourse.CC_HealthEffect",
+      "parent": "UGameplayEffect",
+      "header": "Source/CrashCourse/Public/Progression/CC_ConfiguredAbility.h",
+      "line": 14,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            194,
+            235
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillAbility.cpp",
+          "lines": [
+            21,
+            58
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            93
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            194,
+            235
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillAbility.cpp",
+          "lines": [
+            21,
+            58
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            93
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_HitReact",
+      "nativePath": "/Script/CrashCourse.CC_HitReact",
+      "parent": "UCC_GameplayAbility",
+      "header": "Source/CrashCourse/Public/AbilitySystem/Abilities/Enemy/CC_HitReact.h",
+      "line": 12,
+      "runtimeReferences": [],
+      "externalRuntimeReferences": [],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_InitialAttributesEffect",
+      "nativePath": "/Script/CrashCourse.CC_InitialAttributesEffect",
+      "parent": "UGameplayEffect",
+      "header": "Source/CrashCourse/Public/Progression/CC_ConfiguredAbility.h",
+      "line": 11,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PatrolEnemyCharacter.cpp",
+          "lines": [
+            21
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            26
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PatrolEnemyCharacter.cpp",
+          "lines": [
+            21
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            26
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CombatBalanceTests.cpp",
+          "lines": [
+            44
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InitialInkNatureTests.cpp",
+          "lines": [
+            51
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InkExperienceTests.cpp",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            33
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/build_flat_test_arena.py",
+        "Scripts/repair_flat_arena.py",
+        "Scripts/setup_hpwh.py"
+      ]
+    },
+    {
+      "name": "UCC_LocomotionComponent",
+      "nativePath": "/Script/CrashCourse.CC_LocomotionComponent",
+      "parent": "UActorComponent",
+      "header": "Source/CrashCourse/Public/Characters/CC_LocomotionComponent.h",
+      "line": 37,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_BaseCharacter.cpp",
+          "lines": [
+            31
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_BaseCharacter.h",
+          "lines": [
+            33
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_BaseCharacter.cpp",
+          "lines": [
+            31
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_BaseCharacter.h",
+          "lines": [
+            33
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_LocomotionLibrary",
+      "nativePath": "/Script/CrashCourse.CC_LocomotionLibrary",
+      "parent": "UDataAsset",
+      "header": "Source/CrashCourse/Public/Characters/CC_LocomotionComponent.h",
+      "line": 29,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            36
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            36
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_character_animation.py",
+        "Scripts/configure_character_animation_defaults.py",
+        "Scripts/configure_npc_art.py"
+      ]
+    },
+    {
+      "name": "UCC_MainMenuWidget",
+      "nativePath": "/Script/CrashCourse.CC_MainMenuWidget",
+      "parent": "UUserWidget",
+      "header": "Source/CrashCourse/Public/UI/CC_MainMenuWidget.h",
+      "line": 13,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_MainMenuController.cpp",
+          "lines": [
+            8
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MainMenuWidget.cpp",
+          "lines": [
+            26
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Player/CC_MainMenuController.h",
+          "lines": [
+            14,
+            15,
+            17
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_MainMenuController.cpp",
+          "lines": [
+            8
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Player/CC_MainMenuController.h",
+          "lines": [
+            14,
+            15,
+            17
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_ManaEffect",
+      "nativePath": "/Script/CrashCourse.CC_ManaEffect",
+      "parent": "UGameplayEffect",
+      "header": "Source/CrashCourse/Public/Progression/CC_ConfiguredAbility.h",
+      "line": 15,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            124
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            124
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_MeleeAttack",
+      "nativePath": "/Script/CrashCourse.CC_MeleeAttack",
+      "parent": "UAnimNotifyState",
+      "header": "Source/CrashCourse/Public/Notifies/CC_MeleeAttack.h",
+      "line": 12,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Notifies/CC_MeleeAttack.cpp",
+          "lines": [
+            25
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_MenuArtData",
+      "nativePath": "/Script/CrashCourse.CC_MenuArtData",
+      "parent": "UDataAsset",
+      "header": "Source/CrashCourse/Public/UI/CC_MenuArtData.h",
+      "line": 12,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MainMenuWidget.cpp",
+          "lines": [
+            24
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MenuStyle.h",
+          "lines": [
+            58
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_PowerTokenWidget.cpp",
+          "lines": [
+            29
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+          "lines": [
+            36
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MainMenuWidget.h",
+          "lines": [
+            19,
+            34
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            28
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_OptionsWidget.h",
+          "lines": [
+            20
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_PowerTokenWidget.h",
+          "lines": [
+            19
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_WorldNavigationWidget.h",
+          "lines": [
+            19
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MainMenuWidget.cpp",
+          "lines": [
+            24
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MenuStyle.h",
+          "lines": [
+            58
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_PowerTokenWidget.cpp",
+          "lines": [
+            29
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+          "lines": [
+            36
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MainMenuWidget.h",
+          "lines": [
+            19,
+            34
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            28
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_OptionsWidget.h",
+          "lines": [
+            20
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_PowerTokenWidget.h",
+          "lines": [
+            19
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_WorldNavigationWidget.h",
+          "lines": [
+            19
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_game_home.py",
+        "Scripts/import_mural_menu_assets.py"
+      ]
+    },
+    {
+      "name": "UCC_MuralMenuWidget",
+      "nativePath": "/Script/CrashCourse.CC_MuralMenuWidget",
+      "parent": "UUserWidget",
+      "header": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+      "line": 24,
+      "runtimeReferences": [],
+      "externalRuntimeReferences": [],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MuralMenuSmoke.cpp",
+          "lines": [
+            63,
+            96
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            72,
+            113
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_SkillGallerySmoke.cpp",
+          "lines": [
+            30,
+            46
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_SkillSettingsSmoke.cpp",
+          "lines": [
+            78,
+            89
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/import_mural_menu_assets.py"
+      ]
+    },
+    {
+      "name": "UCC_OptionsWidget",
+      "nativePath": "/Script/CrashCourse.CC_OptionsWidget",
+      "parent": "UUserWidget",
+      "header": "Source/CrashCourse/Public/UI/CC_OptionsWidget.h",
+      "line": 15,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            146
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_OptionsWidget.cpp",
+          "lines": [
+            73
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            32,
+            79
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            146
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            32,
+            79
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_PowerTokenWidget",
+      "nativePath": "/Script/CrashCourse.CC_PowerTokenWidget",
+      "parent": "UUserWidget",
+      "header": "Source/CrashCourse/Public/UI/CC_PowerTokenWidget.h",
+      "line": 14,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            372
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            68
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            372
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            68
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_Primary",
+      "nativePath": "/Script/CrashCourse.CC_Primary",
+      "parent": "UCC_GameplayAbility",
+      "header": "Source/CrashCourse/Public/AbilitySystem/Abilities/Player/CC_Primary.h",
+      "line": 12,
+      "runtimeReferences": [],
+      "externalRuntimeReferences": [],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_ProgressionComponent",
+      "nativePath": "/Script/CrashCourse.CC_ProgressionComponent",
+      "parent": "UActorComponent",
+      "header": "Source/CrashCourse/Public/Progression/CC_ProgressionComponent.h",
+      "line": 33,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerState.cpp",
+          "lines": [
+            12
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            57
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            155
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Player/CC_PlayerState.h",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            47
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_ProgressionMenu.h",
+          "lines": [
+            25
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/World/CC_AdventureGameInstance.h",
+          "lines": [
+            60,
+            72
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerState.cpp",
+          "lines": [
+            12
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            57
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            155
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Player/CC_PlayerState.h",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            47
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_ProgressionMenu.h",
+          "lines": [
+            25
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/World/CC_AdventureGameInstance.h",
+          "lines": [
+            60,
+            72
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_MuralMenuSmoke.cpp",
+          "lines": [
+            62
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            51
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            38
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_ProgressionMenu",
+      "nativePath": "/Script/CrashCourse.CC_ProgressionMenu",
+      "parent": "UUserWidget",
+      "header": "Source/CrashCourse/Public/UI/CC_ProgressionMenu.h",
+      "line": 12,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            355
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            355
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_UIContractSmoke.cpp",
+          "lines": [
+            43
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_ProgressionSave",
+      "nativePath": "/Script/CrashCourse.CC_ProgressionSave",
+      "parent": "USaveGame",
+      "header": "Source/CrashCourse/Public/Progression/CC_ProgressionSave.h",
+      "line": 6,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            252,
+            255,
+            269,
+            274
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            58,
+            131,
+            132,
+            134,
+            147,
+            150
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ProgressionComponent.h",
+          "lines": [
+            85,
+            86
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/World/CC_AdventureGameInstance.h",
+          "lines": [
+            61,
+            70,
+            73
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            252,
+            255,
+            269,
+            274
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+          "lines": [
+            58,
+            131,
+            132,
+            134,
+            147,
+            150
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ProgressionComponent.h",
+          "lines": [
+            85,
+            86
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/World/CC_AdventureGameInstance.h",
+          "lines": [
+            61,
+            70,
+            73
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InitialInkNatureTests.cpp",
+          "lines": [
+            107,
+            125
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            71
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_SearchForTarget",
+      "nativePath": "/Script/CrashCourse.CC_SearchForTarget",
+      "parent": "UCC_GameplayAbility",
+      "header": "Source/CrashCourse/Public/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.h",
+      "line": 21,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.cpp",
+          "lines": [
+            52
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_PatrolTests.cpp",
+          "lines": [
+            52
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/setup_hpwh.py"
+      ]
+    },
+    {
+      "name": "UCC_ShieldEffect",
+      "nativePath": "/Script/CrashCourse.CC_ShieldEffect",
+      "parent": "UGameplayEffect",
+      "header": "Source/CrashCourse/Public/Progression/CC_ConfiguredAbility.h",
+      "line": 16,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            89,
+            195
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillAbility.cpp",
+          "lines": [
+            28
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            89,
+            195
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillAbility.cpp",
+          "lines": [
+            28
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            96
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_SkillComponent",
+      "nativePath": "/Script/CrashCourse.CC_SkillComponent",
+      "parent": "UActorComponent",
+      "header": "Source/CrashCourse/Public/Progression/CC_SkillComponent.h",
+      "line": 14,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_BaseCharacter.cpp",
+          "lines": [
+            32
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            79
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            335
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_BaseCharacter.h",
+          "lines": [
+            35
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            48
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_BaseCharacter.cpp",
+          "lines": [
+            32
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            79
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            335
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_BaseCharacter.h",
+          "lines": [
+            35
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            48
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_SkillDefinition",
+      "nativePath": "/Script/CrashCourse.CC_SkillDefinition",
+      "parent": "UDataAsset",
+      "header": "Source/CrashCourse/Public/Progression/CC_GameplayData.h",
+      "line": 62,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_LocomotionComponent.cpp",
+          "lines": [
+            15,
+            70,
+            77,
+            85,
+            102
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PatrolEnemyCharacter.cpp",
+          "lines": [
+            145,
+            156
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            109,
+            116
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            59,
+            102
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            257,
+            292,
+            317,
+            324,
+            328,
+            337,
+            457
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillComponent.cpp",
+          "lines": [
+            56,
+            128
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillProjectile.cpp",
+          "lines": [
+            49
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            37,
+            73
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            235
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.cpp",
+          "lines": [
+            141
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_LocomotionComponent.h",
+          "lines": [
+            47,
+            48,
+            52,
+            53
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ConfiguredAbility.h",
+          "lines": [
+            35,
+            37
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ProgressionComponent.h",
+          "lines": [
+            44,
+            45,
+            46,
+            49
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SkillComponent.h",
+          "lines": [
+            23,
+            26,
+            41,
+            45
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SkillProjectile.h",
+          "lines": [
+            18,
+            24
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SummonedSoldier.h",
+          "lines": [
+            15,
+            22
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            105
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_SkillGalleryData.h",
+          "lines": [
+            11
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_LocomotionComponent.cpp",
+          "lines": [
+            15,
+            70,
+            77,
+            85,
+            102
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PatrolEnemyCharacter.cpp",
+          "lines": [
+            145,
+            156
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            109,
+            116
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            59,
+            102
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            257,
+            292,
+            317,
+            324,
+            328,
+            337,
+            457
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillComponent.cpp",
+          "lines": [
+            56,
+            128
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillProjectile.cpp",
+          "lines": [
+            49
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+          "lines": [
+            37,
+            73
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            235
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.cpp",
+          "lines": [
+            141
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_LocomotionComponent.h",
+          "lines": [
+            47,
+            48,
+            52,
+            53
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ConfiguredAbility.h",
+          "lines": [
+            35,
+            37
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ProgressionComponent.h",
+          "lines": [
+            44,
+            45,
+            46,
+            49
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SkillComponent.h",
+          "lines": [
+            23,
+            26,
+            41,
+            45
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SkillProjectile.h",
+          "lines": [
+            18,
+            24
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SummonedSoldier.h",
+          "lines": [
+            15,
+            22
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            105
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_SkillGalleryData.h",
+          "lines": [
+            11
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_AnimationSmoke.cpp",
+          "lines": [
+            56,
+            57,
+            78,
+            276,
+            278,
+            279,
+            313,
+            314
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CombatBalanceTests.cpp",
+          "lines": [
+            28,
+            47,
+            68
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InkExperienceTests.cpp",
+          "lines": [
+            24
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            42,
+            84
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            40
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_combat_balance.py",
+        "Scripts/configure_enemy_melee_camera.py",
+        "Scripts/configure_real_skills_and_coins.py",
+        "Scripts/setup_hpwh.py"
+      ]
+    },
+    {
+      "name": "UCC_SkillGalleryData",
+      "nativePath": "/Script/CrashCourse.CC_SkillGalleryData",
+      "parent": "UDataAsset",
+      "header": "Source/CrashCourse/Public/UI/CC_SkillGalleryData.h",
+      "line": 20,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_SkillGalleryWidget.cpp",
+          "lines": [
+            49
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MenuArtData.h",
+          "lines": [
+            16
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_SkillGalleryWidget.h",
+          "lines": [
+            16,
+            17
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_SkillGalleryWidget.cpp",
+          "lines": [
+            49
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MenuArtData.h",
+          "lines": [
+            16
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_SkillGalleryWidget.h",
+          "lines": [
+            16,
+            17
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_RealSkillsSmoke.cpp",
+          "lines": [
+            41
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_skill_gallery.py"
+      ]
+    },
+    {
+      "name": "UCC_SkillGalleryWidget",
+      "nativePath": "/Script/CrashCourse.CC_SkillGalleryWidget",
+      "parent": "UUserWidget",
+      "header": "Source/CrashCourse/Public/UI/CC_SkillGalleryWidget.h",
+      "line": 12,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            152
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            31,
+            51
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            152
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/UI/CC_MuralMenuWidget.h",
+          "lines": [
+            31,
+            51
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_SkillLoadout",
+      "nativePath": "/Script/CrashCourse.CC_SkillLoadout",
+      "parent": "UDataAsset",
+      "header": "Source/CrashCourse/Public/Progression/CC_GameplayData.h",
+      "line": 123,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            341
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillComponent.cpp",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SkillComponent.h",
+          "lines": [
+            25,
+            29,
+            50
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            341
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_SkillComponent.cpp",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_SkillComponent.h",
+          "lines": [
+            25,
+            29,
+            50
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_AnimationSmoke.cpp",
+          "lines": [
+            58,
+            59,
+            318
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InkExperienceTests.cpp",
+          "lines": [
+            23
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            39
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/configure_combat_balance.py",
+        "Scripts/configure_initial_ink_nature.py",
+        "Scripts/configure_real_skills_and_coins.py",
+        "Scripts/setup_hpwh.py"
+      ]
+    },
+    {
+      "name": "UCC_SpeedEffect",
+      "nativePath": "/Script/CrashCourse.CC_SpeedEffect",
+      "parent": "UGameplayEffect",
+      "header": "Source/CrashCourse/Public/Progression/CC_ConfiguredAbility.h",
+      "line": 19,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            85,
+            198,
+            229
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            78
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+          "lines": [
+            85,
+            198,
+            229
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+          "lines": [
+            78
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_CombatBalanceTests.cpp",
+          "lines": [
+            56
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_SprintEffect",
+      "nativePath": "/Script/CrashCourse.CC_SprintEffect",
+      "parent": "UGameplayEffect",
+      "header": "Source/CrashCourse/Public/Characters/CC_SprintEffect.h",
+      "line": 7,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PlayerCharacter.cpp",
+          "lines": [
+            209,
+            210
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_PlayerCharacter.cpp",
+          "lines": [
+            209,
+            210
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_UpgradeDefinition",
+      "nativePath": "/Script/CrashCourse.CC_UpgradeDefinition",
+      "parent": "UDataAsset",
+      "header": "Source/CrashCourse/Public/Progression/CC_GameplayData.h",
+      "line": 178,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            218,
+            230,
+            311,
+            428
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            84
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            49
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ProgressionComponent.h",
+          "lines": [
+            21,
+            43,
+            77,
+            80
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+          "lines": [
+            218,
+            230,
+            311,
+            428
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+          "lines": [
+            84
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+          "lines": [
+            49
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Progression/CC_ProgressionComponent.h",
+          "lines": [
+            21,
+            43,
+            77,
+            80
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_InkExperienceTests.cpp",
+          "lines": [
+            53
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            76
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/setup_hpwh.py"
+      ]
+    },
+    {
+      "name": "UCC_WaitGameplayEvent",
+      "nativePath": "/Script/CrashCourse.CC_WaitGameplayEvent",
+      "parent": "UAbilityAsync_WaitGameplayEvent",
+      "header": "Source/CrashCourse/Public/AbilitySystem/AbilityTasks/CC_WaitGameplayEvent.h",
+      "line": 12,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/AbilityTasks/CC_WaitGameplayEvent.cpp",
+          "lines": [
+            9
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.cpp",
+          "lines": [
+            45
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.h",
+          "lines": [
+            36
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.cpp",
+          "lines": [
+            45
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.h",
+          "lines": [
+            36
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    },
+    {
+      "name": "UCC_WidgetComponent",
+      "nativePath": "/Script/CrashCourse.CC_WidgetComponent",
+      "parent": "UWidgetComponent",
+      "header": "Source/CrashCourse/Public/UI/CC_WidgetComponent.h",
+      "line": 12,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_BaseCharacter.cpp",
+          "lines": [
+            33
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_BaseCharacter.h",
+          "lines": [
+            37
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Characters/CC_BaseCharacter.cpp",
+          "lines": [
+            33
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Characters/CC_BaseCharacter.h",
+          "lines": [
+            37
+          ]
+        }
+      ],
+      "testReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Tests/CC_ProgressionTests.cpp",
+          "lines": [
+            165
+          ]
+        }
+      ],
+      "documentation": true,
+      "scriptReferences": [
+        "Scripts/inspect_test_ui.py"
+      ]
+    },
+    {
+      "name": "UCC_WorldNavigationWidget",
+      "nativePath": "/Script/CrashCourse.CC_WorldNavigationWidget",
+      "parent": "UUserWidget",
+      "header": "Source/CrashCourse/Public/UI/CC_WorldNavigationWidget.h",
+      "line": 13,
+      "runtimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            37,
+            38
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+          "lines": [
+            38
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Player/CC_PlayerController.h",
+          "lines": [
+            32,
+            34,
+            60
+          ]
+        }
+      ],
+      "externalRuntimeReferences": [
+        {
+          "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+          "lines": [
+            37,
+            38
+          ]
+        },
+        {
+          "file": "Source/CrashCourse/Public/Player/CC_PlayerController.h",
+          "lines": [
+            32,
+            34,
+            60
+          ]
+        }
+      ],
+      "testReferences": [],
+      "documentation": true,
+      "scriptReferences": []
+    }
+  ],
+  "classCount": 69,
+  "implementationSizes": [
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_ProgressionComponent.cpp",
+      "lines": 459
+    },
+    {
+      "file": "Source/CrashCourse/Private/Player/CC_PlayerController.cpp",
+      "lines": 432
+    },
+    {
+      "file": "Source/CrashCourse/Private/UI/CC_MuralMenuWidget.cpp",
+      "lines": 395
+    },
+    {
+      "file": "Source/CrashCourse/Private/World/CC_AdventureGameInstance.cpp",
+      "lines": 310
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_ConfiguredAbility.cpp",
+      "lines": 264
+    },
+    {
+      "file": "Source/CrashCourse/Private/Characters/CC_PlayerCharacter.cpp",
+      "lines": 244
+    },
+    {
+      "file": "Source/CrashCourse/Private/Characters/CC_BaseCharacter.cpp",
+      "lines": 242
+    },
+    {
+      "file": "Source/CrashCourse/Private/Characters/CC_PatrolEnemyCharacter.cpp",
+      "lines": 230
+    },
+    {
+      "file": "Source/CrashCourse/Private/Utils/CC_BlueprintLibrary.cpp",
+      "lines": 230
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_SummonedSoldier.cpp",
+      "lines": 216
+    },
+    {
+      "file": "Source/CrashCourse/Private/UI/CC_SkillGalleryWidget.cpp",
+      "lines": 213
+    },
+    {
+      "file": "Source/CrashCourse/Private/UI/CC_WorldNavigationWidget.cpp",
+      "lines": 189
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_SkillComponent.cpp",
+      "lines": 168
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_ExperienceOrb.cpp",
+      "lines": 151
+    },
+    {
+      "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Enemy/CC_SearchForTarget.cpp",
+      "lines": 149
+    },
+    {
+      "file": "Source/CrashCourse/Private/UI/CC_OptionsWidget.cpp",
+      "lines": 141
+    },
+    {
+      "file": "Source/CrashCourse/Private/Characters/CC_AnimationSetupLibrary.cpp",
+      "lines": 140
+    },
+    {
+      "file": "Source/CrashCourse/Private/AbilitySystem/CC_AttributeSet.cpp",
+      "lines": 126
+    },
+    {
+      "file": "Source/CrashCourse/Private/UI/CC_ProgressionMenu.cpp",
+      "lines": 122
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillStates.cpp",
+      "lines": 120
+    },
+    {
+      "file": "Source/CrashCourse/Private/UI/CC_MainMenuWidget.cpp",
+      "lines": 116
+    },
+    {
+      "file": "Source/CrashCourse/Private/Characters/CC_EnemyCharacter.cpp",
+      "lines": 115
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_ArtifactComponent.cpp",
+      "lines": 114
+    },
+    {
+      "file": "Source/CrashCourse/Private/Characters/CC_LocomotionComponent.cpp",
+      "lines": 110
+    },
+    {
+      "file": "Source/CrashCourse/Private/Backend/CC_ExperienceBackendSubsystem.cpp",
+      "lines": 108
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_ProgressionHUD.cpp",
+      "lines": 107
+    },
+    {
+      "file": "Source/CrashCourse/Private/UI/CC_WidgetComponent.cpp",
+      "lines": 106
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_GameplayData.cpp",
+      "lines": 98
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_ExperienceFXSetupLibrary.cpp",
+      "lines": 92
+    },
+    {
+      "file": "Source/CrashCourse/Private/Notifies/CC_MeleeAttack.cpp",
+      "lines": 91
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_DesignSkillAbility.cpp",
+      "lines": 87
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_CoinPickup.cpp",
+      "lines": 86
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_SkillProjectile.cpp",
+      "lines": 82
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_FormPowerOrb.cpp",
+      "lines": 81
+    },
+    {
+      "file": "Source/CrashCourse/Private/World/CC_AdventureGameMode.cpp",
+      "lines": 73
+    },
+    {
+      "file": "Source/CrashCourse/Private/Progression/CC_ExperiencePack.cpp",
+      "lines": 61
+    },
+    {
+      "file": "Source/CrashCourse/Private/UI/CC_PowerTokenWidget.cpp",
+      "lines": 61
+    },
+    {
+      "file": "Source/CrashCourse/Private/AbilitySystem/CC_AbilitySystemComponent.cpp",
+      "lines": 60
+    },
+    {
+      "file": "Source/CrashCourse/Private/UI/CC_AttributeWidget.cpp",
+      "lines": 48
+    },
+    {
+      "file": "Source/CrashCourse/Private/World/CC_MinimapCapture.cpp",
+      "lines": 46
+    },
+    {
+      "file": "Source/CrashCourse/Private/GameplayTags/CCTags.cpp",
+      "lines": 44
+    },
+    {
+      "file": "Source/CrashCourse/Private/GameObjects/CC_Projectile.cpp",
+      "lines": 41
+    },
+    {
+      "file": "Source/CrashCourse/Private/World/CC_MapPortal.cpp",
+      "lines": 39
+    },
+    {
+      "file": "Source/CrashCourse/Private/Tasks/CC_AttributeChangeTask.cpp",
+      "lines": 38
+    },
+    {
+      "file": "Source/CrashCourse/Private/Characters/CC_CharacterAnimInstance.cpp",
+      "lines": 24
+    },
+    {
+      "file": "Source/CrashCourse/Private/Player/CC_PlayerState.cpp",
+      "lines": 24
+    },
+    {
+      "file": "Source/CrashCourse/Private/AbilitySystem/AbilityTasks/CC_WaitGameplayEvent.cpp",
+      "lines": 20
+    },
+    {
+      "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Player/CC_Primary.cpp",
+      "lines": 20
+    },
+    {
+      "file": "Source/CrashCourse/Private/Player/CC_MainMenuController.cpp",
+      "lines": 18
+    },
+    {
+      "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/CC_GameplayAbility.cpp",
+      "lines": 17
+    },
+    {
+      "file": "Source/CrashCourse/Private/AbilitySystem/Abilities/Enemy/CC_HitReact.cpp",
+      "lines": 15
+    },
+    {
+      "file": "Source/CrashCourse/Private/Characters/CC_SprintEffect.cpp",
+      "lines": 12
+    },
+    {
+      "file": "Source/CrashCourse/Private/World/CC_MainMenuGameMode.cpp",
+      "lines": 12
+    },
+    {
+      "file": "Source/CrashCourse/CrashCourse.cpp",
+      "lines": 6
+    }
+  ],
+  "notes": [
+    "Static references are evidence of coupling, not proof of runtime reachability.",
+    "Blueprint parents/asset references require the separate Unreal registry audit."
+  ]
+}

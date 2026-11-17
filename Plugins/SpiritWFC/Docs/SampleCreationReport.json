@@ -1,0 +1,41 @@
+{
+  "scope": "editor only; no gameplay/PIE",
+  "imported_models": [
+    "/SpiritWFC/Samples/Meshes/SM_WFC_Door",
+    "/SpiritWFC/Samples/Meshes/SM_WFC_EnclosedStairs",
+    "/SpiritWFC/Samples/Meshes/SM_WFC_Floor",
+    "/SpiritWFC/Samples/Meshes/SM_WFC_Fountain",
+    "/SpiritWFC/Samples/Meshes/SM_WFC_InteriorFloor",
+    "/SpiritWFC/Samples/Meshes/SM_WFC_Roof",
+    "/SpiritWFC/Samples/Meshes/SM_WFC_Stairs",
+    "/SpiritWFC/Samples/Meshes/SM_WFC_StairsCeiling",
+    "/SpiritWFC/Samples/Meshes/SM_WFC_StairsLower",
+    "/SpiritWFC/Samples/Meshes/SM_WFC_Wall",
+    "/SpiritWFC/Samples/Meshes/SM_WFC_WallCorner",
+    "/SpiritWFC/Samples/Meshes/SM_WFC_Window"
+  ],
+  "maps": [
+    {
+      "path": "/SpiritWFC/Samples/Maps/L_WFC_Planar",
+      "cells": 144,
+      "instances": 144,
+      "seed": 20261026,
+      "attempts": 1,
+      "components": 1,
+      "milliseconds": 0.7732000085525215
+    },
+    {
+      "path": "/SpiritWFC/Samples/Maps/L_WFC_ThreeLayers",
+      "cells": 192,
+      "instances": 192,
+      "seed": 20261026,
+      "attempts": 1,
+      "components": 1,
+      "milliseconds": 0.30640000477433205
+    },
+    {
+      "path": "/SpiritWFC/Samples/Maps/L_WFC_ModelGallery",
+      "models": 12
+    }
+  ]
+}

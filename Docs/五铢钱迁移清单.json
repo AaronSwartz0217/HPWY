@@ -1,0 +1,77 @@
+{
+  "sourceEngine": "5.5",
+  "targetEngine": "5.6",
+  "seeds": [
+    "/Game/五铢钱动画/五铢钱动画/五铢钱",
+    "/Game/五铢钱动画/五铢钱动画/五铢钱_Anim",
+    "/Game/五铢钱动画/五铢钱动画/五铢钱待机",
+    "/Game/五铢钱动画/五铢钱动画/钱叫声",
+    "/Game/五铢钱动画/五铢钱动画/AB_五铢钱精怪",
+    "/Game/五铢钱动画/五铢钱动画/NewBlendSpace"
+  ],
+  "assets": [
+    {
+      "package": "/Game/五铢钱动画/五铢钱动画/钱叫声",
+      "bytes": 87538,
+      "sha256": "17cca6da6701fa8ddc4372b158e63ef2489134527696dc4786a34b0c20c7972d"
+    },
+    {
+      "package": "/Game/五铢钱动画/五铢钱动画/五铢钱待机",
+      "bytes": 2162615,
+      "sha256": "e56d0110880ff808774b67d6278a184afbee448e8c5bd9fb66574ce1739769ce"
+    },
+    {
+      "package": "/Game/五铢钱动画/五铢钱动画/五铢钱_Skeleton",
+      "bytes": 71701,
+      "sha256": "5e1b6a0a677b521de0bbb24c1e98def34b94626a59e1ada071d1ea8a649cfcf9"
+    },
+    {
+      "package": "/Game/五铢钱动画/五铢钱动画/五铢钱",
+      "bytes": 742082,
+      "sha256": "b16611b1a1da8981e4b1ac2780247e42a2aca25fe054b4132839ae6df996f595"
+    },
+    {
+      "package": "/Game/五铢钱动画/五铢钱动画/材质_001",
+      "bytes": 89077,
+      "sha256": "7f46f935a9e5f63a99b3ec27e63a16f2ac813546e29324a60c4d8ee71145b095"
+    },
+    {
+      "package": "/Game/五铢钱动画/五铢钱动画/材质",
+      "bytes": 93399,
+      "sha256": "c9a925aec648b3fe77ff9ab5482e6ef2f559937fb8684512ce80ebb09fe42b6f"
+    },
+    {
+      "package": "/Game/五铢钱动画/五铢钱动画/五铢钱_Normal",
+      "bytes": 6896066,
+      "sha256": "12383d2fa6f7f94fc478a74294d7c6f3a4f64a08d9ef3b053a83d96b06c1f129"
+    },
+    {
+      "package": "/Game/五铢钱动画/五铢钱动画/五铢钱_-_副本",
+      "bytes": 6234245,
+      "sha256": "99cb7cd7d07bab7252a8ddb45d21bbf08ea6002b4cb308cd2d3d904f8eb05ac6"
+    },
+    {
+      "package": "/Game/五铢钱动画/五铢钱动画/五铢钱_PhysicsAsset",
+      "bytes": 10031,
+      "sha256": "c0217dab8ab1fb53af24a58f4c134af5702900d84e2bf0e4c32ada321d22780c"
+    },
+    {
+      "package": "/Game/五铢钱动画/五铢钱动画/五铢钱_Anim",
+      "bytes": 1333200,
+      "sha256": "e06869339ff9be6080451c58164c33d92a9c4c2ece3ab96b03efedf9d82049dc"
+    },
+    {
+      "package": "/Game/五铢钱动画/五铢钱动画/AB_五铢钱精怪",
+      "bytes": 84418,
+      "sha256": "d900ad54d2d9216da0eca858753efc26c9d26921b6f183fdc06ca6aa6a7cfecb",
+      "destination": "/Game/HPWH/Coins/Art/ABP_WuzhuCoin"
+    },
+    {
+      "package": "/Game/五铢钱动画/五铢钱动画/NewBlendSpace",
+      "bytes": 8478,
+      "sha256": "68fc8e4ae604aab08c75fa67311038c2f9b25da5ac7a2ff2dd4bb89863d665f8",
+      "destination": "/Game/HPWH/Coins/Art/BS_WuzhuCoin"
+    }
+  ],
+  "note": "12 visual/animation/audio assets including the original state machine and blend space. Native Character patrol replaces old score/pickup blueprint logic; original score blueprint is not executed."
+}

@@ -1,0 +1,8 @@
+{
+  "map": "/Game/LanTuRebuild/Maps/万象天宫/万象天宫",
+  "region": "Heaven",
+  "default_unlocked": true,
+  "game_mode": "CC_AdventureGameMode",
+  "visible_instances": 246,
+  "scope": "editor asset reload only, no PIE or game travel"
+}

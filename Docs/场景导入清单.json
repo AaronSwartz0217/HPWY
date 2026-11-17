@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-29",
+  "assetCount": 3157,
+  "scenes": [
+    {
+      "folder": "China_townnight",
+      "prefix": "/Game/场景资源/China_townnight",
+      "assetCount": 1455,
+      "expected": 1455,
+      "primaryMap": "/Game/场景资源/China_townnight/Japanese_Village/Levels/L_Showcase",
+      "mapLoaded": true,
+      "actors": 10646,
+      "missingGameReferences": [],
+      "unremappedOriginalReferences": []
+    },
+    {
+      "folder": "乌云庙宇",
+      "prefix": "/Game/场景资源/乌云庙宇",
+      "assetCount": 692,
+      "expected": 692,
+      "primaryMap": "/Game/场景资源/乌云庙宇/NewMap",
+      "mapLoaded": true,
+      "actors": 798,
+      "missingGameReferences": [],
+      "unremappedOriginalReferences": []
+    },
+    {
+      "folder": "黄山",
+      "prefix": "/Game/场景资源/黄山",
+      "assetCount": 1010,
+      "expected": 1010,
+      "primaryMap": "/Game/场景资源/黄山/zuopin_1/zuoping_demo",
+      "mapLoaded": true,
+      "actors": 692,
+      "missingGameReferences": [
+        {
+          "asset": "/Game/场景资源/黄山/SandStoneCollection/Materials/MTL_SandStoneC01a",
+          "dependency": "/Game/SandStoneCollection/Textures/Stones/TEX_SandStoneC01a_nrm"
+        }
+      ],
+      "unremappedOriginalReferences": []
+    }
+  ],
+  "sourceNotes": [
+    "山雨欲来.rar原项目目录为乌云庙宇，项目文件名为风满楼.uproject",
+    "黄山MTL_SandStoneC01a缺失的StoneNormalTexture已设为引擎默认法线，原始缺失包名仍残留于编辑器依赖元数据",
+    "China_townnight附带House示例原包未提供UltraDynamicSky；三个主地图均可加载",
+    "原包ProductsGrid_WBP.uasset为损坏的附带市场展示控件，未加入场景目录；原孤立外部演员文件所对应的ThirdPersonMap不在原包中"
+  ]
+}

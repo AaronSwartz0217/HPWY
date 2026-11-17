@@ -1,0 +1,2242 @@
+{
+  "schemaVersion": 1,
+  "classCount": 69,
+  "assetCount": 4250,
+  "assetTypes": {
+    "Material": 119,
+    "Skeleton": 20,
+    "AnimSequence": 237,
+    "AnimBlueprint": 26,
+    "Blueprint": 53,
+    "InputAction": 18,
+    "PhysicsAsset": 20,
+    "Texture2D": 872,
+    "BlendSpace": 2,
+    "BlendSpace1D": 4,
+    "ControlRigBlueprint": 8,
+    "AnimMontage": 3,
+    "SkeletalMesh": 33,
+    "ParticleSystem": 7,
+    "CC_SkillDefinition": 44,
+    "PoseAsset": 84,
+    "MaterialFunction": 18,
+    "CC_SkillLoadout": 22,
+    "CurveLinearColor": 4,
+    "CurveLinearColorAtlas": 3,
+    "MaterialInstanceConstant": 303,
+    "CC_LocomotionLibrary": 1,
+    "InputMappingContext": 6,
+    "NiagaraSystem": 5,
+    "CC_SkillGalleryData": 1,
+    "CC_MenuArtData": 2,
+    "WidgetBlueprint": 4,
+    "CC_UpgradeDefinition": 6,
+    "CC_FormDefinition": 6,
+    "CC_CombatBalance": 1,
+    "SoundWave": 19,
+    "SkeletalMeshLODSettings": 1,
+    "IKRetargeter": 37,
+    "IKRigDefinition": 19,
+    "World": 11,
+    "UserDefinedStruct": 1,
+    "UserDefinedEnum": 2,
+    "HLODLayer": 1,
+    "LevelSequence": 1,
+    "StaticMesh": 2187,
+    "TextureCube": 2,
+    "TextureRenderTargetCube": 1,
+    "ObjectRedirector": 22,
+    "SoundCue": 10,
+    "CurveFloat": 1,
+    "MapBuildDataRegistry": 3
+  },
+  "roots": [
+    "/Game/UI/MainMenu/Maps/L_MainMenu",
+    "/Game/LanTuRebuild/Maps/初始房间/restartlife",
+    "/Game/LanTuRebuild/Maps/古风小镇/古风小镇",
+    "/Game/HPWH/Maps/L_FlatTestArena",
+    "/Game/HPWH/Blueprints/BP_ProgressionCharacter",
+    "/Game/HPWH/Blueprints/BP_ProgressionController",
+    "/Game/HPWH/Blueprints/BP_ProgressionPlayerState",
+    "/Game/UI/MuralMenu/BP_MuralHUD",
+    "/Game/UI/MainMenu/DA_HomeArt",
+    "/Game/UI/MuralMenu/DA_MenuArt"
+  ],
+  "reachablePackageCount": 3793,
+  "nativeClassUsage": {
+    "ACC_AdventureGameMode": [],
+    "ACC_BaseCharacter": [],
+    "ACC_CoinPickup": [
+      {
+        "asset": "/Game/HPWH/Coins/BP_CopperCoin",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      }
+    ],
+    "ACC_EnemyCharacter": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_TestDummy",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/THAT/BP_EnemyCharacter",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      }
+    ],
+    "ACC_ExperienceOrb": [],
+    "ACC_ExperiencePack": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ExperiencePack",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      }
+    ],
+    "ACC_FormArtifact": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_Nature",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_04",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_03",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_02",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_01",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      }
+    ],
+    "ACC_FormPowerOrb": [],
+    "ACC_MainMenuController": [],
+    "ACC_MainMenuGameMode": [],
+    "ACC_MapPortal": [],
+    "ACC_MinimapCapture": [],
+    "ACC_PatrolEnemyCharacter": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_PatrolEnemy",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Ceramic_Elite",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Bronze_Elite",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      }
+    ],
+    "ACC_PlayerCharacter": [
+      {
+        "asset": "/Game/THAT/BP_PlayerCharacter",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionCharacter",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      }
+    ],
+    "ACC_PlayerController": [
+      {
+        "asset": "/Game/THAT/Player/BP_CC_PlayController",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionController",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      }
+    ],
+    "ACC_PlayerState": [
+      {
+        "asset": "/Game/THAT/Player/BP_CC_PlayerState",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionPlayerState",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      }
+    ],
+    "ACC_ProgressionHUD": [
+      {
+        "asset": "/Game/UI/MuralMenu/BP_MuralHUD",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      }
+    ],
+    "ACC_Projectile": [],
+    "ACC_SkillProjectile": [],
+    "ACC_SummonedSoldier": [],
+    "UCC_AbilitySystemComponent": [],
+    "UCC_AdventureGameInstance": [],
+    "UCC_AnimationSetupLibrary": [],
+    "UCC_ArtifactComponent": [],
+    "UCC_AttackEffect": [],
+    "UCC_AttributeChangeTask": [],
+    "UCC_AttributeSet": [],
+    "UCC_AttributeWidget": [],
+    "UCC_BlueprintLibrary": [],
+    "UCC_CharacterAnimInstance": [
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_InitialInk_Template",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_竹拳击手",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_竹节人",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_竹路人",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_铜机械小兵",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_铜械将军",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_铜械战士",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_铜械降神",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_陶土僧人",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_陶土行者",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_陶童子",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_陶罐头",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_StateMachineProbe",
+        "evidence": "blueprint_parent",
+        "reachable": false
+      }
+    ],
+    "UCC_CombatBalance": [
+      {
+        "asset": "/Game/HPWH/Balance/DA_CombatBalance",
+        "evidence": "native_data_asset",
+        "reachable": true
+      }
+    ],
+    "UCC_ConfiguredAbility": [],
+    "UCC_ControlSettingsSave": [],
+    "UCC_CooldownEffect": [],
+    "UCC_DamageEffect": [],
+    "UCC_DefenseEffect": [],
+    "UCC_ExperienceBackendSubsystem": [],
+    "UCC_ExperienceFXSetupLibrary": [],
+    "UCC_FormDefinition": [
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_04",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_01",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_02",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_InitialInk",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Native",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_03",
+        "evidence": "native_data_asset",
+        "reachable": true
+      }
+    ],
+    "UCC_GameplayAbility": [
+      {
+        "asset": "/Game/THAT/Player/GA_Secondary",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/THAT/Player/GA_Primary",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/THAT/Player/GA_Tertiary",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/THAT/GA_HitReact",
+        "evidence": "blueprint_parent",
+        "reachable": false
+      }
+    ],
+    "UCC_HealthEffect": [],
+    "UCC_HitReact": [],
+    "UCC_InitialAttributesEffect": [],
+    "UCC_LocomotionComponent": [],
+    "UCC_LocomotionLibrary": [
+      {
+        "asset": "/Game/HPWH/Locomotion/DA_NPCLocomotion",
+        "evidence": "native_data_asset",
+        "reachable": true
+      }
+    ],
+    "UCC_MainMenuWidget": [],
+    "UCC_ManaEffect": [],
+    "UCC_MeleeAttack": [],
+    "UCC_MenuArtData": [
+      {
+        "asset": "/Game/UI/MuralMenu/DA_MenuArt",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/UI/MainMenu/DA_HomeArt",
+        "evidence": "native_data_asset",
+        "reachable": true
+      }
+    ],
+    "UCC_MuralMenuWidget": [
+      {
+        "asset": "/Game/UI/MuralMenu/WBP_MuralMenu",
+        "evidence": "blueprint_parent",
+        "reachable": true
+      }
+    ],
+    "UCC_OptionsWidget": [],
+    "UCC_PowerTokenWidget": [],
+    "UCC_Primary": [],
+    "UCC_ProgressionComponent": [],
+    "UCC_ProgressionMenu": [],
+    "UCC_ProgressionSave": [],
+    "UCC_SearchForTarget": [],
+    "UCC_ShieldEffect": [],
+    "UCC_SkillComponent": [],
+    "UCC_SkillDefinition": [
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_13",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_BasicAttack",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_02",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_05",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_04",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_basic_combo",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_basic_heal",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_basic_heavy_punch",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_basic_straight_punch",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_basic_sweep",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_bronze_charged_hit",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_bronze_evolve",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_bronze_guard",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_bronze_summon",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_field_lifesteal",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_field_regrowth",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_field_root_prison",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_field_stealth",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_temple_cleanse",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_temple_golden_body",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_temple_gravity",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_temple_lamps",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_01",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_03",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_06",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_07",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_08",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_12",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_14",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_15",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_16",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_17",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_18",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_19",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_20",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_21",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_22",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Enemies/DA_Enemy_Melee_01",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Enemies/DA_Enemy_Melee_02",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Enemies/DA_Enemy_Melee_03",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Enemies/DA_Enemy_Melee_04",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_09",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_10",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_11",
+        "evidence": "native_data_asset",
+        "reachable": true
+      }
+    ],
+    "UCC_SkillGalleryData": [
+      {
+        "asset": "/Game/UI/MuralMenu/DA_SkillGallery",
+        "evidence": "native_data_asset",
+        "reachable": true
+      }
+    ],
+    "UCC_SkillGalleryWidget": [],
+    "UCC_SkillLoadout": [
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_InitialInk",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_DesignLoadout_Artifact_01",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_DesignLoadout_Artifact_02",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_04_Tier1",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_04_Tier2",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_04_Tier3",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_DesignLoadout_InitialInk",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_DesignLoadout_Native",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_EliteLoadout",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_EnemyLoadout",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_03_Tier1",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_03_Tier2",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_03_Tier3",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Native_Tier3",
+        "evidence": "native_data_asset",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Native_Tier2",
+        "evidence": "native_data_asset",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Native_Tier1",
+        "evidence": "native_data_asset",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_02_Tier3",
+        "evidence": "native_data_asset",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_02_Tier2",
+        "evidence": "native_data_asset",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_02_Tier1",
+        "evidence": "native_data_asset",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_01_Tier3",
+        "evidence": "native_data_asset",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_01_Tier2",
+        "evidence": "native_data_asset",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_01_Tier1",
+        "evidence": "native_data_asset",
+        "reachable": false
+      }
+    ],
+    "UCC_SpeedEffect": [],
+    "UCC_SprintEffect": [],
+    "UCC_UpgradeDefinition": [
+      {
+        "asset": "/Game/HPWH/Upgrades/DA_Upgrade_ATTACK",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Upgrades/DA_Upgrade_DEFENSE",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Upgrades/DA_Upgrade_MAX_HEALTH",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Upgrades/DA_Upgrade_MAX_MANA",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Upgrades/DA_Upgrade_MOVE_SPEED",
+        "evidence": "native_data_asset",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Upgrades/DA_Upgrade_SKILL_LEVEL",
+        "evidence": "native_data_asset",
+        "reachable": true
+      }
+    ],
+    "UCC_WaitGameplayEvent": [],
+    "UCC_WidgetComponent": [],
+    "UCC_WorldNavigationWidget": []
+  },
+  "blueprintParents": [
+    {
+      "asset": "/Game/HPWH/Locomotion/ABP_InitialInk_Template",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/THAT/Player/GA_Secondary",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_GameplayAbility'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_GameplayAbility'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Locomotion/ABP_竹拳击手",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Locomotion/ABP_竹节人",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Locomotion/ABP_竹路人",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Locomotion/ABP_铜机械小兵",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Locomotion/ABP_铜械将军",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Locomotion/ABP_铜械战士",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Locomotion/ABP_铜械降神",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Locomotion/ABP_陶土僧人",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Locomotion/ABP_陶土行者",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Locomotion/ABP_陶童子",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Locomotion/ABP_陶罐头",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/THAT/Player/GA_Primary",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_GameplayAbility'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_GameplayAbility'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/THAT/Player/GA_Tertiary",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_GameplayAbility'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_GameplayAbility'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/THAT/BP_PlayerCharacter",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_PlayerCharacter'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_PlayerCharacter'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_ProgressionCharacter",
+      "parent": "/Script/Engine.BlueprintGeneratedClass'/Game/THAT/BP_PlayerCharacter.BP_PlayerCharacter_C'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_PlayerCharacter'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/UI/MuralMenu/WBP_MuralMenu",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_MuralMenuWidget'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_MuralMenuWidget'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/THAT/Player/BP_CC_PlayController",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_PlayerController'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_PlayerController'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_ProgressionController",
+      "parent": "/Script/Engine.BlueprintGeneratedClass'/Game/THAT/Player/BP_CC_PlayController.BP_CC_PlayController_C'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_PlayerController'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/THAT/Player/BP_CC_PlayerState",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_PlayerState'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_PlayerState'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_ProgressionPlayerState",
+      "parent": "/Script/Engine.BlueprintGeneratedClass'/Game/THAT/Player/BP_CC_PlayerState.BP_CC_PlayerState_C'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_PlayerState'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/UI/MuralMenu/BP_MuralHUD",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_ProgressionHUD'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_ProgressionHUD'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_TestDummy",
+      "parent": "/Script/Engine.BlueprintGeneratedClass'/Game/HPWH/Blueprints/BP_ProgressionEnemy.BP_ProgressionEnemy_C'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_EnemyCharacter'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+      "parent": "/Script/Engine.BlueprintGeneratedClass'/Game/THAT/BP_EnemyCharacter.BP_EnemyCharacter_C'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_EnemyCharacter'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_PatrolEnemy",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_PatrolEnemyCharacter'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_PatrolEnemyCharacter'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_ExperiencePack",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_ExperiencePack'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_ExperiencePack'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_Ceramic_Elite",
+      "parent": "/Script/Engine.BlueprintGeneratedClass'/Game/HPWH/Blueprints/BP_PatrolEnemy.BP_PatrolEnemy_C'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_PatrolEnemyCharacter'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_Bronze_Elite",
+      "parent": "/Script/Engine.BlueprintGeneratedClass'/Game/HPWH/Blueprints/BP_PatrolEnemy.BP_PatrolEnemy_C'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_PatrolEnemyCharacter'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_Artifact_Nature",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_FormArtifact'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_FormArtifact'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_Artifact_04",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_FormArtifact'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_FormArtifact'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_Artifact_03",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_FormArtifact'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_FormArtifact'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_Artifact_02",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_FormArtifact'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_FormArtifact'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_Artifact_01",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_FormArtifact'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_FormArtifact'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Coins/BP_CopperCoin",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CoinPickup'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CoinPickup'",
+      "reachable": true
+    },
+    {
+      "asset": "/Game/HPWH/Locomotion/ABP_StateMachineProbe",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_CharacterAnimInstance'",
+      "reachable": false
+    },
+    {
+      "asset": "/Game/THAT/GA_HitReact",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_GameplayAbility'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_GameplayAbility'",
+      "reachable": false
+    },
+    {
+      "asset": "/Game/THAT/BP_EnemyCharacter",
+      "parent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_EnemyCharacter'",
+      "nativeParent": "/Script/CoreUObject.Class'/Script/CrashCourse.CC_EnemyCharacter'",
+      "reachable": true
+    }
+  ],
+  "activeDefaults": [
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_ProgressionCharacter",
+      "properties": {
+        "startup_abilities": [
+          "/Game/THAT/Player/GA_Primary.GA_Primary_C",
+          "/Game/THAT/Player/GA_Secondary.GA_Secondary_C",
+          "/Game/THAT/Player/GA_Tertiary.GA_Tertiary_C"
+        ],
+        "initialize_attributes_effect": "/Script/CrashCourse.CC_InitialAttributesEffect",
+        "skills": {
+          "class": "CC_SkillComponent",
+          "default_loadout": "/Game/HPWH/Loadouts/DA_Loadout_InitialInk.DA_Loadout_InitialInk",
+          "basic_attack": "/Game/HPWH/Skills/DA_BasicAttack.DA_BasicAttack",
+          "summoned_soldier_class": null
+        },
+        "locomotion": {
+          "class": "CC_LocomotionComponent",
+          "library": "/Game/HPWH/Locomotion/DA_NPCLocomotion.DA_NPCLocomotion"
+        }
+      }
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_ProgressionController",
+      "properties": {
+        "progression_menu_class": "/Game/UI/MuralMenu/WBP_MuralMenu.WBP_MuralMenu_C",
+        "bShowProgressionPanel": true
+      }
+    },
+    {
+      "asset": "/Game/HPWH/Blueprints/BP_ProgressionPlayerState",
+      "properties": {
+        "progression": {
+          "class": "CC_ProgressionComponent",
+          "native_form": "/Game/HPWH/Forms/DA_Form_InitialInk.DA_Form_InitialInk",
+          "artifact_forms": [
+            "/Game/HPWH/Forms/DA_Form_Artifact_01.DA_Form_Artifact_01",
+            "/Game/HPWH/Forms/DA_Form_Artifact_02.DA_Form_Artifact_02",
+            "/Game/HPWH/Forms/DA_Form_Artifact_03.DA_Form_Artifact_03",
+            "/Game/HPWH/Forms/DA_Form_Artifact_04.DA_Form_Artifact_04",
+            "/Game/HPWH/Forms/DA_Form_Native.DA_Form_Native"
+          ],
+          "skill_catalog": [
+            "/Game/HPWH/Skills/DA_Skill_01.DA_Skill_01",
+            "/Game/HPWH/Skills/DA_Skill_02.DA_Skill_02",
+            "/Game/HPWH/Skills/DA_Skill_03.DA_Skill_03",
+            "/Game/HPWH/Skills/DA_Skill_04.DA_Skill_04",
+            "/Game/HPWH/Skills/DA_Skill_05.DA_Skill_05",
+            "/Game/HPWH/Skills/DA_Skill_06.DA_Skill_06",
+            "/Game/HPWH/Skills/DA_Skill_07.DA_Skill_07",
+            "/Game/HPWH/Skills/DA_Skill_08.DA_Skill_08",
+            "/Game/HPWH/Skills/DA_Skill_09.DA_Skill_09",
+            "/Game/HPWH/Skills/DA_Skill_10.DA_Skill_10",
+            "/Game/HPWH/Skills/DA_Skill_11.DA_Skill_11",
+            "/Game/HPWH/Skills/DA_Skill_12.DA_Skill_12",
+            "/Game/HPWH/Skills/DA_Skill_13.DA_Skill_13",
+            "/Game/HPWH/Skills/DA_Skill_14.DA_Skill_14",
+            "/Game/HPWH/Skills/DA_Skill_15.DA_Skill_15",
+            "/Game/HPWH/Skills/DA_Skill_16.DA_Skill_16",
+            "/Game/HPWH/Skills/DA_Skill_17.DA_Skill_17",
+            "/Game/HPWH/Skills/DA_Skill_18.DA_Skill_18",
+            "/Game/HPWH/Skills/DA_Skill_19.DA_Skill_19",
+            "/Game/HPWH/Skills/DA_Skill_20.DA_Skill_20",
+            "/Game/HPWH/Skills/DA_Skill_21.DA_Skill_21",
+            "/Game/HPWH/Skills/DA_Skill_22.DA_Skill_22",
+            "/Game/HPWH/Skills/Design/DA_Design_basic_straight_punch.DA_Design_basic_straight_punch",
+            "/Game/HPWH/Skills/Design/DA_Design_basic_combo.DA_Design_basic_combo",
+            "/Game/HPWH/Skills/Design/DA_Design_basic_sweep.DA_Design_basic_sweep",
+            "/Game/HPWH/Skills/Design/DA_Design_basic_heavy_punch.DA_Design_basic_heavy_punch",
+            "/Game/HPWH/Skills/Design/DA_Design_basic_heal.DA_Design_basic_heal",
+            "/Game/HPWH/Skills/Design/DA_Design_bronze_summon.DA_Design_bronze_summon",
+            "/Game/HPWH/Skills/Design/DA_Design_bronze_evolve.DA_Design_bronze_evolve",
+            "/Game/HPWH/Skills/Design/DA_Design_bronze_charged_hit.DA_Design_bronze_charged_hit",
+            "/Game/HPWH/Skills/Design/DA_Design_bronze_guard.DA_Design_bronze_guard",
+            "/Game/HPWH/Skills/Design/DA_Design_temple_golden_body.DA_Design_temple_golden_body",
+            "/Game/HPWH/Skills/Design/DA_Design_temple_gravity.DA_Design_temple_gravity",
+            "/Game/HPWH/Skills/Design/DA_Design_temple_lamps.DA_Design_temple_lamps",
+            "/Game/HPWH/Skills/Design/DA_Design_temple_cleanse.DA_Design_temple_cleanse",
+            "/Game/HPWH/Skills/Design/DA_Design_field_stealth.DA_Design_field_stealth",
+            "/Game/HPWH/Skills/Design/DA_Design_field_regrowth.DA_Design_field_regrowth",
+            "/Game/HPWH/Skills/Design/DA_Design_field_lifesteal.DA_Design_field_lifesteal",
+            "/Game/HPWH/Skills/Design/DA_Design_field_root_prison.DA_Design_field_root_prison"
+          ]
+        }
+      }
+    },
+    {
+      "asset": "/Game/UI/MuralMenu/BP_MuralHUD",
+      "properties": {
+        "bShowDebugPanel": false
+      }
+    }
+  ],
+  "scriptModuleReferencers": [
+    "/Game/GameAnimsPack/Animations/ABP_MannyGAS",
+    "/Game/HPWH/Balance/DA_CombatBalance",
+    "/Game/HPWH/Blueprints/BP_Artifact_01",
+    "/Game/HPWH/Blueprints/BP_Artifact_02",
+    "/Game/HPWH/Blueprints/BP_Artifact_03",
+    "/Game/HPWH/Blueprints/BP_Artifact_04",
+    "/Game/HPWH/Blueprints/BP_Artifact_Nature",
+    "/Game/HPWH/Blueprints/BP_Bronze_Elite",
+    "/Game/HPWH/Blueprints/BP_Ceramic_Elite",
+    "/Game/HPWH/Blueprints/BP_ExperiencePack",
+    "/Game/HPWH/Blueprints/BP_PatrolEnemy",
+    "/Game/HPWH/Blueprints/BP_ProgressionCharacter",
+    "/Game/HPWH/Blueprints/BP_ProgressionController",
+    "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+    "/Game/HPWH/Blueprints/BP_ProgressionGameMode",
+    "/Game/HPWH/Blueprints/BP_ProgressionPlayerState",
+    "/Game/HPWH/Blueprints/BP_TestDummy",
+    "/Game/HPWH/Coins/BP_CopperCoin",
+    "/Game/HPWH/Forms/DA_Form_Artifact_01",
+    "/Game/HPWH/Forms/DA_Form_Artifact_02",
+    "/Game/HPWH/Forms/DA_Form_Artifact_03",
+    "/Game/HPWH/Forms/DA_Form_Artifact_04",
+    "/Game/HPWH/Forms/DA_Form_InitialInk",
+    "/Game/HPWH/Forms/DA_Form_Native",
+    "/Game/HPWH/Loadouts/DA_DesignLoadout_Artifact_01",
+    "/Game/HPWH/Loadouts/DA_DesignLoadout_Artifact_02",
+    "/Game/HPWH/Loadouts/DA_DesignLoadout_InitialInk",
+    "/Game/HPWH/Loadouts/DA_DesignLoadout_Native",
+    "/Game/HPWH/Loadouts/DA_EliteLoadout",
+    "/Game/HPWH/Loadouts/DA_EnemyLoadout",
+    "/Game/HPWH/Loadouts/DA_Loadout_Artifact_01_Tier1",
+    "/Game/HPWH/Loadouts/DA_Loadout_Artifact_01_Tier2",
+    "/Game/HPWH/Loadouts/DA_Loadout_Artifact_01_Tier3",
+    "/Game/HPWH/Loadouts/DA_Loadout_Artifact_02_Tier1",
+    "/Game/HPWH/Loadouts/DA_Loadout_Artifact_02_Tier2",
+    "/Game/HPWH/Loadouts/DA_Loadout_Artifact_02_Tier3",
+    "/Game/HPWH/Loadouts/DA_Loadout_Artifact_03_Tier1",
+    "/Game/HPWH/Loadouts/DA_Loadout_Artifact_03_Tier2",
+    "/Game/HPWH/Loadouts/DA_Loadout_Artifact_03_Tier3",
+    "/Game/HPWH/Loadouts/DA_Loadout_Artifact_04_Tier1",
+    "/Game/HPWH/Loadouts/DA_Loadout_Artifact_04_Tier2",
+    "/Game/HPWH/Loadouts/DA_Loadout_Artifact_04_Tier3",
+    "/Game/HPWH/Loadouts/DA_Loadout_InitialInk",
+    "/Game/HPWH/Loadouts/DA_Loadout_Native_Tier1",
+    "/Game/HPWH/Loadouts/DA_Loadout_Native_Tier2",
+    "/Game/HPWH/Loadouts/DA_Loadout_Native_Tier3",
+    "/Game/HPWH/Locomotion/ABP_InitialInk_Template",
+    "/Game/HPWH/Locomotion/ABP_StateMachineProbe",
+    "/Game/HPWH/Locomotion/ABP_竹拳击手",
+    "/Game/HPWH/Locomotion/ABP_竹节人",
+    "/Game/HPWH/Locomotion/ABP_竹路人",
+    "/Game/HPWH/Locomotion/ABP_铜机械小兵",
+    "/Game/HPWH/Locomotion/ABP_铜械将军",
+    "/Game/HPWH/Locomotion/ABP_铜械战士",
+    "/Game/HPWH/Locomotion/ABP_铜械降神",
+    "/Game/HPWH/Locomotion/ABP_陶土僧人",
+    "/Game/HPWH/Locomotion/ABP_陶土行者",
+    "/Game/HPWH/Locomotion/ABP_陶童子",
+    "/Game/HPWH/Locomotion/ABP_陶罐头",
+    "/Game/HPWH/Locomotion/DA_NPCLocomotion",
+    "/Game/HPWH/Maps/L_FlatTestArena",
+    "/Game/HPWH/Maps/L_HPWH",
+    "/Game/HPWH/Skills/DA_BasicAttack",
+    "/Game/HPWH/Skills/DA_Skill_01",
+    "/Game/HPWH/Skills/DA_Skill_02",
+    "/Game/HPWH/Skills/DA_Skill_03",
+    "/Game/HPWH/Skills/DA_Skill_04",
+    "/Game/HPWH/Skills/DA_Skill_05",
+    "/Game/HPWH/Skills/DA_Skill_06",
+    "/Game/HPWH/Skills/DA_Skill_07",
+    "/Game/HPWH/Skills/DA_Skill_08",
+    "/Game/HPWH/Skills/DA_Skill_09",
+    "/Game/HPWH/Skills/DA_Skill_10",
+    "/Game/HPWH/Skills/DA_Skill_11",
+    "/Game/HPWH/Skills/DA_Skill_12",
+    "/Game/HPWH/Skills/DA_Skill_13",
+    "/Game/HPWH/Skills/DA_Skill_14",
+    "/Game/HPWH/Skills/DA_Skill_15",
+    "/Game/HPWH/Skills/DA_Skill_16",
+    "/Game/HPWH/Skills/DA_Skill_17",
+    "/Game/HPWH/Skills/DA_Skill_18",
+    "/Game/HPWH/Skills/DA_Skill_19",
+    "/Game/HPWH/Skills/DA_Skill_20",
+    "/Game/HPWH/Skills/DA_Skill_21",
+    "/Game/HPWH/Skills/DA_Skill_22",
+    "/Game/HPWH/Skills/Design/DA_Design_basic_combo",
+    "/Game/HPWH/Skills/Design/DA_Design_basic_heal",
+    "/Game/HPWH/Skills/Design/DA_Design_basic_heavy_punch",
+    "/Game/HPWH/Skills/Design/DA_Design_basic_straight_punch",
+    "/Game/HPWH/Skills/Design/DA_Design_basic_sweep",
+    "/Game/HPWH/Skills/Design/DA_Design_bronze_charged_hit",
+    "/Game/HPWH/Skills/Design/DA_Design_bronze_evolve",
+    "/Game/HPWH/Skills/Design/DA_Design_bronze_guard",
+    "/Game/HPWH/Skills/Design/DA_Design_bronze_summon",
+    "/Game/HPWH/Skills/Design/DA_Design_field_lifesteal",
+    "/Game/HPWH/Skills/Design/DA_Design_field_regrowth",
+    "/Game/HPWH/Skills/Design/DA_Design_field_root_prison",
+    "/Game/HPWH/Skills/Design/DA_Design_field_stealth",
+    "/Game/HPWH/Skills/Design/DA_Design_temple_cleanse",
+    "/Game/HPWH/Skills/Design/DA_Design_temple_golden_body",
+    "/Game/HPWH/Skills/Design/DA_Design_temple_gravity",
+    "/Game/HPWH/Skills/Design/DA_Design_temple_lamps",
+    "/Game/HPWH/Skills/Enemies/DA_Enemy_Melee_01",
+    "/Game/HPWH/Skills/Enemies/DA_Enemy_Melee_02",
+    "/Game/HPWH/Skills/Enemies/DA_Enemy_Melee_03",
+    "/Game/HPWH/Skills/Enemies/DA_Enemy_Melee_04",
+    "/Game/HPWH/Upgrades/DA_Upgrade_ATTACK",
+    "/Game/HPWH/Upgrades/DA_Upgrade_DEFENSE",
+    "/Game/HPWH/Upgrades/DA_Upgrade_MAX_HEALTH",
+    "/Game/HPWH/Upgrades/DA_Upgrade_MAX_MANA",
+    "/Game/HPWH/Upgrades/DA_Upgrade_MOVE_SPEED",
+    "/Game/HPWH/Upgrades/DA_Upgrade_SKILL_LEVEL",
+    "/Game/THAT/BP_CrashGameMode",
+    "/Game/THAT/BP_EnemyCharacter",
+    "/Game/THAT/BP_PlayerCharacter",
+    "/Game/THAT/GA_HitReact",
+    "/Game/THAT/Player/BP_CC_PlayController",
+    "/Game/THAT/Player/BP_CC_PlayerState",
+    "/Game/THAT/Player/GA_Primary",
+    "/Game/THAT/Player/GA_Secondary",
+    "/Game/THAT/Player/GA_Tertiary",
+    "/Game/UI/MainMenu/DA_HomeArt",
+    "/Game/UI/MainMenu/Maps/L_MainMenu",
+    "/Game/UI/MuralMenu/BP_MuralHUD",
+    "/Game/UI/MuralMenu/DA_MenuArt",
+    "/Game/UI/MuralMenu/DA_SkillGallery",
+    "/Game/UI/MuralMenu/WBP_MuralMenu"
+  ],
+  "serializedNativeNames": {
+    "ACC_AdventureGameMode": [],
+    "ACC_BaseCharacter": [],
+    "ACC_CoinPickup": [
+      {
+        "asset": "/Game/HPWH/Coins/BP_CopperCoin",
+        "reachable": true
+      }
+    ],
+    "ACC_EnemyCharacter": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_TestDummy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/THAT/BP_EnemyCharacter",
+        "reachable": true
+      }
+    ],
+    "ACC_ExperienceOrb": [],
+    "ACC_ExperiencePack": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ExperiencePack",
+        "reachable": true
+      }
+    ],
+    "ACC_FormArtifact": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_01",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_02",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_03",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_04",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_Nature",
+        "reachable": true
+      }
+    ],
+    "ACC_FormPowerOrb": [],
+    "ACC_MainMenuController": [],
+    "ACC_MainMenuGameMode": [
+      {
+        "asset": "/Game/UI/MainMenu/Maps/L_MainMenu",
+        "reachable": true
+      }
+    ],
+    "ACC_MapPortal": [],
+    "ACC_MinimapCapture": [],
+    "ACC_PatrolEnemyCharacter": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Bronze_Elite",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Ceramic_Elite",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_PatrolEnemy",
+        "reachable": true
+      }
+    ],
+    "ACC_PlayerCharacter": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionCharacter",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/THAT/BP_PlayerCharacter",
+        "reachable": true
+      }
+    ],
+    "ACC_PlayerController": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionController",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/THAT/Player/BP_CC_PlayController",
+        "reachable": true
+      }
+    ],
+    "ACC_PlayerState": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionGameMode",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionPlayerState",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/THAT/BP_CrashGameMode",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/THAT/Player/BP_CC_PlayerState",
+        "reachable": true
+      }
+    ],
+    "ACC_ProgressionHUD": [
+      {
+        "asset": "/Game/UI/MuralMenu/BP_MuralHUD",
+        "reachable": true
+      }
+    ],
+    "ACC_Projectile": [],
+    "ACC_SkillProjectile": [],
+    "ACC_SummonedSoldier": [],
+    "UCC_AbilitySystemComponent": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Bronze_Elite",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Ceramic_Elite",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_PatrolEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionPlayerState",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_TestDummy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Maps/L_FlatTestArena",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Maps/L_HPWH",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/THAT/BP_EnemyCharacter",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/THAT/Player/BP_CC_PlayerState",
+        "reachable": true
+      }
+    ],
+    "UCC_AdventureGameInstance": [],
+    "UCC_AnimationSetupLibrary": [],
+    "UCC_ArtifactComponent": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_01",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_02",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_03",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_04",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_Nature",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Maps/L_FlatTestArena",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Maps/L_HPWH",
+        "reachable": false
+      }
+    ],
+    "UCC_AttackEffect": [],
+    "UCC_AttributeChangeTask": [],
+    "UCC_AttributeSet": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Bronze_Elite",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Ceramic_Elite",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_PatrolEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionPlayerState",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_TestDummy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Maps/L_FlatTestArena",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Maps/L_HPWH",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/THAT/BP_EnemyCharacter",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/THAT/Player/BP_CC_PlayerState",
+        "reachable": true
+      }
+    ],
+    "UCC_AttributeWidget": [],
+    "UCC_BlueprintLibrary": [],
+    "UCC_CharacterAnimInstance": [
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_InitialInk_Template",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_StateMachineProbe",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_竹拳击手",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_竹节人",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_竹路人",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_铜机械小兵",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_铜械将军",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_铜械战士",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_铜械降神",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_陶土僧人",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_陶土行者",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_陶童子",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/ABP_陶罐头",
+        "reachable": true
+      }
+    ],
+    "UCC_CombatBalance": [
+      {
+        "asset": "/Game/HPWH/Balance/DA_CombatBalance",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_PatrolEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_01",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_02",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_InitialInk",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Native",
+        "reachable": true
+      }
+    ],
+    "UCC_ConfiguredAbility": [],
+    "UCC_ControlSettingsSave": [],
+    "UCC_CooldownEffect": [],
+    "UCC_DamageEffect": [],
+    "UCC_DefenseEffect": [],
+    "UCC_ExperienceBackendSubsystem": [],
+    "UCC_ExperienceFXSetupLibrary": [],
+    "UCC_FormDefinition": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_01",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_02",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_03",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_04",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Artifact_Nature",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionPlayerState",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_01",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_02",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_03",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_04",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_InitialInk",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Native",
+        "reachable": true
+      }
+    ],
+    "UCC_GameplayAbility": [
+      {
+        "asset": "/Game/THAT/GA_HitReact",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/THAT/Player/GA_Primary",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/THAT/Player/GA_Secondary",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/THAT/Player/GA_Tertiary",
+        "reachable": true
+      }
+    ],
+    "UCC_HealthEffect": [],
+    "UCC_HitReact": [],
+    "UCC_InitialAttributesEffect": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionCharacter",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+        "reachable": true
+      }
+    ],
+    "UCC_LocomotionComponent": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Bronze_Elite",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Ceramic_Elite",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_PatrolEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionCharacter",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_TestDummy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Maps/L_FlatTestArena",
+        "reachable": true
+      }
+    ],
+    "UCC_LocomotionLibrary": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_PatrolEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionCharacter",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Locomotion/DA_NPCLocomotion",
+        "reachable": true
+      }
+    ],
+    "UCC_MainMenuWidget": [],
+    "UCC_ManaEffect": [],
+    "UCC_MeleeAttack": [],
+    "UCC_MenuArtData": [
+      {
+        "asset": "/Game/UI/MainMenu/DA_HomeArt",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/UI/MuralMenu/DA_MenuArt",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/UI/MuralMenu/WBP_MuralMenu",
+        "reachable": true
+      }
+    ],
+    "UCC_MuralMenuWidget": [
+      {
+        "asset": "/Game/UI/MuralMenu/WBP_MuralMenu",
+        "reachable": true
+      }
+    ],
+    "UCC_OptionsWidget": [],
+    "UCC_PowerTokenWidget": [],
+    "UCC_Primary": [],
+    "UCC_ProgressionComponent": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionPlayerState",
+        "reachable": true
+      }
+    ],
+    "UCC_ProgressionMenu": [],
+    "UCC_ProgressionSave": [],
+    "UCC_SearchForTarget": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+        "reachable": true
+      }
+    ],
+    "UCC_ShieldEffect": [],
+    "UCC_SkillComponent": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Bronze_Elite",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Ceramic_Elite",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_PatrolEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionCharacter",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_TestDummy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Maps/L_FlatTestArena",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Maps/L_HPWH",
+        "reachable": false
+      }
+    ],
+    "UCC_SkillDefinition": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionCharacter",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionPlayerState",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_DesignLoadout_Artifact_01",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_DesignLoadout_Artifact_02",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_DesignLoadout_InitialInk",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_DesignLoadout_Native",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_EliteLoadout",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_EnemyLoadout",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_01_Tier1",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_01_Tier2",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_01_Tier3",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_02_Tier1",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_02_Tier2",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_02_Tier3",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_03_Tier1",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_03_Tier2",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_03_Tier3",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_04_Tier1",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_04_Tier2",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_04_Tier3",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_InitialInk",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Native_Tier1",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Native_Tier2",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Native_Tier3",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_BasicAttack",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_01",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_02",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_03",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_04",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_05",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_06",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_07",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_08",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_09",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_10",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_11",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_12",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_13",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_14",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_15",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_16",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_17",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_18",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_19",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_20",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_21",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/DA_Skill_22",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_basic_combo",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_basic_heal",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_basic_heavy_punch",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_basic_straight_punch",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_basic_sweep",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_bronze_charged_hit",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_bronze_evolve",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_bronze_guard",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_bronze_summon",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_field_lifesteal",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_field_regrowth",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_field_root_prison",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_field_stealth",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_temple_cleanse",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_temple_golden_body",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_temple_gravity",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Design/DA_Design_temple_lamps",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Enemies/DA_Enemy_Melee_01",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Enemies/DA_Enemy_Melee_02",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Enemies/DA_Enemy_Melee_03",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Skills/Enemies/DA_Enemy_Melee_04",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/UI/MuralMenu/DA_SkillGallery",
+        "reachable": true
+      }
+    ],
+    "UCC_SkillGalleryData": [
+      {
+        "asset": "/Game/UI/MuralMenu/DA_MenuArt",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/UI/MuralMenu/DA_SkillGallery",
+        "reachable": true
+      }
+    ],
+    "UCC_SkillGalleryWidget": [],
+    "UCC_SkillLoadout": [
+      {
+        "asset": "/Game/HPWH/Balance/DA_CombatBalance",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_PatrolEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionCharacter",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_01",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_02",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_03",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Artifact_04",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_InitialInk",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Forms/DA_Form_Native",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_DesignLoadout_Artifact_01",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_DesignLoadout_Artifact_02",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_DesignLoadout_InitialInk",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_DesignLoadout_Native",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_EliteLoadout",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_EnemyLoadout",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_01_Tier1",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_01_Tier2",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_01_Tier3",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_02_Tier1",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_02_Tier2",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_02_Tier3",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_03_Tier1",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_03_Tier2",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_03_Tier3",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_04_Tier1",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_04_Tier2",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Artifact_04_Tier3",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_InitialInk",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Native_Tier1",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Native_Tier2",
+        "reachable": false
+      },
+      {
+        "asset": "/Game/HPWH/Loadouts/DA_Loadout_Native_Tier3",
+        "reachable": false
+      }
+    ],
+    "UCC_SpeedEffect": [],
+    "UCC_SprintEffect": [],
+    "UCC_UpgradeDefinition": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionPlayerState",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Upgrades/DA_Upgrade_ATTACK",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Upgrades/DA_Upgrade_DEFENSE",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Upgrades/DA_Upgrade_MAX_HEALTH",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Upgrades/DA_Upgrade_MAX_MANA",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Upgrades/DA_Upgrade_MOVE_SPEED",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Upgrades/DA_Upgrade_SKILL_LEVEL",
+        "reachable": true
+      }
+    ],
+    "UCC_WaitGameplayEvent": [],
+    "UCC_WidgetComponent": [
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Bronze_Elite",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_Ceramic_Elite",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_PatrolEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionCharacter",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_ProgressionEnemy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Blueprints/BP_TestDummy",
+        "reachable": true
+      },
+      {
+        "asset": "/Game/HPWH/Maps/L_FlatTestArena",
+        "reachable": true
+      }
+    ],
+    "UCC_WorldNavigationWidget": []
+  },
+  "gameStarted": false,
+  "assetsSaved": false,
+  "limitations": [
+    "Reachability is an asset dependency closure, not proof a Blueprint executes.",
+    "Native constructors and runtime load paths may add roots; zero direct references does not prove a class is removable.",
+    "Blueprint graph function/notify references may exist without a native-parent tag."
+  ]
+}

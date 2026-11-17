@@ -1,0 +1,242 @@
+[
+  {
+    "old": "/Game/SOURCE/小怪/竹拳击手/tripo_mat_6452199d",
+    "new": "/Game/SOURCE/小怪/竹拳击手/M_竹拳击手",
+    "class": "Material"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/竹拳击手/竹拳击手",
+    "new": "/Game/SOURCE/小怪/竹拳击手/SK_竹拳击手",
+    "class": "SkeletalMesh"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/竹拳击手/竹拳击手_PhysicsAsset",
+    "new": "/Game/SOURCE/小怪/竹拳击手/PHYS_竹拳击手",
+    "class": "PhysicsAsset"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/竹拳击手/竹拳击手_Skeleton",
+    "new": "/Game/SOURCE/小怪/竹拳击手/SKEL_竹拳击手",
+    "class": "Skeleton"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/竹节人/tripo_mat_c406bdf1",
+    "new": "/Game/SOURCE/小怪/竹节人/M_竹节人",
+    "class": "Material"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/竹节人/竹节人",
+    "new": "/Game/SOURCE/小怪/竹节人/SK_竹节人",
+    "class": "SkeletalMesh"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/竹节人/竹节人_PhysicsAsset",
+    "new": "/Game/SOURCE/小怪/竹节人/PHYS_竹节人",
+    "class": "PhysicsAsset"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/竹节人/竹节人_Skeleton",
+    "new": "/Game/SOURCE/小怪/竹节人/SKEL_竹节人",
+    "class": "Skeleton"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/竹路人/tripo_mat_5619f3f9",
+    "new": "/Game/SOURCE/小怪/竹路人/M_竹路人",
+    "class": "Material"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/竹路人/竹路人",
+    "new": "/Game/SOURCE/小怪/竹路人/SK_竹路人",
+    "class": "SkeletalMesh"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/竹路人/竹路人_PhysicsAsset",
+    "new": "/Game/SOURCE/小怪/竹路人/PHYS_竹路人",
+    "class": "PhysicsAsset"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/竹路人/竹路人_Skeleton",
+    "new": "/Game/SOURCE/小怪/竹路人/SKEL_竹路人",
+    "class": "Skeleton"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜机械小兵/tripo_mat_6879194f",
+    "new": "/Game/SOURCE/小怪/铜机械小兵/M_铜机械小兵",
+    "class": "Material"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜机械小兵/铜机械小兵",
+    "new": "/Game/SOURCE/小怪/铜机械小兵/SK_铜机械小兵",
+    "class": "SkeletalMesh"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜机械小兵/铜机械小兵_PhysicsAsset",
+    "new": "/Game/SOURCE/小怪/铜机械小兵/PHYS_铜机械小兵",
+    "class": "PhysicsAsset"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜机械小兵/铜机械小兵_Skeleton",
+    "new": "/Game/SOURCE/小怪/铜机械小兵/SKEL_铜机械小兵",
+    "class": "Skeleton"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜械将军/tripo_mat_aa97106d",
+    "new": "/Game/SOURCE/小怪/铜械将军/M_铜械将军",
+    "class": "Material"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜械将军/铜械将军",
+    "new": "/Game/SOURCE/小怪/铜械将军/SK_铜械将军",
+    "class": "SkeletalMesh"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜械将军/铜械将军_PhysicsAsset",
+    "new": "/Game/SOURCE/小怪/铜械将军/PHYS_铜械将军",
+    "class": "PhysicsAsset"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜械将军/铜械将军_Skeleton",
+    "new": "/Game/SOURCE/小怪/铜械将军/SKEL_铜械将军",
+    "class": "Skeleton"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜械战士/tripo_mat_407ae55c",
+    "new": "/Game/SOURCE/小怪/铜械战士/M_铜械战士",
+    "class": "Material"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜械战士/铜械战士",
+    "new": "/Game/SOURCE/小怪/铜械战士/SK_铜械战士",
+    "class": "SkeletalMesh"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜械战士/铜械战士_PhysicsAsset",
+    "new": "/Game/SOURCE/小怪/铜械战士/PHYS_铜械战士",
+    "class": "PhysicsAsset"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜械战士/铜械战士_Skeleton",
+    "new": "/Game/SOURCE/小怪/铜械战士/SKEL_铜械战士",
+    "class": "Skeleton"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜械降神/tripo_mat_d5127ed3",
+    "new": "/Game/SOURCE/小怪/铜械降神/M_铜械降神",
+    "class": "Material"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜械降神/铜械降神",
+    "new": "/Game/SOURCE/小怪/铜械降神/SK_铜械降神",
+    "class": "SkeletalMesh"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜械降神/铜械降神_PhysicsAsset",
+    "new": "/Game/SOURCE/小怪/铜械降神/PHYS_铜械降神",
+    "class": "PhysicsAsset"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/铜械降神/铜械降神_Skeleton",
+    "new": "/Game/SOURCE/小怪/铜械降神/SKEL_铜械降神",
+    "class": "Skeleton"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶土僧人/tripo_convert_a968022d-47ed-484a-acbf-264a295cb993",
+    "new": "/Game/SOURCE/小怪/陶土僧人/SK_陶土僧人",
+    "class": "SkeletalMesh"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶土僧人/tripo_convert_a968022d-47ed-484a-acbf-264a295cb993_PhysicsAsset",
+    "new": "/Game/SOURCE/小怪/陶土僧人/PHYS_陶土僧人",
+    "class": "PhysicsAsset"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶土僧人/tripo_convert_a968022d-47ed-484a-acbf-264a295cb993_Skeleton",
+    "new": "/Game/SOURCE/小怪/陶土僧人/SKEL_陶土僧人",
+    "class": "Skeleton"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶土僧人/tripo_mat_a968022d",
+    "new": "/Game/SOURCE/小怪/陶土僧人/M_陶土僧人",
+    "class": "Material"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶土童子/tripo_convert_b42559a8-af4f-4373-b062-706d4e2fb776",
+    "new": "/Game/SOURCE/小怪/陶土童子/SK_陶土童子",
+    "class": "SkeletalMesh"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶土童子/tripo_convert_b42559a8-af4f-4373-b062-706d4e2fb776_PhysicsAsset",
+    "new": "/Game/SOURCE/小怪/陶土童子/PHYS_陶土童子",
+    "class": "PhysicsAsset"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶土童子/tripo_convert_b42559a8-af4f-4373-b062-706d4e2fb776_Skeleton",
+    "new": "/Game/SOURCE/小怪/陶土童子/SKEL_陶土童子",
+    "class": "Skeleton"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶土童子/tripo_mat_b42559a8",
+    "new": "/Game/SOURCE/小怪/陶土童子/M_陶土童子",
+    "class": "Material"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶土行者/tripo_convert_e9db716c-a0fd-42ad-9419-036b024fd9f9",
+    "new": "/Game/SOURCE/小怪/陶土行者/SK_陶土行者",
+    "class": "SkeletalMesh"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶土行者/tripo_convert_e9db716c-a0fd-42ad-9419-036b024fd9f9_PhysicsAsset",
+    "new": "/Game/SOURCE/小怪/陶土行者/PHYS_陶土行者",
+    "class": "PhysicsAsset"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶土行者/tripo_convert_e9db716c-a0fd-42ad-9419-036b024fd9f9_Skeleton",
+    "new": "/Game/SOURCE/小怪/陶土行者/SKEL_陶土行者",
+    "class": "Skeleton"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶土行者/tripo_mat_e9db716c",
+    "new": "/Game/SOURCE/小怪/陶土行者/M_陶土行者",
+    "class": "Material"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶童子/tripo_convert_fa53fd6d-3777-435b-b062-b167e11fa11c",
+    "new": "/Game/SOURCE/小怪/陶童子/SK_陶童子",
+    "class": "SkeletalMesh"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶童子/tripo_convert_fa53fd6d-3777-435b-b062-b167e11fa11c_PhysicsAsset",
+    "new": "/Game/SOURCE/小怪/陶童子/PHYS_陶童子",
+    "class": "PhysicsAsset"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶童子/tripo_convert_fa53fd6d-3777-435b-b062-b167e11fa11c_Skeleton",
+    "new": "/Game/SOURCE/小怪/陶童子/SKEL_陶童子",
+    "class": "Skeleton"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶童子/tripo_mat_fa53fd6d",
+    "new": "/Game/SOURCE/小怪/陶童子/M_陶童子",
+    "class": "Material"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶罐头/tripo_convert_0bce38d8-b438-457b-8795-d9f8a8bdbf8a",
+    "new": "/Game/SOURCE/小怪/陶罐头/SK_陶罐头",
+    "class": "SkeletalMesh"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶罐头/tripo_convert_0bce38d8-b438-457b-8795-d9f8a8bdbf8a_PhysicsAsset",
+    "new": "/Game/SOURCE/小怪/陶罐头/PHYS_陶罐头",
+    "class": "PhysicsAsset"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶罐头/tripo_convert_0bce38d8-b438-457b-8795-d9f8a8bdbf8a_Skeleton",
+    "new": "/Game/SOURCE/小怪/陶罐头/SKEL_陶罐头",
+    "class": "Skeleton"
+  },
+  {
+    "old": "/Game/SOURCE/小怪/陶罐头/tripo_mat_0bce38d8",
+    "new": "/Game/SOURCE/小怪/陶罐头/M_陶罐头",
+    "class": "Material"
+  }
+]

@@ -1,0 +1,631 @@
+{
+  "scope": "editor world/data only; no PIE/game",
+  "maps": [
+    {
+      "map": "/SpiritWFC/Settlement/Maps/L_WFC_Settlement_Planar",
+      "saved_cells": 196,
+      "saved_visible": 196,
+      "walkable_components": 1,
+      "seed_cases": [
+        {
+          "seed": 0,
+          "visible": 196,
+          "buildings": 40,
+          "air": 0,
+          "ms": 0.8272000004581059
+        },
+        {
+          "seed": 1,
+          "visible": 196,
+          "buildings": 44,
+          "air": 0,
+          "ms": 0.8223000004363712
+        },
+        {
+          "seed": 2,
+          "visible": 196,
+          "buildings": 39,
+          "air": 0,
+          "ms": 0.954000000092492
+        },
+        {
+          "seed": 3,
+          "visible": 196,
+          "buildings": 48,
+          "air": 0,
+          "ms": 0.9291000005759997
+        },
+        {
+          "seed": 4,
+          "visible": 196,
+          "buildings": 43,
+          "air": 0,
+          "ms": 0.9786000000531203
+        },
+        {
+          "seed": 5,
+          "visible": 196,
+          "buildings": 43,
+          "air": 0,
+          "ms": 0.8587000002080458
+        },
+        {
+          "seed": 6,
+          "visible": 196,
+          "buildings": 43,
+          "air": 0,
+          "ms": 0.9909000000334345
+        },
+        {
+          "seed": 7,
+          "visible": 196,
+          "buildings": 44,
+          "air": 0,
+          "ms": 1.0074000001623062
+        },
+        {
+          "seed": 8,
+          "visible": 196,
+          "buildings": 43,
+          "air": 0,
+          "ms": 0.9454999999434222
+        },
+        {
+          "seed": 9,
+          "visible": 196,
+          "buildings": 40,
+          "air": 0,
+          "ms": 0.9640999996918254
+        },
+        {
+          "seed": 10,
+          "visible": 196,
+          "buildings": 41,
+          "air": 0,
+          "ms": 0.9373000002597109
+        },
+        {
+          "seed": 11,
+          "visible": 196,
+          "buildings": 40,
+          "air": 0,
+          "ms": 1.183600000331353
+        },
+        {
+          "seed": 12,
+          "visible": 196,
+          "buildings": 42,
+          "air": 0,
+          "ms": 1.1660999998639454
+        },
+        {
+          "seed": 13,
+          "visible": 196,
+          "buildings": 43,
+          "air": 0,
+          "ms": 0.9842999997999868
+        },
+        {
+          "seed": 14,
+          "visible": 196,
+          "buildings": 43,
+          "air": 0,
+          "ms": 1.0154999999940628
+        },
+        {
+          "seed": 15,
+          "visible": 196,
+          "buildings": 45,
+          "air": 0,
+          "ms": 1.080799999726878
+        },
+        {
+          "seed": 16,
+          "visible": 196,
+          "buildings": 42,
+          "air": 0,
+          "ms": 1.4540000001943554
+        },
+        {
+          "seed": 17,
+          "visible": 196,
+          "buildings": 42,
+          "air": 0,
+          "ms": 0.9989999998651911
+        },
+        {
+          "seed": 18,
+          "visible": 196,
+          "buildings": 42,
+          "air": 0,
+          "ms": 0.9793999997782521
+        },
+        {
+          "seed": 19,
+          "visible": 196,
+          "buildings": 46,
+          "air": 0,
+          "ms": 1.0073999992528115
+        },
+        {
+          "seed": 20,
+          "visible": 196,
+          "buildings": 42,
+          "air": 0,
+          "ms": 0.9280000003855093
+        },
+        {
+          "seed": 21,
+          "visible": 196,
+          "buildings": 43,
+          "air": 0,
+          "ms": 1.0429000003568945
+        },
+        {
+          "seed": 22,
+          "visible": 196,
+          "buildings": 43,
+          "air": 0,
+          "ms": 0.9533000002193148
+        },
+        {
+          "seed": 23,
+          "visible": 196,
+          "buildings": 45,
+          "air": 0,
+          "ms": 0.9979999995266553
+        },
+        {
+          "seed": 24,
+          "visible": 196,
+          "buildings": 42,
+          "air": 0,
+          "ms": 0.9574000005159178
+        },
+        {
+          "seed": 25,
+          "visible": 196,
+          "buildings": 43,
+          "air": 0,
+          "ms": 0.9328999994977494
+        },
+        {
+          "seed": 26,
+          "visible": 196,
+          "buildings": 36,
+          "air": 0,
+          "ms": 0.8963000000221655
+        },
+        {
+          "seed": 27,
+          "visible": 196,
+          "buildings": 43,
+          "air": 0,
+          "ms": 0.9997999995903228
+        },
+        {
+          "seed": 28,
+          "visible": 196,
+          "buildings": 40,
+          "air": 0,
+          "ms": 0.9459000002607354
+        },
+        {
+          "seed": 29,
+          "visible": 196,
+          "buildings": 46,
+          "air": 0,
+          "ms": 0.9768999998414074
+        },
+        {
+          "seed": 30,
+          "visible": 196,
+          "buildings": 41,
+          "air": 0,
+          "ms": 0.9575000003678724
+        },
+        {
+          "seed": 31,
+          "visible": 196,
+          "buildings": 42,
+          "air": 0,
+          "ms": 0.9390000004714238
+        },
+        {
+          "seed": 32,
+          "visible": 196,
+          "buildings": 44,
+          "air": 0,
+          "ms": 1.020799999423616
+        },
+        {
+          "seed": 33,
+          "visible": 196,
+          "buildings": 46,
+          "air": 0,
+          "ms": 1.000700000076904
+        },
+        {
+          "seed": 34,
+          "visible": 196,
+          "buildings": 43,
+          "air": 0,
+          "ms": 1.000700000076904
+        },
+        {
+          "seed": 35,
+          "visible": 196,
+          "buildings": 44,
+          "air": 0,
+          "ms": 1.0690999997677864
+        },
+        {
+          "seed": 36,
+          "visible": 196,
+          "buildings": 38,
+          "air": 0,
+          "ms": 1.0475999997652252
+        },
+        {
+          "seed": 37,
+          "visible": 196,
+          "buildings": 43,
+          "air": 0,
+          "ms": 1.142699999945762
+        },
+        {
+          "seed": 38,
+          "visible": 196,
+          "buildings": 39,
+          "air": 0,
+          "ms": 1.0441000003993395
+        },
+        {
+          "seed": 39,
+          "visible": 196,
+          "buildings": 45,
+          "air": 0,
+          "ms": 1.0380000003351597
+        }
+      ],
+      "density_change": true,
+      "tile_counts": {
+        "Ground": 90,
+        "Road_05": 1,
+        "Road_03": 25,
+        "Road_07": 1,
+        "Road_06": 1,
+        "Road_12": 25,
+        "House_0": 16,
+        "House_1": 23,
+        "Plaza_05": 1,
+        "Plaza_15": 5,
+        "Plaza_06": 1,
+        "Road_13": 1,
+        "Road_14": 1,
+        "Plaza_09": 1,
+        "Plaza_10": 1,
+        "Road_09": 1,
+        "Road_11": 1,
+        "Road_10": 1
+      }
+    },
+    {
+      "map": "/SpiritWFC/Settlement/Maps/L_WFC_Settlement_ThreeLayers",
+      "saved_cells": 588,
+      "saved_visible": 226,
+      "walkable_components": 1,
+      "seed_cases": [
+        {
+          "seed": 0,
+          "visible": 238,
+          "buildings": 40,
+          "air": 350,
+          "ms": 2.482699999745819
+        },
+        {
+          "seed": 1,
+          "visible": 237,
+          "buildings": 44,
+          "air": 351,
+          "ms": 2.7149999996254337
+        },
+        {
+          "seed": 2,
+          "visible": 238,
+          "buildings": 39,
+          "air": 350,
+          "ms": 2.943299999969895
+        },
+        {
+          "seed": 3,
+          "visible": 250,
+          "buildings": 48,
+          "air": 338,
+          "ms": 3.0252999995354912
+        },
+        {
+          "seed": 4,
+          "visible": 238,
+          "buildings": 43,
+          "air": 350,
+          "ms": 2.248900000267895
+        },
+        {
+          "seed": 5,
+          "visible": 231,
+          "buildings": 43,
+          "air": 357,
+          "ms": 2.4172000003090943
+        },
+        {
+          "seed": 6,
+          "visible": 234,
+          "buildings": 43,
+          "air": 354,
+          "ms": 2.731600000515755
+        },
+        {
+          "seed": 7,
+          "visible": 246,
+          "buildings": 44,
+          "air": 342,
+          "ms": 2.8151999995316146
+        },
+        {
+          "seed": 8,
+          "visible": 238,
+          "buildings": 43,
+          "air": 350,
+          "ms": 2.6439000002937973
+        },
+        {
+          "seed": 9,
+          "visible": 232,
+          "buildings": 40,
+          "air": 356,
+          "ms": 2.4943000007624505
+        },
+        {
+          "seed": 10,
+          "visible": 235,
+          "buildings": 41,
+          "air": 353,
+          "ms": 2.5633999994170154
+        },
+        {
+          "seed": 11,
+          "visible": 233,
+          "buildings": 40,
+          "air": 355,
+          "ms": 2.5226999996448285
+        },
+        {
+          "seed": 12,
+          "visible": 254,
+          "buildings": 42,
+          "air": 334,
+          "ms": 2.6973000003636116
+        },
+        {
+          "seed": 13,
+          "visible": 243,
+          "buildings": 43,
+          "air": 345,
+          "ms": 2.563699999882374
+        },
+        {
+          "seed": 14,
+          "visible": 237,
+          "buildings": 43,
+          "air": 351,
+          "ms": 2.6148000006287475
+        },
+        {
+          "seed": 15,
+          "visible": 248,
+          "buildings": 45,
+          "air": 340,
+          "ms": 3.3048999994207406
+        },
+        {
+          "seed": 16,
+          "visible": 241,
+          "buildings": 42,
+          "air": 347,
+          "ms": 2.635099999679369
+        },
+        {
+          "seed": 17,
+          "visible": 237,
+          "buildings": 42,
+          "air": 351,
+          "ms": 2.589800000350806
+        },
+        {
+          "seed": 18,
+          "visible": 243,
+          "buildings": 42,
+          "air": 345,
+          "ms": 2.709600000343926
+        },
+        {
+          "seed": 19,
+          "visible": 240,
+          "buildings": 46,
+          "air": 348,
+          "ms": 2.7464000004329137
+        },
+        {
+          "seed": 20,
+          "visible": 241,
+          "buildings": 42,
+          "air": 347,
+          "ms": 2.6754000000437372
+        },
+        {
+          "seed": 21,
+          "visible": 241,
+          "buildings": 43,
+          "air": 347,
+          "ms": 2.910199999860197
+        },
+        {
+          "seed": 22,
+          "visible": 236,
+          "buildings": 43,
+          "air": 352,
+          "ms": 2.6515999998082407
+        },
+        {
+          "seed": 23,
+          "visible": 241,
+          "buildings": 45,
+          "air": 347,
+          "ms": 2.779299999929208
+        },
+        {
+          "seed": 24,
+          "visible": 241,
+          "buildings": 42,
+          "air": 347,
+          "ms": 2.8040999995937455
+        },
+        {
+          "seed": 25,
+          "visible": 241,
+          "buildings": 43,
+          "air": 347,
+          "ms": 2.797100000861974
+        },
+        {
+          "seed": 26,
+          "visible": 236,
+          "buildings": 36,
+          "air": 352,
+          "ms": 2.642000000378175
+        },
+        {
+          "seed": 27,
+          "visible": 240,
+          "buildings": 43,
+          "air": 348,
+          "ms": 2.725500000451575
+        },
+        {
+          "seed": 28,
+          "visible": 234,
+          "buildings": 40,
+          "air": 354,
+          "ms": 2.7999000003546826
+        },
+        {
+          "seed": 29,
+          "visible": 242,
+          "buildings": 46,
+          "air": 346,
+          "ms": 2.7822000001833658
+        },
+        {
+          "seed": 30,
+          "visible": 241,
+          "buildings": 41,
+          "air": 347,
+          "ms": 2.738399999543617
+        },
+        {
+          "seed": 31,
+          "visible": 237,
+          "buildings": 42,
+          "air": 351,
+          "ms": 2.6606000001265784
+        },
+        {
+          "seed": 32,
+          "visible": 248,
+          "buildings": 44,
+          "air": 340,
+          "ms": 2.658299999893643
+        },
+        {
+          "seed": 33,
+          "visible": 243,
+          "buildings": 46,
+          "air": 345,
+          "ms": 2.6767999997900915
+        },
+        {
+          "seed": 34,
+          "visible": 251,
+          "buildings": 43,
+          "air": 337,
+          "ms": 2.7975000002697925
+        },
+        {
+          "seed": 35,
+          "visible": 241,
+          "buildings": 44,
+          "air": 347,
+          "ms": 2.759899999546178
+        },
+        {
+          "seed": 36,
+          "visible": 228,
+          "buildings": 38,
+          "air": 360,
+          "ms": 2.7356000000509084
+        },
+        {
+          "seed": 37,
+          "visible": 249,
+          "buildings": 43,
+          "air": 339,
+          "ms": 2.7948000006290385
+        },
+        {
+          "seed": 38,
+          "visible": 236,
+          "buildings": 39,
+          "air": 352,
+          "ms": 2.7528000000529573
+        },
+        {
+          "seed": 39,
+          "visible": 245,
+          "buildings": 45,
+          "air": 343,
+          "ms": 3.1198000006043003
+        }
+      ],
+      "density_change": true,
+      "tile_counts": {
+        "Ground": 90,
+        "Road_05": 1,
+        "Road_03": 25,
+        "Road_07": 1,
+        "Road_06": 1,
+        "Road_12": 25,
+        "Base_0": 10,
+        "Base_1": 11,
+        "House_1": 8,
+        "House_0": 10,
+        "Plaza_05": 1,
+        "Plaza_15": 5,
+        "Plaza_06": 1,
+        "Road_13": 1,
+        "Road_14": 1,
+        "Plaza_09": 1,
+        "Plaza_10": 1,
+        "Road_09": 1,
+        "Road_11": 1,
+        "Road_10": 1,
+        "Air": 362,
+        "Middle_1": 3,
+        "Top_0": 13,
+        "Middle_0": 6,
+        "Top_1": 8
+      }
+    }
+  ],
+  "seed_cases": 80
+}

@@ -1,0 +1,19 @@
+# 第三方 DLSS 插件体积过大，不纳入版本库，按需本地安装
+Plugins/DLSS/
+
+# 构建产物
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+.vs/
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+
+# 资源备份与隔离目录
+_UnusedContent_20261117/
+资源备份/
+SourceArt/
