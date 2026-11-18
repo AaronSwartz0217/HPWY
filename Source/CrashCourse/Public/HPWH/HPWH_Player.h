@@ -7,13 +7,14 @@
 class USpringArmComponent;
 class UCameraComponent;
 class UPointLightComponent;
+class USpotLightComponent;
 class UStaticMeshComponent;
 class UInstancedStaticMeshComponent;
 class USphereComponent;
 class UProjectileMovementComponent;
 class AHPWH_SoulAvatar;
 
-/** 初墨：俯视角肉身，被匍匐者命中后短暂强制第一人称。 */
+/** 尤里西斯：俯视角肉身。 */
 UCLASS()
 class CRASHCOURSE_API AHPWH_PlayerCharacter : public ACharacter
 {
@@ -58,7 +59,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category = "HPWH|Camera") TObjectPtr<USpringArmComponent> TopDownBoom;
 	UPROPERTY(VisibleAnywhere, Category = "HPWH|Camera") TObjectPtr<UCameraComponent> TopDownCamera;
 	UPROPERTY(VisibleAnywhere, Category = "HPWH|Light") TObjectPtr<UPointLightComponent> SoulLamp;
-	UPROPERTY(VisibleAnywhere, Category = "HPWH|Light") TObjectPtr<UStaticMeshComponent> SoulLampVisual;
+	UPROPERTY(VisibleAnywhere, Category = "HPWH|Light") TObjectPtr<USpotLightComponent> OverheadLight;
 
 	UPROPERTY(EditDefaultsOnly, Category = "HPWH|Camera") float TopDownArmLength = 1350.f;
 	UPROPERTY(EditDefaultsOnly, Category = "HPWH|Camera") float TopDownPitch = -72.f;
@@ -117,8 +118,8 @@ class CRASHCOURSE_API AHPWH_Projectile : public AActor
 
 public:
 	AHPWH_Projectile();
-
 	virtual void Tick(float DeltaSeconds) override;
+
 	void InitProjectile(const FVector& Direction, float Speed, float InDamage, bool bInHostile, AActor* InInstigator);
 
 	UPROPERTY(VisibleAnywhere) TObjectPtr<USphereComponent> Collision;
@@ -131,8 +132,8 @@ private:
 	void OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 		int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
-	float Damage = 14.f;
 	UPROPERTY() TObjectPtr<UInstancedStaticMeshComponent> Trail;
 	float TrailAge = 0.f;
+	float Damage = 14.f;
 	bool bHostile = false;
 };

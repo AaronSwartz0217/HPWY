@@ -17,6 +17,20 @@ enum class EHPWH_TerrainType : uint8
 	Laptop UMETA(DisplayName = "笔记本电脑")
 };
 
+/** 剧情插画：开场两页与通关闭环。 */
+UENUM(BlueprintType)
+enum class EHPWH_StoryScene : uint8
+{
+	None,
+	IntroStory UMETA(DisplayName = "背景故事"),
+	IntroDream UMETA(DisplayName = "坠入梦境"),
+	GoodEnding UMETA(DisplayName = "好结局"),
+	BadEnding UMETA(DisplayName = "坏结局")
+};
+
+/** 剧情插画从画面上方滑入的时长（秒），点击可跳过剩余动画。 */
+inline constexpr float HPWH_StorySlideSeconds = 0.85f;
+
 UENUM(BlueprintType)
 enum class EHPWH_FloorState : uint8
 {

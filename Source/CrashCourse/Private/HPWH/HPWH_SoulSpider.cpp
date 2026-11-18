@@ -57,6 +57,11 @@ AHPWH_SoulSpider::AHPWH_SoulSpider()
 	ImportedVisual->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	ImportedVisual->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,
 		TEXT("/Game/HPWH/Assets/Models/摄魂蜘蛛/StaticMeshes/soul_spider.soul_spider")));
+	if (UMaterialInterface* TwoSided = LoadObject<UMaterialInterface>(nullptr,
+		TEXT("/Game/HPWH/Assets/Models/摄魂蜘蛛/Materials/M_摄魂蜘蛛_TwoSided.M_摄魂蜘蛛_TwoSided")))
+	{
+		ImportedVisual->SetMaterial(0, TwoSided);
+	}
 	ImportedVisual->SetRelativeLocation(FVector(0.f, 0.f, 35.f));
 	ImportedVisual->SetRelativeScale3D(FVector(3.f));
 
@@ -68,15 +73,16 @@ void AHPWH_SoulSpider::BeginPlay()
 	Super::BeginPlay();
 
 	// 已接入导入模型，隐藏程序化方块身体与六条腿。
+	const bool bHasImportedMesh = ImportedVisual && ImportedVisual->GetStaticMesh();
 	if (BodyBox)
 	{
-		BodyBox->SetVisibility(false);
+		BodyBox->SetVisibility(!bHasImportedMesh);
 	}
 	for (UStaticMeshComponent* Leg : Legs)
 	{
 		if (IsValid(Leg))
 		{
-			Leg->SetVisibility(false);
+			Leg->SetVisibility(!bHasImportedMesh);
 		}
 	}
 

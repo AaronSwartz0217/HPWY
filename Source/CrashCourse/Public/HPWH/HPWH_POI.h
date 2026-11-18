@@ -125,6 +125,12 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 	virtual FString GetHPWHInteractPrompt(APawn* Interactor) const override;
 	virtual float GetHPWHInteractRange() const override { return 680.f; }
+	virtual void HPWHInteract(APawn* Interactor) override;
+
+private:
+	TWeakObjectPtr<APawn> Visitor;
+	FVector VisitorReturn = FVector::ZeroVector;
+	FRotator VisitorReturnRotation = FRotator::ZeroRotator;
 
 protected:
 	virtual void BuildVisuals() override;
@@ -188,6 +194,8 @@ public:
 	UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> EarLeft;
 	UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> EarRight;
 	UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> CatGlow;
+	/** 导入的三只猫模型；缺失时才回退到程序化方块猫。 */
+	UPROPERTY() TObjectPtr<UStaticMeshComponent> ImportedBody;
 
 private:
 	UPROPERTY() TObjectPtr<AHPWH_LaptopPOI> OwnerPOI;

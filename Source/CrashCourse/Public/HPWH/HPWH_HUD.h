@@ -24,5 +24,9 @@ private:
 	UPROPERTY() TObjectPtr<UTexture2D> JoystickRingTexture;
 	UPROPERTY() TObjectPtr<UTexture2D> OrbTexture;
 	UPROPERTY() TObjectPtr<UTexture2D> MenuBackgroundTexture;
+	UPROPERTY() TObjectPtr<UTexture2D> StoryBackgroundTexture;
+	UPROPERTY() TObjectPtr<UTexture2D> StoryDreamTexture;
+	UPROPERTY() TObjectPtr<UTexture2D> StoryGoodEndingTexture;
+	UPROPERTY() TObjectPtr<UTexture2D> StoryBadEndingTexture;
 	mutable int32 PaintCount = 0;
 };

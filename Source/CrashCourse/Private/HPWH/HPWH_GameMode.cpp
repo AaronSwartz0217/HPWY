@@ -88,27 +88,29 @@ void AHPWH_GameMode::StartPlay()
 			{
 				int32 POIIndex = 0;
 				FParse::Value(FCommandLine::Get(), TEXT("HPWHDebugPOIIndex="), POIIndex);
+				float POIDistance = 320.f;
+				FParse::Value(FCommandLine::Get(), TEXT("HPWHDebugPOIDistance="), POIDistance);
 				const FIntPoint Cell = Director->GetPOICell(POIIndex);
-				Body->TeleportTo(Director->CellCenter(Cell) + FVector(320.f, 0.f, 140.f), FRotator::ZeroRotator);
+				Body->TeleportTo(Director->CellCenter(Cell) + FVector(POIDistance, 0.f, 140.f), FRotator::ZeroRotator);
 				UE_LOG(LogTemp, Display, TEXT("HPWH: debug teleport to poi index=%d (%d,%d)"),
 					POIIndex, Cell.X, Cell.Y);
 			}
 		}
 	}
 
-	if (FParse::Param(FCommandLine::Get(), TEXT("HPWHDebugBiome")))
+	int32 DebugBiomeIndex = 1;
+	if (FParse::Value(FCommandLine::Get(), TEXT("HPWHDebugBiome="), DebugBiomeIndex))
 	{
 		if (AHPWH_WorldDirector* Director = GetDirector())
 		{
 			if (AHPWH_PlayerCharacter* Body = GetPlayerBody())
 			{
-				int32 BiomeIndex = 1;
-				FParse::Value(FCommandLine::Get(), TEXT("HPWHDebugBiome="), BiomeIndex);
+				const int32 BiomeIndex = DebugBiomeIndex;
 				for (const TPair<FIntPoint, FHPWH_CellRecord>& Pair : Director->GetRecords())
 				{
 					if (static_cast<int32>(Pair.Value.Terrain) == BiomeIndex && !Pair.Value.bHasPOI)
 					{
-						Body->TeleportTo(Director->CellCenter(Pair.Key) + FVector(0.f, 0.f, 140.f), FRotator::ZeroRotator);
+						Body->SetActorLocation(Director->CellCenter(Pair.Key) + FVector(0.f, 0.f, 140.f));
 						UE_LOG(LogTemp, Display, TEXT("HPWH: debug teleport to biome=%d cell (%d,%d)"),
 							BiomeIndex, Pair.Key.X, Pair.Key.Y);
 						break;
@@ -156,6 +158,29 @@ void AHPWH_GameMode::StartPlay()
 						}
 					}), 1.f, false);
 					UE_LOG(LogTemp, Display, TEXT("HPWH: debug laptop spawned at cell (%d,%d)"), Cell.X, Cell.Y);
+				}
+			}
+		}
+	}
+
+	if (FParse::Param(FCommandLine::Get(), TEXT("HPWHDebugCats")))
+	{
+		// 在玩家正前方摆三只猫，用于验收导入的 GLB 模型。
+		if (AHPWH_PlayerCharacter* Body = GetPlayerBody())
+		{
+			const FVector Origin = Body->GetActorLocation();
+			const FVector Forward = Body->GetActorForwardVector();
+			const FVector Right = FVector::CrossProduct(FVector::UpVector, Forward).GetSafeNormal();
+			for (int32 Index = 0; Index < 3; ++Index)
+			{
+				const FVector Location = Origin + Forward * (420.f + Index * 70.f)
+					+ Right * ((Index - 1) * 150.f) + FVector(0.f, 0.f, -80.f);
+				if (AHPWH_CatMeme* Cat = GetWorld()->SpawnActor<AHPWH_CatMeme>(
+					AHPWH_CatMeme::StaticClass(), Location,
+					FRotator(0.f, Body->GetActorRotation().Yaw + 180.f, 0.f)))
+				{
+					Cat->InitializeCat(nullptr, Index);
+					UE_LOG(LogTemp, Display, TEXT("HPWH: debug cat %d spawned"), Index);
 				}
 			}
 		}
@@ -404,7 +429,7 @@ void AHPWH_GameMode::StartPlay()
 			if (AHPWH_WorldDirector* Director = GetDirector())
 			{
 				const FIntPoint Cell = Director->WorldToCell(Body->GetActorLocation());
-				const FVector Location = Director->CellCenter(Cell) + FVector(280.f, 0.f, 100.f);
+				const FVector Location = Body->GetActorLocation() + FVector(180.f, 0.f, -50.f);
 				if (GetWorld()->SpawnActor<AHPWH_CoinMonster>(
 					AHPWH_CoinMonster::StaticClass(), Location, FRotator::ZeroRotator))
 				{
@@ -445,13 +470,13 @@ void AHPWH_GameMode::StartPlay()
 
 	if (FParse::Param(FCommandLine::Get(), TEXT("HPWHAutoStart")))
 	{
-		StartGameFromMenu();
+		StartGameFromMenu(false);
 	}
 	if (FParse::Param(FCommandLine::Get(), TEXT("HPWHContinue")))
 	{
 		if (LoadProgress())
 		{
-			StartGameFromMenu();
+			StartGameFromMenu(false);
 		}
 	}
 	if (FParse::Param(FCommandLine::Get(), TEXT("HPWHMenuSettings")))
@@ -468,7 +493,7 @@ void AHPWH_GameMode::StartPlay()
 	}
 	if (FParse::Param(FCommandLine::Get(), TEXT("HPWHReturnMenu")))
 	{
-		StartGameFromMenu();
+		StartGameFromMenu(false);
 		ReturnToMainMenu();
 	}
 	static bool bPortalDebugOnce = false;
@@ -681,12 +706,12 @@ void AHPWH_GameMode::HandleMenuSelection(int32 Index)
 			{
 				if (LoadProgress())
 				{
-					StartGameFromMenu();
+					StartGameFromMenu(false);
 				}
 			}
 			else if (Index == 1)
 			{
-				StartGameFromMenu();
+				StartGameFromMenu(true);
 			}
 			else if (Index == 2)
 			{
@@ -701,7 +726,7 @@ void AHPWH_GameMode::HandleMenuSelection(int32 Index)
 		{
 			if (Index == 0)
 			{
-				StartGameFromMenu();
+				StartGameFromMenu(true);
 			}
 			else if (Index == 1)
 			{
@@ -844,7 +869,23 @@ void AHPWH_GameMode::MenuBack()
 	}
 }
 
-void AHPWH_GameMode::StartGameFromMenu()
+void AHPWH_GameMode::StartGameFromMenu(bool bShowIntro)
+{
+	if (!bMainMenuActive || IsStoryActive())
+	{
+		return;
+	}
+	if (!bShowIntro)
+	{
+		EnterGameplay();
+		return;
+	}
+	// 开始新游戏：先播放两页开场剧情，点击后再进入探索。
+	BeginStoryScene(EHPWH_StoryScene::IntroStory);
+	UE_LOG(LogTemp, Display, TEXT("HPWH: intro story started"));
+}
+
+void AHPWH_GameMode::EnterGameplay()
 {
 	if (!bMainMenuActive)
 	{
@@ -864,6 +905,66 @@ void AHPWH_GameMode::StartGameFromMenu()
 	PlayMusic(BgmCalm);
 	ApplyGraphicsMode();
 	UE_LOG(LogTemp, Display, TEXT("HPWH: game started from menu"));
+}
+
+void AHPWH_GameMode::BeginStoryScene(EHPWH_StoryScene Scene)
+{
+	StoryScene = Scene;
+	StorySceneRealTime = FPlatformTime::Seconds();
+	// 插画展示期间冻结玩法，避免背景继续推进。
+	SetGameplayPaused(true);
+}
+
+float AHPWH_GameMode::GetStorySceneElapsed() const
+{
+	return StorySceneRealTime > 0.0
+		? static_cast<float>(FPlatformTime::Seconds() - StorySceneRealTime)
+		: 0.f;
+}
+
+void AHPWH_GameMode::AdvanceStory()
+{
+	if (!IsStoryActive())
+	{
+		return;
+	}
+	if (GetStorySceneElapsed() < HPWH_StorySlideSeconds)
+	{
+		// 第一次点击先补完滑入动画，不急着翻页。
+		StorySceneRealTime = FPlatformTime::Seconds() - HPWH_StorySlideSeconds;
+		return;
+	}
+
+	const EHPWH_StoryScene Finished = StoryScene;
+	StoryScene = EHPWH_StoryScene::None;
+	StorySceneRealTime = 0.0;
+	switch (Finished)
+	{
+	case EHPWH_StoryScene::IntroStory:
+		BeginStoryScene(EHPWH_StoryScene::IntroDream);
+		break;
+	case EHPWH_StoryScene::IntroDream:
+		EnterGameplay();
+		break;
+	case EHPWH_StoryScene::GoodEnding:
+	{
+		// 通关：回到主页（重载当前地图后居中在主界面）。
+		FString MapName = GetWorld() ? GetWorld()->GetMapName() : TEXT("L_HPWH_Prototype");
+		if (GetWorld())
+		{
+			MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
+		}
+		UE_LOG(LogTemp, Display, TEXT("HPWH: good ending confirmed, back to home"));
+		UGameplayStatics::OpenLevel(this, FName(*MapName));
+		break;
+	}
+	case EHPWH_StoryScene::BadEnding:
+		// 死亡流程已在展示前完成，关闭插画即可继续探索。
+		SetGameplayPaused(false);
+		break;
+	default:
+		break;
+	}
 }
 
 void AHPWH_GameMode::SetGraphicsMode(EHPWH_GraphicsMode Mode)
@@ -1131,11 +1232,20 @@ void AHPWH_GameMode::GenerateUpgradeOptions()
 	};
 	for (int32 CardIndex = 0; CardIndex < 3; ++CardIndex)
 	{
-		// 10% 极品、30% 中级、60% 普通。
+		// 基础 10% 极品、30% 中级；角色每升一级，两者都按基础概率相对增加 50%。
+		const float Growth = 1.f + 0.5f * FMath::Max(0, PlayerLevel - 1);
+		float LegendaryChance = 0.10f * Growth;
+		float EpicChance = 0.30f * Growth;
+		const float HighTotal = LegendaryChance + EpicChance;
+		if (HighTotal > 1.f)
+		{
+			LegendaryChance /= HighTotal;
+			EpicChance /= HighTotal;
+		}
 		const float RarityRoll = UpgradeStream.FRand();
-		const EHPWH_Rarity Rarity = RarityRoll < 0.10f
+		const EHPWH_Rarity Rarity = RarityRoll < LegendaryChance
 			? EHPWH_Rarity::Legendary
-			: (RarityRoll < 0.40f ? EHPWH_Rarity::Epic : EHPWH_Rarity::Common);
+			: (RarityRoll < LegendaryChance + EpicChance ? EHPWH_Rarity::Epic : EHPWH_Rarity::Common);
 
 		TArray<EHPWH_UpgradeType> Candidates;
 		for (const EHPWH_UpgradeType Type : AllTypes)
@@ -1473,7 +1583,7 @@ void AHPWH_GameMode::NotifyCompanionPlayerHurt()
 
 void AHPWH_GameMode::RecomputeChance()
 {
-	const float Base = FMath::Min(100.f, 5.f * FMath::Pow(2.f, static_cast<float>(FMath::Max(0, LayerIndex - 1))));
+	const float Base = FMath::Min(100.f, 15.f * FMath::Pow(2.f, static_cast<float>(FMath::Max(0, LayerIndex - 1))));
 	RawChance = Base - DeathCount * 5.f - ChancePenalty + RunStats.ChanceBonus * 100.f;
 	RollChance = FMath::Clamp(RawChance, 0.f, 100.f);
 	bRunImpossible = RawChance < 0.f;
@@ -1730,22 +1840,18 @@ void AHPWH_GameMode::ConfirmFloorPortalChoice()
 	}
 	const bool bWin = bPortalChoiceSuccess;
 	bPortalChoiceActive = false;
-	SetGameplayPaused(false);
 
 	if (bWin)
 	{
 		FloorState = EHPWH_FloorState::RunAwake;
 		PushMessage(TEXT("你醒了。"), 8.f, true);
-		UE_LOG(LogTemp, Display, TEXT("HPWH: portal clear, run awake"));
-		FString MapName = GetWorld() ? GetWorld()->GetMapName() : TEXT("L_HPWH_Prototype");
-		if (GetWorld())
-		{
-			MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
-		}
-		UGameplayStatics::OpenLevel(this, FName(*MapName));
+		UE_LOG(LogTemp, Display, TEXT("HPWH: portal clear, showing good ending"));
+		// 好结局 = 彻底通关：先展示插画，点击后回主页。
+		BeginStoryScene(EHPWH_StoryScene::GoodEnding);
 		return;
 	}
 
+	SetGameplayPaused(false);
 	UE_LOG(LogTemp, Display, TEXT("HPWH: portal failed, advancing layer"));
 	AdvanceLayer();
 }
@@ -1767,7 +1873,7 @@ void AHPWH_GameMode::OnPuzzleFailed()
 
 void AHPWH_GameMode::HandlePlayerDeath()
 {
-	if (FloorState == EHPWH_FloorState::RunAwake)
+	if (FloorState == EHPWH_FloorState::RunAwake || IsStoryActive())
 	{
 		return;
 	}
@@ -1800,6 +1906,8 @@ void AHPWH_GameMode::HandlePlayerDeath()
 	RefreshMusicState();
 	PlaySfx2D(EHPWH_Sfx::CrawlerAppear, 0.7f, 0.8f);
 	PushMessage(TEXT("你死了  概率 -5%"), 4.f, true);
+	// 坏结局 = 死亡：复位完成后展示插画，点击继续探索。
+	BeginStoryScene(EHPWH_StoryScene::BadEnding);
 }
 
 void AHPWH_GameMode::TryExit(APawn* Interactor)
@@ -1924,9 +2032,43 @@ void AHPWH_GameMode::EnsureRuntimeLighting()
 			if (UDirectionalLightComponent* Light = Cast<UDirectionalLightComponent>(Sun->GetLightComponent()))
 			{
 				Light->SetMobility(EComponentMobility::Movable);
-				Light->SetIntensity(5.f);
+				Light->SetIntensity(2.2f);
 				Light->SetLightColor(FLinearColor(0.52f, 0.60f, 0.82f));
 			}
+		}
+	}
+	// 全局蓝色定向补光：从侧后方压一层冷色，模拟设定图里的蓝色环境光。
+	bool bHasBlueRim = false;
+	for (TActorIterator<ADirectionalLight> It(World); It; ++It)
+	{
+		if (It->ActorHasTag(TEXT("HPWHBlueRim")))
+		{
+			bHasBlueRim = true;
+			break;
+		}
+	}
+	if (!bHasBlueRim)
+	{
+		if (ADirectionalLight* Blue = World->SpawnActor<ADirectionalLight>(
+			ADirectionalLight::StaticClass(), FVector(0.f, 0.f, 4000.f), FRotator(-34.f, 150.f, 0.f)))
+		{
+			Blue->Tags.Add(TEXT("HPWHBlueRim"));
+			if (UDirectionalLightComponent* Light = Cast<UDirectionalLightComponent>(Blue->GetLightComponent()))
+			{
+				Light->SetMobility(EComponentMobility::Movable);
+				Light->SetIntensity(1.2f);
+				Light->SetLightColor(FLinearColor(0.28f, 0.46f, 0.95f));
+				Light->SetCastShadows(false);
+			}
+		}
+	}
+	// 统一压暗方向光，把亮度让给主角头顶的蓝色锥光。
+	for (TActorIterator<ADirectionalLight> It(World); It; ++It)
+	{
+		if (UDirectionalLightComponent* Light = Cast<UDirectionalLightComponent>(It->GetLightComponent()))
+		{
+			Light->SetMobility(EComponentMobility::Movable);
+			Light->SetIntensity(It->ActorHasTag(TEXT("HPWHBlueRim")) ? 1.2f : 2.2f);
 		}
 	}
 	if (!bHasSky)
@@ -1937,7 +2079,7 @@ void AHPWH_GameMode::EnsureRuntimeLighting()
 			if (USkyLightComponent* Light = Sky->GetLightComponent())
 			{
 				Light->SetMobility(EComponentMobility::Movable);
-				Light->SetIntensity(1.2f);
+				Light->SetIntensity(1.0f);
 				Light->SetLightColor(FLinearColor(0.30f, 0.36f, 0.50f));
 				Light->SetRealTimeCapture(true);
 			}
@@ -1955,15 +2097,32 @@ void AHPWH_GameMode::EnsureRuntimeLighting()
 			}
 		}
 	}
+	// 体积雾是可见光柱的前提；距离限制在主角周围，远处仍由普通高度雾压暗。
+	for (TActorIterator<AExponentialHeightFog> It(World); It; ++It)
+	{
+		if (UExponentialHeightFogComponent* FogComponent = It->GetComponent())
+		{
+			FogComponent->SetVolumetricFog(true);
+			FogComponent->SetVolumetricFogExtinctionScale(2.0f);
+			FogComponent->SetVolumetricFogDistance(6000.f);
+			FogComponent->SetVolumetricFogScatteringDistribution(0.2f);
+		}
+	}
 
 	if (APostProcessVolume* PostProcess = World->SpawnActor<APostProcessVolume>())
 	{
 		PostProcess->bUnbound = true;
 		PostProcess->Settings.bOverride_AutoExposureBias = true;
-		PostProcess->Settings.AutoExposureBias = -0.3f;
+		// 再压暗 0.5 EV：从 -0.5 降到 -1.0。
+		PostProcess->Settings.AutoExposureBias = -1.0f;
 		PostProcess->Settings.bOverride_BloomIntensity = true;
 		PostProcess->Settings.BloomIntensity = 0.15f;
 		PostProcess->Settings.bOverride_VignetteIntensity = true;
 		PostProcess->Settings.VignetteIntensity = 0.45f;
+		// 对比度略抬，并用冷色增益把整体压向设定图的蓝灰色调。
+		PostProcess->Settings.bOverride_ColorContrast = true;
+		PostProcess->Settings.ColorContrast = FVector4(1.06f, 1.06f, 1.06f, 1.f);
+		PostProcess->Settings.bOverride_ColorGain = true;
+		PostProcess->Settings.ColorGain = FVector4(0.97f, 1.f, 1.05f, 1.f);
 	}
 }

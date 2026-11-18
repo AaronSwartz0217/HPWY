@@ -12,6 +12,8 @@
 #include "Components/InstancedStaticMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
+#include "Engine/Texture2D.h"
+#include "UObject/StrongObjectPtr.h"
 #include "EngineUtils.h"
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
@@ -56,6 +58,331 @@ namespace
 		const FString Leaf = FPaths::GetCleanFilename(Folder);
 		const FString MatPath = Folder + TEXT("/Materials/M_") + Leaf + TEXT("_TwoSided.M_") + Leaf + TEXT("_TwoSided");
 		return LoadObject<UMaterialInterface>(nullptr, *MatPath);
+	}
+
+	/** 运行时生成旧报纸页面纹理；Variant 0/1/2 对应三种版式。 */
+	UTexture2D* HPWHNewsprintTexture(int32 Variant)
+	{
+		Variant = FMath::Clamp(Variant, 0, 2);
+		static TStrongObjectPtr<UTexture2D> Cached[3];
+		if (Cached[Variant].IsValid())
+		{
+			return Cached[Variant].Get();
+		}
+
+		constexpr int32 Size = 512;
+		UTexture2D* Texture = UTexture2D::CreateTransient(Size, Size, PF_B8G8R8A8);
+		if (!Texture)
+		{
+			return nullptr;
+		}
+		Texture->SRGB = true;
+		Texture->Filter = TF_Bilinear;
+		Texture->AddressX = TA_Clamp;
+		Texture->AddressY = TA_Clamp;
+
+		FTexture2DMipMap& Mip = Texture->GetPlatformData()->Mips[0];
+		uint8* Pixels = static_cast<uint8*>(Mip.BulkData.Lock(LOCK_READ_WRITE));
+		FRandomStream Stream(0x4E5753 + Variant * 7919);
+
+		auto Put = [Pixels, Size](int32 X, int32 Y, const FColor& Color)
+		{
+			if (X < 0 || Y < 0 || X >= Size || Y >= Size)
+			{
+				return;
+			}
+			uint8* Pixel = Pixels + (Y * Size + X) * 4;
+			Pixel[0] = Color.B;
+			Pixel[1] = Color.G;
+			Pixel[2] = Color.R;
+			Pixel[3] = 255;
+		};
+
+		// 纸张底色：三种版式用不同的泛黄程度与噪声。
+		const int32 BaseR = Variant == 1 ? 218 : (Variant == 2 ? 199 : 214);
+		const int32 BaseG = Variant == 1 ? 207 : (Variant == 2 ? 190 : 207);
+		const int32 BaseB = Variant == 1 ? 191 : (Variant == 2 ? 171 : 188);
+		const int32 NoiseRange = Variant == 2 ? 10 : 7;
+		for (int32 Y = 0; Y < Size; ++Y)
+		{
+			for (int32 X = 0; X < Size; ++X)
+			{
+				const int32 Noise = Stream.RandRange(-NoiseRange, NoiseRange);
+				Put(X, Y, FColor(
+					static_cast<uint8>(FMath::Clamp(BaseR + Noise, 0, 255)),
+					static_cast<uint8>(FMath::Clamp(BaseG + Noise, 0, 255)),
+					static_cast<uint8>(FMath::Clamp(BaseB + Noise, 0, 255))));
+			}
+		}
+
+		auto FillRect = [&Put](int32 X0, int32 Y0, int32 X1, int32 Y1, const FColor& Color)
+		{
+			for (int32 Y = Y0; Y < Y1; ++Y)
+			{
+				for (int32 X = X0; X < X1; ++X)
+				{
+					Put(X, Y, Color);
+				}
+			}
+		};
+		auto HLinePx = [&FillRect](int32 X0, int32 Y, int32 X1, int32 Thickness, const FColor& Color)
+		{
+			FillRect(X0, Y, X1, Y + Thickness, Color);
+		};
+		auto VLinePx = [&FillRect](int32 X, int32 Y0, int32 Y1, int32 Thickness, const FColor& Color)
+		{
+			FillRect(X, Y0, X + Thickness, Y1, Color);
+		};
+
+		if (Variant == 0)
+		{
+
+		// 报头、栏线、正文行与一张小图，拼出报纸版式。
+		for (int32 Y = 26; Y < 84; ++Y)
+		{
+			for (int32 X = 34; X < 478; ++X)
+			{
+				Put(X, Y, FColor(44, 40, 36));
+			}
+		}
+		for (int32 Y = 92; Y < 95; ++Y)
+		{
+			for (int32 X = 34; X < 478; ++X)
+			{
+				Put(X, Y, FColor(70, 64, 56));
+			}
+		}
+		for (int32 Y = 104; Y < 106; ++Y)
+		{
+			for (int32 X = 34; X < 478; ++X)
+			{
+				Put(X, Y, FColor(96, 90, 80));
+			}
+		}
+
+		const int32 ColumnX[3] = { 36, 188, 340 };
+		const int32 ColumnWidth = 136;
+		for (int32 Column = 0; Column < 3; ++Column)
+		{
+			int32 Y = 116;
+			while (Y < 486)
+			{
+				if (Column == 1 && Y > 146 && Y < 262)
+				{
+					Y = 262;
+					continue;
+				}
+				const int32 LineWidth = FMath::RoundToInt(ColumnWidth * Stream.FRandRange(0.62f, 1.f));
+				const int32 LineHeight = Stream.RandRange(4, 7);
+				const uint8 Tone = static_cast<uint8>(Stream.RandRange(58, 96));
+				for (int32 DY = 0; DY < LineHeight; ++DY)
+				{
+					for (int32 DX = 0; DX < LineWidth; ++DX)
+					{
+						Put(ColumnX[Column] + DX, Y + DY, FColor(Tone, Tone - 4, Tone - 10));
+					}
+				}
+				Y += LineHeight + Stream.RandRange(5, 8);
+				if (Stream.FRand() < 0.12f)
+				{
+					Y += 8;
+				}
+			}
+		}
+
+		// 小图：灰度块 + 图注。
+		for (int32 Y = 148; Y < 244; ++Y)
+		{
+			for (int32 X = 190; X < 326; ++X)
+			{
+				const int32 Shade = 96 + ((X - 190) * 46) / 136 + Stream.RandRange(-10, 10);
+				const uint8 Tone = static_cast<uint8>(FMath::Clamp(Shade, 0, 255));
+				Put(X, Y, FColor(Tone, Tone, Tone));
+			}
+		}
+		for (int32 Line = 0; Line < 3; ++Line)
+		{
+			for (int32 Y = 250 + Line * 10; Y < 254 + Line * 10; ++Y)
+			{
+				for (int32 X = 190; X < 190 + 118 - Line * 18; ++X)
+				{
+					Put(X, Y, FColor(72, 68, 60));
+				}
+			}
+		}
+
+		// 中缝折痕与页脚。
+		for (int32 Y = 0; Y < Size; ++Y)
+		{
+			for (int32 X = 254; X < 258; ++X)
+			{
+				Put(X, Y, FColor(198, 191, 173));
+			}
+		}
+		for (int32 Y = 492; Y < 496; ++Y)
+		{
+			for (int32 X = 210; X < 300; ++X)
+			{
+				Put(X, Y, FColor(120, 114, 102));
+			}
+		}
+		}
+		else if (Variant == 1)
+		{
+			// 号外版：黑底报头、红色号外块、大标题与大图。
+			FillRect(28, 22, 484, 88, FColor(38, 34, 30));
+			FillRect(402, 30, 472, 80, FColor(122, 32, 30));
+			FillRect(408, 38, 466, 44, FColor(216, 206, 190));
+			FillRect(408, 50, 450, 54, FColor(216, 206, 190));
+			FillRect(408, 60, 458, 64, FColor(216, 206, 190));
+			HLinePx(28, 94, 484, 3, FColor(52, 48, 42));
+			HLinePx(28, 101, 484, 1, FColor(90, 84, 74));
+
+			HLinePx(32, 114, 330, 16, FColor(40, 36, 32));
+			HLinePx(32, 138, 300, 12, FColor(44, 40, 36));
+			HLinePx(32, 158, 250, 8, FColor(52, 48, 42));
+
+			// 大图：灰度渐变 + 扫描线。
+			for (int32 Y = 182; Y < 352; ++Y)
+			{
+				for (int32 X = 32; X < 250; ++X)
+				{
+					const int32 Shade = 76 + ((X - 32) * 72) / 218 + Stream.RandRange(-9, 9);
+					const int32 Scan = (Y % 6 == 0) ? -18 : 0;
+					const uint8 Tone = static_cast<uint8>(FMath::Clamp(Shade + Scan, 0, 255));
+					Put(X, Y, FColor(Tone, Tone, Tone));
+				}
+			}
+			HLinePx(32, 360, 222, 3, FColor(74, 70, 62));
+			HLinePx(32, 368, 184, 2, FColor(86, 82, 72));
+
+			// 右栏正文。
+			int32 RightY = 114;
+			while (RightY < 478)
+			{
+				const int32 LineWidth = Stream.RandRange(150, 202);
+				const int32 LineHeight = Stream.RandRange(4, 6);
+				const uint8 Tone = static_cast<uint8>(Stream.RandRange(52, 92));
+				FillRect(270, RightY, 270 + LineWidth, RightY + LineHeight, FColor(Tone, Tone - 4, Tone - 10));
+				RightY += LineHeight + Stream.RandRange(5, 8);
+				if (Stream.FRand() < 0.10f)
+				{
+					RightY += 10;
+				}
+			}
+
+			// 大图下方的双栏正文。
+			const int32 LowerX[2] = { 32, 146 };
+			for (int32 Column = 0; Column < 2; ++Column)
+			{
+				int32 LY = 386;
+				while (LY < 478)
+				{
+					const int32 LineWidth = Stream.RandRange(58, 100);
+					const int32 LineHeight = Stream.RandRange(4, 6);
+					const uint8 Tone = static_cast<uint8>(Stream.RandRange(56, 96));
+					FillRect(LowerX[Column], LY, LowerX[Column] + LineWidth, LY + LineHeight, FColor(Tone, Tone - 4, Tone - 10));
+					LY += LineHeight + Stream.RandRange(5, 8);
+				}
+			}
+
+			VLinePx(254, 100, 490, 4, FColor(198, 190, 174));
+			HLinePx(210, 494, 300, 4, FColor(120, 114, 102));
+
+			// 红色圆章。
+			for (int32 Y = 392; Y < 452; ++Y)
+			{
+				for (int32 X = 400; X < 460; ++X)
+				{
+					const float DX = static_cast<float>(X - 430);
+					const float DY = static_cast<float>(Y - 422);
+					const float Dist = FMath::Sqrt(DX * DX + DY * DY);
+					if (Dist > 23.f && Dist < 27.f)
+					{
+						Put(X, Y, FColor(128, 34, 32));
+					}
+					else if (Dist < 18.f && (Y % 6) < 2)
+					{
+						Put(X, Y, FColor(140, 42, 38));
+					}
+				}
+			}
+		}
+		else
+		{
+			// 分类广告版：四栏小框、咖啡渍与蓝色印章。
+			FillRect(32, 26, 480, 52, FColor(46, 42, 36));
+			HLinePx(32, 58, 480, 2, FColor(72, 66, 58));
+			HLinePx(32, 64, 480, 1, FColor(96, 88, 76));
+
+			const int32 ColumnX[4] = { 32, 146, 260, 374 };
+			constexpr int32 ColumnW = 100;
+			for (int32 Column = 0; Column < 4; ++Column)
+			{
+				int32 Y = 78;
+				while (Y < 472)
+				{
+					const int32 BoxH = Stream.RandRange(42, 72);
+					HLinePx(ColumnX[Column], Y, ColumnX[Column] + ColumnW, 1, FColor(78, 72, 62));
+					HLinePx(ColumnX[Column], Y + BoxH, ColumnX[Column] + ColumnW, 1, FColor(78, 72, 62));
+					VLinePx(ColumnX[Column], Y, Y + BoxH, 1, FColor(78, 72, 62));
+					VLinePx(ColumnX[Column] + ColumnW - 1, Y, Y + BoxH, 1, FColor(78, 72, 62));
+
+					int32 LY = Y + 6;
+					while (LY < Y + BoxH - 6)
+					{
+						const int32 LineWidth = Stream.RandRange(40, ColumnW - 10);
+						const uint8 Tone = static_cast<uint8>(Stream.RandRange(62, 102));
+						HLinePx(ColumnX[Column] + 5, LY, ColumnX[Column] + 5 + LineWidth, 2, FColor(Tone, Tone - 4, Tone - 10));
+						LY += Stream.RandRange(6, 9);
+					}
+					Y += BoxH + Stream.RandRange(8, 14);
+				}
+			}
+			VLinePx(140, 70, 484, 1, FColor(150, 142, 126));
+			VLinePx(254, 70, 484, 1, FColor(150, 142, 126));
+			VLinePx(368, 70, 484, 1, FColor(150, 142, 126));
+
+			// 咖啡渍：外圈较深，内圈有随机斑点。
+			for (int32 Y = 330; Y < 450; ++Y)
+			{
+				for (int32 X = 350; X < 470; ++X)
+				{
+					const float DX = static_cast<float>(X - 410);
+					const float DY = static_cast<float>(Y - 390);
+					const float Dist = FMath::Sqrt(DX * DX + DY * DY);
+					if (Dist > 48.f && Dist < 55.f)
+					{
+						Put(X, Y, FColor(164, 146, 116));
+					}
+					else if (Dist < 44.f && Stream.FRand() < 0.06f)
+					{
+						Put(X, Y, FColor(178, 160, 130));
+					}
+				}
+			}
+
+			// 蓝色圆章与页脚。
+			for (int32 Y = 392; Y < 440; ++Y)
+			{
+				for (int32 X = 58; X < 106; ++X)
+				{
+					const float DX = static_cast<float>(X - 82);
+					const float DY = static_cast<float>(Y - 416);
+					const float Dist = FMath::Sqrt(DX * DX + DY * DY);
+					if (Dist > 18.f && Dist < 21.f)
+					{
+						Put(X, Y, FColor(44, 62, 86));
+					}
+				}
+			}
+			HLinePx(210, 494, 300, 3, FColor(118, 112, 100));
+		}
+
+		Mip.BulkData.Unlock();
+		Texture->UpdateResource();
+		Cached[Variant].Reset(Texture);
+		return Texture;
 	}
 }
 
@@ -164,13 +491,18 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 			Pair.Value->SetVisibility(false);
 		}
 	}
-	// 使用导入资产的群系隐藏方块障碍的可见性，碰撞仍保留。
+	// 使用导入资产的群系仍可保留程序化方块作为可见障碍。
 	const bool bImportedTerrainProps =
 		Record.Terrain == EHPWH_TerrainType::Books ||
 		Record.Terrain == EHPWH_TerrainType::Paper ||
 		Record.Terrain == EHPWH_TerrainType::Blocks ||
 		Record.Terrain == EHPWH_TerrainType::Desk;
-	Obstacles->SetVisibility(!bImportedTerrainProps);
+	// Paper / Blocks / Books 保留程序化方块作为可见障碍；Desk 仍由导入台灯承担。
+	const bool bPreserveProceduralObstacles =
+		Record.Terrain == EHPWH_TerrainType::Paper ||
+		Record.Terrain == EHPWH_TerrainType::Blocks ||
+		Record.Terrain == EHPWH_TerrainType::Books;
+	Obstacles->SetVisibility(!bImportedTerrainProps || bPreserveProceduralObstacles);
 	if (!bBuildProceduralObstacles)
 	{
 		return;
@@ -183,6 +515,52 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 		0x0B5u)));
 
 	const float Half = CellSizeCm * 0.5f - 70.f;
+
+	// 生成期占位：除报纸外，道具与程序化方块尽量不互相重叠。
+	struct FFootprint
+	{
+		FVector2D Center;
+		float Radius;
+	};
+	TArray<FFootprint> OccupiedCircles;
+	TArray<FBox2D> OccupiedBoxes;
+	auto IsFree = [&OccupiedCircles, &OccupiedBoxes](const FVector2D& P, float Radius)
+	{
+		for (const FFootprint& F : OccupiedCircles)
+		{
+			const float MinDist = F.Radius + Radius;
+			if (FVector2D::DistSquared(P, F.Center) < MinDist * MinDist)
+			{
+				return false;
+			}
+		}
+		for (const FBox2D& B : OccupiedBoxes)
+		{
+			const FVector2D Closest(FMath::Clamp(P.X, B.Min.X, B.Max.X),
+				FMath::Clamp(P.Y, B.Min.Y, B.Max.Y));
+			if (FVector2D::DistSquared(P, Closest) < Radius * Radius)
+			{
+				return false;
+			}
+		}
+		return true;
+	};
+	auto ReserveCircle = [&OccupiedCircles](const FVector2D& P, float Radius)
+	{
+		FFootprint F;
+		F.Center = P;
+		F.Radius = Radius;
+		OccupiedCircles.Add(F);
+	};
+	auto ReserveBox = [&OccupiedBoxes](float X, float Y, float SX, float SY, float Yaw)
+	{
+		const float Rad = FMath::DegreesToRadians(Yaw);
+		const float C = FMath::Abs(FMath::Cos(Rad));
+		const float S = FMath::Abs(FMath::Sin(Rad));
+		const float EX = (SX * C + SY * S) * 0.5f;
+		const float EY = (SX * S + SY * C) * 0.5f;
+		OccupiedBoxes.Add(FBox2D(FVector2D(X - EX, Y - EY), FVector2D(X + EX, Y + EY)));
+	};
 
 	auto AddBox = [this, &Stream, Half](float X, float Y, float SX, float SY, float SZ, float Yaw)
 	{
@@ -200,8 +578,38 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 			Stream.FRandRange(-Half + Margin, Half - Margin));
 	};
 
+	auto PlaceBox = [&AddBox, &IsFree, &ReserveCircle](float X, float Y, float SX, float SY, float SZ, float Yaw)
+	{
+		const float Radius = 0.5f * FMath::Sqrt(SX * SX + SY * SY);
+		const FVector2D P(X, Y);
+		if (!IsFree(P, Radius))
+		{
+			return false;
+		}
+		ReserveCircle(P, Radius);
+		AddBox(X, Y, SX, SY, SZ, Yaw);
+		return true;
+	};
+
+	auto PlaceRandomBox = [&AddBox, &RandomPoint, &IsFree, &ReserveCircle](float Margin, float SX, float SY, float SZ, float Yaw)
+	{
+		const float Radius = 0.5f * FMath::Sqrt(SX * SX + SY * SY);
+		for (int32 Attempt = 0; Attempt < 24; ++Attempt)
+		{
+			const FVector2D P = RandomPoint(Margin);
+			if (!IsFree(P, Radius))
+			{
+				continue;
+			}
+			ReserveCircle(P, Radius);
+			AddBox(P.X, P.Y, SX, SY, SZ, Yaw);
+			return true;
+		}
+		return false;
+	};
+
 	// 导入资产实例：按模型原始尺寸换算，底部贴地；Layers 控制向上叠放层数。
-	auto AddProp = [this, &Stream, Half](const TCHAR* MeshPath, float Scale, int32 Count, float Range, int32 StackLayers = 1, bool bVaryBlockSize = false)
+	auto AddProp = [this, &Stream, Half, &IsFree, &ReserveCircle](const TCHAR* MeshPath, float Scale, int32 Count, float Range, int32 StackLayers = 1, bool bVaryBlockSize = false)
 	{
 		UStaticMesh* Mesh = LoadObject<UStaticMesh>(nullptr, MeshPath);
 		if (!Mesh)
@@ -229,19 +637,101 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 		Comp->SetVisibility(true);
 		// Use a separate stream so changing block scale does not move other props.
 		FRandomStream SizeStream(Stream.GetCurrentSeed());
+		const FBoxSphereBounds Bounds = Mesh->GetBounds();
+		const float FootprintRadius = FMath::Sqrt(
+			Bounds.BoxExtent.X * Bounds.BoxExtent.X +
+			Bounds.BoxExtent.Y * Bounds.BoxExtent.Y) * Scale;
 		for (int32 I = 0; I < Count; ++I)
 		{
-			const float X = FMath::Clamp(Stream.FRandRange(-Range, Range), -Half, Half);
-			const float Y = FMath::Clamp(Stream.FRandRange(-Range, Range), -Half, Half);
+			FVector2D P(0.f, 0.f);
+			bool bPlaced = false;
+			for (int32 Attempt = 0; Attempt < 24; ++Attempt)
+			{
+				P = FVector2D(
+					FMath::Clamp(Stream.FRandRange(-Range, Range), -Half, Half),
+					FMath::Clamp(Stream.FRandRange(-Range, Range), -Half, Half));
+				if (IsFree(P, FootprintRadius))
+				{
+					bPlaced = true;
+					break;
+				}
+			}
+			if (!bPlaced)
+			{
+				continue;
+			}
+			ReserveCircle(P, FootprintRadius);
 			const float Yaw = Stream.FRandRange(0.f, 360.f);
+			float StackBase = 0.f;
 			for (int32 Layer = 0; Layer < StackLayers; ++Layer)
 			{
 				const float InstanceScale = Scale * (bVaryBlockSize ? SizeStream.FRandRange(0.7f, 1.f) : 1.f);
 				const float Z = StackBase + (Bounds.BoxExtent.Z - Bounds.Origin.Z) * InstanceScale;
 				Comp->AddInstance(FTransform(FRotator(0.f, Yaw + Layer * 17.f, 0.f),
-					FVector(X, Y, Z), FVector(InstanceScale)));
+					FVector(P.X, P.Y, Z), FVector(InstanceScale)));
 				StackBase += 2.f * Bounds.BoxExtent.Z * InstanceScale;
 			}
+		}
+	};
+
+	// 报纸纸片：比书页更大的薄片，按群系铺在地面；尺寸再整体放大一倍。
+	auto AddNewsprintSheets = [this, &Stream](int32 Count, float Range)
+	{
+		UTexture2D* Newsprint[3] = {
+			HPWHNewsprintTexture(0),
+			HPWHNewsprintTexture(1),
+			HPWHNewsprintTexture(2)
+		};
+		UMaterialInterface* SheetBase = LoadObject<UMaterialInterface>(nullptr,
+			TEXT("/Game/HPWH/Assets/Materials/M_HPWH_Newsprint.M_HPWH_Newsprint"));
+		UStaticMesh* SheetMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Cube.Cube"));
+		UInstancedStaticMeshComponent* Comps[3] = {
+			GetPropComponent(TEXT("HPWH_Newsprint")),
+			GetPropComponent(TEXT("HPWH_Newsprint_B")),
+			GetPropComponent(TEXT("HPWH_Newsprint_C"))
+		};
+		if (!SheetBase || !SheetMesh)
+		{
+			return;
+		}
+
+		UMaterialInstanceDynamic* SheetMaterials[3] = { nullptr, nullptr, nullptr };
+		for (int32 Variant = 0; Variant < 3; ++Variant)
+		{
+			if (!Newsprint[Variant] || !Comps[Variant])
+			{
+				continue;
+			}
+			Comps[Variant]->SetStaticMesh(SheetMesh);
+			Comps[Variant]->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			Comps[Variant]->SetCollisionProfileName(TEXT("NoCollision"));
+			Comps[Variant]->SetCastShadow(false);
+			SheetMaterials[Variant] = UMaterialInstanceDynamic::Create(SheetBase, this);
+			if (!SheetMaterials[Variant])
+			{
+				continue;
+			}
+			SheetMaterials[Variant]->SetTextureParameterValue(TEXT("Newsprint"), Newsprint[Variant]);
+			Comps[Variant]->SetMaterial(0, SheetMaterials[Variant]);
+			Comps[Variant]->SetVisibility(true);
+		}
+
+		for (int32 I = 0; I < Count; ++I)
+		{
+			const int32 Variant = Stream.RandRange(0, 2);
+			if (!Comps[Variant] || !SheetMaterials[Variant])
+			{
+				continue;
+			}
+			const float SizeScale = Stream.FRandRange(3.0f, 4.0f);
+			const float X = Stream.FRandRange(-Range, Range);
+			const float Y = Stream.FRandRange(-Range, Range);
+			const float Width = Stream.FRandRange(110.f, 165.f) * SizeScale;
+			const float Depth = Stream.FRandRange(80.f, 125.f) * SizeScale;
+			const FRotator Tilt(Stream.FRandRange(-4.f, 4.f), Stream.FRandRange(0.f, 360.f),
+				Stream.FRandRange(-4.f, 4.f));
+			Comps[Variant]->AddInstance(FTransform(Tilt, FVector(X, Y, 3.f + I * 0.25f),
+				FVector(Width / 100.f, Depth / 100.f, 0.02f)));
 		}
 	};
 
@@ -252,15 +742,13 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 		const int32 Count = 8 + FMath::RoundToInt(Record.Density * 10.f);
 		for (int32 I = 0; I < Count; ++I)
 		{
-			const FVector2D P = RandomPoint(60.f);
 			const float Size = Stream.FRandRange(24.f, 76.f);
 			const float Height = Stream.FRandRange(18.f, 56.f);
-			AddBox(P.X, P.Y, Size, Size, Height, Stream.FRandRange(0.f, 180.f));
+			PlaceRandomBox(60.f, Size, Size, Height, Stream.FRandRange(0.f, 180.f));
 		}
 		for (int32 I = 0; I < 5; ++I)
 		{
-			const FVector2D P = RandomPoint(50.f);
-			AddBox(P.X, P.Y, Stream.FRandRange(80.f, 150.f), Stream.FRandRange(70.f, 130.f), 5.f,
+			PlaceRandomBox(50.f, Stream.FRandRange(80.f, 150.f), Stream.FRandRange(70.f, 130.f), 5.f,
 				Stream.FRandRange(0.f, 180.f));
 		}
 		break;
@@ -277,7 +765,7 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 			const float SX = Stream.FRandRange(80.f, 190.f);
 			const float SY = Stream.FRandRange(80.f, 190.f);
 			const float SZ = Stream.FRandRange(70.f, 240.f);
-			AddBox(X, Y, SX, SY, SZ, Stream.RandRange(0, 3) * 90.f);
+			PlaceBox(X, Y, SX, SY, SZ, Stream.RandRange(0, 3) * 90.f);
 		}
 		break;
 	}
@@ -292,21 +780,26 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 			const float Shift = Stream.FRandRange(-CellSizeCm * 0.10f, CellSizeCm * 0.10f);
 			const float Segment = (WallLength - Gap) * 0.5f;
 			const float Height = Stream.FRandRange(180.f, 320.f);
+			const float A = Shift - Gap * 0.5f - Segment * 0.5f;
+			const float B = Shift + Gap * 0.5f + Segment * 0.5f;
 			if (bHorizontal)
 			{
-				AddBox(Shift - Gap * 0.5f - Segment * 0.5f, Offset, Segment, 46.f, Height, 0.f);
-				AddBox(Shift + Gap * 0.5f + Segment * 0.5f, Offset, Segment, 46.f, Height, 0.f);
+				AddBox(A, Offset, Segment, 46.f, Height, 0.f);
+				ReserveBox(A, Offset, Segment, 46.f, 0.f);
+				AddBox(B, Offset, Segment, 46.f, Height, 0.f);
+				ReserveBox(B, Offset, Segment, 46.f, 0.f);
 			}
 			else
 			{
-				AddBox(Offset, Shift - Gap * 0.5f - Segment * 0.5f, 46.f, Segment, Height, 0.f);
-				AddBox(Offset, Shift + Gap * 0.5f + Segment * 0.5f, 46.f, Segment, Height, 0.f);
+				AddBox(Offset, A, 46.f, Segment, Height, 0.f);
+				ReserveBox(Offset, A, 46.f, Segment, 0.f);
+				AddBox(Offset, B, 46.f, Segment, Height, 0.f);
+				ReserveBox(Offset, B, 46.f, Segment, 0.f);
 			}
 		}
 		for (int32 I = 0; I < 4; ++I)
 		{
-			const FVector2D P = RandomPoint(90.f);
-			AddBox(P.X, P.Y, Stream.FRandRange(50.f, 100.f), Stream.FRandRange(50.f, 100.f), 120.f, 0.f);
+			PlaceRandomBox(90.f, Stream.FRandRange(50.f, 100.f), Stream.FRandRange(50.f, 100.f), 120.f, 0.f);
 		}
 		break;
 	}
@@ -314,10 +807,10 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 	{
 		AddBox(-CellSizeCm * 0.24f, -CellSizeCm * 0.18f, 46.f, 46.f, 300.f, 0.f);
 		AddBox(-CellSizeCm * 0.24f, -CellSizeCm * 0.18f, 170.f, 150.f, 40.f, 20.f);
+		ReserveBox(-CellSizeCm * 0.24f, -CellSizeCm * 0.18f, 170.f, 150.f, 20.f);
 		for (int32 I = 0; I < 6; ++I)
 		{
-			const FVector2D P = RandomPoint(90.f);
-			AddBox(P.X, P.Y, Stream.FRandRange(100.f, 150.f), Stream.FRandRange(120.f, 170.f), 22.f,
+			PlaceRandomBox(90.f, Stream.FRandRange(100.f, 150.f), Stream.FRandRange(120.f, 170.f), 22.f,
 				Stream.FRandRange(-25.f, 25.f));
 		}
 		break;
@@ -327,8 +820,7 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 		const int32 Count = 6 + FMath::RoundToInt(Record.Density * 5.f);
 		for (int32 I = 0; I < Count; ++I)
 		{
-			const FVector2D P = RandomPoint(80.f);
-			AddBox(P.X, P.Y, Stream.FRandRange(110.f, 170.f), Stream.FRandRange(140.f, 210.f), 22.f,
+			PlaceRandomBox(80.f, Stream.FRandRange(110.f, 170.f), Stream.FRandRange(140.f, 210.f), 22.f,
 				Stream.FRandRange(0.f, 180.f));
 		}
 		break;
@@ -338,9 +830,8 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 		const int32 Count = Stream.RandRange(0, 3);
 		for (int32 I = 0; I < Count; ++I)
 		{
-			const FVector2D P = RandomPoint(80.f);
 			const float Size = Stream.FRandRange(12.f, 30.f);
-			AddBox(P.X, P.Y, Size, Size, Size, Stream.FRandRange(0.f, 180.f));
+			PlaceRandomBox(80.f, Size, Size, Size, Stream.FRandRange(0.f, 180.f));
 		}
 		break;
 	}
@@ -348,8 +839,8 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 		break;
 	}
 
-	// 导入网格自带碰撞，移除对应的隐形方块碰撞。
-	if (bImportedTerrainProps)
+	// 导入网格自带碰撞；只清理不保留程序化方块的群系。
+	if (bImportedTerrainProps && !bPreserveProceduralObstacles)
 	{
 		Obstacles->ClearInstances();
 	}
@@ -358,21 +849,49 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 	switch (Record.Terrain)
 	{
 	case EHPWH_TerrainType::Books:
-		AddProp(TEXT("/Game/HPWH/Assets/Models/书堆/StaticMeshes/book_pile.book_pile"), 16.f, 1, 240.f, 2);
-		AddProp(TEXT("/Game/HPWH/Assets/Models/三本书/StaticMeshes/three_books.three_books"), 16.f, 2, 300.f, 2);
-		AddProp(TEXT("/Game/HPWH/Assets/Models/一本书/StaticMeshes/one_book.one_book"), 20.f, 3, 320.f, 2);
+		AddProp(TEXT("/Game/HPWH/Assets/Models/书堆/StaticMeshes/book_pile.book_pile"), 16.f, 1, 300.f, 2);
+		AddProp(TEXT("/Game/HPWH/Assets/Models/三本书/StaticMeshes/three_books.three_books"), 16.f, 2, 360.f, 2);
+		AddProp(TEXT("/Game/HPWH/Assets/Models/一本书/StaticMeshes/one_book.one_book"), 20.f, 3, 380.f, 2);
+		AddProp(TEXT("/Game/HPWH/Assets/Models/积木/StaticMeshes/block.block"), 18.f, 2, 340.f, 2, true);
 		break;
 	case EHPWH_TerrainType::Paper:
+		// 先放体积大的积木，再让纸团填充剩余空间，避免大件被挤掉。
+		AddProp(TEXT("/Game/HPWH/Assets/Models/积木/StaticMeshes/block.block"), 18.f, 3, 360.f, 2, true);
 		AddProp(TEXT("/Game/HPWH/Assets/Models/纸团/StaticMeshes/paper_ball.paper_ball"), 16.f, 16, 310.f);
 		break;
 	case EHPWH_TerrainType::Blocks:
-		AddProp(TEXT("/Game/HPWH/Assets/Models/积木/StaticMeshes/block.block"), 20.f, 8, 300.f, 2, true);
+		AddProp(TEXT("/Game/HPWH/Assets/Models/积木/StaticMeshes/block.block"), 20.f, 8, 420.f, 2, true);
 		break;
 	case EHPWH_TerrainType::Desk:
 		// 台灯只在一部分案头格生成，降低密度。
 		if (Stream.FRand() < 0.5f)
 		{
-			AddProp(TEXT("/Game/HPWH/Assets/Models/台灯/StaticMeshes/desk_lamp.desk_lamp"), 10.f, 1, 220.f);
+			AddProp(TEXT("/Game/HPWH/Assets/Models/台灯/StaticMeshes/desk_lamp.desk_lamp"), 10.f, 1, 300.f);
+		}
+		break;
+	default:
+		break;
+	}
+
+	// 报纸页按群系铺地：纸张与书本地带最多，案头与积木地带少量点缀。
+	switch (Record.Terrain)
+	{
+	case EHPWH_TerrainType::Paper:
+		AddNewsprintSheets(6, 300.f);
+		break;
+	case EHPWH_TerrainType::Books:
+		AddNewsprintSheets(4, 300.f);
+		break;
+	case EHPWH_TerrainType::Desk:
+		AddNewsprintSheets(3, 260.f);
+		break;
+	case EHPWH_TerrainType::Blocks:
+		AddNewsprintSheets(3, 280.f);
+		break;
+	case EHPWH_TerrainType::Empty:
+		if (Stream.FRand() < 0.30f)
+		{
+			AddNewsprintSheets(1, 260.f);
 		}
 		break;
 	default:
@@ -384,8 +903,6 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 		UE_LOG(LogTemp, Display, TEXT("HPWH: props terrain=%d boxes=%d obstacleVisible=%d"),
 			static_cast<int32>(Record.Terrain), Obstacles->GetInstanceCount(),
 			Obstacles->IsVisible() ? 1 : 0);
-			float StackBase = 0.f;
-			const FBoxSphereBounds Bounds = Mesh->GetBounds();
 		for (const TPair<FString, TObjectPtr<UInstancedStaticMeshComponent>>& Pair : PropComponents)
 		{
 			if (Pair.Value && Pair.Value->GetInstanceCount() > 0)

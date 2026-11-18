@@ -30,6 +30,8 @@ public:
 	UFUNCTION(BlueprintPure, Category = "HPWH|Crawler") EHPWH_CrawlerState GetCrawlerState() const { return State; }
 	UFUNCTION(BlueprintPure, Category = "HPWH|Crawler") float GetCurrentSpeed() const { return CurrentSpeed; }
 
+	float GetAnimationSpeed() const { return AnimationSpeed; }
+
 	UPROPERTY(VisibleAnywhere, Category = "HPWH|Crawler") TObjectPtr<UStaticMeshComponent> EyeLeft;
 	UPROPERTY(VisibleAnywhere, Category = "HPWH|Crawler") TObjectPtr<UStaticMeshComponent> EyeRight;
 	UPROPERTY(VisibleAnywhere, Category = "HPWH|Crawler") TObjectPtr<UPointLightComponent> EyeLight;
@@ -51,6 +53,8 @@ private:
 	float DisruptEnd = 0.f;
 	float LastRelocateTime = -100.f;
 	float CurrentSpeed = 0.f;
+	float AnimationSpeed = 0.f;
+	bool bUsingImportedVisual = false;
 	float LastLoggedSpeed = -1.f;
 	bool bPresentationVisible = false;
 };

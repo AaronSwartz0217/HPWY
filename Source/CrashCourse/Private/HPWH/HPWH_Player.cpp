@@ -11,6 +11,7 @@
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/PointLightComponent.h"
+#include "Components/SpotLightComponent.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/InstancedStaticMeshComponent.h"
@@ -43,17 +44,27 @@ AHPWH_PlayerCharacter::AHPWH_PlayerCharacter()
 
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh> MannyMesh(
 		TEXT("/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple"));
-	if (MannyMesh.Succeeded())
-	{
-		GetMesh()->SetSkeletalMesh(MannyMesh.Object);
-	}
+
 	static ConstructorHelpers::FClassFinder<UAnimInstance> MannyAnim(
 		TEXT("/Game/Characters/Mannequins/Animations/ABP_Manny.ABP_Manny_C"));
-	if (MannyAnim.Succeeded())
+	static ConstructorHelpers::FObjectFinder<USkeletalMesh> ProtagonistMesh(
+		TEXT("/Game/zichan/model/主角/SkeletalMeshes/主角.主角"));
+	static ConstructorHelpers::FClassFinder<UAnimInstance> ProtagonistAnim(
+		TEXT("/Game/HPWH/Locomotion/Protagonist/ABP_Protagonist"));
+	const bool bUseProtagonist = ProtagonistMesh.Succeeded() && ProtagonistAnim.Succeeded();
+	GetMesh()->SetSkeletalMesh(bUseProtagonist ? ProtagonistMesh.Object.Get() : MannyMesh.Object.Get());
+	GetMesh()->SetAnimInstanceClass(bUseProtagonist ? ProtagonistAnim.Class.Get() : MannyAnim.Class.Get());
+	if (bUseProtagonist)
 	{
-		GetMesh()->SetAnimInstanceClass(MannyAnim.Class);
+		const FBoxSphereBounds Bounds = ProtagonistMesh.Object->GetBounds();
+		const float Scale = 180.f / FMath::Max(1.f, 2.f * Bounds.BoxExtent.Z);
+		GetMesh()->SetRelativeScale3D(FVector(Scale));
+		GetMesh()->SetRelativeLocation(FVector(0.f, 0.f, -96.f - (Bounds.Origin.Z - Bounds.BoxExtent.Z) * Scale));
 	}
-	GetMesh()->SetRelativeLocation(FVector(0.f, 0.f, -96.f));
+	else
+	{
+		GetMesh()->SetRelativeLocation(FVector(0.f, 0.f, -96.f));
+	}
 	GetMesh()->SetRelativeRotation(FRotator(0.f, -90.f, 0.f));
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
@@ -79,15 +90,19 @@ AHPWH_PlayerCharacter::AHPWH_PlayerCharacter()
 	SoulLamp->SetAttenuationRadius(950.f);
 	SoulLamp->SetLightColor(FLinearColor(1.f, 0.86f, 0.62f));
 
-	SoulLampVisual = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SoulLampVisual"));
-	SoulLampVisual->SetupAttachment(GetRootComponent());
-	SoulLampVisual->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	SoulLampVisual->SetRelativeLocation(FVector(0.f, 0.f, 112.f));
-	SoulLampVisual->SetRelativeScale3D(FVector(0.16f));
-	if (UStaticMesh* LampSphere = LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Sphere.Sphere")))
-	{
-		SoulLampVisual->SetStaticMesh(LampSphere);
-	}
+	// 头顶蓝色锥光：只跟随位置，不跟随朝向；配合体积雾形成可读的光柱。
+	OverheadLight = CreateDefaultSubobject<USpotLightComponent>(TEXT("OverheadLight"));
+	OverheadLight->SetupAttachment(GetRootComponent());
+	OverheadLight->SetRelativeLocation(FVector(0.f, 0.f, 300.f));
+	OverheadLight->SetUsingAbsoluteRotation(true);
+	OverheadLight->SetRelativeRotation(FRotator(-90.f, 0.f, 0.f));
+	OverheadLight->SetIntensity(40000.f);
+	OverheadLight->SetAttenuationRadius(3600.f);
+	OverheadLight->SetInnerConeAngle(12.f);
+	OverheadLight->SetOuterConeAngle(30.f);
+	OverheadLight->SetLightColor(FLinearColor(0.25f, 0.50f, 1.f));
+	OverheadLight->SetVolumetricScatteringIntensity(5.0f);
+	OverheadLight->SetCastShadows(true);
 
 	Health = MaxHealth;
 }
@@ -98,22 +113,24 @@ void AHPWH_PlayerCharacter::BeginPlay()
 	Health = MaxHealth;
 	RefreshMoveSpeed();
 	TopDownCamera->SetActive(true);
+	if (OverheadLight)
+	{
+		// 位置随角色，朝向固定在世界空间，不跟随角色转身。
+		OverheadLight->SetWorldRotation(FRotator(-90.f, 0.f, 0.f));
+	}
 
 	if (UMaterialInterface* Base = LoadObject<UMaterialInterface>(nullptr,
 		TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial")))
 	{
-		if (UMaterialInstanceDynamic* BodyMaterial = UMaterialInstanceDynamic::Create(Base, this))
+		if (UMaterialInstanceDynamic* BodyMaterial = GetMesh()->GetSkeletalMeshAsset() &&
+			GetMesh()->GetSkeletalMeshAsset()->GetFName() == FName(TEXT("SKM_Manny_Simple"))
+			? UMaterialInstanceDynamic::Create(Base, this) : nullptr)
 		{
 			BodyMaterial->SetVectorParameterValue(TEXT("Color"), FLinearColor(0.86f, 0.84f, 0.78f));
 			for (int32 Index = 0; Index < GetMesh()->GetNumMaterials(); ++Index)
 			{
 				GetMesh()->SetMaterial(Index, BodyMaterial);
 			}
-		}
-		if (UMaterialInstanceDynamic* LampMaterial = UMaterialInstanceDynamic::Create(Base, this))
-		{
-			LampMaterial->SetVectorParameterValue(TEXT("Color"), FLinearColor(1.f, 0.9f, 0.62f));
-			SoulLampVisual->SetMaterial(0, LampMaterial);
 		}
 	}
 }
@@ -709,6 +726,14 @@ AHPWH_Projectile::AHPWH_Projectile()
 		Visual->SetStaticMesh(SphereMesh.Object);
 	}
 
+	Trail = CreateDefaultSubobject<UInstancedStaticMeshComponent>(TEXT("Trail"));
+	Trail->SetupAttachment(Collision);
+	Trail->SetStaticMesh(SphereMesh.Object);
+	Trail->SetCollisionProfileName(TEXT("NoCollision"));
+	Trail->SetGenerateOverlapEvents(false);
+	Trail->SetCanEverAffectNavigation(false);
+	Trail->SetCastShadow(false);
+
 	Glow = CreateDefaultSubobject<UPointLightComponent>(TEXT("Glow"));
 	Glow->SetupAttachment(Collision);
 	Glow->SetIntensity(500.f);
@@ -730,17 +755,18 @@ void AHPWH_Projectile::InitProjectile(const FVector& Direction, float Speed, flo
 	if (Movement)
 	{
 		Movement->InitialSpeed = Speed;
-	Trail = CreateDefaultSubobject<UInstancedStaticMeshComponent>(TEXT("Trail"));
-	Trail->SetupAttachment(Collision);
-	Trail->SetStaticMesh(SphereMesh.Object);
-	Trail->SetCollisionProfileName(TEXT("NoCollision"));
-	Trail->SetGenerateOverlapEvents(false);
-	Trail->SetCanEverAffectNavigation(false);
-	Trail->SetCastShadow(false);
-
 		Movement->MaxSpeed = Speed;
 		Movement->Velocity = Direction.GetSafeNormal() * Speed;
 	}
+
+	TrailAge = 0.f;
+	Trail->ClearInstances();
+	if (GetNetMode() != NM_DedicatedServer)
+	{
+		for (int32 I = 0; I < 6; ++I)
+			Trail->AddInstance(FTransform(FQuat::Identity, FVector::ZeroVector, FVector(0.001f)));
+	}
+	SetActorTickEnabled(Trail->GetInstanceCount() > 0);
 
 	UMaterialInterface* Base = LoadObject<UMaterialInterface>(nullptr, TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
 	if (Base)
@@ -751,42 +777,12 @@ void AHPWH_Projectile::InitProjectile(const FVector& Direction, float Speed, flo
 			const FLinearColor Color = bHostile ? FLinearColor(0.45f, 0.6f, 1.f) : FLinearColor(1.f, 0.82f, 0.42f);
 			Mid->SetVectorParameterValue(TEXT("Color"), Color);
 			Visual->SetMaterial(0, Mid);
+			Trail->SetMaterial(0, Mid);
 			Glow->SetLightColor(Color);
 		}
 	}
 }
 
-void AHPWH_Projectile::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
-	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-{
-	if (!IsValid(OtherActor) || OtherActor == GetOwner())
-	{
-		return;
-	}
-	TrailAge = 0.f;
-	Trail->ClearInstances();
-	if (GetNetMode() != NM_DedicatedServer)
-	{
-		for (int32 I = 0; I < 6; ++I)
-			Trail->AddInstance(FTransform(FQuat::Identity, FVector::ZeroVector, FVector(0.001f)));
-	}
-	SetActorTickEnabled(Trail->GetInstanceCount() > 0);
-
-
-	if (bHostile)
-	{
-		if (AHPWH_PlayerCharacter* Player = Cast<AHPWH_PlayerCharacter>(OtherActor))
-		{
-			Player->TakeHPWHDamage(Damage, false);
-			Destroy();
-		}
-		return;
-			Trail->SetMaterial(0, Mid);
-	}
-
-	if (AHPWH_Companion* Companion = Cast<AHPWH_Companion>(OtherActor))
-	{
-		if (Companion->IsHostile())
 void AHPWH_Projectile::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
@@ -804,6 +800,27 @@ void AHPWH_Projectile::Tick(float DeltaSeconds)
 	}
 }
 
+void AHPWH_Projectile::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
+	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (!IsValid(OtherActor) || OtherActor == GetOwner())
+	{
+		return;
+	}
+
+	if (bHostile)
+	{
+		if (AHPWH_PlayerCharacter* Player = Cast<AHPWH_PlayerCharacter>(OtherActor))
+		{
+			Player->TakeHPWHDamage(Damage, false);
+			Destroy();
+		}
+		return;
+	}
+
+	if (AHPWH_Companion* Companion = Cast<AHPWH_Companion>(OtherActor))
+	{
+		if (Companion->IsHostile())
 		{
 			Companion->ReceiveHPWHDamage(Damage);
 			Destroy();

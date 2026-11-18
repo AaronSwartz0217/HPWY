@@ -9,6 +9,7 @@
 #include "Components/PointLightComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
+#include "Engine/SkeletalMesh.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Materials/MaterialInstanceDynamic.h"
@@ -45,6 +46,22 @@ AHPWH_Crawler::AHPWH_Crawler()
 	GetMesh()->SetRelativeLocation(FVector(0.f, 0.f, -260.f));
 	GetMesh()->SetRelativeRotation(FRotator(0.f, -90.f, 0.f));
 	GetMesh()->SetRelativeScale3D(FVector(3.2f));
+	static ConstructorHelpers::FObjectFinder<USkeletalMesh> CrawlerMesh(
+		TEXT("/Game/zichan/model/徘徊者/SkeletalMeshes/徘徊者.徘徊者"));
+	static ConstructorHelpers::FClassFinder<UAnimInstance> CrawlerAnim(
+		TEXT("/Game/HPWH/Locomotion/ZichanCrawler/ABP_ZichanCrawler"));
+
+	if (CrawlerMesh.Succeeded() && CrawlerAnim.Succeeded())
+	{
+		bUsingImportedVisual = true;
+		GetMesh()->SetSkeletalMesh(CrawlerMesh.Object);
+		GetMesh()->SetAnimInstanceClass(CrawlerAnim.Class);
+		const FBoxSphereBounds Bounds = CrawlerMesh.Object->GetBounds();
+		const float Scale = 576.f / FMath::Max(1.f, 2.f * Bounds.BoxExtent.Z);
+		GetMesh()->SetRelativeScale3D(FVector(Scale));
+		GetMesh()->SetRelativeLocation(FVector(0.f, 0.f, -300.f - (Bounds.Origin.Z - Bounds.BoxExtent.Z) * Scale));
+
+	}
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> SphereMesh(
@@ -83,6 +100,13 @@ AHPWH_Crawler::AHPWH_Crawler()
 void AHPWH_Crawler::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (bUsingImportedVisual)
+	{
+		EyeLeft->SetVisibility(false);
+		EyeRight->SetVisibility(false);
+		return;
+	}
 
 	UMaterialInterface* Base = LoadObject<UMaterialInterface>(nullptr,
 		TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
@@ -179,6 +203,7 @@ float AHPWH_Crawler::ComputeCurrentSpeed(const APawn* PlayerBody) const
 void AHPWH_Crawler::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+	AnimationSpeed = 0.f;
 
 	if (State == EHPWH_CrawlerState::Dormant)
 	{
@@ -218,7 +243,8 @@ void AHPWH_Crawler::Tick(float DeltaSeconds)
 	if (Distance > 240.f && Distance > KINDA_SMALL_NUMBER)
 	{
 		// 连续推进，显示与查询时再吸附到 0.1 米，避免慢速时被反复舍入卡住。
-		LogicalLocation += Direction.GetSafeNormal() * CurrentSpeed * DeltaSeconds;
+		AnimationSpeed = FMath::Min(CurrentSpeed, (Distance - 240.f) / FMath::Max(DeltaSeconds, SMALL_NUMBER));
+		LogicalLocation += Direction.GetSafeNormal() * AnimationSpeed * DeltaSeconds;
 		LogicalLocation.Z = 300.f;
 		SetActorRotation(FRotator(0.f, Direction.Rotation().Yaw, 0.f));
 	}

@@ -12,6 +12,7 @@ class CRASHCOURSE_API UCC_AnimationSetupLibrary : public UBlueprintFunctionLibra
 {
 	GENERATED_BODY()
 public:
+    UFUNCTION(BlueprintCallable,Category="Crash|Editor") static int32 ReplacePackageAssetReferences(UObject* Asset, const TArray<UObject*>& From, const TArray<UObject*>& To);
  UFUNCTION(BlueprintCallable,Category="Crash|Editor") static int32 RepairLegacyWidgetPins(UBlueprint* Blueprint);
  UFUNCTION(BlueprintPure,Category="Crash|Editor") static bool IsNaniteBlendSupported(UMaterialInterface* Material);
 	UFUNCTION(BlueprintCallable, Category="Crash|Editor") static FString DescribeBlueprintGraphs(UBlueprint* Blueprint);

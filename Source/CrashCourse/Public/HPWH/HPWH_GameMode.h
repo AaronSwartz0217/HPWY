@@ -117,10 +117,19 @@ public:
 	EHPWH_GraphicsMode GetGraphicsMode() const { return GraphicsMode; }
 	void HandleMenuSelection(int32 Index);
 	void MenuBack();
-	void StartGameFromMenu();
+	/** bShowIntro：开始新游戏时先播放开场两页剧情插画。 */
+	void StartGameFromMenu(bool bShowIntro = true);
 	bool HasSaveGame() const;
 	bool LoadProgress();
 	void SetGraphicsMode(EHPWH_GraphicsMode Mode);
+
+	// 剧情插画
+	bool IsStoryActive() const { return StoryScene != EHPWH_StoryScene::None; }
+	EHPWH_StoryScene GetStoryScene() const { return StoryScene; }
+	/** 当前插画已展示的秒数，用于滑入动画。 */
+	float GetStorySceneElapsed() const;
+	/** 点击推进：先补完滑入动画，再切下一页或结束。 */
+	void AdvanceStory();
 
 	// 游戏内菜单
 	bool IsInGameMenuOpen() const { return bInGameMenuOpen; }
@@ -133,6 +142,8 @@ public:
 
 private:
 	void AdvanceLayer();
+	void EnterGameplay();
+	void BeginStoryScene(EHPWH_StoryScene Scene);
 	void PlacePlayerAtOrigin();
 	void EnsureRuntimeLighting();
 	void BeginUpgradeSelection();
@@ -198,6 +209,8 @@ private:
 	bool bPortalChoiceActive = false;
 	bool bPortalChoiceSuccess = false;
 	double PortalChoiceRealTime = 0.0;
+	EHPWH_StoryScene StoryScene = EHPWH_StoryScene::None;
+	double StorySceneRealTime = 0.0;
 	double NextDebugSfxTime = 0.0;
 	int32 DebugSfxIndex = 0;
 	bool bDebugSfx = false;

@@ -1,6 +1,8 @@
 #include "Characters/CC_CharacterAnimInstance.h"
 #include "Characters/CC_BaseCharacter.h"
 #include "Characters/CC_LocomotionComponent.h"
+#include "HPWH/HPWH_Player.h"
+#include "HPWH/HPWH_Crawler.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 void UCC_CharacterAnimInstance::NativeInitializeAnimation()
@@ -13,10 +15,24 @@ void UCC_CharacterAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 {
     Super::NativeUpdateAnimation(DeltaSeconds);
     const auto* C=Cast<ACC_BaseCharacter>(TryGetPawnOwner());
-    if (!C || !C->Locomotion) return;
-    const FCC_MeshLocomotion* Entry=C->Locomotion->GetCurrentEntry();
-    UpdateMovementState(DeltaSeconds,C->GetVelocity().Size2D(),C->GetVelocity().Z,
-        C->GetCharacterMovement()->IsFalling(),C->IsAlive(),Entry ? Entry->ReferenceSpeed : 400.f);
+    if (const auto* Ink = Cast<AHPWH_PlayerCharacter>(TryGetPawnOwner()))
+    {
+        const FVector Velocity = Ink->GetVelocity();
+        UpdateMovementState(DeltaSeconds, Velocity.Size2D(), Velocity.Z,
+            Ink->GetCharacterMovement()->IsFalling(), Ink->GetHealth() > 0.f, 400.f);
+    }
+    else if (const auto* Crawler = Cast<AHPWH_Crawler>(TryGetPawnOwner()))
+    {
+        // The crawler moves using logical coordinates, not CharacterMovement velocity.
+        UpdateMovementState(DeltaSeconds, Crawler->GetAnimationSpeed(), 0.f, false, true, 170.f);
+    }
+    else if (C && C->Locomotion)
+    {
+        const FCC_MeshLocomotion* Entry = C->Locomotion->GetCurrentEntry();
+        UpdateMovementState(DeltaSeconds, C->GetVelocity().Size2D(), C->GetVelocity().Z,
+            C->GetCharacterMovement()->IsFalling(), C->IsAlive(), Entry ? Entry->ReferenceSpeed : 400.f);
+    }
+    else return;
     if (bDead && IsAnyMontagePlaying()) Montage_Stop(.08f);
 }
 void UCC_CharacterAnimInstance::UpdateMovementState(float DeltaSeconds,float RawSpeed,float VerticalSpeed,bool bFalling,bool bAlive,float ReferenceSpeed)

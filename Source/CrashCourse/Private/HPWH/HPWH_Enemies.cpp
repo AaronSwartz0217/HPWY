@@ -361,21 +361,36 @@ AHPWH_CoinMonster::AHPWH_CoinMonster()
 		CoinMesh->SetAnimInstanceClass(CoinAnim.Class);
 	}
 	CoinMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	CoinMesh->SetRelativeLocation(FVector(0.f, 0.f, -42.f));
-	CoinMesh->SetRelativeRotation(FRotator(90.f, -90.f, 0.f));
-	CoinMesh->SetRelativeScale3D(FVector(0.30257f));
+	// Keep the native coin rig upright and align the bottom of the mesh with the capsule.
+	constexpr float CoinScale = 0.30257f;
+	CoinMesh->SetRelativeRotation(FRotator::ZeroRotator);
+	CoinMesh->SetRelativeScale3D(FVector(CoinScale));
+	const float Bottom = CoinAsset.Succeeded() ? CoinAsset.Object->GetBounds().GetBox().Min.Z : 0.f;
+	CoinMesh->SetRelativeLocation(FVector(0.f, 0.f, -42.f - CoinScale * Bottom));
 
 	CoinLight = CreateDefaultSubobject<UPointLightComponent>(TEXT("CoinLight"));
 	CoinLight->SetupAttachment(CoinMesh);
-	CoinLight->SetRelativeLocation(FVector(0.f, 0.f, 50.f));
-	CoinLight->SetIntensity(260.f);
-	CoinLight->SetAttenuationRadius(320.f);
+	CoinLight->SetRelativeLocation(FVector(0.f, 0.f, 26.f));
+	CoinLight->SetIntensity(140.f);
+	CoinLight->SetAttenuationRadius(240.f);
 	CoinLight->SetLightColor(FLinearColor(0.95f, 0.78f, 0.32f));
 }
 
 void AHPWH_CoinMonster::BeginPlay()
 {
 	Super::BeginPlay();
+	if (FParse::Param(FCommandLine::Get(), TEXT("HPWHDebugCoin")))
+	{
+		const FBox LocalBox = CoinMesh && CoinMesh->GetSkeletalMeshAsset()
+			? CoinMesh->GetSkeletalMeshAsset()->GetBounds().GetBox() : FBox(ForceInit);
+		const FBox WorldBox = CoinMesh ? CoinMesh->Bounds.GetBox() : FBox(ForceInit);
+		UE_LOG(LogTemp, Display, TEXT("HPWH: coin asset=%s mat=%s local=(%.1f,%.1f,%.1f) world=(%.1f,%.1f,%.1f) loc=(%.1f,%.1f,%.1f)"),
+			CoinMesh && CoinMesh->GetSkeletalMeshAsset() ? *CoinMesh->GetSkeletalMeshAsset()->GetName() : TEXT("none"),
+			CoinMesh && CoinMesh->GetMaterial(0) ? *CoinMesh->GetMaterial(0)->GetName() : TEXT("none"),
+			LocalBox.GetSize().X, LocalBox.GetSize().Y, LocalBox.GetSize().Z,
+			WorldBox.GetSize().X, WorldBox.GetSize().Y, WorldBox.GetSize().Z,
+			GetActorLocation().X, GetActorLocation().Y, GetActorLocation().Z);
+	}
 	SpawnLocation = GetActorLocation();
 	PatrolTarget = SpawnLocation;
 	NextPatrolTime = 0.f;

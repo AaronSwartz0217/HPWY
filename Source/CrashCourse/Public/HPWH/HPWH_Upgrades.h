@@ -83,7 +83,7 @@ struct FHPWH_UpgradeOption
 /** 三选一卡片的屏幕布局，HUD 绘制与触摸命中共用。 */
 struct FHPWH_UpgradeCardLayout
 {
-	FVector2D CardSize = FVector2D(300.f, 420.f);
+	FVector2D CardSize = FVector2D(340.f, 480.f);
 	FVector2D Centers[3];
 	FVector2D RerollCenter = FVector2D::ZeroVector;
 	FVector2D RerollSize = FVector2D(170.f, 42.f);

@@ -15,14 +15,14 @@
 
 void SCC_LoadingScreen::Construct(const FArguments& Args)
 {
- const FLinearColor Gold(.72f,.55f,.29f,1),Muted(.48f,.45f,.38f,1);
+ const FLinearColor LoadingGold(.72f,.55f,.29f,1),LoadingMuted(.48f,.45f,.38f,1);
  LogoBrush.DrawAs=ESlateBrushDrawType::Image;
  LogoBrush.SetResourceObject(Args._Logo);
  LogoBrush.ImageSize=Args._Logo?FVector2D(Args._Logo->GetSizeX(),Args._Logo->GetSizeY()):FVector2D(600,246);
  ProgressStyle.SetBackgroundImage(FSlateRoundedBoxBrush(FLinearColor(.065f,.058f,.043f,1),3.f));
- ProgressStyle.SetFillImage(FSlateRoundedBoxBrush(Gold,3.f));
+ ProgressStyle.SetFillImage(FSlateRoundedBoxBrush(LoadingGold,3.f));
  FSlateBrush Marquee=FCoreStyle::Get().GetWidgetStyle<FProgressBarStyle>("ProgressBar").MarqueeImage;
- Marquee.TintColor=Gold;
+ Marquee.TintColor=LoadingGold;
  ProgressStyle.SetMarqueeImage(Marquee);
  const auto Progress=Args._Progress;
  const auto Opening=Args._Opening;
@@ -58,7 +58,7 @@ void SCC_LoadingScreen::Construct(const FArguments& Args)
          .FillColorAndOpacity(FLinearColor::White).Percent_Lambda([Progress,Opening](){return Opening.Get()?TOptional<float>():Progress.Get();})]
        ]
        +SVerticalBox::Slot().AutoHeight().HAlign(HAlign_Center).Padding(0,18,0,0)
-       [SNew(STextBlock).Font(CCGameFont::Kai(FCoreStyle::GetDefaultFontStyle("Regular",16))).ColorAndOpacity(Muted)
+       [SNew(STextBlock).Font(CCGameFont::Kai(FCoreStyle::GetDefaultFontStyle("Regular",16))).ColorAndOpacity(LoadingMuted)
         .Text_Lambda([Progress,Opening](){
          const auto Value=Progress.Get();
          return FText::FromString(Opening.Get()?TEXT("正在初始化场景，请稍候…"):Value.IsSet()?

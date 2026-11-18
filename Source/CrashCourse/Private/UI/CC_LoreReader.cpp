@@ -1,4 +1,4 @@
-#include "UI/CC_LoreReader.h"
+﻿#include "UI/CC_LoreReader.h"
 
 #include "Player/CC_PlayerController.h"
 #include "UI/CC_GameFont.h"
@@ -19,16 +19,16 @@
 
 namespace
 {
-const FLinearColor Ink(.085f,.047f,.026f);
+const FLinearColor LoreInk(.085f,.047f,.026f);
 const FLinearColor MutedInk(.23f,.137f,.075f);
-const FLinearColor Seal(.34f,.048f,.025f);
+const FLinearColor LoreSeal(.34f,.048f,.025f);
 const FLinearColor BookBindingColor(.115f,.054f,.027f);
 const FSlateRoundedBoxBrush Veil(FLinearColor(0.015f,0.011f,0.008f,.76f), 0.f);
 const FSlateRoundedBoxBrush Cover(BookBindingColor, 9.f, FLinearColor(.32f,.17f,.06f), 1.f);
 const FSlateRoundedBoxBrush LeftPaper(FLinearColor(.75f,.60f,.37f), 3.f);
 const FSlateRoundedBoxBrush RightPaper(FLinearColor(.88f,.76f,.53f), 3.f);
 const FSlateRoundedBoxBrush Gutter(FLinearColor(.22f,.115f,.052f), 0.f);
-const FSlateRoundedBoxBrush Selected(FLinearColor(.49f,.24f,.10f,.20f), 4.f);
+const FSlateRoundedBoxBrush LoreSelected(FLinearColor(.49f,.24f,.10f,.20f), 4.f);
 const FSlateRoundedBoxBrush Blank(FLinearColor::Transparent, 0.f);
 const FSlateRoundedBoxBrush ThoughtPanel(FLinearColor(.018f,.013f,.010f,.93f), 4.f,
     FLinearColor(.50f,.35f,.16f,.85f), 1.f);
@@ -54,7 +54,7 @@ TSharedRef<SWidget> UCC_LoreReader::RebuildWidget()
         {
             Index->AddSlot().Padding(6,12,0,5)
             [
-                SNew(STextBlock).Text(Entry.Section).Font(BookFont(15)).ColorAndOpacity(Seal)
+                SNew(STextBlock).Text(Entry.Section).Font(BookFont(15)).ColorAndOpacity(LoreSeal)
             ];
         }
         LastSection = Entry.Section;
@@ -65,10 +65,10 @@ TSharedRef<SWidget> UCC_LoreReader::RebuildWidget()
             .OnClicked_Lambda([this, Page] { SetPage(Page); return FReply::Handled(); })
             [
                 SNew(SBorder)
-                .BorderImage_Lambda([this, Page] { return Page == PageIndex ? &Selected : &Blank; })
+                .BorderImage_Lambda([this, Page] { return Page == PageIndex ? &LoreSelected : &Blank; })
                 .Padding(FMargin(9, 8))
                 [
-                    SNew(STextBlock).Text(Entry.Title).Font(BookFont(18)).ColorAndOpacity(Ink)
+                    SNew(STextBlock).Text(Entry.Title).Font(BookFont(18)).ColorAndOpacity(LoreInk)
                         .AutoWrapText(true)
                 ]
             ];
@@ -81,7 +81,7 @@ TSharedRef<SWidget> UCC_LoreReader::RebuildWidget()
         SNew(SVerticalBox)
         + SVerticalBox::Slot().AutoHeight().Padding(5,0,0,8)
         [
-            SNew(STextBlock).Text(Book->Title).Font(BookFont(29)).ColorAndOpacity(Ink).AutoWrapText(true)
+            SNew(STextBlock).Text(Book->Title).Font(BookFont(29)).ColorAndOpacity(LoreInk).AutoWrapText(true)
         ]
         + SVerticalBox::Slot().AutoHeight().Padding(5,0,0,8)
         [
@@ -99,7 +99,7 @@ TSharedRef<SWidget> UCC_LoreReader::RebuildWidget()
             .OnClicked(Action)
             .IsEnabled(Enabled)
             [
-                SNew(STextBlock).Text(FText::FromString(Label)).Font(BookFont(17)).ColorAndOpacity(Seal)
+                SNew(STextBlock).Text(FText::FromString(Label)).Font(BookFont(17)).ColorAndOpacity(LoreSeal)
             ];
     };
     auto RightPage = SNew(SBorder).BorderImage(&RightPaper).Padding(FMargin(30,20,28,18))
@@ -116,7 +116,7 @@ TSharedRef<SWidget> UCC_LoreReader::RebuildWidget()
                     const FText& Section = Book->Pages[PageIndex].Section;
                     return Section.IsEmpty() ? Book->Title : Section;
                 })
-                .Font(BookFont(16)).ColorAndOpacity(Seal)
+                .Font(BookFont(16)).ColorAndOpacity(LoreSeal)
             ]
             + SHorizontalBox::Slot().AutoWidth()
             [
@@ -128,7 +128,7 @@ TSharedRef<SWidget> UCC_LoreReader::RebuildWidget()
         [
             SNew(STextBlock)
                 .Text_Lambda([this] { return Book->Pages[PageIndex].Title; })
-                .Font(BookFont(31)).ColorAndOpacity(Ink).AutoWrapText(true)
+                .Font(BookFont(31)).ColorAndOpacity(LoreInk).AutoWrapText(true)
         ]
         + SVerticalBox::Slot().AutoHeight().Padding(0,0,0,16)[SNew(SSeparator).ColorAndOpacity(MutedInk)]
         + SVerticalBox::Slot().FillHeight(1)
@@ -138,7 +138,7 @@ TSharedRef<SWidget> UCC_LoreReader::RebuildWidget()
             [
                 SNew(STextBlock)
                     .Text_Lambda([this] { return Book->Pages[PageIndex].Body; })
-                    .Font(BookFont(21)).ColorAndOpacity(Ink).AutoWrapText(true).LineHeightPercentage(1.32f)
+                    .Font(BookFont(21)).ColorAndOpacity(LoreInk).AutoWrapText(true).LineHeightPercentage(1.32f)
             ]
         ]
         + SVerticalBox::Slot().AutoHeight().Padding(0,12,0,0)
@@ -208,7 +208,7 @@ TSharedRef<SWidget> UCC_LoreReader::RebuildWidget()
                     SNew(SVerticalBox)
                     + SVerticalBox::Slot().AutoHeight().Padding(0,0,0,7)
                     [
-                        SNew(STextBlock).Text(FText::FromString(TEXT("初墨 · 心声")))
+                        SNew(STextBlock).Text(FText::FromString(TEXT("尤里西斯 · 心声")))
                             .Font(BookFont(17)).ColorAndOpacity(FLinearColor(.88f,.68f,.36f))
                     ]
                     + SVerticalBox::Slot().FillHeight(1).VAlign(VAlign_Center)

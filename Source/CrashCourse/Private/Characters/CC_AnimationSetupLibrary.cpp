@@ -6,6 +6,8 @@ bool UCC_AnimationSetupLibrary::IsNaniteBlendSupported(UMaterialInterface* Mater
 }
 #if WITH_EDITOR
 #include "Animation/AnimBlueprint.h"
+#include "Serialization/ArchiveReplaceObjectRef.h"
+#include "UObject/UObjectHash.h"
 #include "Animation/AnimSequence.h"
 #include "Animation/Skeleton.h"
 #include "AnimGraphNode_Root.h"
@@ -237,5 +239,29 @@ FName UCC_AnimationSetupLibrary::ConfigureUpperBodyAttack(UAnimBlueprint* Bluepr
     return Blueprint->Status == BS_Error ? NAME_None : Spine;
 #else
     return NAME_None;
+#endif
+}
+
+int32 UCC_AnimationSetupLibrary::ReplacePackageAssetReferences(UObject* Asset, const TArray<UObject*>& From, const TArray<UObject*>& To)
+{
+#if WITH_EDITOR
+    if (!Asset || From.Num() != To.Num()) return -1;
+    TMap<UObject*,UObject*> Replacements;
+    for (int32 I=0; I<From.Num(); ++I)
+        if (From[I] && To[I] && To[I]->IsA(From[I]->GetClass()) && From[I] != To[I])
+            Replacements.Add(From[I],To[I]);
+    TArray<UObject*> Objects;
+    GetObjectsWithOuter(Asset->GetOutermost(), Objects, true);
+    int32 Count = 0;
+    for (UObject* Obj : Objects)
+    {
+        FArchiveReplaceObjectRef<UObject> Archive(Obj, Replacements,
+            EArchiveReplaceObjectFlags::IgnoreOuterRef | EArchiveReplaceObjectFlags::IgnoreArchetypeRef);
+        Count += Archive.GetCount();
+    }
+    if (Count) Asset->MarkPackageDirty();
+    return Count;
+#else
+    return -1;
 #endif
 }

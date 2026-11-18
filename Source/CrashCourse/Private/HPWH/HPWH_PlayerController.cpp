@@ -71,6 +71,16 @@ void AHPWH_PlayerController::Tick(float DeltaSeconds)
 
 	if (AHPWH_GameMode* GM = Cast<AHPWH_GameMode>(UGameplayStatics::GetGameMode(this)))
 	{
+		if (GM->IsStoryActive())
+		{
+			// 鼠标点击由 AttackPressed 处理，这里只接键盘，避免同帧推进两页。
+			if (WasInputKeyJustPressed(EKeys::Enter) || WasInputKeyJustPressed(EKeys::SpaceBar) ||
+				WasInputKeyJustPressed(EKeys::One))
+			{
+				GM->AdvanceStory();
+			}
+			return;
+		}
 		if (GM->IsMainMenuActive())
 		{
 			if (WasInputKeyJustPressed(EKeys::One)) GM->HandleMenuSelection(0);
@@ -126,6 +136,21 @@ void AHPWH_PlayerController::Tick(float DeltaSeconds)
 
 	APawn* ControlledPawn = GetPawn();
 	AHPWH_PlayerCharacter* Body = Cast<AHPWH_PlayerCharacter>(ControlledPawn);
+	if (Body && !Body->IsRunLocked() && WasInputKeyJustPressed(EKeys::R))
+	{
+		AHPWH_CourtyardPOI* Best = nullptr;
+		float BestDistance = TNumericLimits<float>::Max();
+		for (TActorIterator<AHPWH_CourtyardPOI> It(GetWorld()); It; ++It)
+		{
+			const float Distance = FVector::Dist2D(Body->GetActorLocation(), It->GetActorLocation());
+			if (Distance <= It->GetHPWHInteractRange() && Distance < BestDistance && It->CanHPWHInteract(Body))
+			{
+				Best = *It;
+				BestDistance = Distance;
+			}
+		}
+		if (Best) Best->HPWHInteract(Body);
+	}
 
 	float MouseDeltaX = 0.f;
 	float MouseDeltaY = 0.f;
@@ -396,6 +421,11 @@ void AHPWH_PlayerController::TouchPressed(ETouchIndex::Type FingerIndex, FVector
 
 	if (auto* GM = Cast<AHPWH_GameMode>(UGameplayStatics::GetGameMode(this)))
 	{
+		if (GM->IsStoryActive())
+		{
+			GM->AdvanceStory();
+			return;
+		}
 		if (GM->IsMainMenuActive())
 		{
 			HandleMenuPoint(Point);
@@ -553,6 +583,11 @@ void AHPWH_PlayerController::AttackPressed()
 {
 	if (AHPWH_GameMode* GM = Cast<AHPWH_GameMode>(UGameplayStatics::GetGameMode(this)))
 	{
+		if (GM->IsStoryActive())
+		{
+			GM->AdvanceStory();
+			return;
+		}
 		if (GM->IsMainMenuActive())
 		{
 			float MouseX = 0.f;
@@ -644,7 +679,17 @@ void AHPWH_PlayerController::AttackPressed()
 void AHPWH_PlayerController::AttackReleased() { bMouseAttack = false; }
 void AHPWH_PlayerController::LookPressed() { bLookHeld = true; }
 void AHPWH_PlayerController::LookReleased() { bLookHeld = false; }
-void AHPWH_PlayerController::InteractPressed() { Interact(); }
+void AHPWH_PlayerController::InteractPressed()
+{
+	if (const AHPWH_GameMode* GM = Cast<AHPWH_GameMode>(UGameplayStatics::GetGameMode(this)))
+	{
+		if (GM->IsStoryActive())
+		{
+			return;
+		}
+	}
+	Interact();
+}
 
 FVector2D AHPWH_PlayerController::GetViewportSize2D() const
 {

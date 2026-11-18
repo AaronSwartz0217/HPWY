@@ -17,7 +17,9 @@
 #include "EngineUtils.h"
 #include "Fonts/FontMeasure.h"
 #include "Framework/Application/SlateApplication.h"
+#include "ImageUtils.h"
 #include "Kismet/GameplayStatics.h"
+#include "Misc/Paths.h"
 #include "Rendering/DrawElements.h"
 #include "Styling/CoreStyle.h"
 
@@ -50,6 +52,22 @@ namespace
 		const TSharedRef<FSlateFontMeasure> Measure = FSlateApplication::Get().GetRenderer()->GetFontMeasureService();
 		return Measure->Measure(Text, Font);
 	}
+
+	/** 剧情插画优先读 uasset；美术未导入时直接读 Content 下的 PNG。 */
+	UTexture2D* LoadStoryImage(const TCHAR* FileName, const TCHAR* AssetPath)
+	{
+		if (UTexture2D* Imported = LoadObject<UTexture2D>(nullptr, AssetPath, nullptr, LOAD_NoWarn | LOAD_Quiet))
+		{
+			return Imported;
+		}
+		const FString FilePath = FPaths::ProjectContentDir() / TEXT("HPWH/UI/Story") / FileName;
+		if (!FPaths::FileExists(FilePath))
+		{
+			UE_LOG(LogTemp, Warning, TEXT("HPWH: story image missing at %s"), *FilePath);
+			return nullptr;
+		}
+		return FImageUtils::ImportFileAsTexture2D(FilePath);
+	}
 }
 
 TSharedRef<SWidget> UHPWH_HUDWidget::RebuildWidget()
@@ -72,6 +90,15 @@ void UHPWH_HUDWidget::NativeConstruct()
 		TEXT("/Game/HPWH/UI/Sprites/T_HPWH_Orb.T_HPWH_Orb"));
 	MenuBackgroundTexture = LoadObject<UTexture2D>(nullptr,
 		TEXT("/Game/HPWH/UI/Sprites/T_HPWH_MenuBg.T_HPWH_MenuBg"));
+	// 剧情插画：开场两页与好/坏结局，四张整页画面。
+	StoryBackgroundTexture = LoadStoryImage(TEXT("P_Story_Background.png"),
+		TEXT("/Game/HPWH/UI/Story/T_HPWH_StoryBackground.T_HPWH_StoryBackground"));
+	StoryDreamTexture = LoadStoryImage(TEXT("P_Story_Dream.png"),
+		TEXT("/Game/HPWH/UI/Story/T_HPWH_StoryDream.T_HPWH_StoryDream"));
+	StoryGoodEndingTexture = LoadStoryImage(TEXT("P_Story_GoodEnding.png"),
+		TEXT("/Game/HPWH/UI/Story/T_HPWH_StoryGoodEnding.T_HPWH_StoryGoodEnding"));
+	StoryBadEndingTexture = LoadStoryImage(TEXT("P_Story_BadEnding.png"),
+		TEXT("/Game/HPWH/UI/Story/T_HPWH_StoryBadEnding.T_HPWH_StoryBadEnding"));
 }
 
 void UHPWH_HUDWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
@@ -285,6 +312,64 @@ int32 UHPWH_HUDWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 		}
 	};
 
+	// 剧情插画：全屏黑底，整页画面从上方滑入，点击推进。
+	if (GM)
+	{
+		const EHPWH_StoryScene Story = GM->GetStoryScene();
+		if (Story != EHPWH_StoryScene::None)
+		{
+			UTexture2D* StoryTexture = nullptr;
+			switch (Story)
+			{
+			case EHPWH_StoryScene::IntroStory: StoryTexture = StoryBackgroundTexture; break;
+			case EHPWH_StoryScene::IntroDream: StoryTexture = StoryDreamTexture; break;
+			case EHPWH_StoryScene::GoodEnding: StoryTexture = StoryGoodEndingTexture; break;
+			case EHPWH_StoryScene::BadEnding: StoryTexture = StoryBadEndingTexture; break;
+			default: break;
+			}
+
+			Rect(FVector2D(0.f, 0.f), Size, FLinearColor(0.f, 0.f, 0.f, 1.f));
+			++Layer;
+
+			float SlideT = 1.f;
+			if (StoryTexture)
+			{
+				const float TextureW = static_cast<float>(StoryTexture->GetSizeX());
+				const float TextureH = static_cast<float>(StoryTexture->GetSizeY());
+				float DrawW = Size.X;
+				float DrawH = TextureW > 0.f ? Size.X * TextureH / TextureW : Size.Y;
+				if (DrawH > Size.Y)
+				{
+					DrawH = Size.Y;
+					DrawW = TextureH > 0.f ? Size.Y * TextureW / TextureH : Size.X;
+				}
+
+				SlideT = FMath::Clamp(GM->GetStorySceneElapsed() / HPWH_StorySlideSeconds, 0.f, 1.f);
+				const float Ease = 1.f - FMath::Pow(1.f - SlideT, 3.f);
+				const float SettledTop = (Size.Y - DrawH) * 0.5f;
+				const float Top = FMath::Lerp(-DrawH, SettledTop, Ease);
+
+				FSlateBrush StoryBrush;
+				StoryBrush.SetResourceObject(StoryTexture);
+				StoryBrush.ImageSize = FVector2D(TextureW, TextureH);
+				StoryBrush.DrawAs = ESlateBrushDrawType::Image;
+				const FPaintGeometry StoryGeometry = AllottedGeometry.ToPaintGeometry(
+					FVector2f(DrawW, DrawH),
+					FSlateLayoutTransform(FVector2f(static_cast<float>((Size.X - DrawW) * 0.5f), Top)));
+				FSlateDrawElement::MakeBox(OutDrawElements, Layer, StoryGeometry, &StoryBrush,
+					ESlateDrawEffect::None, FLinearColor::White);
+			}
+
+			if (SlideT >= 1.f)
+			{
+				const float Pulse = 0.42f + 0.28f * FMath::Sin(static_cast<float>(FPlatformTime::Seconds()) * 3.2f);
+				Text(TEXT("点击继续"), FVector2D(Size.X * 0.5f, Size.Y * 0.93f), 20.f,
+					HPWHAlpha(HPWHColorInk, Pulse), true);
+			}
+			return Layer + 1;
+		}
+	}
+
 	// 主界面
 	if (GM && GM->IsMainMenuActive())
 	{
@@ -376,6 +461,22 @@ int32 UHPWH_HUDWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 	if (PC && Body)
 	{
 		const FHPWH_TouchLayout Touch = HPWH_MakeTouchLayout(Size);
+
+		// 常驻边框薄雾：由外侧向画面内叠加多层半透明带，边缘略浓、向内快速淡出。
+		{
+			static const float FogRatios[] = { 0.026f, 0.050f, 0.078f, 0.108f };
+			for (int32 FogIndex = 0; FogIndex < UE_ARRAY_COUNT(FogRatios); ++FogIndex)
+			{
+				const float Alpha = 0.125f * (1.f - FogIndex * 0.20f);
+				const FLinearColor FogBand(0.17f, 0.21f, 0.28f, Alpha);
+				const float BandY = Size.Y * FogRatios[FogIndex];
+				const float BandX = Size.X * FogRatios[FogIndex];
+				Rect(FVector2D(0.f, 0.f), FVector2D(Size.X, BandY), FogBand);
+				Rect(FVector2D(0.f, Size.Y - BandY), FVector2D(Size.X, BandY), FogBand);
+				Rect(FVector2D(0.f, 0.f), FVector2D(BandX, Size.Y), FogBand);
+				Rect(FVector2D(Size.X - BandX, 0.f), FVector2D(BandX, Size.Y), FogBand);
+			}
+		}
 
 		if (Body->IsFrightened())
 		{
@@ -672,7 +773,7 @@ int32 UHPWH_HUDWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 
 				const float L = LeftPos.X + 16.f;
 				float Y = LeftPos.Y + 12.f;
-				Text(TEXT("初墨"), FVector2D(L, Y), 21.f, HPWHColorInk, false, true);
+				Text(TEXT("尤里西斯"), FVector2D(L, Y), 21.f, HPWHColorInk, false, true);
 				const bool bSoulOut = GM->GetSoulState() == EHPWH_SoulState::SoulOut;
 				const FString StateText = bSoulOut ? TEXT("灵魂离体") : TEXT("肉身");
 				const FSlateFontInfo StateFont = CCGameFont::Kai(FCoreStyle::GetDefaultFontStyle(TEXT("Regular"), 12));
@@ -797,6 +898,28 @@ int32 UHPWH_HUDWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 		}
 	}
 
+	// 通关时只显示白底黑字，确认热区仍和控制器共用 Portal 布局。
+	if (GM && GM->IsPortalChoiceActive() && GM->IsPortalChoiceSuccess())
+	{
+		const FHPWH_PortalCardLayout Portal = HPWH_MakePortalCardLayout(Size);
+		++Layer;
+		Rect(FVector2D::ZeroVector, Size, FLinearColor::White);
+		++Layer;
+
+		const FString Ending = TEXT("你逃出了噩梦");
+		const float FontSize = FMath::Clamp(static_cast<float>(Size.X) * 0.065f, 12.f, 60.f);
+		const FSlateFontInfo Font = CCGameFont::Kai(FCoreStyle::GetDefaultFontStyle(TEXT("Regular"), FMath::RoundToInt(FontSize)));
+		Text(Ending, FVector2D(Size.X * 0.5f, (Size.Y - MeasureText(Ending, Font).Y) * 0.5f),
+			FontSize, FLinearColor::Black, true);
+
+		const FString Confirm = TEXT("回到主页");
+		constexpr int32 ConfirmSize = 19;
+		const FSlateFontInfo ConfirmFont = CCGameFont::Kai(FCoreStyle::GetDefaultFontStyle(TEXT("Regular"), ConfirmSize));
+		Text(Confirm, Portal.ButtonCenter - FVector2D(0.f, MeasureText(Confirm, ConfirmFont).Y * 0.5f),
+			ConfirmSize, FLinearColor::Black, true);
+		return Layer;
+	}
+
 	// 异层传送门单选红卡
 	if (GM && GM->IsPortalChoiceActive())
 	{
@@ -817,14 +940,13 @@ int32 UHPWH_HUDWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 		Rect(CardPos, FVector2D(Border, Portal.CardSize.Y), Red, 3.f);
 		Rect(CardPos + FVector2D(Portal.CardSize.X - Border, 0.f), FVector2D(Border, Portal.CardSize.Y), Red, 3.f);
 
-		const bool bWin = GM->IsPortalChoiceSuccess();
-		Text(bWin ? TEXT("通关") : TEXT("通关概率翻倍"),
+		Text(TEXT("通关概率翻倍"),
 			FVector2D(Portal.Center.X, CardPos.Y + 58.f), 52.f,
-			bWin ? HPWHColorBrassSoft : RedSoft, true, true);
-		Text(bWin ? TEXT("你从梦中醒来。") : TEXT("门后是更深的一层。"),
+			RedSoft, true, true);
+		Text(TEXT("门后是更深的一层。"),
 			FVector2D(Portal.Center.X, CardPos.Y + 132.f), 21.f,
 			HPWHColorInkDim, true, true);
-		Text(bWin ? TEXT("这一局结束了。") : TEXT("进入下一层后，坐标回到原点。"),
+		Text(TEXT("进入下一层后，坐标回到原点。"),
 			FVector2D(Portal.Center.X, CardPos.Y + 166.f), 14.f,
 			HPWHColorMuted, true);
 
@@ -832,7 +954,7 @@ int32 UHPWH_HUDWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 		Rect(ButtonPos, Portal.ButtonSize, FLinearColor(0.12f, 0.030f, 0.045f, 0.98f), 10.f);
 		Rect(ButtonPos, FVector2D(Portal.ButtonSize.X, 2.f), Red, 1.f);
 		Rect(ButtonPos + FVector2D(0.f, Portal.ButtonSize.Y - 2.f), FVector2D(Portal.ButtonSize.X, 2.f), Red, 1.f);
-		Text(bWin ? TEXT("回到主页") : TEXT("进入下一层"),
+		Text(TEXT("进入下一层"),
 			FVector2D(Portal.ButtonCenter.X, Portal.ButtonCenter.Y - 13.f), 23.f,
 			HPWHColorInk, true, true);
 	}
@@ -852,35 +974,42 @@ int32 UHPWH_HUDWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 			const FVector2D Size2D = Layout.CardSize;
 			const FVector2D Pos = Center - Size2D * 0.5f;
 			const FLinearColor BorderColor = HPWH_RarityColor(Option.Rarity);
+			// 黑色半透明底 + 一层稀有度颜色，既压暗又保留品质辨识。
+			const FLinearColor CardBg(0.f, 0.f, 0.f, 0.84f);
+			const FLinearColor CardTint(BorderColor.R, BorderColor.G, BorderColor.B, 0.30f);
+			const FLinearColor CardInk(1.f, 1.f, 1.f, 0.96f);
+			const FLinearColor CardInkDim(1.f, 1.f, 1.f, 0.80f);
+			const FLinearColor CardInkMuted(1.f, 1.f, 1.f, 0.55f);
 
-			Rect(Pos - FVector2D(8.f, 8.f), Size2D + FVector2D(16.f, 16.f),
-				FLinearColor(BorderColor.R, BorderColor.G, BorderColor.B, 0.18f), 18.f);
-			Rect(Pos, Size2D, HPWHAlpha(HPWHColorBgPanel, 0.97f), 14.f);
+			Rect(Pos - FVector2D(10.f, 10.f), Size2D + FVector2D(20.f, 20.f),
+				FLinearColor(BorderColor.R, BorderColor.G, BorderColor.B, 0.22f), 20.f);
+			Rect(Pos, Size2D, CardBg, 14.f);
+			Rect(Pos, Size2D, CardTint, 14.f);
 
-			const float BorderWidth = 5.f;
+			const float BorderWidth = 6.f;
 			Rect(Pos, FVector2D(Size2D.X, BorderWidth), BorderColor, 3.f);
 			Rect(Pos + FVector2D(0.f, Size2D.Y - BorderWidth), FVector2D(Size2D.X, BorderWidth), BorderColor, 3.f);
 			Rect(Pos, FVector2D(BorderWidth, Size2D.Y), BorderColor, 3.f);
 			Rect(Pos + FVector2D(Size2D.X - BorderWidth, 0.f), FVector2D(BorderWidth, Size2D.Y), BorderColor, 3.f);
 
-			Text(HPWH_RarityName(Option.Rarity), FVector2D(Center.X, Pos.Y + 16.f), 17.f, BorderColor, true, true);
-			Icon(HPWH_UpgradeIconFor(Option.Type), FVector2D(Center.X, Pos.Y + 78.f), 54.f,
+			Text(HPWH_RarityName(Option.Rarity), FVector2D(Center.X, Pos.Y + 22.f), 18.f, CardInk, true);
+			Icon(HPWH_UpgradeIconFor(Option.Type), FVector2D(Center.X, Pos.Y + 104.f), 64.f,
 				FLinearColor(1.f, 1.f, 1.f, 0.94f));
-			Text(Option.Title, FVector2D(Center.X, Pos.Y + 108.f), 34.f, HPWHColorInk, true, true);
-			Rect(FVector2D(Center.X - 60.f, Pos.Y + 150.f), FVector2D(120.f, 2.f),
-				FLinearColor(BorderColor.R, BorderColor.G, BorderColor.B, 0.65f), 1.f);
+			Text(Option.Title, FVector2D(Center.X, Pos.Y + 142.f), 36.f, CardInk, true);
+			Rect(FVector2D(Center.X - 70.f, Pos.Y + 192.f), FVector2D(140.f, 2.f),
+				FLinearColor(1.f, 1.f, 1.f, 0.5f), 1.f);
 
 			TArray<FString> Lines;
 			Option.Description.ParseIntoArrayLines(Lines);
-			const float LineTop = Pos.Y + Size2D.Y * 0.43f;
+			const float LineTop = Pos.Y + Size2D.Y * 0.48f;
 			for (int32 LineIndex = 0; LineIndex < Lines.Num(); ++LineIndex)
 			{
 				Text(Lines[LineIndex], FVector2D(Center.X, LineTop + LineIndex * 32.f), 21.f,
-					HPWHColorInkDim, true);
+					CardInkDim, true);
 			}
 
-			Text(TEXT("点击选择"), FVector2D(Center.X, Pos.Y + Size2D.Y - 48.f), 16.f,
-				HPWHColorMuted, true);
+			Text(TEXT("点击选择"), FVector2D(Center.X, Pos.Y + Size2D.Y - 54.f), 16.f,
+				CardInkMuted, true);
 		}
 
 		// 每组三选一可刷新一次。
@@ -901,9 +1030,6 @@ int32 UHPWH_HUDWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 
 		Text(FString::Printf(TEXT("等级 %d   选择一张强化"), GM->GetPlayerLevel()),
 			FVector2D(Size.X * 0.5f, Size.Y * 0.09f), 38.f, HPWHColorInk, true, true);
-		Text(FString::Printf(TEXT("经验 %d / %d    1 / 2 / 3 选择    R 刷新"),
-			GM->GetExperience(), GM->GetExperienceToNextLevel()),
-			FVector2D(Size.X * 0.5f, Size.Y * 0.16f), 20.f, HPWHColorMuted, true, true);
 	}
 
 	return Layer + 1;

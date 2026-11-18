@@ -205,8 +205,8 @@ FHPWH_UpgradeCardLayout HPWH_MakeUpgradeCardLayout(const FVector2D& ViewportSize
 {
 	FHPWH_UpgradeCardLayout Layout;
 	const float MinSide = FMath::Min(ViewportSize.X, ViewportSize.Y);
-	const float CardWidth = FMath::Clamp(MinSide * 0.26f, 220.f, 340.f);
-	const float CardHeight = FMath::Clamp(CardWidth * 1.42f, 340.f, 500.f);
+	const float CardWidth = FMath::Clamp(MinSide * 0.34f, 280.f, 420.f);
+	const float CardHeight = FMath::Clamp(CardWidth * 1.42f, 400.f, 600.f);
 	Layout.CardSize = FVector2D(CardWidth, CardHeight);
 
 	const float Gap = CardWidth * 0.16f;
@@ -217,6 +217,6 @@ FHPWH_UpgradeCardLayout HPWH_MakeUpgradeCardLayout(const FVector2D& ViewportSize
 		Layout.Centers[Index] = FVector2D(StartX + Index * (CardWidth + Gap), ViewportSize.Y * 0.53f);
 	}
 	Layout.RerollCenter = FVector2D(ViewportSize.X * 0.5f,
-		ViewportSize.Y * 0.53f + CardHeight * 0.5f + 44.f);
+		ViewportSize.Y * 0.53f + CardHeight * 0.5f + 74.f);
 	return Layout;
 }

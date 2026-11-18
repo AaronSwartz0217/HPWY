@@ -1,5 +1,6 @@
 #include "HPWH/HPWH_POI.h"
 #include "PhysicsEngine/BodySetup.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 #include "HPWH/HPWH_GameMode.h"
 #include "HPWH/HPWH_World.h"
@@ -543,10 +544,10 @@ void AHPWH_CourtyardPOI::BuildVisuals()
 		Light->SetLightColor(FLinearColor(0.95f, 0.72f, 0.45f));
 	}
 
-	// 四合院使用模型三角网格碰撞，保留旧墙作为资产不可用时的回退。
+	// 四合院整体放大到原来 1.4 倍，保证角色能穿过院门。
 	if (UStaticMeshComponent* Courtyard = AddImportedMesh(
 		TEXT("/Game/HPWH/Assets/Models/四合院模型/StaticMeshes/courtyard_model.courtyard_model"),
-		FVector(0.21f), FVector(0.f, 0.f, 74.f)))
+		FVector(0.294f), FVector(0.f, 0.f, 106.f)))
 	{
 		const UBodySetup* Body = Courtyard->GetBodySetup();
 		const bool bUseMeshCollision = Body && Body->CollisionTraceFlag == CTF_UseComplexAsSimple;
@@ -618,26 +619,55 @@ void AHPWH_CourtyardPOI::Tick(float DeltaSeconds)
 		{
 			continue;
 		}
-		if (FVector::Dist2D(It->GetActorLocation(), GetActorLocation()) <= 320.f)
+		if (FVector::Dist2D(It->GetActorLocation(), GetActorLocation()) <= GetHPWHInteractRange())
 		{
+			const FVector Inside(GetActorLocation().X, GetActorLocation().Y, It->GetActorLocation().Z);
+			It->GetCharacterMovement()->StopMovementImmediately();
+			It->TeleportTo(Inside, It->GetActorRotation(), false, true);
 			SolvePuzzle();
 			return;
 		}
 	}
 }
 
+void AHPWH_CourtyardPOI::HPWHInteract(APawn* Interactor)
+{
+	auto* Body = Cast<AHPWH_PlayerCharacter>(Interactor);
+	if (!Body || Body->IsRunLocked() || !CanHPWHInteract(Body)
+		|| FVector::Dist2D(GetActorLocation(), Body->GetActorLocation()) > GetHPWHInteractRange()) return;
+	if (Visitor.Get() == Body)
+	{
+		if (Body->TeleportTo(VisitorReturn, VisitorReturnRotation))
+		{
+			Body->GetCharacterMovement()->StopMovementImmediately();
+			Visitor.Reset();
+		}
+		return;
+	}
+	const FVector Before = Body->GetActorLocation();
+	const FRotator Rotation = Body->GetActorRotation();
+	const FVector Center(GetActorLocation().X, GetActorLocation().Y, Before.Z);
+	// Try several points inside in case the center contains furniture or another character.
+	for (const FVector Offset : {FVector::ZeroVector, FVector(80,0,0), FVector(-80,0,0), FVector(0,80,0), FVector(0,-80,0)})
+	{
+		if (!Body->TeleportTo(Center + Offset, Rotation)) continue;
+		VisitorReturn = Before;
+		VisitorReturnRotation = Rotation;
+		Visitor = Body;
+		Body->GetCharacterMovement()->StopMovementImmediately();
+		StartPuzzle();
+		return;
+	}
+}
+
 FString AHPWH_CourtyardPOI::GetHPWHInteractPrompt(APawn* Interactor) const
 {
-	if (bSolved)
-	{
-		return TEXT("四合院的门缝里已经没有光");
-	}
-	return bPuzzleActive ? TEXT("等待客人进入四合院") : TEXT("观察四合院院门");
+	return Visitor.Get() == Interactor ? TEXT("R / 交互：离开四合院") : TEXT("R / 交互：进入四合院");
 }
 
 FVector AHPWH_CourtyardPOI::GetCoreSpawnLocation() const
 {
-	return GetActorLocation() + FVector(440.f, 0.f, 90.f);
+	return GetActorLocation() + FVector(616.f, 0.f, 90.f);
 }
 
 FString AHPWH_MirrorPOI::GetStartHint() const
@@ -905,6 +935,48 @@ AHPWH_CatMeme::AHPWH_CatMeme()
 void AHPWH_CatMeme::InitializeCat(AHPWH_LaptopPOI* InOwner, int32 InIndex)
 {
 	OwnerPOI = InOwner;
+
+	// 三只猫的 GLB 模型：耄耋猫、香蕉猫、旋转猫，统一缩放到约 60 cm 高。
+	struct FCatVisual
+	{
+		const TCHAR* MeshPath;
+		const TCHAR* MaterialPath;
+		float Scale;
+	};
+	static const FCatVisual CatVisuals[] =
+	{
+		{ TEXT("/Game/HPWH/Assets/Models/耄耋猫/StaticMeshes/cat_maodie.cat_maodie"),
+			TEXT("/Game/HPWH/Assets/Models/耄耋猫/Materials/M_耄耋猫_TwoSided.M_耄耋猫_TwoSided"), 1.33f },
+		{ TEXT("/Game/HPWH/Assets/Models/香蕉猫/StaticMeshes/cat_banana.cat_banana"),
+			TEXT("/Game/HPWH/Assets/Models/香蕉猫/Materials/M_香蕉猫_TwoSided.M_香蕉猫_TwoSided"), 2.4f },
+		{ TEXT("/Game/HPWH/Assets/Models/旋转猫/StaticMeshes/cat_spin.cat_spin"),
+			TEXT("/Game/HPWH/Assets/Models/旋转猫/Materials/M_旋转猫_TwoSided.M_旋转猫_TwoSided"), 1.0f },
+	};
+	const int32 VisualIndex = ((InIndex % 3) + 3) % 3;
+	const FCatVisual& Visual = CatVisuals[VisualIndex];
+
+	if (UStaticMesh* Mesh = LoadObject<UStaticMesh>(nullptr, Visual.MeshPath))
+	{
+		ImportedBody = NewObject<UStaticMeshComponent>(this);
+		ImportedBody->SetupAttachment(RootComponent);
+		ImportedBody->SetStaticMesh(Mesh);
+		if (UMaterialInterface* Material = LoadObject<UMaterialInterface>(nullptr, Visual.MaterialPath))
+		{
+			ImportedBody->SetMaterial(0, Material);
+		}
+		// 模型轴心在几何中心，抬高半个身高让猫落在生成点上。
+		ImportedBody->SetRelativeLocation(FVector(0.f, 0.f, 30.f));
+		ImportedBody->SetRelativeScale3D(FVector(Visual.Scale));
+		ImportedBody->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		AddInstanceComponent(ImportedBody);
+		ImportedBody->RegisterComponent();
+
+		CatBody->SetVisibility(false);
+		EarLeft->SetVisibility(false);
+		EarRight->SetVisibility(false);
+		return;
+	}
+
 	const FLinearColor Fur = InIndex % 2 == 0
 		? FLinearColor(0.94f, 0.55f, 0.22f)
 		: FLinearColor(0.92f, 0.88f, 0.78f);
