@@ -442,7 +442,8 @@ void AHPWH_GameMode::StartPlay()
 	if (FParse::Param(FCommandLine::Get(), TEXT("HPWHScreenshot")))
 	{
 		// 用真实时间触发截图，避免三选一的时间减速把截图推迟。
-		const double Delay = FParse::Param(FCommandLine::Get(), TEXT("HPWHScreenshotLate")) ? 22.0 : 6.0;
+		double Delay = FParse::Param(FCommandLine::Get(), TEXT("HPWHScreenshotLate")) ? 22.0 : 6.0;
+		FParse::Value(FCommandLine::Get(), TEXT("HPWHScreenshotDelay="), Delay);
 		ScreenshotAtRealTime = FPlatformTime::Seconds() + Delay;
 	}
 
@@ -516,6 +517,10 @@ void AHPWH_GameMode::StartPlay()
 		SpawnFloorPortal();
 		OpenFloorPortalChoice();
 		bPortalChoiceSuccess = FParse::Param(FCommandLine::Get(), TEXT("HPWHDebugPortalWin"));
+	}
+	if (FParse::Param(FCommandLine::Get(), TEXT("HPWHDebugMenu")))
+	{
+		ToggleInGameMenu();
 	}
 }
 
@@ -881,8 +886,15 @@ void AHPWH_GameMode::StartGameFromMenu(bool bShowIntro)
 		return;
 	}
 	// 开始新游戏：先播放两页开场剧情，点击后再进入探索。
-	BeginStoryScene(EHPWH_StoryScene::IntroStory);
-	UE_LOG(LogTemp, Display, TEXT("HPWH: intro story started"));
+	if (FParse::Param(FCommandLine::Get(), TEXT("HPWHSkipStory")))
+	{
+		StoryScene = EHPWH_StoryScene::None;
+	}
+	else
+	{
+		BeginStoryScene(EHPWH_StoryScene::IntroStory);
+		UE_LOG(LogTemp, Display, TEXT("HPWH: intro story started"));
+	}
 }
 
 void AHPWH_GameMode::EnterGameplay()

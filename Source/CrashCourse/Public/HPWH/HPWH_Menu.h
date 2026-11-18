@@ -67,23 +67,22 @@ inline FHPWH_InGameMenuLayout HPWH_MakeInGameMenuLayout(const FVector2D& Viewpor
 {
 	FHPWH_InGameMenuLayout Layout;
 	Layout.ButtonCenter = FVector2D(ViewportSize.X * 0.5f, 28.f);
-	Layout.PanelSize = FVector2D(
-		FMath::Clamp(ViewportSize.X * 0.74f, 720.f, 1040.f),
-		FMath::Clamp(ViewportSize.Y - 130.f, 380.f, 600.f));
-	Layout.PanelPos = FVector2D((ViewportSize.X - Layout.PanelSize.X) * 0.5f, 62.f);
-	const float Bottom = Layout.PanelPos.Y + Layout.PanelSize.Y - 32.f;
-	Layout.RowSize = FVector2D(FMath::Clamp(Layout.PanelSize.X * 0.17f, 132.f, 180.f), 40.f);
-	const float Spacing = Layout.RowSize.X + 14.f;
+	// 全屏菜单：整页覆盖视口，排版参照强化选择界面。
+	Layout.PanelPos = FVector2D::ZeroVector;
+	Layout.PanelSize = ViewportSize;
+	const float BottomY = ViewportSize.Y - FMath::Clamp(ViewportSize.Y * 0.06f, 48.f, 80.f);
+	Layout.RowSize = FVector2D(FMath::Clamp(ViewportSize.X * 0.11f, 150.f, 210.f), 44.f);
+	const float Spacing = Layout.RowSize.X + 18.f;
 	for (int32 Index = 0; Index < 3; ++Index)
 	{
-		Layout.Rows[Index] = FVector2D(ViewportSize.X * 0.5f + (Index - 1) * Spacing, Bottom);
+		Layout.Rows[Index] = FVector2D(ViewportSize.X * 0.5f + (Index - 1) * Spacing, BottomY);
 	}
 	for (int32 Index = 0; Index < 2; ++Index)
 	{
 		Layout.SettingsRows[Index] = FVector2D(ViewportSize.X * 0.5f,
-			Layout.PanelPos.Y + 156.f + Index * 58.f);
+			ViewportSize.Y * 0.44f + Index * ViewportSize.Y * 0.10f);
 	}
-	Layout.BackCenter = FVector2D(ViewportSize.X * 0.5f, Bottom);
+	Layout.BackCenter = FVector2D(ViewportSize.X * 0.5f, Layout.SettingsRows[1].Y + 140.f);
 	return Layout;
 }
 

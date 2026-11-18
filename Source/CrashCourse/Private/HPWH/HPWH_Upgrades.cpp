@@ -69,9 +69,11 @@ float HPWH_UpgradeValue(EHPWH_UpgradeType Type, EHPWH_Rarity Rarity)
 	case EHPWH_UpgradeType::MoveSpeed:
 		return Tier == 1 ? 0.30f : 0.10f;
 	case EHPWH_UpgradeType::AttackRange:
-		return Tier == 0 ? 0.07f : (Tier == 1 ? 0.18f : 0.30f);
+		// 远击：全稀有度 ×2
+		return Tier == 0 ? 0.14f : (Tier == 1 ? 0.36f : 0.60f);
 	case EHPWH_UpgradeType::BulletCooldown:
-		return Tier == 0 ? 0.05f : (Tier == 1 ? 0.12f : 0.20f);
+		// 速射：全稀有度 ×4
+		return Tier == 0 ? 0.20f : (Tier == 1 ? 0.48f : 0.80f);
 	case EHPWH_UpgradeType::MultiShotTwo:
 		return 2.f;
 	case EHPWH_UpgradeType::MultiShotThree:
@@ -79,9 +81,11 @@ float HPWH_UpgradeValue(EHPWH_UpgradeType Type, EHPWH_Rarity Rarity)
 	case EHPWH_UpgradeType::SoulGuard:
 		return 1.f;
 	case EHPWH_UpgradeType::SoulSpeed:
-		return Tier == 0 ? 0.05f : (Tier == 1 ? 0.10f : 0.20f);
+		// 魂行：全稀有度 ×3
+		return Tier == 0 ? 0.15f : (Tier == 1 ? 0.30f : 0.60f);
 	case EHPWH_UpgradeType::ReturnRange:
-		return Tier == 0 ? 0.20f : (Tier == 1 ? 0.50f : 1.00f);
+		// 牵引：全稀有度 ×2
+		return Tier == 0 ? 0.40f : (Tier == 1 ? 1.00f : 2.00f);
 	case EHPWH_UpgradeType::DamageTolerance:
 		return Tier == 0 ? 0.2f : (Tier == 1 ? 0.5f : 1.0f);
 	case EHPWH_UpgradeType::KillHeal:
@@ -89,9 +93,11 @@ float HPWH_UpgradeValue(EHPWH_UpgradeType Type, EHPWH_Rarity Rarity)
 	case EHPWH_UpgradeType::CrawlerDistance:
 		return Tier == 0 ? 2.f : (Tier == 1 ? 5.f : 10.f);
 	case EHPWH_UpgradeType::CrawlerSlow:
-		return Tier == 0 ? 0.05f : (Tier == 1 ? 0.12f : 0.30f);
+		// 滞影：全稀有度 ×2
+		return Tier == 0 ? 0.10f : (Tier == 1 ? 0.24f : 0.60f);
 	case EHPWH_UpgradeType::PuzzleTime:
-		return Tier == 0 ? 1.f : (Tier == 1 ? 3.f : 7.f);
+		// 时限：全稀有度 ×2，并额外 +5 秒
+		return Tier == 0 ? 7.f : (Tier == 1 ? 11.f : 19.f);
 	case EHPWH_UpgradeType::SuccessRate:
 		return 0.05f;
 	case EHPWH_UpgradeType::InteractRange:

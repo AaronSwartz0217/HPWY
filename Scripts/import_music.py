@@ -8,13 +8,13 @@ import os
 
 import unreal
 
-SOURCE_DIR = r"c:\Users\29717\Desktop\幻魄物语\音频\梦境重编配_海底变调"
+SOURCE_DIR = r"c:\Users\29717\Desktop\幻魄物语\音频\梦境重编配_海底环境"
 DESTINATION = "/Game/HPWH/Audio"
 
 MUSIC = [
-    ("Emergency1_八音盒重编配_海底.wav", "S_HPWH_Emergency1"),
-    ("Emergency2_电钢琴重编配_海底.wav", "S_HPWH_Emergency2"),
-    ("Emergency3_金属钟声重编配_海底.wav", "S_HPWH_Emergency3"),
+    ("Emergency1_海底环境.wav", "S_HPWH_Emergency1"),
+    ("Emergency2_海底环境.wav", "S_HPWH_Emergency2"),
+    ("Emergency3_海底环境.wav", "S_HPWH_Emergency3"),
 ]
 
 tasks = []

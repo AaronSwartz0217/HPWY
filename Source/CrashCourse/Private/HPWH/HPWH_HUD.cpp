@@ -701,17 +701,6 @@ int32 UHPWH_HUDWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 	if (GM && !GM->IsUpgradeSelectionActive())
 	{
 		const FHPWH_InGameMenuLayout InGame = HPWH_MakeInGameMenuLayout(Size);
-		const FVector2D MenuPos = InGame.ButtonCenter - InGame.ButtonSize * 0.5f;
-		Rect(MenuPos, InGame.ButtonSize, HPWHAlpha(HPWHColorBgPanel, 0.82f), 8.f);
-		const FLinearColor MenuBorder = GM->IsInGameMenuOpen()
-			? HPWHAlpha(HPWHColorSoul, 0.9f)
-			: HPWHAlpha(HPWHColorLine, 0.55f);
-		Rect(MenuPos, FVector2D(InGame.ButtonSize.X, 1.5f), MenuBorder, 1.f);
-		Rect(MenuPos + FVector2D(0.f, InGame.ButtonSize.Y - 1.5f), FVector2D(InGame.ButtonSize.X, 1.5f), MenuBorder, 1.f);
-		Rect(MenuPos, FVector2D(1.5f, InGame.ButtonSize.Y), MenuBorder, 1.f);
-		Rect(MenuPos + FVector2D(InGame.ButtonSize.X - 1.5f, 0.f), FVector2D(1.5f, InGame.ButtonSize.Y), MenuBorder, 1.f);
-		Text(TEXT("菜单"), FVector2D(InGame.ButtonCenter.X, InGame.ButtonCenter.Y - 11.f), 15.f,
-			HPWHColorInk, true, true);
 
 		if (GM->IsInGameMenuOpen())
 		{
@@ -719,13 +708,12 @@ int32 UHPWH_HUDWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 			const bool bSettings = GM->IsInGameSettingsOpen();
 			const FVector2D PanelPos = InGame.PanelPos;
 			const FVector2D PanelSize = InGame.PanelSize;
-			Rect(PanelPos + FVector2D(0.f, 6.f), PanelSize, FLinearColor(0.f, 0.f, 0.f, 0.45f), 16.f);
-			Rect(PanelPos, PanelSize, HPWHAlpha(HPWHColorBgDeep, 0.99f), 16.f);
+			Rect(PanelPos, PanelSize, HPWHAlpha(HPWHColorBgDeep, 0.995f));
 			Rect(PanelPos, FVector2D(PanelSize.X, 1.5f), HPWHAlpha(HPWHColorBrass, 0.45f), 1.f);
 			Rect(PanelPos + FVector2D(0.f, PanelSize.Y - 1.5f), FVector2D(PanelSize.X, 1.5f),
 				HPWHAlpha(HPWHColorLine, 0.22f), 1.f);
 			Text(bSettings ? TEXT("设置") : TEXT("梦境档案"),
-				FVector2D(Size.X * 0.5f, PanelPos.Y + 12.f), 24.f, HPWHColorInk, true, true);
+				FVector2D(Size.X * 0.5f, Size.Y * 0.065f), 26.f, HPWHColorInk, true, true);
 
 			auto RowButton = [&](const FString& Label, const FVector2D& Center, const FVector2D& RowSize, bool bSelected)
 			{
@@ -750,20 +738,20 @@ int32 UHPWH_HUDWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 			if (bSettings)
 			{
 				const bool bDlss = GM->GetGraphicsMode() == EHPWH_GraphicsMode::DLSS;
-				Text(TEXT("画面抗锯齿"), FVector2D(Size.X * 0.5f, PanelPos.Y + 116.f), 16.f,
+				Text(TEXT("画面抗锯齿"), FVector2D(Size.X * 0.5f, InGame.SettingsRows[0].Y - 44.f), 16.f,
 					HPWHColorInkDim, true);
 				RowButton(TEXT("DLSS"), InGame.SettingsRows[0], InGame.SettingsRowSize, bDlss);
 				RowButton(TEXT("TSR"), InGame.SettingsRows[1], InGame.SettingsRowSize, !bDlss);
 				Text(TEXT("DLSS 需要支持 NVIDIA DLSS 的显卡；TSR 为通用时域超分。"),
-					FVector2D(Size.X * 0.5f, PanelPos.Y + 302.f), 12.f, HPWHColorMuted, true);
+					FVector2D(Size.X * 0.5f, InGame.SettingsRows[1].Y + 56.f), 12.f, HPWHColorMuted, true);
 				RowButton(TEXT("返回"), InGame.BackCenter, InGame.RowSize, false);
 			}
 			else
 			{
-				const float PadX = 26.f;
-				const float Top = PanelPos.Y + 52.f;
+				const float PadX = FMath::Clamp(Size.X * 0.045f, 40.f, 120.f);
+				const float Top = Size.Y * 0.155f;
 				const float BottomLimit = InGame.Rows[0].Y - InGame.RowSize.Y * 0.5f - 14.f;
-				const float LeftW = FMath::Clamp(PanelSize.X * 0.30f, 218.f, 300.f);
+				const float LeftW = FMath::Clamp(PanelSize.X * 0.26f, 300.f, 460.f);
 
 				// 左：角色血量与当前状态
 				const FVector2D LeftPos(PanelPos.X + PadX, Top);
@@ -844,8 +832,8 @@ int32 UHPWH_HUDWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 					const float Gap = 9.f;
 					const float AreaW = GridSize.X - 28.f;
 					const float AreaH = GridSize.Y - 58.f;
-					const int32 Cols = FMath::Clamp(FMath::FloorToInt((AreaW + Gap) / 78.f), 3, 7);
-					float Tile = FMath::Min(70.f, (AreaW - (Cols - 1) * Gap) / Cols);
+					const int32 Cols = FMath::Clamp(FMath::FloorToInt((AreaW + Gap) / 96.f), 3, 10);
+					float Tile = FMath::Min(96.f, (AreaW - (Cols - 1) * Gap) / Cols);
 					const int32 Rows = FMath::CeilToInt(static_cast<float>(Owned.Num()) / static_cast<float>(Cols));
 					float LabelSpace = 12.f;
 					if (Rows * (Tile + LabelSpace) > AreaH)
@@ -893,8 +881,21 @@ int32 UHPWH_HUDWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 				RowButton(TEXT("设置"), InGame.Rows[1], InGame.RowSize, false);
 				RowButton(TEXT("存档"), InGame.Rows[2], InGame.RowSize, false);
 				Text(TEXT("Esc 关闭菜单    1 / 2 / 3 选择"),
-					FVector2D(Size.X * 0.5f, PanelPos.Y + PanelSize.Y + 6.f), 12.f, HPWHColorMuted, true);
+					FVector2D(Size.X * 0.5f, Size.Y - 26.f), 12.f, HPWHColorMuted, true);
 			}
+
+			// 全屏页面上保留顶部按钮作为关闭入口。
+			const FVector2D MenuPos = InGame.ButtonCenter - InGame.ButtonSize * 0.5f;
+			Rect(MenuPos, InGame.ButtonSize, HPWHAlpha(HPWHColorBgPanel, 0.92f), 8.f);
+			const FLinearColor MenuBorder = GM->IsInGameMenuOpen()
+				? HPWHAlpha(HPWHColorSoul, 0.9f)
+				: HPWHAlpha(HPWHColorLine, 0.55f);
+			Rect(MenuPos, FVector2D(InGame.ButtonSize.X, 1.5f), MenuBorder, 1.f);
+			Rect(MenuPos + FVector2D(0.f, InGame.ButtonSize.Y - 1.5f), FVector2D(InGame.ButtonSize.X, 1.5f), MenuBorder, 1.f);
+			Rect(MenuPos, FVector2D(1.5f, InGame.ButtonSize.Y), MenuBorder, 1.f);
+			Rect(MenuPos + FVector2D(InGame.ButtonSize.X - 1.5f, 0.f), FVector2D(1.5f, InGame.ButtonSize.Y), MenuBorder, 1.f);
+			Text(GM->IsInGameMenuOpen() ? TEXT("关闭") : TEXT("菜单"),
+				FVector2D(InGame.ButtonCenter.X, InGame.ButtonCenter.Y - 11.f), 15.f, HPWHColorInk, true, true);
 		}
 	}
 

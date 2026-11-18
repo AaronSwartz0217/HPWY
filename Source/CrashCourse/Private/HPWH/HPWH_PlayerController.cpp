@@ -388,6 +388,12 @@ void AHPWH_PlayerController::HandleInGameMenuPoint(const FVector2D& Point)
 		}
 		return;
 	}
+	// 全屏菜单下，顶部按钮切换为关闭。
+	if (HPWH_IsPointInMenuButton(Point, Layout.ButtonCenter, Layout.ButtonSize))
+	{
+		GM->CloseInGameMenu();
+		return;
+	}
 	if (GM->IsInGameSettingsOpen())
 	{
 		for (int32 Index = 0; Index < 2; ++Index)
