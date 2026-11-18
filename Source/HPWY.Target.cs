@@ -3,9 +3,9 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class HPWHTarget : TargetRules
+public class HPWYTarget : TargetRules
 {
-	public HPWHTarget(TargetInfo Target) : base(Target)
+	public HPWYTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V5;

@@ -3,9 +3,9 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class HPWHEditorTarget : TargetRules
+public class HPWYEditorTarget : TargetRules
 {
-	public HPWHEditorTarget( TargetInfo Target) : base(Target)
+	public HPWYEditorTarget( TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
