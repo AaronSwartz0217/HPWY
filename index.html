@@ -146,8 +146,20 @@
   .hero-stats{display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,52px)}
   .stat b{display:block;font-family:var(--serif);font-size:27px;color:var(--gold-soft);font-weight:500;letter-spacing:.04em}
   .stat span{font-size:11px;letter-spacing:.16em;color:var(--muted)}
-  .hero-visual{position:relative}
+  .hero-visual{position:relative;display:flex;align-items:flex-end;gap:clamp(10px,1.5vw,18px)}
+  .comic-frame{
+    flex:none;width:clamp(132px,29%,190px);
+    border:1px solid var(--line-brass);background:rgba(6,11,18,.86);padding:7px;
+    box-shadow:0 30px 70px rgba(0,0,0,.65);
+    transform:rotate(-5deg);transform-origin:bottom center;
+    transition:transform .45s ease;
+  }
+  .comic-frame:hover{transform:rotate(-2deg) translateY(-4px)}
+  .comic-frame img{width:100%;aspect-ratio:2/3;object-fit:cover;filter:saturate(.9) brightness(.96)}
+  .comic-frame .frame-top{font-size:8px;letter-spacing:.12em;padding:2px 2px 6px}
+  .comic-frame .frame-caption{font-size:9px;letter-spacing:.08em;text-align:left;padding:6px 2px 0}
   .game-frame{
+    flex:1;min-width:0;
     position:relative;border:1px solid var(--line-brass);background:rgba(6,11,18,.72);
     padding:10px;box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 0 1px rgba(180,210,235,.04) inset;
     transform:perspective(1200px) rotateY(-5deg) rotateX(2deg);
@@ -605,7 +617,7 @@
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="hero-grid">
       <div class="hero-copy">
-        <div class="kicker reveal"><span class="dot"></span>群核科技 Aholo 全球 3D AI 黑客松 · 可玩原型</div>
+        <div class="kicker reveal"><span class="dot"></span>群核科技 Aholo 全球 3D AI 黑客松 · 正式发布</div>
         <h1 class="reveal">幻魄物语</h1>
         <p class="tagline reveal">在梦里找回自己的影子</p>
         <p class="lede reveal">
@@ -625,6 +637,11 @@
         </div>
       </div>
       <div class="hero-visual reveal">
+        <div class="comic-frame">
+          <div class="frame-top"><span>COVER_ART.PDF</span><span class="lights"><i></i><i></i><i></i></span></div>
+          <img src="assets/comic_cover.jpg" alt="《幻魄物语》封面漫画 PHANTOM SOUL OF THE MANOR">
+          <div class="frame-caption">封面漫画 · PHANTOM SOUL OF THE MANOR</div>
+        </div>
         <div class="game-frame">
           <div class="frame-top"><span>DREAM_PROTOTYPE.EXE</span><span class="lights"><i></i><i></i><i></i></span></div>
           <img src="assets/menu.png" alt="《幻魄物语》主界面：幻魄物语标题与开始游戏、关于我们、设置三项纯文字菜单">
@@ -632,7 +649,7 @@
         </div>
         <div class="float-card">
           <div class="tag">CURRENT BUILD</div>
-          <div class="value">v0.9 玩法原型</div>
+          <div class="value">v1.0 正式发布</div>
         </div>
       </div>
     </div>
@@ -1282,7 +1299,7 @@
     <div class="competition reveal">
       <div>
         <div class="badge"><span class="sq"></span>AHOLO HACKATHON · 2026</div>
-        <h2>这是一款为 3D AI 黑客松<br>制作的可玩原型。</h2>
+        <h2>这是一款为 3D AI 黑客松<br>制作并正式发布的游戏。</h2>
         <p>
           《幻魄物语》由李东盛独立开发，讲述一个杭州长大的英国孤儿回到祖宅后坠入无限梦境的故事，
           以“在梦里找回自己的影子”为叙事起点，
@@ -1299,7 +1316,7 @@
         <div class="fact"><span>作品类型</span><b>俯视角探索解谜 + 轻 Roguelite</b></div>
         <div class="fact"><span>引擎 / 平台</span><b>UE 5.6 · Windows PC / 手机横屏</b></div>
         <div class="fact"><span>操作方式</span><b>键鼠 + 触屏</b></div>
-        <div class="fact"><span>当前版本</span><b>v0.9 玩法原型</b></div>
+        <div class="fact"><span>当前版本</span><b>v1.0 正式发布</b></div>
         <div class="fact"><span>核心体验</span><b>探索 · 解密 · 追逐 · 醒来</b></div>
       </div>
     </div>
