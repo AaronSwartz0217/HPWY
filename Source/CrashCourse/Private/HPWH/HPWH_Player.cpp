@@ -13,6 +13,7 @@
 #include "Components/PointLightComponent.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/InstancedStaticMeshComponent.h"
 #include "CollisionQueryParams.h"
 #include "Engine/StaticMesh.h"
 #include "Engine/World.h"
@@ -683,7 +684,8 @@ void AHPWH_SoulAvatar::TryReturnToBody()
 
 AHPWH_Projectile::AHPWH_Projectile()
 {
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.TickGroup = TG_PostPhysics;
 	InitialLifeSpan = 2.2f;
 
 	Collision = CreateDefaultSubobject<USphereComponent>(TEXT("Collision"));
@@ -728,6 +730,14 @@ void AHPWH_Projectile::InitProjectile(const FVector& Direction, float Speed, flo
 	if (Movement)
 	{
 		Movement->InitialSpeed = Speed;
+	Trail = CreateDefaultSubobject<UInstancedStaticMeshComponent>(TEXT("Trail"));
+	Trail->SetupAttachment(Collision);
+	Trail->SetStaticMesh(SphereMesh.Object);
+	Trail->SetCollisionProfileName(TEXT("NoCollision"));
+	Trail->SetGenerateOverlapEvents(false);
+	Trail->SetCanEverAffectNavigation(false);
+	Trail->SetCastShadow(false);
+
 		Movement->MaxSpeed = Speed;
 		Movement->Velocity = Direction.GetSafeNormal() * Speed;
 	}
@@ -753,6 +763,15 @@ void AHPWH_Projectile::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 	{
 		return;
 	}
+	TrailAge = 0.f;
+	Trail->ClearInstances();
+	if (GetNetMode() != NM_DedicatedServer)
+	{
+		for (int32 I = 0; I < 6; ++I)
+			Trail->AddInstance(FTransform(FQuat::Identity, FVector::ZeroVector, FVector(0.001f)));
+	}
+	SetActorTickEnabled(Trail->GetInstanceCount() > 0);
+
 
 	if (bHostile)
 	{
@@ -762,11 +781,29 @@ void AHPWH_Projectile::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 			Destroy();
 		}
 		return;
+			Trail->SetMaterial(0, Mid);
 	}
 
 	if (AHPWH_Companion* Companion = Cast<AHPWH_Companion>(OtherActor))
 	{
 		if (Companion->IsHostile())
+void AHPWH_Projectile::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	TrailAge += DeltaSeconds;
+	const float Speed = Movement->Velocity.Size();
+	for (int32 I = 0; I < Trail->GetInstanceCount(); ++I)
+	{
+		const float Delay = 0.009f * (I + 1);
+		const float Phase = TrailAge * 24.f + I * 2.4f;
+		const float Spread = 2.f + I * 1.15f;
+		const FVector Position(-Speed * Delay, FMath::Sin(Phase) * Spread, FMath::Cos(Phase) * Spread);
+		const float Size = TrailAge >= Delay ? FMath::Lerp(0.16f, 0.038f, I / 5.f) : 0.001f;
+		Trail->UpdateInstanceTransform(I, FTransform(FQuat::Identity, Position, FVector(Size)),
+			false, I + 1 == Trail->GetInstanceCount(), true);
+	}
+}
+
 		{
 			Companion->ReceiveHPWHDamage(Damage);
 			Destroy();

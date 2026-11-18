@@ -451,12 +451,14 @@ void AHPWH_PlayerController::TouchPressed(ETouchIndex::Type FingerIndex, FVector
 
 	if (FVector2D::Distance(Point, Layout.JoystickCenter) <= Layout.JoystickRadius)
 	{
+		if (JoystickFinger != INDEX_NONE) return;
 		JoystickFinger = Finger;
 		JoystickOrigin = Point;
 		return;
 	}
 	if (FVector2D::Distance(Point, Layout.AttackCenter) <= Layout.AttackRadius)
 	{
+		if (AttackFinger != INDEX_NONE) return;
 		AttackFinger = Finger;
 		bTouchAttack = true;
 		bManualAim = false;
@@ -474,6 +476,7 @@ void AHPWH_PlayerController::TouchPressed(ETouchIndex::Type FingerIndex, FVector
 	}
 	if (Point.X > Size.X * 0.42f)
 	{
+		if (LookFinger != INDEX_NONE) return;
 		LookFinger = Finger;
 		LookLast = Point;
 		TouchAimScreen = Point;
@@ -504,10 +507,8 @@ void AHPWH_PlayerController::TouchMoved(ETouchIndex::Type FingerIndex, FVector L
 	}
 	if (Finger == AttackFinger)
 	{
-		// 攻击键只有 4px 的活动范围，按住拖动时轻微跟手。
-		const FVector2D Delta = Point - AttackOrigin;
-		const float Length = Delta.Size();
-		AttackVisualOffset = Length > 4.f ? Delta / Length * 4.f : Delta;
+		const float Travel = HPWH_MakeTouchLayout(GetViewportSize2D()).AttackRadius * 0.45f;
+		AttackVisualOffset = (Point - AttackOrigin).GetClampedToMaxSize(Travel);
 		return;
 	}
 	if (Finger == LookFinger)

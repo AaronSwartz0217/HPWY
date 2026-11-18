@@ -201,7 +201,7 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 	};
 
 	// 导入资产实例：按模型原始尺寸换算，底部贴地；Layers 控制向上叠放层数。
-	auto AddProp = [this, &Stream, Half](const TCHAR* MeshPath, float Scale, int32 Count, float Range, int32 StackLayers = 1)
+	auto AddProp = [this, &Stream, Half](const TCHAR* MeshPath, float Scale, int32 Count, float Range, int32 StackLayers = 1, bool bVaryBlockSize = false)
 	{
 		UStaticMesh* Mesh = LoadObject<UStaticMesh>(nullptr, MeshPath);
 		if (!Mesh)
@@ -227,7 +227,8 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 			}
 		}
 		Comp->SetVisibility(true);
-		const float HalfZ = FMath::Max(1.f, Mesh->GetBounds().BoxExtent.Z * Scale);
+		// Use a separate stream so changing block scale does not move other props.
+		FRandomStream SizeStream(Stream.GetCurrentSeed());
 		for (int32 I = 0; I < Count; ++I)
 		{
 			const float X = FMath::Clamp(Stream.FRandRange(-Range, Range), -Half, Half);
@@ -235,9 +236,11 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 			const float Yaw = Stream.FRandRange(0.f, 360.f);
 			for (int32 Layer = 0; Layer < StackLayers; ++Layer)
 			{
-				const float Z = HalfZ + Layer * HalfZ * 1.7f;
+				const float InstanceScale = Scale * (bVaryBlockSize ? SizeStream.FRandRange(0.7f, 1.f) : 1.f);
+				const float Z = StackBase + (Bounds.BoxExtent.Z - Bounds.Origin.Z) * InstanceScale;
 				Comp->AddInstance(FTransform(FRotator(0.f, Yaw + Layer * 17.f, 0.f),
-					FVector(X, Y, Z), FVector(Scale)));
+					FVector(X, Y, Z), FVector(InstanceScale)));
+				StackBase += 2.f * Bounds.BoxExtent.Z * InstanceScale;
 			}
 		}
 	};
@@ -363,7 +366,7 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 		AddProp(TEXT("/Game/HPWH/Assets/Models/纸团/StaticMeshes/paper_ball.paper_ball"), 16.f, 16, 310.f);
 		break;
 	case EHPWH_TerrainType::Blocks:
-		AddProp(TEXT("/Game/HPWH/Assets/Models/积木/StaticMeshes/block.block"), 16.f, 7, 300.f);
+		AddProp(TEXT("/Game/HPWH/Assets/Models/积木/StaticMeshes/block.block"), 20.f, 8, 300.f, 2, true);
 		break;
 	case EHPWH_TerrainType::Desk:
 		// 台灯只在一部分案头格生成，降低密度。
@@ -381,6 +384,8 @@ void AHPWH_CellChunk::BuildCell(const FHPWH_CellRecord& Record, float CellSizeCm
 		UE_LOG(LogTemp, Display, TEXT("HPWH: props terrain=%d boxes=%d obstacleVisible=%d"),
 			static_cast<int32>(Record.Terrain), Obstacles->GetInstanceCount(),
 			Obstacles->IsVisible() ? 1 : 0);
+			float StackBase = 0.f;
+			const FBoxSphereBounds Bounds = Mesh->GetBounds();
 		for (const TPair<FString, TObjectPtr<UInstancedStaticMeshComponent>>& Pair : PropComponents)
 		{
 			if (Pair.Value && Pair.Value->GetInstanceCount() > 0)

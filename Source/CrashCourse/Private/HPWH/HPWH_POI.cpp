@@ -1,4 +1,5 @@
 #include "HPWH/HPWH_POI.h"
+#include "PhysicsEngine/BodySetup.h"
 
 #include "HPWH/HPWH_GameMode.h"
 #include "HPWH/HPWH_World.h"
@@ -542,16 +543,25 @@ void AHPWH_CourtyardPOI::BuildVisuals()
 		Light->SetLightColor(FLinearColor(0.95f, 0.72f, 0.45f));
 	}
 
-	// 四合院模型原始尺寸约 25 m，按 0.28 缩放到 7 m 格内。
-	for (UStaticMeshComponent* Mesh : BuiltMeshes)
+	// 四合院使用模型三角网格碰撞，保留旧墙作为资产不可用时的回退。
+	if (UStaticMeshComponent* Courtyard = AddImportedMesh(
+		TEXT("/Game/HPWH/Assets/Models/四合院模型/StaticMeshes/courtyard_model.courtyard_model"),
+		FVector(0.21f), FVector(0.f, 0.f, 74.f)))
 	{
-		if (Mesh)
+		const UBodySetup* Body = Courtyard->GetBodySetup();
+		const bool bUseMeshCollision = Body && Body->CollisionTraceFlag == CTF_UseComplexAsSimple;
+		if (bUseMeshCollision)
 		{
+			Courtyard->SetCollisionProfileName(TEXT("BlockAll"));
+			Courtyard->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+		}
+		for (UStaticMeshComponent* Mesh : BuiltMeshes)
+		{
+			if (!Mesh) continue;
 			Mesh->SetVisibility(false);
+			if (bUseMeshCollision) Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 		}
 	}
-	AddImportedMesh(TEXT("/Game/HPWH/Assets/Models/四合院模型/StaticMeshes/courtyard_model.courtyard_model"),
-		FVector(0.28f), FVector(0.f, 0.f, 98.f));
 }
 
 void AHPWH_CourtyardPOI::StartPuzzle()

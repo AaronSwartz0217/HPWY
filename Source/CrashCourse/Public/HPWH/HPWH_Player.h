@@ -8,6 +8,7 @@ class USpringArmComponent;
 class UCameraComponent;
 class UPointLightComponent;
 class UStaticMeshComponent;
+class UInstancedStaticMeshComponent;
 class USphereComponent;
 class UProjectileMovementComponent;
 class AHPWH_SoulAvatar;
@@ -117,6 +118,7 @@ class CRASHCOURSE_API AHPWH_Projectile : public AActor
 public:
 	AHPWH_Projectile();
 
+	virtual void Tick(float DeltaSeconds) override;
 	void InitProjectile(const FVector& Direction, float Speed, float InDamage, bool bInHostile, AActor* InInstigator);
 
 	UPROPERTY(VisibleAnywhere) TObjectPtr<USphereComponent> Collision;
@@ -130,5 +132,7 @@ private:
 		int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 	float Damage = 14.f;
+	UPROPERTY() TObjectPtr<UInstancedStaticMeshComponent> Trail;
+	float TrailAge = 0.f;
 	bool bHostile = false;
 };
