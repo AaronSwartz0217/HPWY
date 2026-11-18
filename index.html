@@ -830,7 +830,7 @@
       <div class="step"><div class="num">03</div><h3>传送门</h3><p>三类解密各完成一次，玩家周围两格内浮现通往下一层的传送门。</p></div>
       <div class="step"><div class="num">04</div><h3>惊醒</h3><p>第一次解密完成时，徘徊者苏醒；受击也会提前唤醒它。</p></div>
       <div class="step"><div class="num">05</div><h3>红卡</h3><p>踏入传送门，翻开唯一的红色边框卡片，按隐藏概率判定通关或深入。</p></div>
-      <div class="step"><div class="num">06</div><h3>醒来</h3><p>判定成功即彻底通关，播放好结局后回到主页；失败进入下一层，基础概率翻倍；死亡则先播放坏结局。</p></div>
+      <div class="step"><div class="num">06</div><h3>醒来</h3><p>判定成功即彻底通关，播放好结局后回到主页；失败进入下一层，基础概率从 15% 起每层翻倍；死亡则先播放坏结局。</p></div>
     </div>
   </section>
 
@@ -862,7 +862,7 @@
       <article class="feature reveal">
         <div class="icon"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="12" height="16" rx="1"/><rect x="9" y="3" width="12" height="16" rx="1"/><path d="M12 8h5M12 12h5M12 16h3"/></svg></div>
         <h3>三选一强化</h3>
-        <p>17 种强化，普通 60%、中级 30%、极品 10%。攻击、生命、移速、子弹冷却、多发与徘徊者压制都可能改变这一局。</p>
+        <p>17 种强化，基础概率 普通 60%、中级 30%、极品 10%；角色每升一级，中级与极品各按基础值的 50% 递增。攻击、生命、移速、子弹冷却、多发与徘徊者压制都可能改变这一局。</p>
         <div class="tags"><span class="tagline-mini">17 种</span><span class="tagline-mini">60 / 30 / 10</span></div>
       </article>
       <article class="feature reveal">
@@ -896,7 +896,7 @@
         <h3>锐意</h3>
         <p class="desc">攻击力提升。最稳定、最直接的成长，让魂灯弹更快清掉身边的器物怪。</p>
         <div class="value">+2</div>
-        <div class="note">蓝色边框 · 60% 概率</div>
+        <div class="note">蓝色边框 · 基础 60% 概率</div>
         <div class="glow"></div>
       </article>
       <article class="card epic reveal">
@@ -904,7 +904,7 @@
         <h3>坚韧</h3>
         <p class="desc">生命上限提升，并立即回复等量生命。更高的容错，让你敢在梦深处多走一段。</p>
         <div class="value">+20</div>
-        <div class="note">紫色边框 · 30% 概率</div>
+        <div class="note">紫色边框 · 基础 30% 概率</div>
         <div class="glow"></div>
       </article>
       <article class="card legendary reveal">
@@ -912,16 +912,16 @@
         <h3>窥生</h3>
         <p class="desc">通关率直接增加 5 个百分点。它不会解释概率的含义，只会让门缝里的光更亮一点。</p>
         <div class="value">+5%</div>
-        <div class="note">金色边框 · 10% 概率</div>
+        <div class="note">金色边框 · 基础 10% 概率</div>
         <div class="glow"></div>
       </article>
     </div>
     <div class="rarity-odds reveal">
       <span>攻击 <b>+2 / +5 / +10</b></span>
       <span>生命 <b>+10 / +20 / +40</b></span>
-      <span>子弹冷却 <b>-0.05 / -0.12 / -0.2 秒</b></span>
+      <span>子弹冷却 <b>-0.20 / -0.48 / -0.80 秒</b></span>
       <span>多发 <b>双发 / 三连</b></span>
-      <span>徘徊者减速 <b>-5% / -12% / -30%</b></span>
+      <span>徘徊者减速 <b>-10% / -24% / -60%</b></span>
     </div>
   </section>
 
@@ -933,7 +933,7 @@
     </div>
     <p class="pool-intro reveal">
       17 种强化按可用稀有度拆成独立卡牌，共 42 张。三选一时每张卡单独掷档位：
-      普通 60%、中级 30%、极品 10%，抽到哪一档就应用该卡对应的数值。
+      普通 60%、中级 30%、极品 10% 为基础档位；角色每升一级，中级与极品各按基础值的 50% 递增，抽到哪一档就应用该卡对应的数值。
     </p>
     <div class="deck-summary reveal">
       <div class="deck-stat"><b>42</b><span>卡牌总数</span></div>
@@ -942,8 +942,8 @@
       <div class="deck-odds">
         <div class="odds-labels">
           <span><i class="common"></i>普通 60%</span>
-          <span><i class="epic"></i>中级 30%</span>
-          <span><i class="legendary"></i>极品 10%</span>
+          <span><i class="epic"></i>中级 30% 起</span>
+          <span><i class="legendary"></i>极品 10% 起</span>
         </div>
         <div class="odds-bar"><i class="common"></i><i class="epic"></i><i class="legendary"></i></div>
       </div>
@@ -960,7 +960,7 @@
     <div class="deck-band common reveal">
       <div class="deck-band-head">
         <span class="dot"></span><h3>普通</h3><span class="en">COMMON</span>
-        <span class="meta">60% · 13 张</span>
+        <span class="meta">基础 60% · 13 张</span>
       </div>
       <div class="deck-grid">
         <article class="deck-card common">
@@ -985,25 +985,25 @@
           <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">RANGE</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-range"/></svg>远击</h4>
           <p class="deck-desc">扩大魂灯弹的自动开火距离。</p>
-          <div class="deck-foot"><span class="deck-label">射程</span><span class="deck-value">+7%</span></div>
+          <div class="deck-foot"><span class="deck-label">射程</span><span class="deck-value">+14%</span></div>
         </article>
         <article class="deck-card common">
           <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">COOLDOWN</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-attack"/></svg>速射</h4>
           <p class="deck-desc">缩短子弹冷却，基础冷却为 2 秒。</p>
-          <div class="deck-foot"><span class="deck-label">冷却</span><span class="deck-value">-0.05s</span></div>
+          <div class="deck-foot"><span class="deck-label">冷却</span><span class="deck-value">-0.20s</span></div>
         </article>
         <article class="deck-card common">
           <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">SOUL</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>魂行</h4>
           <p class="deck-desc">提高灵魂移动速度，更快找回肉身。</p>
-          <div class="deck-foot"><span class="deck-label">魂速</span><span class="deck-value">+5%</span></div>
+          <div class="deck-foot"><span class="deck-label">魂速</span><span class="deck-value">+15%</span></div>
         </article>
         <article class="deck-card common">
           <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">SOUL</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>牵引</h4>
           <p class="deck-desc">扩大灵魂回体的判定范围。</p>
-          <div class="deck-foot"><span class="deck-label">回体范围</span><span class="deck-value">+20%</span></div>
+          <div class="deck-foot"><span class="deck-label">回体范围</span><span class="deck-value">+40%</span></div>
         </article>
         <article class="deck-card common">
           <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">DEFENSE</span></div>
@@ -1027,13 +1027,13 @@
           <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">CRAWLER</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>滞影</h4>
           <p class="deck-desc">降低徘徊者的移动速度。</p>
-          <div class="deck-foot"><span class="deck-label">减速</span><span class="deck-value">-5%</span></div>
+          <div class="deck-foot"><span class="deck-label">减速</span><span class="deck-value">-10%</span></div>
         </article>
         <article class="deck-card common">
           <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">PUZZLE</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>时限</h4>
           <p class="deck-desc">延长八卦镜、四合院与笔记本的允许时间。</p>
-          <div class="deck-foot"><span class="deck-label">解密</span><span class="deck-value">+1s</span></div>
+          <div class="deck-foot"><span class="deck-label">解密</span><span class="deck-value">+7s</span></div>
         </article>
         <article class="deck-card common">
           <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">INTERACT</span></div>
@@ -1047,7 +1047,7 @@
     <div class="deck-band epic reveal">
       <div class="deck-band-head">
         <span class="dot"></span><h3>中级</h3><span class="en">EPIC</span>
-        <span class="meta">30% · 14 张</span>
+        <span class="meta">基础 30% · 14 张</span>
       </div>
       <div class="deck-grid">
         <article class="deck-card epic">
@@ -1072,13 +1072,13 @@
           <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">RANGE</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-range"/></svg>远击</h4>
           <p class="deck-desc">扩大魂灯弹的自动开火距离。</p>
-          <div class="deck-foot"><span class="deck-label">射程</span><span class="deck-value">+18%</span></div>
+          <div class="deck-foot"><span class="deck-label">射程</span><span class="deck-value">+36%</span></div>
         </article>
         <article class="deck-card epic">
           <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">COOLDOWN</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-attack"/></svg>速射</h4>
           <p class="deck-desc">缩短子弹冷却，基础冷却为 2 秒。</p>
-          <div class="deck-foot"><span class="deck-label">冷却</span><span class="deck-value">-0.12s</span></div>
+          <div class="deck-foot"><span class="deck-label">冷却</span><span class="deck-value">-0.48s</span></div>
         </article>
         <article class="deck-card epic">
           <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">MULTISHOT</span></div>
@@ -1090,13 +1090,13 @@
           <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">SOUL</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>魂行</h4>
           <p class="deck-desc">提高灵魂移动速度，更快找回肉身。</p>
-          <div class="deck-foot"><span class="deck-label">魂速</span><span class="deck-value">+10%</span></div>
+          <div class="deck-foot"><span class="deck-label">魂速</span><span class="deck-value">+30%</span></div>
         </article>
         <article class="deck-card epic">
           <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">SOUL</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>牵引</h4>
           <p class="deck-desc">扩大灵魂回体的判定范围。</p>
-          <div class="deck-foot"><span class="deck-label">回体范围</span><span class="deck-value">+50%</span></div>
+          <div class="deck-foot"><span class="deck-label">回体范围</span><span class="deck-value">+100%</span></div>
         </article>
         <article class="deck-card epic">
           <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">DEFENSE</span></div>
@@ -1120,13 +1120,13 @@
           <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">CRAWLER</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>滞影</h4>
           <p class="deck-desc">降低徘徊者的移动速度。</p>
-          <div class="deck-foot"><span class="deck-label">减速</span><span class="deck-value">-12%</span></div>
+          <div class="deck-foot"><span class="deck-label">减速</span><span class="deck-value">-24%</span></div>
         </article>
         <article class="deck-card epic">
           <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">PUZZLE</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>时限</h4>
           <p class="deck-desc">延长八卦镜、四合院与笔记本的允许时间。</p>
-          <div class="deck-foot"><span class="deck-label">解密</span><span class="deck-value">+3s</span></div>
+          <div class="deck-foot"><span class="deck-label">解密</span><span class="deck-value">+11s</span></div>
         </article>
         <article class="deck-card epic">
           <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">INTERACT</span></div>
@@ -1140,7 +1140,7 @@
     <div class="deck-band legendary reveal">
       <div class="deck-band-head">
         <span class="dot"></span><h3>极品</h3><span class="en">LEGENDARY</span>
-        <span class="meta">10% · 15 张</span>
+        <span class="meta">基础 10% · 15 张</span>
       </div>
       <div class="deck-grid">
         <article class="deck-card legendary">
@@ -1159,13 +1159,13 @@
           <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">RANGE</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-range"/></svg>远击</h4>
           <p class="deck-desc">扩大魂灯弹的自动开火距离。</p>
-          <div class="deck-foot"><span class="deck-label">射程</span><span class="deck-value">+30%</span></div>
+          <div class="deck-foot"><span class="deck-label">射程</span><span class="deck-value">+60%</span></div>
         </article>
         <article class="deck-card legendary">
           <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">COOLDOWN</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-attack"/></svg>速射</h4>
           <p class="deck-desc">缩短子弹冷却，基础冷却为 2 秒。</p>
-          <div class="deck-foot"><span class="deck-label">冷却</span><span class="deck-value">-0.20s</span></div>
+          <div class="deck-foot"><span class="deck-label">冷却</span><span class="deck-value">-0.80s</span></div>
         </article>
         <article class="deck-card legendary">
           <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">MULTISHOT</span></div>
@@ -1183,13 +1183,13 @@
           <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">SOUL</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>魂行</h4>
           <p class="deck-desc">提高灵魂移动速度，更快找回肉身。</p>
-          <div class="deck-foot"><span class="deck-label">魂速</span><span class="deck-value">+20%</span></div>
+          <div class="deck-foot"><span class="deck-label">魂速</span><span class="deck-value">+60%</span></div>
         </article>
         <article class="deck-card legendary">
           <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">SOUL</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>牵引</h4>
           <p class="deck-desc">扩大灵魂回体的判定范围。</p>
-          <div class="deck-foot"><span class="deck-label">回体范围</span><span class="deck-value">+100%</span></div>
+          <div class="deck-foot"><span class="deck-label">回体范围</span><span class="deck-value">+200%</span></div>
         </article>
         <article class="deck-card legendary">
           <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">DEFENSE</span></div>
@@ -1213,13 +1213,13 @@
           <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">CRAWLER</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>滞影</h4>
           <p class="deck-desc">降低徘徊者的移动速度。</p>
-          <div class="deck-foot"><span class="deck-label">减速</span><span class="deck-value">-30%</span></div>
+          <div class="deck-foot"><span class="deck-label">减速</span><span class="deck-value">-60%</span></div>
         </article>
         <article class="deck-card legendary">
           <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">PUZZLE</span></div>
           <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>时限</h4>
           <p class="deck-desc">延长八卦镜、四合院与笔记本的允许时间。</p>
-          <div class="deck-foot"><span class="deck-label">解密</span><span class="deck-value">+7s</span></div>
+          <div class="deck-foot"><span class="deck-label">解密</span><span class="deck-value">+19s</span></div>
         </article>
         <article class="deck-card legendary">
           <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">LUCK</span></div>
