@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>幻魄物语 · 在梦里找回自己的影子</title>
+<meta name="description" content="《幻魄物语》是一款发生在归乡继承人梦中的俯视角探索解谜与轻 Roguelite 游戏，群核科技 Aholo 全球 3D AI 黑客松参赛作品。">
+<style>
+  :root{
+    --bg:#04070e;
+    --bg-2:#07101b;
+    --bg-3:#0b1826;
+    --ink:#e4edf7;
+    --ink-dim:#b6c8dc;
+    --muted:#7e93aa;
+    --gold:#b99a63;
+    --gold-soft:#e2d0a8;
+    --jade:#93c8d8;
+    --soul:#a9dcec;
+    --blue:#6f9fd0;
+    --purple:#8f7ac2;
+    --red:#8f2b2e;
+    --line:rgba(160,190,220,.16);
+    --line-brass:rgba(185,154,99,.26);
+    --line-soft:rgba(180,205,230,.07);
+    --serif:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+    --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1200px 720px at 72% -12%,rgba(52,96,140,.20),transparent 62%),
+      radial-gradient(900px 620px at 8% 30%,rgba(20,48,74,.24),transparent 66%),
+      var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.75;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:rgba(147,200,216,.28);color:#fff}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:var(--serif)}
+
+  /* 背景颗粒与光晕 */
+  .grain{
+    position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  }
+  .ambient{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .ambient span{position:absolute;border-radius:50%;filter:blur(90px);opacity:.18}
+  .ambient .a1{width:520px;height:520px;background:#1f4a6b;left:-160px;top:6%}
+  .ambient .a2{width:420px;height:420px;background:#5b4a26;right:-130px;top:42%}
+  .ambient .a3{width:380px;height:380px;background:#16324f;left:40%;bottom:-180px}
+
+  /* 导航 */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px clamp(20px,5vw,64px);
+    transition:background .35s ease,border-color .35s ease,padding .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  .nav.scrolled{
+    background:rgba(4,7,14,.84);
+    backdrop-filter:blur(16px);
+    border-bottom-color:var(--line-soft);
+    padding-top:12px;padding-bottom:12px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:17px;letter-spacing:.18em}
+  .brand .mark{
+    width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line);
+    color:var(--gold);font-size:16px;background:rgba(185,154,99,.05);
+  }
+  .nav-links{display:flex;gap:30px;font-size:13px;letter-spacing:.08em;color:var(--muted)}
+  .nav-links a{transition:color .25s}
+  .nav-links a:hover{color:var(--gold-soft)}
+  .nav-cta{
+    font-size:12px;letter-spacing:.14em;padding:9px 18px;border:1px solid var(--line);
+    color:var(--gold-soft);background:rgba(185,154,99,.04);transition:.25s;
+  }
+  .nav-cta:hover{background:rgba(185,154,99,.12);border-color:rgba(185,154,99,.5)}
+  .nav-toggle{
+    display:none;width:44px;height:36px;place-items:center;border:1px solid var(--line);
+    background:rgba(4,7,14,.55);color:var(--gold-soft);font-size:11px;letter-spacing:.12em;
+    cursor:pointer;transition:.25s;
+  }
+  .nav-toggle:hover{border-color:rgba(185,154,99,.5);background:rgba(185,154,99,.08)}
+
+  /* 通用 */
+  .section{position:relative;z-index:2;max-width:1220px;margin:0 auto;padding:110px clamp(20px,5vw,56px)}
+  .section-head{display:flex;align-items:baseline;gap:18px;margin-bottom:52px}
+  .section-head .idx{font-family:var(--serif);font-size:13px;letter-spacing:.2em;color:var(--gold);opacity:.85}
+  .section-head h2{font-family:var(--serif);font-size:clamp(27px,3.4vw,42px);font-weight:500;letter-spacing:.06em}
+  .section-head .line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+  .eyebrow{font-size:11px;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+  .muted{color:var(--muted)}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* Hero */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:130px clamp(20px,5vw,64px) 80px;overflow:hidden}
+  .hero-bg{
+    position:absolute;inset:0;background-image:url("assets/concept/concept_floor.jpg");
+    background-size:cover;background-position:center 58%;
+    filter:saturate(.95) brightness(.82) blur(1px);transform:scale(1.06);
+  }
+  .hero-shade{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(58% 68% at 24% 42%,rgba(24,52,82,.05),rgba(4,7,14,.72) 74%),
+      linear-gradient(90deg,rgba(4,7,14,.88) 0%,rgba(4,7,14,.35) 52%,rgba(4,7,14,.55) 100%),
+      linear-gradient(180deg,rgba(4,7,14,.45),transparent 40%,rgba(4,7,14,.78));
+  }
+  .hero-grid{
+    position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;
+    display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(36px,6vw,88px);align-items:center;
+  }
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.26em;
+    color:var(--gold-soft);text-transform:uppercase;border:1px solid var(--line);
+    padding:8px 14px;background:rgba(185,154,99,.05);margin-bottom:28px;
+  }
+  .kicker .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+  h1{
+    font-family:var(--serif);font-weight:500;font-size:clamp(68px,11vw,150px);
+    line-height:.98;letter-spacing:.06em;margin-bottom:18px;
+    background:linear-gradient(180deg,#f6fbff 4%,#d5e6f5 46%,#8fb0cc 76%,#b99a63 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 24px 70px rgba(0,0,0,.7),0 0 70px rgba(120,180,220,.18);
+  }
+  .tagline{font-family:var(--serif);font-size:clamp(18px,2vw,25px);letter-spacing:.28em;color:var(--ink-dim);margin-bottom:24px;text-shadow:0 2px 18px rgba(0,0,0,.7)}
+  .lede{max-width:560px;color:var(--muted);font-size:15px;line-height:2;margin-bottom:36px;text-shadow:0 2px 16px rgba(0,0,0,.7)}
+  .lede strong{color:var(--ink);font-weight:500}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:46px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:14px 28px;font-size:13px;letter-spacing:.14em;transition:.28s;border:1px solid transparent;
+  }
+  .btn-primary{background:linear-gradient(135deg,#e2f0fa,#8fb6d4);color:#06101a;font-weight:600}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(140,190,225,.25)}
+  .btn-ghost{border-color:rgba(190,215,235,.18);color:var(--ink-dim)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-soft);background:rgba(185,154,99,.06)}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,52px)}
+  .stat b{display:block;font-family:var(--serif);font-size:27px;color:var(--gold-soft);font-weight:500;letter-spacing:.04em}
+  .stat span{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .hero-visual{position:relative}
+  .game-frame{
+    position:relative;border:1px solid var(--line-brass);background:rgba(6,11,18,.72);
+    padding:10px;box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 0 1px rgba(180,210,235,.04) inset;
+    transform:perspective(1200px) rotateY(-5deg) rotateX(2deg);
+  }
+  .game-frame img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:saturate(.82) brightness(.94)}
+  .frame-top{display:flex;align-items:center;justify-content:space-between;padding:2px 4px 10px;font-size:10px;letter-spacing:.18em;color:var(--muted)}
+  .frame-top .lights{display:flex;gap:6px}
+  .frame-top .lights i{width:6px;height:6px;border-radius:50%;background:#3a424c}
+  .frame-caption{padding:10px 4px 2px;font-size:11px;letter-spacing:.14em;color:var(--muted);text-align:right}
+  .float-card{
+    position:absolute;right:-18px;bottom:-28px;z-index:3;
+    background:rgba(10,15,22,.92);border:1px solid var(--line);padding:16px 20px;
+    backdrop-filter:blur(12px);box-shadow:0 18px 50px rgba(0,0,0,.45);
+  }
+  .float-card .tag{font-size:10px;letter-spacing:.24em;color:var(--gold);margin-bottom:4px}
+  .float-card .value{font-family:var(--serif);font-size:20px;color:var(--ink)}
+  .scroll-hint{
+    position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+    font-size:10px;letter-spacing:.28em;color:var(--muted);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;
+  }
+  .scroll-hint::after{content:"";width:1px;height:38px;background:linear-gradient(var(--gold),transparent);animation:drip 1.8s infinite}
+  @keyframes drip{0%{opacity:.2;transform:scaleY(.4)}50%{opacity:1}100%{opacity:.2;transform:scaleY(1)}}
+
+  /* 世界 */
+  .world{display:block}
+  .two-col{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(36px,6vw,80px);align-items:center}
+  .prose p{color:var(--muted);margin-bottom:18px;font-size:15px;line-height:2}
+  .prose p strong{color:var(--ink);font-weight:500}
+  .prose .quote{
+    margin-top:28px;padding-left:20px;border-left:1px solid var(--gold);
+    font-family:var(--serif);font-size:18px;color:var(--ink-dim);line-height:1.9;
+  }
+  .world-art{position:relative;min-height:380px;display:grid;place-items:center}
+  .world-art .halo{
+    position:absolute;width:320px;height:320px;border-radius:50%;
+    background:radial-gradient(circle,rgba(147,200,216,.18),transparent 66%);
+    filter:blur(6px);animation:breathe 6s ease-in-out infinite;
+  }
+  .world-art .layer{position:absolute;width:74%;aspect-ratio:16/10;border:1px solid var(--line-soft);background:rgba(10,15,22,.55)}
+  .world-art .l1{transform:rotate(-9deg) translate(-26px,18px);opacity:.28}
+  .world-art .l2{transform:rotate(6deg) translate(24px,4px);opacity:.42}
+  .world-art .l3{overflow:hidden;border-color:var(--line-brass);box-shadow:0 30px 60px rgba(0,0,0,.55)}
+  .world-art .l3 img{width:100%;height:100%;object-fit:cover;filter:saturate(.8) brightness(.85)}
+  .world-art .soul{
+    position:absolute;width:18px;height:18px;border-radius:50%;
+    background:radial-gradient(circle at 40% 35%,#f2fcff,#a9dcec 40%,rgba(147,200,216,.05) 70%);
+    box-shadow:0 0 28px #a9dcec,0 0 70px rgba(147,200,216,.45);
+    animation:float 5s ease-in-out infinite;
+  }
+  .start-banner{position:relative;margin-top:48px;height:clamp(240px,31vw,390px);overflow:hidden;border:1px solid var(--line-brass);background:#050a12}
+  .start-banner img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.88);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+  .start-banner:hover img{transform:scale(1.02)}
+  .start-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,7,14,.05),transparent 45%,rgba(4,7,14,.8));pointer-events:none}
+  .start-banner figcaption{position:absolute;left:26px;bottom:22px;z-index:2;font-size:11px;letter-spacing:.12em;color:var(--ink-dim)}
+  .start-banner figcaption b{display:block;font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ink);margin-bottom:4px}
+  @keyframes breathe{0%,100%{transform:scale(.92);opacity:.55}50%{transform:scale(1.08);opacity:.9}}
+  @keyframes float{0%,100%{transform:translate(110px,-90px)}50%{transform:translate(120px,-112px)}}
+  .rule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:64px}
+  .rule{border-top:1px solid var(--line);padding-top:18px}
+  .rule b{display:block;font-family:var(--serif);font-size:18px;margin-bottom:8px;color:var(--gold-soft);font-weight:500}
+  .rule p{font-size:13px;color:var(--muted);line-height:1.8}
+
+  /* 设定图 */
+  .concept-intro{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:36px}
+  .concept-intro p{font-size:14px;color:var(--muted);line-height:2}
+  .concept-intro p strong{color:var(--ink);font-weight:500}
+  .palette{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+  .sw{border:1px solid var(--line-soft);background:rgba(8,14,22,.55);padding:8px 8px 10px}
+  .sw i{display:block;height:46px;margin-bottom:8px;border:1px solid rgba(255,255,255,.08)}
+  .sw span{display:block;font-size:10px;letter-spacing:.08em;color:var(--ink-dim)}
+  .sw b{display:block;font-family:var(--serif);font-size:9px;letter-spacing:.06em;color:var(--muted);font-weight:400}
+  .concept-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:172px;gap:12px}
+  .concept-item{position:relative;overflow:hidden;border:1px solid var(--line-soft);background:#050a12;cursor:zoom-in}
+  .concept-item img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.88);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s}
+  .concept-item:hover img{transform:scale(1.05);filter:saturate(1.02) brightness(1)}
+  .concept-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(3,6,11,.84));opacity:.9;transition:.4s;pointer-events:none}
+  .concept-item figcaption{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;font-size:11px;letter-spacing:.12em;color:var(--ink-dim)}
+  .concept-item figcaption b{display:block;font-family:var(--serif);font-size:16px;font-weight:500;letter-spacing:.08em;color:var(--ink);margin-bottom:3px}
+  .concept-item.feature{grid-column:span 2;grid-row:span 2}
+  .concept-item.wide{grid-column:span 2}
+  .concept-note{margin-top:18px;font-size:11px;letter-spacing:.08em;color:var(--muted)}
+
+  /* 大图预览 */
+  .lightbox{position:fixed;inset:0;z-index:90;display:none;place-items:center;padding:4vh 4vw;background:rgba(2,5,10,.94);backdrop-filter:blur(10px)}
+  .lightbox.open{display:grid}
+  .lightbox figure{max-width:92vw;max-height:92vh;text-align:center}
+  .lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border:1px solid var(--line-brass);box-shadow:0 30px 90px rgba(0,0,0,.7)}
+  .lightbox figcaption{margin-top:14px;font-size:12px;letter-spacing:.1em;color:var(--ink-dim)}
+  .lightbox-close{position:absolute;top:24px;right:32px;width:44px;height:44px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:24px;line-height:1;cursor:pointer;transition:.25s}
+  .lightbox-close:hover{border-color:var(--gold);color:var(--gold-soft)}
+
+  /* 循环 */
+  .loop{padding-top:60px}
+  .timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .step{padding:26px 18px 30px;border-right:1px solid var(--line-soft);position:relative;transition:background .3s}
+  .step:last-child{border-right:0}
+  .step:hover{background:rgba(185,154,99,.04)}
+  .step .num{font-family:var(--serif);font-size:12px;color:var(--gold);letter-spacing:.16em;margin-bottom:26px}
+  .step h3{font-family:var(--serif);font-size:17px;font-weight:500;margin-bottom:8px}
+  .step p{font-size:12px;color:var(--muted);line-height:1.7}
+  .step::after{content:"";position:absolute;left:18px;bottom:18px;width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.5}
+
+  /* 特性 */
+  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .feature{
+    position:relative;padding:30px;background:linear-gradient(155deg,rgba(16,23,34,.86),rgba(9,13,20,.72));
+    border:1px solid var(--line-soft);transition:.35s;overflow:hidden;
+  }
+  .feature::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(185,154,99,.55),transparent);opacity:0;transition:.35s}
+  .feature:hover{transform:translateY(-5px);border-color:rgba(185,154,99,.3);background:linear-gradient(155deg,rgba(21,30,43,.92),rgba(10,14,22,.8))}
+  .feature:hover::before{opacity:1}
+  .icon{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);margin-bottom:22px;color:var(--gold);background:rgba(185,154,99,.04)}
+  .icon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+  .feature h3{font-family:var(--serif);font-size:20px;font-weight:500;margin-bottom:10px}
+  .feature p{font-size:13px;color:var(--muted);line-height:1.85}
+  .feature .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+  .tagline-mini{font-size:10px;letter-spacing:.12em;color:var(--gold-soft);border:1px solid var(--line);padding:3px 8px;opacity:.85}
+
+  /* 强化 */
+  .upgrades{overflow:hidden}
+  .rarity-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;perspective:1200px}
+  .card{
+    position:relative;min-height:330px;padding:28px;background:rgba(8,12,18,.86);
+    border:1px solid var(--line-soft);transition:.4s;transform-style:preserve-3d;
+  }
+  .card:hover{transform:translateY(-8px) rotateX(2deg)}
+  .card .rarity{font-size:10px;letter-spacing:.26em;margin-bottom:24px}
+  .card h3{font-family:var(--serif);font-size:29px;font-weight:500;letter-spacing:.06em;margin-bottom:12px}
+  .card .desc{font-size:13px;color:var(--muted);line-height:1.9;min-height:50px}
+  .card .value{margin-top:28px;font-family:var(--serif);font-size:38px;letter-spacing:.02em}
+  .card .note{font-size:11px;color:var(--muted);letter-spacing:.1em;margin-top:8px}
+  .card .glow{position:absolute;inset:auto -30% -40% -30%;height:180px;filter:blur(55px);opacity:.22}
+  .card.common{border-color:rgba(91,157,255,.42)}
+  .card.common .rarity,.card.common .value{color:#7db3ff}
+  .card.common .glow{background:#2b62c9}
+  .card.epic{border-color:rgba(176,107,255,.46)}
+  .card.epic .rarity,.card.epic .value{color:#c79bff}
+  .card.epic .glow{background:#7436c9}
+  .card.legendary{border-color:rgba(185,154,99,.65);box-shadow:0 0 50px rgba(185,154,99,.08)}
+  .card.legendary .rarity,.card.legendary .value{color:var(--gold-soft)}
+  .card.legendary .glow{background:#c28b2d}
+  .rarity-odds{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-top:28px;font-size:11px;letter-spacing:.12em;color:var(--muted)}
+  .rarity-odds b{color:var(--ink);font-weight:500}
+
+  /* 牌库 */
+  .pool-intro{max-width:780px;font-size:14px;color:var(--muted);line-height:2;margin-bottom:28px}
+  .deck-summary{
+    display:grid;grid-template-columns:repeat(3,auto) 1fr;gap:clamp(18px,3vw,40px);
+    align-items:center;padding:22px 26px;margin-bottom:26px;
+    border:1px solid var(--line-soft);
+    background:
+      radial-gradient(130% 160% at 0% 0%,rgba(185,154,99,.07),transparent 55%),
+      linear-gradient(135deg,rgba(14,23,35,.8),rgba(8,13,20,.72));
+  }
+  .deck-stat b{display:block;font-family:var(--serif);font-size:26px;font-weight:500;color:var(--gold-soft);letter-spacing:.03em}
+  .deck-stat span{font-size:10px;letter-spacing:.18em;color:var(--muted)}
+  .deck-odds{min-width:260px}
+  .icon-key{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-bottom:44px;padding:0 4px;font-size:10px;letter-spacing:.12em;color:var(--muted)}
+  .icon-key span{display:inline-flex;align-items:center;gap:7px}
+  .icon-key .key-icon{width:15px;height:15px;color:#fff;opacity:.75}
+  .icon-key .key-note{margin-left:auto;opacity:.65}
+  .odds-labels{display:flex;justify-content:space-between;gap:12px;margin-bottom:9px;font-size:10px;letter-spacing:.08em;color:var(--muted)}
+  .odds-labels i{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:1px}
+  .odds-labels i.common{background:#7db3ff;box-shadow:0 0 8px rgba(125,179,255,.6)}
+  .odds-labels i.epic{background:#c79bff;box-shadow:0 0 8px rgba(199,155,255,.6)}
+  .odds-labels i.legendary{background:#e2d0a8;box-shadow:0 0 8px rgba(226,208,168,.6)}
+  .odds-bar{display:flex;gap:2px;height:6px}
+  .odds-bar i{display:block;height:100%}
+  .odds-bar .common{flex:6;background:#7db3ff}
+  .odds-bar .epic{flex:3;background:#c79bff}
+  .odds-bar .legendary{flex:1;background:#e2d0a8}
+
+  .deck-band{margin-bottom:44px}
+  .deck-band-head{display:flex;align-items:center;gap:12px;padding-bottom:12px;margin-bottom:16px;border-bottom:1px solid var(--line-soft)}
+  .deck-band-head .dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+  .deck-band-head h3{font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:.1em}
+  .deck-band-head .en{font-size:10px;letter-spacing:.26em;color:var(--muted)}
+  .deck-band-head .meta{margin-left:auto;font-size:11px;letter-spacing:.12em;color:var(--muted)}
+  .deck-band.common .dot{background:#7db3ff;box-shadow:0 0 12px rgba(125,179,255,.7)}
+  .deck-band.epic .dot{background:#c79bff;box-shadow:0 0 12px rgba(199,155,255,.7)}
+  .deck-band.legendary .dot{background:#e2d0a8;box-shadow:0 0 12px rgba(226,208,168,.7)}
+  .deck-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .deck-card{
+    --edge:rgba(160,190,220,.3);--wash:rgba(7,16,27,.82);
+    position:relative;padding:16px 16px 14px;border:1px solid transparent;
+    background:linear-gradient(var(--wash),var(--wash)) padding-box,var(--edge) border-box;
+    transition:transform .3s ease,background .3s ease,box-shadow .3s ease;
+  }
+  .deck-card.common{--edge:linear-gradient(180deg,rgba(125,179,255,.95),rgba(125,179,255,.18))}
+  .deck-card.epic{--edge:linear-gradient(180deg,rgba(199,155,255,.95),rgba(199,155,255,.18))}
+  .deck-card.legendary{--edge:linear-gradient(180deg,rgba(226,208,168,.98),rgba(226,208,168,.22))}
+  .deck-card:hover{--wash:rgba(12,24,38,.94);transform:translateY(-3px)}
+  .deck-card.common:hover{box-shadow:0 16px 36px rgba(125,179,255,.13)}
+  .deck-card.epic:hover{box-shadow:0 16px 36px rgba(199,155,255,.13)}
+  .deck-card.legendary:hover{box-shadow:0 16px 36px rgba(226,208,168,.12)}
+  .deck-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+  .deck-rarity{font-size:9px;letter-spacing:.14em;padding:2px 7px;border:1px solid rgba(160,190,220,.2);color:var(--muted)}
+  .deck-card.common .deck-rarity{color:#9cc6ff;border-color:rgba(125,179,255,.4)}
+  .deck-card.epic .deck-rarity{color:#d3b8ff;border-color:rgba(199,155,255,.4)}
+  .deck-card.legendary .deck-rarity{color:#efdfba;border-color:rgba(226,208,168,.42)}
+  .deck-kind{font-size:8px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+  .deck-name{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:18px;font-weight:500;letter-spacing:.08em;margin-bottom:7px}
+  .deck-icon{width:20px;height:20px;flex:0 0 auto;color:#fff;opacity:.9;transition:opacity .3s}
+  .deck-card:hover .deck-icon{opacity:1}
+  .icon-sprite{position:absolute;width:0;height:0;overflow:hidden}
+  .deck-desc{font-size:11px;line-height:1.7;color:var(--muted);min-height:38px}
+  .deck-foot{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:12px;padding-top:10px;border-top:1px solid var(--line-soft)}
+  .deck-label{font-size:10px;letter-spacing:.12em;color:var(--muted)}
+  .deck-value{font-family:var(--serif);font-size:19px;letter-spacing:.02em}
+  .deck-card.common .deck-value{color:#a8cfff}
+  .deck-card.epic .deck-value{color:#d3b8ff}
+  .deck-card.legendary .deck-value{color:#f0e2c0}
+  .pool-note{margin-top:18px;font-size:11px;letter-spacing:.08em;color:var(--muted)}
+
+  /* 解密 */
+  .puzzle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .puzzle{
+    position:relative;padding:32px;border:1px solid var(--line-soft);
+    background:radial-gradient(120% 100% at 20% 0%,rgba(18,34,54,.8),rgba(6,11,18,.92));
+    transition:.35s;
+  }
+  .puzzle:hover{border-color:rgba(185,154,99,.32);transform:translateY(-4px)}
+  .puzzle-art{margin:-32px -32px 26px;height:170px;overflow:hidden;border-bottom:1px solid var(--line-soft)}
+  .puzzle-art img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.82);transition:.6s}
+  .puzzle:hover .puzzle-art img{transform:scale(1.04);filter:saturate(1) brightness(.96)}
+  .puzzle .time{
+    width:76px;height:76px;border-radius:50%;display:grid;place-items:center;
+    border:1px solid var(--line);margin-bottom:26px;position:relative;
+    font-family:var(--serif);font-size:20px;color:var(--gold-soft);
+  }
+  .puzzle .time::after{
+    content:"";position:absolute;inset:5px;border-radius:50%;
+    border:1px dashed rgba(185,154,99,.32);animation:spin 18s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .puzzle h3{font-family:var(--serif);font-size:22px;font-weight:500;margin-bottom:8px}
+  .puzzle .sub{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:14px;text-transform:uppercase}
+  .puzzle p{font-size:13px;color:var(--muted);line-height:1.85}
+  .puzzle .hint{margin-top:18px;padding-top:14px;border-top:1px solid var(--line-soft);font-size:11px;color:var(--ink-dim);letter-spacing:.06em}
+
+  /* 画廊 */
+  .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .shot{position:relative;overflow:hidden;border:1px solid var(--line-soft);background:#0a0e14}
+  .shot img{width:100%;aspect-ratio:16/9;object-fit:cover;transition:.7s cubic-bezier(.2,.7,.2,1);filter:saturate(.85)}
+  .shot:hover img{transform:scale(1.045);filter:saturate(1)}
+  .shot .cap{position:absolute;left:0;right:0;bottom:0;padding:18px 18px 14px;background:linear-gradient(transparent,rgba(4,7,10,.9));font-size:11px;letter-spacing:.14em;color:var(--ink-dim)}
+  .shot .cap b{display:block;font-family:var(--serif);font-size:15px;color:var(--ink);font-weight:500;letter-spacing:.08em;margin-bottom:3px}
+
+  /* 参赛与职责 */
+  .competition{
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);
+    padding:42px;border:1px solid var(--line);background:
+      radial-gradient(120% 140% at 10% 0%,rgba(185,154,99,.09),transparent 55%),
+      linear-gradient(135deg,rgba(16,23,34,.9),rgba(8,12,18,.94));
+    margin-bottom:54px;
+  }
+  .competition .badge{display:inline-flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.24em;color:var(--gold);border:1px solid var(--line);padding:7px 12px;margin-bottom:20px}
+  .competition .badge .sq{width:6px;height:6px;background:var(--gold);transform:rotate(45deg)}
+  .competition h2{font-family:var(--serif);font-size:clamp(26px,3vw,38px);font-weight:500;line-height:1.45;margin-bottom:18px}
+  .competition p{font-size:14px;color:var(--muted);line-height:2}
+  .comp-facts{display:flex;flex-direction:column;justify-content:center;gap:14px}
+  .fact{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid var(--line-soft);font-size:12px}
+  .fact span{color:var(--muted);letter-spacing:.1em}
+  .fact b{font-family:var(--serif);font-weight:500;color:var(--gold-soft)}
+  .comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:26px}
+  .comp-card{padding:24px 26px;border:1px solid var(--line-soft);background:linear-gradient(160deg,rgba(12,19,29,.82),rgba(7,11,18,.72))}
+  .comp-card .no{font-family:var(--serif);font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:14px}
+  .comp-card h3{font-family:var(--serif);font-size:19px;font-weight:500;margin-bottom:12px}
+  .comp-card ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .comp-card li{font-size:12px;color:var(--muted);line-height:1.75;padding-left:12px;position:relative}
+  .comp-card li::before{content:"";position:absolute;left:0;top:.72em;width:4px;height:4px;background:var(--gold);opacity:.55}
+  .roles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .role{position:relative;padding:26px;border:1px solid var(--line-soft);background:rgba(11,16,24,.72);transition:.3s}
+  .role:hover{border-color:rgba(185,154,99,.3);background:rgba(15,22,32,.85);transform:translateY(-3px)}
+  .role .no{font-family:var(--serif);font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:18px}
+  .role h3{font-family:var(--serif);font-size:20px;font-weight:500;margin-bottom:4px}
+  .role .en{font-size:9px;letter-spacing:.24em;color:var(--muted);text-transform:uppercase;margin-bottom:16px}
+  .role ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
+  .role li{font-size:12px;color:var(--muted);line-height:1.7;padding-left:12px;position:relative}
+  .role li::before{content:"";position:absolute;left:0;top:.72em;width:4px;height:4px;background:var(--gold);opacity:.55}
+  .role .member{font-size:10px;letter-spacing:.12em;color:var(--ink-dim);padding-top:12px;border-top:1px solid var(--line-soft)}
+  .role .member span{color:var(--muted)}
+
+  /* 结尾 */
+  .closing{position:relative;text-align:center;padding:130px 24px 110px;overflow:hidden}
+  .closing::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:1px;height:70px;background:linear-gradient(transparent,var(--gold))}
+  .closing blockquote{font-family:var(--serif);font-size:clamp(26px,4vw,50px);line-height:1.6;color:var(--ink);letter-spacing:.08em;max-width:900px;margin:0 auto 30px}
+  .closing blockquote em{font-style:normal;color:var(--gold-soft)}
+  .closing .small{font-size:11px;letter-spacing:.28em;color:var(--muted);text-transform:uppercase}
+  footer{border-top:1px solid var(--line-soft);padding:34px clamp(20px,5vw,64px);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:11px;color:var(--muted);letter-spacing:.1em}
+  footer .brand{font-size:13px;letter-spacing:.16em}
+
+  /* 响应式 */
+  @media(max-width:1000px){
+    .nav-links{gap:18px;font-size:12px}
+    .hero-grid{grid-template-columns:1fr;gap:56px}
+    .hero-visual{max-width:640px}
+    .game-frame{transform:none}
+    .float-card{right:10px;bottom:-22px}
+    .two-col,.competition{grid-template-columns:1fr}
+    .concept-intro{grid-template-columns:1fr}
+    .palette{grid-template-columns:repeat(3,1fr)}
+    .concept-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+    .feature-grid,.roles{grid-template-columns:repeat(2,1fr)}
+    .comp-grid{grid-template-columns:1fr 1fr}
+    .deck-summary{grid-template-columns:repeat(3,1fr);gap:22px}
+    .deck-odds{grid-column:1 / -1}
+    .deck-grid{grid-template-columns:repeat(3,1fr)}
+    .timeline{grid-template-columns:repeat(3,1fr)}
+    .step:nth-child(3){border-right:0}
+    .step:nth-child(-n+3){border-bottom:1px solid var(--line-soft)}
+    .rarity-row,.puzzle-grid,.gallery-grid{grid-template-columns:1fr 1fr}
+    .world-art{min-height:320px;margin-top:10px}
+  }
+  @media(max-width:700px){
+    .nav-toggle{display:grid}
+    .nav-links{
+      display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
+      padding:8px clamp(20px,5vw,56px) 18px;background:rgba(4,7,14,.98);
+      border-bottom:1px solid var(--line-soft);backdrop-filter:blur(18px);
+      max-height:calc(100vh - 68px);overflow-y:auto;
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{padding:12px 0;border-bottom:1px solid var(--line-soft);font-size:14px}
+    .hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .hero-actions .btn{justify-content:center}
+    .hero-actions .btn:first-child{grid-column:1 / -1}
+    .hero{padding-top:110px}
+    h1{font-size:64px}
+    .section{padding-top:84px;padding-bottom:84px}
+    .feature-grid,.roles,.rarity-row,.puzzle-grid,.gallery-grid,.rule-grid{grid-template-columns:1fr}
+    .comp-grid{grid-template-columns:1fr}
+    .deck-grid{grid-template-columns:1fr 1fr}
+    .deck-desc{min-height:0}
+    .concept-grid{grid-template-columns:1fr;grid-auto-rows:224px}
+    .concept-item.feature,.concept-item.wide{grid-column:span 1;grid-row:span 1}
+    .palette{grid-template-columns:repeat(2,1fr)}
+    .lightbox-close{top:16px;right:18px}
+    .timeline{grid-template-columns:1fr 1fr}
+    .step:nth-child(2n){border-right:0}
+    .step:nth-child(-n+4){border-bottom:1px solid var(--line-soft)}
+    .competition{padding:28px}
+    .hero-stats{gap:24px}
+    .closing{padding-top:90px}
+  }
+  @media(max-width:520px){
+    .nav-cta{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<svg class="icon-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="ico-attack" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M15.4 3.6a5 5 0 1 1 0 10 5 5 0 0 1 0-10Z"/>
+    <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M10.6 13.2 4.7 19.1M7.4 10 3.4 14M13.8 16.4 9.8 20.4"/>
+    <path fill="currentColor" d="M20.9 2.4l.7 1.7 1.7.7-1.7.7-.7 1.7-.7-1.7-1.7-.7 1.7-.7Z"/>
+    <path fill="currentColor" d="M18.6 15.2l.5 1.2 1.2.5-1.2.5-.5 1.2-.5-1.2-1.2-.5 1.2-.5Z"/>
+  </symbol>
+  <symbol id="ico-life" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M12 20.3 10.2 18.7C5.9 15 3.1 12.5 3.1 9.4 3.1 7 5 5.1 7.4 5.1c1.4 0 2.7.6 3.7 1.7l.9 1 .9-1c1-1.1 2.3-1.7 3.7-1.7 2.4 0 4.3 1.9 4.3 4.3 0 3.1-2.8 5.6-7.1 9.3Z"/>
+    <path fill="currentColor" d="M12 16.6 10.9 15.6c-2.3-2-3.8-3.3-3.8-5 0-1.2 1-2.2 2.2-2.2.7 0 1.4.3 1.9.9l.8.9.8-.9c.5-.6 1.2-.9 1.9-.9 1.2 0 2.2 1 2.2 2.2 0 1.7-1.5 3-3.8 5Z"/>
+    <path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M5.2 2.9v2.7M3.9 4.3h2.7M18.8 18.4v2.7M17.5 19.7h2.7"/>
+  </symbol>
+  <symbol id="ico-range" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="12" cy="12" r="4.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2.2 2"/>
+    <circle cx="12" cy="12" r="1.6" fill="currentColor"/>
+    <path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M12 1.4v2.6M12 20v2.6M1.4 12h2.6M20 12h2.6"/>
+    <path fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" d="M3.9 3.9l1.8 1.8M18.3 18.3l1.8 1.8M20.1 3.9l-1.8 1.8M5.7 18.3l-1.8 1.8"/>
+  </symbol>
+  <symbol id="ico-soul" viewBox="0 0 24 24">
+    <path fill="currentColor" fill-rule="evenodd" d="M12 1.8c1.4 3.6 4.9 5.6 5.6 9.4.8 4.4-2.2 8.4-5.6 8.4s-6.4-4-5.6-8.4C7.1 7.4 10.6 5.4 12 1.8Zm0 13.6c-1.7 0-2.8-1.4-2.6-3 .2-1.4 1.4-2.8 2.6-4.2 1.2 1.4 2.4 2.8 2.6 4.2.2 1.6-.9 3-2.6 3Z"/>
+    <path fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" d="M18.9 7.8c1.3 1.3 2 3.1 2 5"/>
+    <path fill="currentColor" d="M19.2 15.4l.5 1.2 1.2.5-1.2.5-.5 1.2-.5-1.2-1.2-.5 1.2-.5Z"/>
+    <circle cx="5.1" cy="5.9" r="1.1" fill="currentColor"/>
+  </symbol>
+  <symbol id="ico-eye" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M12 5.1c4.7 0 8.6 3.2 10.1 6.9-1.5 3.7-5.4 6.9-10.1 6.9S3.4 15.7 1.9 12C3.4 8.3 7.3 5.1 12 5.1Z"/>
+    <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.3"/>
+    <circle cx="12" cy="12" r="1.9" fill="currentColor"/>
+    <path fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" d="M12 1.6v2.1M4.1 3.5l1.3 1.7M19.9 3.5l-1.3 1.7"/>
+  </symbol>
+</svg>
+<div class="grain"></div>
+<div class="ambient" aria-hidden="true">
+  <span class="a1"></span><span class="a2"></span><span class="a3"></span>
+</div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top"><span class="mark">幻</span><span>幻魄物语</span></a>
+  <nav class="nav-links">
+    <a href="#story">剧情</a>
+    <a href="#world">世界</a>
+    <a href="#concept">设定图</a>
+    <a href="#loop">循环</a>
+    <a href="#features">玩法</a>
+    <a href="#upgrades">强化</a>
+    <a href="#cards">牌库</a>
+    <a href="#puzzles">解密</a>
+    <a href="#gallery">实机</a>
+    <a href="#team">参赛</a>
+  </nav>
+  <a class="nav-cta" href="#team">参赛信息</a>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="打开导航" aria-expanded="false">目录</button>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="kicker reveal"><span class="dot"></span>群核科技 Aholo 全球 3D AI 黑客松 · 可玩原型</div>
+        <h1 class="reveal">幻魄物语</h1>
+        <p class="tagline reveal">在梦里找回自己的影子</p>
+        <p class="lede reveal">
+          一款发生在尤里西斯梦中的<strong>俯视角探索解谜 + 轻 Roguelite</strong> 游戏。
+          你提着魂灯，在无限延展的案头旧物之间寻找异层传送门；
+          每一次死亡都会让梦更冷，而每完成三类解密，才会浮现下一道门。
+        </p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary" href="#features">了解玩法</a>
+          <a class="btn btn-ghost" href="#concept">查看设定图</a>
+          <a class="btn btn-ghost" href="#gallery">查看实机画面</a>
+        </div>
+        <div class="hero-stats reveal">
+          <div class="stat"><b data-count="5">5</b><span>×5 无限活动格</span></div>
+          <div class="stat"><b data-count="17">17</b><span>种随机强化</span></div>
+          <div class="stat"><b data-count="3">3</b><span>类解密器物</span></div>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="game-frame">
+          <div class="frame-top"><span>DREAM_PROTOTYPE.EXE</span><span class="lights"><i></i><i></i><i></i></span></div>
+          <img src="assets/menu.png" alt="《幻魄物语》主界面：幻魄物语标题与开始游戏、关于我们、设置三项纯文字菜单">
+          <div class="frame-caption">主界面实机 · Unreal Engine 5.6</div>
+        </div>
+        <div class="float-card">
+          <div class="tag">CURRENT BUILD</div>
+          <div class="value">v0.9 玩法原型</div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">SCROLL</div>
+  </section>
+
+<section class="section gallery" id="story">
+    <div class="section-head reveal">
+      <span class="idx">01 / STORY</span>
+      <h2>从祖宅到醒来</h2>
+      <span class="line"></span>
+    </div>
+    <p class="pool-intro reveal">
+      开始新游戏时，两页开场插画从画面上方滑入，点击翻页后进入梦境；
+      传送门判定成功会播放好结局并回到主页，而任何一次死亡都会先播放坏结局。
+    </p>
+    <div class="gallery-grid">
+      <figure class="shot reveal">
+        <img src="assets/story/background.jpg" alt="《幻魄物语》背景故事插画">
+        <figcaption class="cap"><b>背景故事</b>杭州长大的英国孤儿 · 回到祖宅</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <img src="assets/story/dream.jpg" alt="《幻魄物语》进入梦境插画">
+        <figcaption class="cap"><b>坠入梦境</b>书房入睡 · 身体缩成梦里的尺寸</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <img src="assets/story/good_ending.jpg" alt="《幻魄物语》好结局插画">
+        <figcaption class="cap"><b>好结局 · 彻底通关</b>传送门判定成功 · 点击回到主页</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <img src="assets/story/bad_ending.jpg" alt="《幻魄物语》坏结局插画">
+        <figcaption class="cap"><b>坏结局 · 死亡</b>任何一次死亡 · 点击后继续探索</figcaption>
+      </figure>
+    </div>
+    <p class="pool-note reveal">四张插画随游戏进度自动播放，点击画面推进，不需要额外操作。</p>
+  </section>
+
+  <section class="section world" id="world">
+    <div class="section-head reveal">
+      <span class="idx">02 / WORLD</span>
+      <h2>一个不愿醒来的梦</h2>
+      <span class="line"></span>
+    </div>
+    <div class="two-col">
+      <div class="prose reveal">
+        <p>
+          尤里西斯是在杭州长大的英国孤儿，成年后作为唯一继承人回到英格兰祖宅。
+          本地报纸把这座老宅写成一座阴森的鬼宅，他还是带着一面八卦镜和几件最爱的旧物住了进去。
+          夜里，他在书房入睡，再睁眼时，身体已经缩成了梦里的尺寸。
+        </p>
+        <p>
+          梦里的世界没有边界。它由<strong>案头、纸张、积木、书本与旧器物</strong>不断向外生长，
+          每次进入都会重新排列。你只能看见身边五乘五格的完整世界，
+          却永远不知道下一格会是什么。
+        </p>
+        <p>
+          八卦镜、四合院模型与笔记本电脑散落在梦中，它们是通往下一层的线索；
+          而匍匐者，是梦对闯入者的回答。它没有血条，也不会被真正杀死，
+          只会在你第一次惊醒它之后，循着你的影子慢慢靠近。
+        </p>
+        <p>
+          灵魂离体时，肉身留在原地。你要以半透明的灵魂穿过梦的缝隙，
+          找到自己的身体；否则，梦会替你合上眼睛。
+        </p>
+        <p>
+          我们为案头、八卦镜、四合院、笔记本与徘徊者整理了一组场景设定图，
+          统一了午夜蓝、冷白光源与黄铜器物的色彩基调；其中这张案头也是游戏开始界面的背景，
+          页面下方可以直接查看。
+        </p>
+        <div class="quote">“记得回头看看，<br>你的身体还在等你。”</div>
+      </div>
+      <div class="world-art reveal" aria-hidden="true">
+        <div class="halo"></div>
+        <div class="layer l1"></div>
+        <div class="layer l2"></div>
+        <div class="layer l3"><img src="assets/concept/concept_books_path.jpg" alt="书廊设定图：两侧高耸书堆夹出的通道"></div>
+        <div class="soul"></div>
+      </div>
+    </div>
+    <figure class="start-banner reveal">
+      <img src="assets/menu_bg.jpg" alt="游戏开始界面背景：午夜蓝案头、冷光与旧器物">
+      <figcaption><b>游戏开始界面</b>同一张案头，等你关灯入梦</figcaption>
+    </figure>
+    <div class="rule-grid">
+      <div class="rule reveal"><b>无限流送</b><p>以玩家为中心维持 5×5 活动格，地貌由坐标与层种子确定性生成，离开再返回不会重掷。</p></div>
+      <div class="rule reveal"><b>必中解密线</b><p>绝对坐标 5、15、30 的横竖线必定生成解密区块，之后每 30 格重复，探索不会空手而归。</p></div>
+      <div class="rule reveal"><b>逻辑与表现分离</b><p>匍匐者以 0.1 米精度持续计算位置，只有进入可见格才生成实体、灯光与碰撞。</p></div>
+    </div>
+  </section>
+
+  <section class="section concept" id="concept">
+    <div class="section-head reveal">
+      <span class="idx">03 / CONCEPT ART</span>
+      <h2>梦境的颜色</h2>
+      <span class="line"></span>
+    </div>
+    <div class="concept-intro reveal">
+      <p>
+        整组场景设定图以<strong>午夜蓝</strong>为底，冷白光源从高处落下，
+        木地板只保留低饱和的暖褐。黄铜、镜穗红与魂光只出现在器物和关键提示上，
+        构成梦境的色彩秩序，也决定了网站的用色。
+      </p>
+      <div class="palette" aria-label="设定图色板">
+        <div class="sw"><i style="background:#04070e"></i><span>梦底</span><b>#04070E</b></div>
+        <div class="sw"><i style="background:#0b1826"></i><span>夜蓝</span><b>#0B1826</b></div>
+        <div class="sw"><i style="background:#3a2e22"></i><span>木纹</span><b>#3A2E22</b></div>
+        <div class="sw"><i style="background:#93c8d8"></i><span>魂光</span><b>#93C8D8</b></div>
+        <div class="sw"><i style="background:#b99a63"></i><span>黄铜</span><b>#B99A63</b></div>
+        <div class="sw"><i style="background:#8f2b2e"></i><span>镜穗红</span><b>#8F2B2E</b></div>
+      </div>
+    </div>
+    <div class="concept-grid">
+      <figure class="concept-item feature reveal" data-caption="徘徊者设定图 · 它只在可见的格子里存在">
+        <img src="assets/concept/concept_crawler.jpg" alt="徘徊者设定图：蓝色地板上的巨型黑色人影与光柱中的角色">
+        <figcaption><b>徘徊者</b>梦对闯入者的回答</figcaption>
+      </figure>
+      <figure class="concept-item wide reveal" data-caption="梦中案头设定图 · 无限延展的木地板与冷光">
+        <img src="assets/concept/concept_floor.jpg" alt="梦境案头设定图：蓝色光柱下独自站立的角色">
+        <figcaption><b>梦中案头</b>一个人的无限地板</figcaption>
+      </figure>
+      <figure class="concept-item reveal" data-caption="八卦镜设定图 · 黄铜八角镜与红色流苏">
+        <img src="assets/concept/concept_mirror.jpg" alt="八卦镜设定图：黄铜八角镜与红色流苏">
+        <figcaption><b>八卦镜</b>镜像顺序</figcaption>
+      </figure>
+      <figure class="concept-item reveal" data-caption="案头台灯设定图 · 梦里唯一稳定的光源">
+        <img src="assets/concept/concept_lamp.jpg" alt="案头台灯设定图：蓝色雾气中的旧式台灯">
+        <figcaption><b>案头台灯</b>梦里的光源</figcaption>
+      </figure>
+      <figure class="concept-item wide reveal" data-caption="摄魂蜘蛛设定图 · 装死、翻身与群体堵路">
+        <img src="assets/concept/concept_spiders.jpg" alt="摄魂蜘蛛设定图：黑暗中多只蜘蛛与白色眼睛">
+        <figcaption><b>摄魂蜘蛛</b>装死与翻身</figcaption>
+      </figure>
+      <figure class="concept-item reveal" data-caption="书堆设定图 · 地貌会成片生长">
+        <img src="assets/concept/concept_books_fog.jpg" alt="书堆设定图：雾中堆叠的书本">
+        <figcaption><b>书堆</b>成片生长</figcaption>
+      </figure>
+      <figure class="concept-item reveal" data-caption="书廊设定图 · 五乘五之外的未知">
+        <img src="assets/concept/concept_books_path.jpg" alt="书廊设定图：两侧高耸书堆夹出的通道">
+        <figcaption><b>书廊</b>未知的下一格</figcaption>
+      </figure>
+      <figure class="concept-item reveal" data-caption="笔记本电脑设定图 · 附近两格找回三只猫">
+        <img src="assets/concept/concept_laptop.jpg" alt="笔记本电脑设定图：蓝光中的黑色笔记本">
+        <figcaption><b>笔记本电脑</b>找回三只猫</figcaption>
+      </figure>
+      <figure class="concept-item reveal" data-caption="四合院模型设定图 · 四门巡礼">
+        <img src="assets/concept/concept_courtyard.jpg" alt="四合院模型设定图：夜蓝色屋顶与院落">
+        <figcaption><b>四合院</b>四门巡礼</figcaption>
+      </figure>
+      <figure class="concept-item wide reveal" data-caption="纸张与积木设定图 · 梦中的旧物">
+        <img src="assets/concept/concept_paper_blocks.jpg" alt="纸张与积木设定图：木偶、纸团、积木与报纸">
+        <figcaption><b>纸张与积木</b>梦中的旧物</figcaption>
+      </figure>
+    </div>
+    <p class="concept-note reveal">以上为场景物体设定图，点击可查看大图；原型实机画面见 08 / IN-GAME。</p>
+  </section>
+
+  <section class="section loop" id="loop">
+    <div class="section-head reveal">
+      <span class="idx">04 / LOOP</span>
+      <h2>一局游戏，从探索到醒来</h2>
+      <span class="line"></span>
+    </div>
+    <div class="timeline reveal">
+      <div class="step"><div class="num">01</div><h3>探索</h3><p>穿过成片地貌，收集经验球，避开或击退普通器物怪。</p></div>
+      <div class="step"><div class="num">02</div><h3>解密</h3><p>在限定时间内完成八卦镜、四合院或笔记本电脑的谜题。</p></div>
+      <div class="step"><div class="num">03</div><h3>传送门</h3><p>三类解密各完成一次，玩家周围两格内浮现通往下一层的传送门。</p></div>
+      <div class="step"><div class="num">04</div><h3>惊醒</h3><p>第一次解密完成时，徘徊者苏醒；受击也会提前唤醒它。</p></div>
+      <div class="step"><div class="num">05</div><h3>红卡</h3><p>踏入传送门，翻开唯一的红色边框卡片，按隐藏概率判定通关或深入。</p></div>
+      <div class="step"><div class="num">06</div><h3>醒来</h3><p>判定成功即彻底通关，播放好结局后回到主页；失败进入下一层，基础概率翻倍；死亡则先播放坏结局。</p></div>
+    </div>
+  </section>
+
+  <section class="section features" id="features">
+    <div class="section-head reveal">
+      <span class="idx">05 / SYSTEMS</span>
+      <h2>梦的六条规则</h2>
+      <span class="line"></span>
+    </div>
+    <div class="feature-grid">
+      <article class="feature reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        <h3>无限案头</h3>
+        <p>5×5 活动窗口、确定性种子与分类地貌，让每一次探索都不重复，也不会无限膨胀。</p>
+        <div class="tags"><span class="tagline-mini">5×5 流送</span><span class="tagline-mini">确定性生成</span></div>
+      </article>
+      <article class="feature reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></div>
+        <h3>灵魂离体</h3>
+        <p>被摄魂蜘蛛命中后，灵魂被随机弹射到肉身周围五格。半透明、提速 20%，但碰到怪物就会死亡。</p>
+        <div class="tags"><span class="tagline-mini">5 格弹射</span><span class="tagline-mini">1.2× 速度</span></div>
+      </article>
+      <article class="feature reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg></div>
+        <h3>徘徊者</h3>
+        <p>不能被常规击杀的巨型阴影。它锁定肉身，进入可见格时才显现；触碰离体肉身会直接削减通关率。</p>
+        <div class="tags"><span class="tagline-mini">0.1m 精度</span><span class="tagline-mini">可见格实体</span></div>
+      </article>
+      <article class="feature reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="12" height="16" rx="1"/><rect x="9" y="3" width="12" height="16" rx="1"/><path d="M12 8h5M12 12h5M12 16h3"/></svg></div>
+        <h3>三选一强化</h3>
+        <p>17 种强化，普通 60%、中级 30%、极品 10%。攻击、生命、移速、子弹冷却、多发与徘徊者压制都可能改变这一局。</p>
+        <div class="tags"><span class="tagline-mini">17 种</span><span class="tagline-mini">60 / 30 / 10</span></div>
+      </article>
+      <article class="feature reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3l3 6 6 1-4.5 4.2L18 21l-6-3.2L6 21l1.5-6.8L3 10l6-1Z"/></svg></div>
+        <h3>三类解密</h3>
+        <p>八卦镜的镜像顺序、四合院的四门巡礼、笔记本电脑的找猫。限时完成，失败重置；成功后记录类型并给一次强化。</p>
+        <div class="tags"><span class="tagline-mini">15s / 20s / 45s</span><span class="tagline-mini">限时解密</span></div>
+      </article>
+      <article class="feature reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="7" cy="12" r="2.5"/><circle cx="17" cy="7" r="2"/><circle cx="17" cy="17" r="2"/><path d="M9.5 11l5.5-3M9.5 13l5.5 3"/></svg></div>
+        <h3>经验成长</h3>
+        <p>每只怪掉落 5 点经验球，靠近自动拾取。经验需求从 10 开始，之后 15、20、40、60、80、100 递增。</p>
+        <div class="tags"><span class="tagline-mini">GAS 经验球</span><span class="tagline-mini">自动追踪</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section upgrades" id="upgrades">
+    <div class="section-head reveal">
+      <span class="idx">06 / UPGRADES</span>
+      <h2>三张卡，改变这一局</h2>
+      <span class="line"></span>
+    </div>
+    <p class="pool-intro reveal">
+      每次升级或完成解密获得一次三选一。17 种强化的全部稀有度版本，
+      已经逐张列在下一节牌库中。
+    </p>
+    <div class="rarity-row">
+      <article class="card common reveal">
+        <div class="rarity">COMMON · 普通</div>
+        <h3>锐意</h3>
+        <p class="desc">攻击力提升。最稳定、最直接的成长，让魂灯弹更快清掉身边的器物怪。</p>
+        <div class="value">+2</div>
+        <div class="note">蓝色边框 · 60% 概率</div>
+        <div class="glow"></div>
+      </article>
+      <article class="card epic reveal">
+        <div class="rarity">EPIC · 中级</div>
+        <h3>坚韧</h3>
+        <p class="desc">生命上限提升，并立即回复等量生命。更高的容错，让你敢在梦深处多走一段。</p>
+        <div class="value">+20</div>
+        <div class="note">紫色边框 · 30% 概率</div>
+        <div class="glow"></div>
+      </article>
+      <article class="card legendary reveal">
+        <div class="rarity">LEGENDARY · 极品</div>
+        <h3>窥生</h3>
+        <p class="desc">通关率直接增加 5 个百分点。它不会解释概率的含义，只会让门缝里的光更亮一点。</p>
+        <div class="value">+5%</div>
+        <div class="note">金色边框 · 10% 概率</div>
+        <div class="glow"></div>
+      </article>
+    </div>
+    <div class="rarity-odds reveal">
+      <span>攻击 <b>+2 / +5 / +10</b></span>
+      <span>生命 <b>+10 / +20 / +40</b></span>
+      <span>子弹冷却 <b>-0.05 / -0.12 / -0.2 秒</b></span>
+      <span>多发 <b>双发 / 三连</b></span>
+      <span>徘徊者减速 <b>-5% / -12% / -30%</b></span>
+    </div>
+  </section>
+
+  <section class="section cards" id="cards">
+    <div class="section-head reveal">
+      <span class="idx">07 / DECK</span>
+      <h2>牌库 · 42 张可抽卡</h2>
+      <span class="line"></span>
+    </div>
+    <p class="pool-intro reveal">
+      17 种强化按可用稀有度拆成独立卡牌，共 42 张。三选一时每张卡单独掷档位：
+      普通 60%、中级 30%、极品 10%，抽到哪一档就应用该卡对应的数值。
+    </p>
+    <div class="deck-summary reveal">
+      <div class="deck-stat"><b>42</b><span>卡牌总数</span></div>
+      <div class="deck-stat"><b>17</b><span>效果类型</span></div>
+      <div class="deck-stat"><b>3</b><span>稀有度档位</span></div>
+      <div class="deck-odds">
+        <div class="odds-labels">
+          <span><i class="common"></i>普通 60%</span>
+          <span><i class="epic"></i>中级 30%</span>
+          <span><i class="legendary"></i>极品 10%</span>
+        </div>
+        <div class="odds-bar"><i class="common"></i><i class="epic"></i><i class="legendary"></i></div>
+      </div>
+    </div>
+    <div class="icon-key reveal">
+      <span><svg class="key-icon" aria-hidden="true"><use href="#ico-attack"/></svg>攻击</span>
+      <span><svg class="key-icon" aria-hidden="true"><use href="#ico-life"/></svg>生命</span>
+      <span><svg class="key-icon" aria-hidden="true"><use href="#ico-range"/></svg>范围</span>
+      <span><svg class="key-icon" aria-hidden="true"><use href="#ico-soul"/></svg>特殊一 · 灵魂</span>
+      <span><svg class="key-icon" aria-hidden="true"><use href="#ico-eye"/></svg>特殊二 · 命运</span>
+      <span class="key-note">同类卡牌复用同一图标</span>
+    </div>
+
+    <div class="deck-band common reveal">
+      <div class="deck-band-head">
+        <span class="dot"></span><h3>普通</h3><span class="en">COMMON</span>
+        <span class="meta">60% · 13 张</span>
+      </div>
+      <div class="deck-grid">
+        <article class="deck-card common">
+          <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">ATTACK</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-attack"/></svg>锐意</h4>
+          <p class="deck-desc">提高魂灯弹伤害，最稳定的输出成长。</p>
+          <div class="deck-foot"><span class="deck-label">伤害</span><span class="deck-value">+2</span></div>
+        </article>
+        <article class="deck-card common">
+          <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">HEALTH</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-life"/></svg>坚韧</h4>
+          <p class="deck-desc">提高生命上限，并立刻回复等量生命。</p>
+          <div class="deck-foot"><span class="deck-label">生命</span><span class="deck-value">+10</span></div>
+        </article>
+        <article class="deck-card common">
+          <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">MOVE</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>疾行</h4>
+          <p class="deck-desc">提高肉身移动速度，更快穿过案头。</p>
+          <div class="deck-foot"><span class="deck-label">移速</span><span class="deck-value">+10%</span></div>
+        </article>
+        <article class="deck-card common">
+          <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">RANGE</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-range"/></svg>远击</h4>
+          <p class="deck-desc">扩大魂灯弹的自动开火距离。</p>
+          <div class="deck-foot"><span class="deck-label">射程</span><span class="deck-value">+7%</span></div>
+        </article>
+        <article class="deck-card common">
+          <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">COOLDOWN</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-attack"/></svg>速射</h4>
+          <p class="deck-desc">缩短子弹冷却，基础冷却为 2 秒。</p>
+          <div class="deck-foot"><span class="deck-label">冷却</span><span class="deck-value">-0.05s</span></div>
+        </article>
+        <article class="deck-card common">
+          <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">SOUL</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>魂行</h4>
+          <p class="deck-desc">提高灵魂移动速度，更快找回肉身。</p>
+          <div class="deck-foot"><span class="deck-label">魂速</span><span class="deck-value">+5%</span></div>
+        </article>
+        <article class="deck-card common">
+          <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">SOUL</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>牵引</h4>
+          <p class="deck-desc">扩大灵魂回体的判定范围。</p>
+          <div class="deck-foot"><span class="deck-label">回体范围</span><span class="deck-value">+20%</span></div>
+        </article>
+        <article class="deck-card common">
+          <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">DEFENSE</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-life"/></svg>定神</h4>
+          <p class="deck-desc">延长受击后的无敌窗口。</p>
+          <div class="deck-foot"><span class="deck-label">无敌</span><span class="deck-value">+0.2s</span></div>
+        </article>
+        <article class="deck-card common">
+          <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">SUSTAIN</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-life"/></svg>噬魂</h4>
+          <p class="deck-desc">每次击杀怪物回复生命。</p>
+          <div class="deck-foot"><span class="deck-label">击杀回复</span><span class="deck-value">+1</span></div>
+        </article>
+        <article class="deck-card common">
+          <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">CRAWLER</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>驱影</h4>
+          <p class="deck-desc">徘徊者重新出现时离你更远。</p>
+          <div class="deck-foot"><span class="deck-label">距离</span><span class="deck-value">2 格</span></div>
+        </article>
+        <article class="deck-card common">
+          <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">CRAWLER</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>滞影</h4>
+          <p class="deck-desc">降低徘徊者的移动速度。</p>
+          <div class="deck-foot"><span class="deck-label">减速</span><span class="deck-value">-5%</span></div>
+        </article>
+        <article class="deck-card common">
+          <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">PUZZLE</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>时限</h4>
+          <p class="deck-desc">延长八卦镜、四合院与笔记本的允许时间。</p>
+          <div class="deck-foot"><span class="deck-label">解密</span><span class="deck-value">+1s</span></div>
+        </article>
+        <article class="deck-card common">
+          <div class="deck-top"><span class="deck-rarity">普通</span><span class="deck-kind">INTERACT</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-range"/></svg>探物</h4>
+          <p class="deck-desc">扩大器物、猫 meme 与传送门的交互范围。</p>
+          <div class="deck-foot"><span class="deck-label">交互</span><span class="deck-value">+10%</span></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="deck-band epic reveal">
+      <div class="deck-band-head">
+        <span class="dot"></span><h3>中级</h3><span class="en">EPIC</span>
+        <span class="meta">30% · 14 张</span>
+      </div>
+      <div class="deck-grid">
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">ATTACK</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-attack"/></svg>锐意</h4>
+          <p class="deck-desc">提高魂灯弹伤害，最稳定的输出成长。</p>
+          <div class="deck-foot"><span class="deck-label">伤害</span><span class="deck-value">+5</span></div>
+        </article>
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">HEALTH</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-life"/></svg>坚韧</h4>
+          <p class="deck-desc">提高生命上限，并立刻回复等量生命。</p>
+          <div class="deck-foot"><span class="deck-label">生命</span><span class="deck-value">+20</span></div>
+        </article>
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">MOVE</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>疾行</h4>
+          <p class="deck-desc">提高肉身移动速度，更快穿过案头。</p>
+          <div class="deck-foot"><span class="deck-label">移速</span><span class="deck-value">+30%</span></div>
+        </article>
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">RANGE</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-range"/></svg>远击</h4>
+          <p class="deck-desc">扩大魂灯弹的自动开火距离。</p>
+          <div class="deck-foot"><span class="deck-label">射程</span><span class="deck-value">+18%</span></div>
+        </article>
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">COOLDOWN</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-attack"/></svg>速射</h4>
+          <p class="deck-desc">缩短子弹冷却，基础冷却为 2 秒。</p>
+          <div class="deck-foot"><span class="deck-label">冷却</span><span class="deck-value">-0.12s</span></div>
+        </article>
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">MULTISHOT</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-attack"/></svg>双发</h4>
+          <p class="deck-desc">一次发射两颗子弹，优先分配给不同目标。</p>
+          <div class="deck-foot"><span class="deck-label">弹数</span><span class="deck-value">2 颗</span></div>
+        </article>
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">SOUL</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>魂行</h4>
+          <p class="deck-desc">提高灵魂移动速度，更快找回肉身。</p>
+          <div class="deck-foot"><span class="deck-label">魂速</span><span class="deck-value">+10%</span></div>
+        </article>
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">SOUL</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>牵引</h4>
+          <p class="deck-desc">扩大灵魂回体的判定范围。</p>
+          <div class="deck-foot"><span class="deck-label">回体范围</span><span class="deck-value">+50%</span></div>
+        </article>
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">DEFENSE</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-life"/></svg>定神</h4>
+          <p class="deck-desc">延长受击后的无敌窗口。</p>
+          <div class="deck-foot"><span class="deck-label">无敌</span><span class="deck-value">+0.5s</span></div>
+        </article>
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">SUSTAIN</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-life"/></svg>噬魂</h4>
+          <p class="deck-desc">每次击杀怪物回复生命。</p>
+          <div class="deck-foot"><span class="deck-label">击杀回复</span><span class="deck-value">+2</span></div>
+        </article>
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">CRAWLER</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>驱影</h4>
+          <p class="deck-desc">徘徊者重新出现时离你更远。</p>
+          <div class="deck-foot"><span class="deck-label">距离</span><span class="deck-value">5 格</span></div>
+        </article>
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">CRAWLER</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>滞影</h4>
+          <p class="deck-desc">降低徘徊者的移动速度。</p>
+          <div class="deck-foot"><span class="deck-label">减速</span><span class="deck-value">-12%</span></div>
+        </article>
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">PUZZLE</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>时限</h4>
+          <p class="deck-desc">延长八卦镜、四合院与笔记本的允许时间。</p>
+          <div class="deck-foot"><span class="deck-label">解密</span><span class="deck-value">+3s</span></div>
+        </article>
+        <article class="deck-card epic">
+          <div class="deck-top"><span class="deck-rarity">中级</span><span class="deck-kind">INTERACT</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-range"/></svg>探物</h4>
+          <p class="deck-desc">扩大器物、猫 meme 与传送门的交互范围。</p>
+          <div class="deck-foot"><span class="deck-label">交互</span><span class="deck-value">+25%</span></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="deck-band legendary reveal">
+      <div class="deck-band-head">
+        <span class="dot"></span><h3>极品</h3><span class="en">LEGENDARY</span>
+        <span class="meta">10% · 15 张</span>
+      </div>
+      <div class="deck-grid">
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">ATTACK</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-attack"/></svg>锐意</h4>
+          <p class="deck-desc">提高魂灯弹伤害，最稳定的输出成长。</p>
+          <div class="deck-foot"><span class="deck-label">伤害</span><span class="deck-value">+10</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">HEALTH</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-life"/></svg>坚韧</h4>
+          <p class="deck-desc">提高生命上限，并立刻回复等量生命。</p>
+          <div class="deck-foot"><span class="deck-label">生命</span><span class="deck-value">+40</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">RANGE</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-range"/></svg>远击</h4>
+          <p class="deck-desc">扩大魂灯弹的自动开火距离。</p>
+          <div class="deck-foot"><span class="deck-label">射程</span><span class="deck-value">+30%</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">COOLDOWN</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-attack"/></svg>速射</h4>
+          <p class="deck-desc">缩短子弹冷却，基础冷却为 2 秒。</p>
+          <div class="deck-foot"><span class="deck-label">冷却</span><span class="deck-value">-0.20s</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">MULTISHOT</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-attack"/></svg>三连</h4>
+          <p class="deck-desc">一次发射三颗子弹，清场能力最强。</p>
+          <div class="deck-foot"><span class="deck-label">弹数</span><span class="deck-value">3 颗</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">SOUL</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>魂壳</h4>
+          <p class="deck-desc">灵魂离体需要累计承受两次蜘蛛攻击。</p>
+          <div class="deck-foot"><span class="deck-label">离体</span><span class="deck-value">需 2 次</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">SOUL</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>魂行</h4>
+          <p class="deck-desc">提高灵魂移动速度，更快找回肉身。</p>
+          <div class="deck-foot"><span class="deck-label">魂速</span><span class="deck-value">+20%</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">SOUL</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-soul"/></svg>牵引</h4>
+          <p class="deck-desc">扩大灵魂回体的判定范围。</p>
+          <div class="deck-foot"><span class="deck-label">回体范围</span><span class="deck-value">+100%</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">DEFENSE</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-life"/></svg>定神</h4>
+          <p class="deck-desc">延长受击后的无敌窗口。</p>
+          <div class="deck-foot"><span class="deck-label">无敌</span><span class="deck-value">+1.0s</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">SUSTAIN</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-life"/></svg>噬魂</h4>
+          <p class="deck-desc">每次击杀怪物回复生命。</p>
+          <div class="deck-foot"><span class="deck-label">击杀回复</span><span class="deck-value">+4</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">CRAWLER</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>驱影</h4>
+          <p class="deck-desc">徘徊者重新出现时离你更远。</p>
+          <div class="deck-foot"><span class="deck-label">距离</span><span class="deck-value">10 格</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">CRAWLER</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>滞影</h4>
+          <p class="deck-desc">降低徘徊者的移动速度。</p>
+          <div class="deck-foot"><span class="deck-label">减速</span><span class="deck-value">-30%</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">PUZZLE</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>时限</h4>
+          <p class="deck-desc">延长八卦镜、四合院与笔记本的允许时间。</p>
+          <div class="deck-foot"><span class="deck-label">解密</span><span class="deck-value">+7s</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">LUCK</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-eye"/></svg>窥生</h4>
+          <p class="deck-desc">直接提高右上角显示的通关概率。</p>
+          <div class="deck-foot"><span class="deck-label">通关率</span><span class="deck-value">+5%</span></div>
+        </article>
+        <article class="deck-card legendary">
+          <div class="deck-top"><span class="deck-rarity">极品</span><span class="deck-kind">INTERACT</span></div>
+          <h4 class="deck-name"><svg class="deck-icon" aria-hidden="true"><use href="#ico-range"/></svg>探物</h4>
+          <p class="deck-desc">扩大器物、猫 meme 与传送门的交互范围。</p>
+          <div class="deck-foot"><span class="deck-label">交互</span><span class="deck-value">+50%</span></div>
+        </article>
+      </div>
+    </div>
+    <p class="pool-note reveal">卡牌数值由稀有度决定，不随等级变化；等级只决定抽卡频率与机会数量。</p>
+  </section>
+
+  <section class="section puzzles" id="puzzles">
+    <div class="section-head reveal">
+      <span class="idx">08 / RITUALS</span>
+      <h2>三件旧物，三种解法</h2>
+      <span class="line"></span>
+    </div>
+    <div class="puzzle-grid">
+      <article class="puzzle reveal">
+        <div class="puzzle-art"><img src="assets/concept/concept_mirror.jpg" alt="八卦镜设定图：黄铜八角镜与红色流苏"></div>
+        <div class="time">15<span style="font-size:11px">s</span></div>
+        <div class="sub">MIRROR</div>
+        <h3>八卦镜</h3>
+        <p>镜面把数字左右颠倒。看清镜中的顺序，按 1 → 2 → 3 踩亮三块地砖。走错一步，镜面会重新安静下来。</p>
+        <div class="hint">允许时间 15 秒 · 时限强化可延长</div>
+      </article>
+      <article class="puzzle reveal">
+        <div class="puzzle-art"><img src="assets/concept/concept_courtyard.jpg" alt="四合院模型设定图：夜蓝色屋顶与院落"></div>
+        <div class="time">20<span style="font-size:11px">s</span></div>
+        <div class="sub">COURTYARD</div>
+        <h3>四合院模型</h3>
+        <p>院门有四块砖，代表四次巡礼。按 1 → 2 → 3 → 4 依次踩亮，不能抢步，也不能回头。</p>
+        <div class="hint">允许时间 20 秒 · 失败会重置进度</div>
+      </article>
+      <article class="puzzle reveal">
+        <div class="puzzle-art"><img src="assets/concept/concept_laptop.jpg" alt="笔记本电脑设定图：蓝光中的黑色笔记本"></div>
+        <div class="time">45<span style="font-size:11px">s</span></div>
+        <div class="sub">LAPTOP</div>
+        <h3>笔记本电脑</h3>
+        <p>笔记本在找猫。三只猫现在是官方图生 3D 模型——耄耋猫、香蕉猫与旋转猫，随机藏在附近两格内，逐一找回并带回笔记本交付，屏幕才会亮起异层入口。</p>
+        <div class="hint">允许时间 45 秒 · 超时猫猫会跑掉</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section gallery" id="gallery">
+    <div class="section-head reveal">
+      <span class="idx">09 / IN-GAME</span>
+      <h2>当前原型实机</h2>
+      <span class="line"></span>
+    </div>
+    <div class="gallery-grid">
+      <figure class="shot reveal">
+        <img src="assets/menu.png" alt="主界面实机：纯文字菜单与梦境案头背景">
+        <figcaption class="cap"><b>主界面</b>纯文字入口 · 标题与三项菜单</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <img src="assets/archive.png" alt="梦境档案实机：生命、状态数值与已持有强化图标">
+        <figcaption class="cap"><b>梦境档案</b>生命与状态 · 已持有强化图标</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <img src="assets/upgrade.png" alt="三选一强化实机：白色剪影图标与稀有度描边">
+        <figcaption class="cap"><b>三选一强化</b>五类剪影图标 · 稀有度描边</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <img src="assets/gameplay.png" alt="游戏内实机：俯视角案头、摇杆、攻击键、底部经验条">
+        <figcaption class="cap"><b>梦境探索</b>触屏摇杆 · 子弹自动攻击 · 底部经验条</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <img src="assets/cats_closeup.jpg" alt="找猫谜题实机：耄耋猫、香蕉猫与旋转猫三只官方图生 3D 模型">
+        <figcaption class="cap"><b>官方 3D 猫模型</b>耄耋猫 · 香蕉猫 · 旋转猫</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  
+
+  <section class="section team" id="team">
+    <div class="section-head reveal">
+      <span class="idx">10 / TEAM</span>
+      <h2>参赛信息与职责分工</h2>
+      <span class="line"></span>
+    </div>
+    <div class="competition reveal">
+      <div>
+        <div class="badge"><span class="sq"></span>AHOLO HACKATHON · 2026</div>
+        <h2>这是一款为 3D AI 黑客松<br>制作的可玩原型。</h2>
+        <p>
+          《幻魄物语》由李东盛独立开发，讲述一个杭州长大的英国孤儿回到祖宅后坠入无限梦境的故事，
+          以“在梦里找回自己的影子”为叙事起点，
+          把无限地图探索、三类限时解密、灵魂离体、三选一强化与传送门概率判定串成一局完整的梦境循环。
+          当前版本已在 Windows 上稳定运行，并保留手机横屏触控布局；
+          场景与器物已用官方图生 3D 资产替换，开场两页剧情与好/坏结局也已接入。
+        </p>
+      </div>
+      <div class="comp-facts">
+        <div class="fact"><span>参赛作品</span><b>《幻魄物语》</b></div>
+        <div class="fact"><span>赛事名称</span><b>群核科技 Aholo 全球 3D AI 黑客松</b></div>
+        <div class="fact"><span>赛程</span><b>2026-10-19 — 11-19 · 截止 19:00</b></div>
+        <div class="fact"><span>参赛形式</span><b>全球线上 · 1–3 人 · 个人参赛</b></div>
+        <div class="fact"><span>作品类型</span><b>俯视角探索解谜 + 轻 Roguelite</b></div>
+        <div class="fact"><span>引擎 / 平台</span><b>UE 5.6 · Windows PC / 手机横屏</b></div>
+        <div class="fact"><span>操作方式</span><b>键鼠 + 触屏</b></div>
+        <div class="fact"><span>当前版本</span><b>v0.9 玩法原型</b></div>
+        <div class="fact"><span>核心体验</span><b>探索 · 解密 · 追逐 · 醒来</b></div>
+      </div>
+    </div>
+
+    <div class="comp-grid">
+      <article class="comp-card reveal">
+        <div class="no">01 / PLAYABLE</div>
+        <h3>可玩内容</h3>
+        <ul>
+          <li>无限网格探索，5×5 活动窗口实时流送</li>
+          <li>八卦镜、四合院、笔记本三类限时解密</li>
+          <li>17 种强化 × 三档稀有度，共 42 张卡</li>
+          <li>传送门概率判定，进入下一层或直接通关</li>
+        </ul>
+      </article>
+      <article class="comp-card reveal">
+        <div class="no">02 / HIGHLIGHTS</div>
+        <h3>设计亮点</h3>
+        <ul>
+          <li>灵魂离体后肉身与灵魂分离，触碰怪物即死</li>
+          <li>匍匐者持续施压，解密失败与进层都会提速</li>
+          <li>五类白色剪影图标贯穿卡牌与梦境档案</li>
+          <li>自动开火带视线检测，传送门生成做安全落点</li>
+        </ul>
+      </article>
+      <article class="comp-card reveal">
+        <div class="no">03 / PROGRESS</div>
+        <h3>当前进度</h3>
+        <ul>
+          <li>核心循环、HUD、主界面、设置与音效已接入</li>
+          <li>开场两页剧情、好/坏结局与“继续游戏”已接通</li>
+          <li>官方图生 3D 资产已替换：三只猫、蜘蛛、徘徊者、主角与四合院</li>
+          <li>待打磨：动作动画、受击反馈与最终打包</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="roles">
+      <article class="role reveal">
+        <div class="no">01</div>
+        <h3>制作 / 策划</h3>
+        <div class="en">PRODUCTION &amp; DESIGN</div>
+        <ul>
+          <li>核心循环、数值与概率框架</li>
+          <li>解密节奏、强化池与稀有度设计</li>
+          <li>状态机、事件优先级与设计文档</li>
+        </ul>
+        <div class="member">成员 <span>李东盛 · 全栈</span></div>
+      </article>
+      <article class="role reveal">
+        <div class="no">02</div>
+        <h3>客户端程序</h3>
+        <div class="en">GAMEPLAY PROGRAMMING</div>
+        <ul>
+          <li>UE5 C++、无限网格与 5×5 流送</li>
+          <li>战斗、灵魂离体、徘徊者与状态机</li>
+          <li>经验球、主界面与设置</li>
+        </ul>
+        <div class="member">成员 <span>李东盛 · 全栈</span></div>
+      </article>
+      <article class="role reveal">
+        <div class="no">03</div>
+        <h3>关卡 / 场景</h3>
+        <div class="en">LEVEL &amp; ENVIRONMENT</div>
+        <ul>
+          <li>地貌分类、障碍物与预制体接口</li>
+          <li>八卦镜、四合院、笔记本电脑布置</li>
+          <li>必中解密线与传送门空间节奏</li>
+        </ul>
+        <div class="member">成员 <span>李东盛 · 全栈</span></div>
+      </article>
+      <article class="role reveal">
+        <div class="no">04</div>
+        <h3>UI / 交互</h3>
+        <div class="en">UI &amp; INTERACTION</div>
+        <ul>
+          <li>触屏摇杆、攻击键与交互手势</li>
+          <li>三选一卡牌、经验条与主界面</li>
+          <li>信息层级、反馈与移动端适配</li>
+        </ul>
+        <div class="member">成员 <span>李东盛 · 全栈</span></div>
+      </article>
+      <article class="role reveal">
+        <div class="no">05</div>
+        <h3>美术 / 视觉</h3>
+        <div class="en">ART &amp; VISUAL</div>
+        <ul>
+          <li>梦境案头的场景氛围与色彩</li>
+          <li>角色、怪物、器物的造型与动画</li>
+          <li>特效、宣传视觉与截图包装</li>
+        </ul>
+        <div class="member">成员 <span>李东盛 · 全栈</span></div>
+      </article>
+      <article class="role reveal">
+        <div class="no">06</div>
+        <h3>音频 / 测试</h3>
+        <div class="en">AUDIO &amp; QA</div>
+        <ul>
+          <li>交互音效与音频验收</li>
+          <li>玩法验证、回归测试与问题记录</li>
+          <li>发布打包、比赛材料与版本管理</li>
+        </ul>
+        <div class="member">成员 <span>李东盛 · 全栈</span></div>
+      </article>
+    </div>
+    <p class="pool-note reveal">六个职责方向均由李东盛独立完成。</p>
+  </section>
+
+  <section class="closing">
+    <blockquote>梦会醒，<br>但<em>影子</em>会记得你。</blockquote>
+    <div class="small">幻魄物语 · 群核科技 Aholo 全球 3D AI 黑客松参赛作品</div>
+  </section>
+</main>
+
+<footer>
+  <div class="brand"><span style="color:var(--gold)">幻</span> 幻魄物语</div>
+  <div>玩法原型 · Unreal Engine 5.6 · 2026</div>
+  <div>群核科技 Aholo 全球 3D AI 黑客松 · 李东盛</div>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" type="button" aria-label="关闭大图">×</button>
+  <figure>
+    <img alt="">
+    <figcaption></figcaption>
+  </figure>
+</div>
+
+<script>
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.querySelector('.nav-links');
+  const closeNav = () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  };
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeNav));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeNav();
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (Math.min(i % 4, 3) * 90) + 'ms';
+    io.observe(el);
+  });
+
+  // 数字轻微滚动
+  document.querySelectorAll('[data-count]').forEach((el) => {
+    const target = parseInt(el.dataset.count, 10);
+    if (Number.isNaN(target)) return;
+    let current = 0;
+    const step = Math.max(1, Math.round(target / 18));
+    const tick = () => {
+      current = Math.min(target, current + step);
+      el.textContent = current;
+      if (current < target) requestAnimationFrame(tick);
+    };
+    setTimeout(tick, 500);
+  });
+  // 设定图大图预览
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+  const lightboxCap = lightbox.querySelector('figcaption');
+  const closeLightbox = () => {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImg.removeAttribute('src');
+  };
+  document.querySelectorAll('.concept-item').forEach((item) => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCap.textContent = item.dataset.caption || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    });
+  });
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox || event.target.closest('.lightbox-close')) {
+      closeLightbox();
+    }
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && lightbox.classList.contains('open')) {
+      closeLightbox();
+    }
+  });
+</script>
+</body>
+</html>
