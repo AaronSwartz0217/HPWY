@@ -158,6 +158,20 @@
   .comic-frame img{width:100%;aspect-ratio:2/3;object-fit:cover;filter:saturate(.9) brightness(.96)}
   .comic-frame .frame-top{font-size:8px;letter-spacing:.12em;padding:2px 2px 6px}
   .comic-frame .frame-caption{font-size:9px;letter-spacing:.08em;text-align:left;padding:6px 2px 0}
+  .hero-en{
+    display:block;margin-top:14px;font-family:var(--sans);font-weight:500;
+    font-size:clamp(11px,1.15vw,15px);letter-spacing:.34em;line-height:1.6;
+    color:var(--gold);-webkit-text-fill-color:var(--gold);
+    background:none;text-shadow:0 4px 18px rgba(0,0,0,.75);
+  }
+  @media(min-width:901px){
+    .hero-visual{flex-direction:column;align-items:stretch;gap:0}
+    .comic-frame{
+      width:clamp(198px,36%,240px);align-self:flex-start;
+      margin-left:4px;margin-bottom:16px;z-index:2;
+    }
+    .game-frame{width:100%;flex:none}
+  }
   .game-frame{
     flex:1;min-width:0;
     position:relative;border:1px solid var(--line-brass);background:rgba(6,11,18,.72);
@@ -618,7 +632,7 @@
     <div class="hero-grid">
       <div class="hero-copy">
         <div class="kicker reveal"><span class="dot"></span>群核科技 Aholo 全球 3D AI 黑客松 · 正式发布</div>
-        <h1 class="reveal">幻魄物语</h1>
+        <h1 class="reveal">幻魄物语<span class="hero-en">PHANTOM SOUL OF THE MANOR</span></h1>
         <p class="tagline reveal">在梦里找回自己的影子</p>
         <p class="lede reveal">
           一款发生在尤里西斯梦中的<strong>俯视角探索解谜 + 轻 Roguelite</strong> 游戏。
