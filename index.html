@@ -496,6 +496,47 @@
   @media(max-width:520px){
     .nav-cta{display:none}
   }
+  /* 剧情：一页一张整屏插画 */
+  .story-deck{position:relative;background:#04070e}
+  .story-intro{
+    min-height:86vh;min-height:86svh;display:flex;flex-direction:column;justify-content:center;
+    max-width:1100px;margin:0 auto;
+    padding:clamp(90px,12vh,150px) clamp(20px,5vw,64px) clamp(40px,8vh,90px);
+  }
+  .story-intro .idx{font-family:var(--serif);font-size:13px;letter-spacing:.2em;color:var(--gold);opacity:.85}
+  .story-intro h2{
+    font-family:var(--serif);font-weight:500;font-size:clamp(40px,6vw,86px);
+    letter-spacing:.04em;color:var(--ink);margin:18px 0 22px;line-height:1.08;
+  }
+  .story-intro p{max-width:760px;color:var(--muted);font-size:15px;line-height:2}
+  .story-hint{margin-top:46px;font-size:11px;letter-spacing:.24em;color:var(--gold-soft);text-transform:uppercase}
+  .story-page{
+    margin:0;min-height:100vh;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+    padding:clamp(40px,7vh,80px) clamp(16px,4vw,56px);
+  }
+  .story-page img{
+    display:block;width:auto;max-width:min(94vw,1340px);max-height:76vh;object-fit:contain;
+    border:1px solid var(--line-brass);
+    box-shadow:0 50px 120px rgba(0,0,0,.72),0 0 0 1px rgba(180,210,235,.04) inset;
+  }
+  .story-page figcaption{
+    display:flex;align-items:baseline;gap:16px;width:min(94vw,1340px);
+    color:var(--muted);font-size:13px;letter-spacing:.05em;
+  }
+  .story-page figcaption b{
+    font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);
+    letter-spacing:.05em;white-space:nowrap;
+  }
+  .story-page figcaption em{
+    margin-left:auto;font-style:normal;font-family:var(--serif);
+    font-size:12px;color:var(--gold);letter-spacing:.2em;white-space:nowrap;
+  }
+  @media(max-width:900px){
+    .story-page{min-height:auto;padding:72px 16px}
+    .story-page img{width:100%;max-height:none}
+    .story-page figcaption{flex-wrap:wrap;font-size:12px;gap:8px 14px}
+  }
   @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none!important;transition:none!important}
     .reveal{opacity:1;transform:none}
@@ -598,35 +639,33 @@
     <div class="scroll-hint">SCROLL</div>
   </section>
 
-<section class="section gallery" id="story">
-    <div class="section-head reveal">
+<section class="story-deck" id="story">
+    <div class="story-intro reveal">
       <span class="idx">01 / STORY</span>
       <h2>从祖宅到醒来</h2>
-      <span class="line"></span>
+      <p>
+        开始新游戏时，两页开场插画从画面上方滑入，点击翻页后进入梦境；
+        传送门判定成功会播放好结局并回到主页，而任何一次死亡都会先播放坏结局。
+      </p>
+      <div class="story-hint">向下滚动 · 一页一张</div>
     </div>
-    <p class="pool-intro reveal">
-      开始新游戏时，两页开场插画从画面上方滑入，点击翻页后进入梦境；
-      传送门判定成功会播放好结局并回到主页，而任何一次死亡都会先播放坏结局。
-    </p>
-    <div class="gallery-grid">
-      <figure class="shot reveal">
-        <img src="assets/story/background.jpg" alt="《幻魄物语》背景故事插画">
-        <figcaption class="cap"><b>背景故事</b>杭州长大的英国孤儿 · 回到祖宅</figcaption>
-      </figure>
-      <figure class="shot reveal">
-        <img src="assets/story/dream.jpg" alt="《幻魄物语》进入梦境插画">
-        <figcaption class="cap"><b>坠入梦境</b>书房入睡 · 身体缩成梦里的尺寸</figcaption>
-      </figure>
-      <figure class="shot reveal">
-        <img src="assets/story/good_ending.jpg" alt="《幻魄物语》好结局插画">
-        <figcaption class="cap"><b>好结局 · 彻底通关</b>传送门判定成功 · 点击回到主页</figcaption>
-      </figure>
-      <figure class="shot reveal">
-        <img src="assets/story/bad_ending.jpg" alt="《幻魄物语》坏结局插画">
-        <figcaption class="cap"><b>坏结局 · 死亡</b>任何一次死亡 · 点击后继续探索</figcaption>
-      </figure>
-    </div>
-    <p class="pool-note reveal">四张插画随游戏进度自动播放，点击画面推进，不需要额外操作。</p>
+
+    <figure class="story-page reveal">
+      <img src="assets/story/background.jpg" alt="《幻魄物语》背景故事插画">
+      <figcaption><b>背景故事</b><span>杭州长大的英国孤儿 · 回到祖宅</span><em>01 / 04</em></figcaption>
+    </figure>
+    <figure class="story-page reveal">
+      <img src="assets/story/dream.jpg" alt="《幻魄物语》进入梦境插画">
+      <figcaption><b>坠入梦境</b><span>书房入睡 · 身体缩成梦里的尺寸</span><em>02 / 04</em></figcaption>
+    </figure>
+    <figure class="story-page reveal">
+      <img src="assets/story/good_ending.jpg" alt="《幻魄物语》好结局插画">
+      <figcaption><b>好结局 · 彻底通关</b><span>传送门判定成功 · 点击回到主页</span><em>03 / 04</em></figcaption>
+    </figure>
+    <figure class="story-page reveal">
+      <img src="assets/story/bad_ending.jpg" alt="《幻魄物语》坏结局插画">
+      <figcaption><b>坏结局 · 死亡</b><span>任何一次死亡 · 点击后继续探索</span><em>04 / 04</em></figcaption>
+    </figure>
   </section>
 
   <section class="section world" id="world">
