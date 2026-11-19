@@ -8,10 +8,22 @@
 #include "HPWH/HPWH_Menu.h"
 
 #include "Blueprint/UserWidget.h"
+#include "Blueprint/WidgetLayoutLibrary.h"
 #include "Components/InputComponent.h"
 #include "EngineUtils.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
+
+namespace
+{
+	// HUD 以 DPI 缩放后的 Slate 单位绘制按钮，触摸/鼠标判定必须换算到同一坐标系，
+	// 否则高 DPI 设备（多数手机）上按钮显示位置与命中区域会错开，表现为「按钮点不动」。
+	float HPWH_UIScale(UObject* WorldContext)
+	{
+		const float Scale = UWidgetLayoutLibrary::GetViewportScale(WorldContext);
+		return Scale > KINDA_SMALL_NUMBER ? Scale : 1.f;
+	}
+}
 
 AHPWH_PlayerController::AHPWH_PlayerController()
 {
@@ -423,7 +435,8 @@ void AHPWH_PlayerController::HandleInGameMenuPoint(const FVector2D& Point)
 void AHPWH_PlayerController::TouchPressed(ETouchIndex::Type FingerIndex, FVector Location)
 {
 	const FVector2D Size = GetViewportSize2D();
-	const FVector2D Point(Location.X, Location.Y);
+	const float UIScale = HPWH_UIScale(this);
+	const FVector2D Point(Location.X / UIScale, Location.Y / UIScale);
 
 	if (auto* GM = Cast<AHPWH_GameMode>(UGameplayStatics::GetGameMode(this)))
 	{
@@ -515,7 +528,7 @@ void AHPWH_PlayerController::TouchPressed(ETouchIndex::Type FingerIndex, FVector
 		if (LookFinger != INDEX_NONE) return;
 		LookFinger = Finger;
 		LookLast = Point;
-		TouchAimScreen = Point;
+		TouchAimScreen = FVector2D(Location.X, Location.Y);
 		bManualAim = true;
 	}
 }
@@ -523,7 +536,8 @@ void AHPWH_PlayerController::TouchPressed(ETouchIndex::Type FingerIndex, FVector
 void AHPWH_PlayerController::TouchMoved(ETouchIndex::Type FingerIndex, FVector Location)
 {
 	const int32 Finger = static_cast<int32>(FingerIndex);
-	const FVector2D Point(Location.X, Location.Y);
+	const float UIScale = HPWH_UIScale(this);
+	const FVector2D Point(Location.X / UIScale, Location.Y / UIScale);
 
 	if (Finger == JoystickFinger)
 	{
@@ -551,7 +565,7 @@ void AHPWH_PlayerController::TouchMoved(ETouchIndex::Type FingerIndex, FVector L
 	{
 		const FVector2D Delta = Point - LookLast;
 		LookLast = Point;
-		TouchAimScreen = Point;
+		TouchAimScreen = FVector2D(Location.X, Location.Y);
 		bManualAim = true;
 	}
 }
@@ -600,7 +614,7 @@ void AHPWH_PlayerController::AttackPressed()
 			float MouseY = 0.f;
 			if (GetMousePosition(MouseX, MouseY))
 			{
-				HandleMenuPoint(FVector2D(MouseX, MouseY));
+				HandleMenuPoint(FVector2D(MouseX, MouseY) / HPWH_UIScale(this));
 			}
 			return;
 		}
@@ -611,7 +625,7 @@ void AHPWH_PlayerController::AttackPressed()
 			if (GetMousePosition(MouseX, MouseY))
 			{
 				const FHPWH_PortalCardLayout PortalLayout = HPWH_MakePortalCardLayout(GetViewportSize2D());
-				if (HPWH_IsPointInMenuButton(FVector2D(MouseX, MouseY),
+				if (HPWH_IsPointInMenuButton(FVector2D(MouseX, MouseY) / HPWH_UIScale(this),
 					PortalLayout.ButtonCenter, PortalLayout.ButtonSize))
 				{
 					GM->ConfirmFloorPortalChoice();
@@ -625,7 +639,7 @@ void AHPWH_PlayerController::AttackPressed()
 			float MouseY = 0.f;
 			if (GetMousePosition(MouseX, MouseY))
 			{
-				const FVector2D Point(MouseX, MouseY);
+				const FVector2D Point = FVector2D(MouseX, MouseY) / HPWH_UIScale(this);
 				const FHPWH_UpgradeCardLayout Layout = HPWH_MakeUpgradeCardLayout(GetViewportSize2D());
 				if (HPWH_IsPointInMenuButton(Point, Layout.RerollCenter, Layout.RerollSize))
 				{
@@ -651,7 +665,7 @@ void AHPWH_PlayerController::AttackPressed()
 			float MouseY = 0.f;
 			if (GetMousePosition(MouseX, MouseY))
 			{
-				HandleInGameMenuPoint(FVector2D(MouseX, MouseY));
+				HandleInGameMenuPoint(FVector2D(MouseX, MouseY) / HPWH_UIScale(this));
 			}
 			return;
 		}
@@ -660,7 +674,7 @@ void AHPWH_PlayerController::AttackPressed()
 		if (!GM->IsUpgradeSelectionActive() && GetMousePosition(MenuMouseX, MenuMouseY))
 		{
 			const FHPWH_InGameMenuLayout InGameLayout = HPWH_MakeInGameMenuLayout(GetViewportSize2D());
-			if (HPWH_IsPointInMenuButton(FVector2D(MenuMouseX, MenuMouseY),
+			if (HPWH_IsPointInMenuButton(FVector2D(MenuMouseX, MenuMouseY) / HPWH_UIScale(this),
 				InGameLayout.ButtonCenter, InGameLayout.ButtonSize))
 			{
 				GM->ToggleInGameMenu();
@@ -699,12 +713,10 @@ void AHPWH_PlayerController::InteractPressed()
 
 FVector2D AHPWH_PlayerController::GetViewportSize2D() const
 {
-	int32 SizeX = 0;
-	int32 SizeY = 0;
-	GetViewportSize(SizeX, SizeY);
-	if (SizeX <= 0 || SizeY <= 0)
+	const FVector2D Size = UWidgetLayoutLibrary::GetViewportSize(const_cast<AHPWH_PlayerController*>(this));
+	if (Size.X <= 0.f || Size.Y <= 0.f)
 	{
 		return FVector2D(1920.f, 1080.f);
 	}
-	return FVector2D(SizeX, SizeY);
+	return Size;
 }

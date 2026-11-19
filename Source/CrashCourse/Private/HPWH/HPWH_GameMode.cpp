@@ -24,6 +24,7 @@
 #include "EngineUtils.h"
 #include "GameFramework/WorldSettings.h"
 #include "Kismet/GameplayStatics.h"
+#include "HAL/PlatformProcess.h"
 #include "Misc/CommandLine.h"
 #include "Misc/Parse.h"
 #include "Sound/SoundBase.h"
@@ -720,7 +721,7 @@ void AHPWH_GameMode::HandleMenuSelection(int32 Index)
 			}
 			else if (Index == 2)
 			{
-				MenuPage = EHPWH_MenuPage::About;
+				FPlatformProcess::LaunchURL(TEXT("https://aaronswartz0217.github.io/HPWY/"), nullptr, nullptr);
 			}
 			else if (Index == 3)
 			{
@@ -735,7 +736,7 @@ void AHPWH_GameMode::HandleMenuSelection(int32 Index)
 			}
 			else if (Index == 1)
 			{
-				MenuPage = EHPWH_MenuPage::About;
+				FPlatformProcess::LaunchURL(TEXT("https://aaronswartz0217.github.io/HPWY/"), nullptr, nullptr);
 			}
 			else if (Index == 2)
 			{
