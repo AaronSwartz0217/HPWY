@@ -256,6 +256,82 @@
   .concept-item.wide{grid-column:span 2}
   .concept-note{margin-top:18px;font-size:11px;letter-spacing:.08em;color:var(--muted)}
 
+  /* 制作流程 */
+  .pipeline-intro{max-width:780px;font-size:14px;color:var(--muted);line-height:2;margin-bottom:42px}
+  .pipeline-intro strong{color:var(--ink);font-weight:500}
+
+  /* 5步流程图 */
+  .pipeline-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-bottom:56px}
+  .pipeline-step{
+    position:relative;padding:28px 18px 28px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    border-right:1px solid var(--line-soft);background:rgba(6,10,16,.55);text-align:center;
+    transition:background .3s,border-color .3s;
+  }
+  .pipeline-step:first-child{border-left:1px solid var(--line)}
+  .pipeline-step:hover{background:rgba(185,154,99,.05);border-color:rgba(185,154,99,.28)}
+  .pipeline-step .en{font-size:10px;letter-spacing:.24em;color:var(--gold);margin-bottom:10px;text-transform:uppercase}
+  .pipeline-step h3{font-family:var(--serif);font-size:17px;font-weight:500;margin-bottom:6px;letter-spacing:.04em}
+  .pipeline-step p{font-size:11px;color:var(--muted);line-height:1.75}
+  .pipeline-step::after{
+    content:"";position:absolute;right:-12px;top:50%;transform:translateY(-50%) rotate(45deg);
+    width:14px;height:14px;background:var(--bg);border-top:1px solid var(--line);border-right:1px solid var(--line);
+    z-index:2;
+  }
+  .pipeline-step:last-child::after{display:none}
+
+  /* 设定图→实机对比 */
+  .pipeline-pairs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:56px}
+  .pipeline-pair{
+    border:1px solid var(--line-soft);background:linear-gradient(160deg,rgba(12,19,29,.82),rgba(7,11,18,.72));
+    padding:26px;transition:.3s;
+  }
+  .pipeline-pair:hover{border-color:rgba(185,154,99,.32);transform:translateY(-3px)}
+  .pipeline-pair-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  .pipeline-pair-head .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(185,154,99,.6);flex:0 0 auto}
+  .pipeline-pair-head h3{font-family:var(--serif);font-size:20px;font-weight:500}
+  .pipeline-pair-head .en{font-size:9px;letter-spacing:.24em;color:var(--muted);text-transform:uppercase;margin-left:auto}
+  .pipeline-pair-body{display:grid;grid-template-columns:1fr 24px 1fr;align-items:center;gap:0;margin-bottom:18px}
+  .pipeline-pair-body figure{margin:0;overflow:hidden;border:1px solid var(--line-soft);aspect-ratio:16/10;background:#050a12}
+  .pipeline-pair-body figure img{width:100%;height:100%;object-fit:cover;filter:saturate(.88) brightness(.88);transition:.5s}
+  .pipeline-pair:hover .pipeline-pair-body figure img{filter:saturate(1) brightness(.98)}
+  .pipeline-pair-body .arrow{display:grid;place-items:center;color:var(--gold);font-size:18px}
+  .pipeline-pair-desc{font-size:12px;color:var(--muted);line-height:1.8;border-top:1px solid var(--line-soft);padding-top:14px}
+  .pipeline-pair-desc strong{color:var(--ink);font-weight:500}
+
+  /* 额外产出 */
+  .pipeline-extras-head{margin-bottom:22px}
+  .pipeline-extras-head h3{font-family:var(--serif);font-size:22px;font-weight:500;margin-bottom:6px}
+  .pipeline-extras-head p{font-size:13px;color:var(--muted)}
+  .pipeline-extras{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:56px}
+  .pipeline-extra{
+    position:relative;border:1px solid var(--line-soft);background:rgba(9,14,21,.72);padding:18px 16px;
+    text-align:center;transition:.3s;overflow:hidden;
+  }
+  .pipeline-extra:hover{border-color:rgba(185,154,99,.32);transform:translateY(-3px);background:rgba(15,22,32,.88)}
+  .pipeline-extra .cat{
+    position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),rgba(185,154,99,.12));
+    opacity:.7;
+  }
+  .pipeline-extra h4{font-family:var(--serif);font-size:14px;font-weight:500;margin-top:10px;margin-bottom:4px;letter-spacing:.04em}
+  .pipeline-extra .en{font-size:8px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;opacity:.8}
+  .pipeline-extra p{font-size:10px;color:var(--muted);line-height:1.65}
+  .pipeline-extra .count{font-family:var(--serif);font-size:22px;color:var(--gold-soft);font-weight:500;letter-spacing:.02em}
+
+  /* 落地规范 */
+  .pipeline-rules-head{margin-bottom:24px}
+  .pipeline-rules-head h3{font-family:var(--serif);font-size:22px;font-weight:500;margin-bottom:6px}
+  .pipeline-rules-head p{font-size:13px;color:var(--muted)}
+  .pipeline-rules{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:46px}
+  .pipeline-rule{
+    position:relative;padding:26px;border:1px solid var(--line-soft);
+    background:radial-gradient(120% 100% at 20% 0%,rgba(18,34,54,.7),rgba(6,11,18,.88));
+    transition:.3s;
+  }
+  .pipeline-rule:hover{border-color:rgba(185,154,99,.32);transform:translateY(-3px)}
+  .pipeline-rule .no{font-family:var(--serif);font-size:12px;letter-spacing:.2em;color:var(--gold);margin-bottom:14px}
+  .pipeline-rule h4{font-family:var(--serif);font-size:18px;font-weight:500;margin-bottom:10px;letter-spacing:.04em}
+  .pipeline-rule p{font-size:12px;color:var(--muted);line-height:1.8}
+
   /* 大图预览 */
   .lightbox{position:fixed;inset:0;z-index:90;display:none;place-items:center;padding:4vh 4vw;background:rgba(2,5,10,.94);backdrop-filter:blur(10px)}
   .lightbox.open{display:grid}
@@ -487,6 +563,13 @@
     .step:nth-child(-n+3){border-bottom:1px solid var(--line-soft)}
     .rarity-row,.puzzle-grid,.gallery-grid{grid-template-columns:1fr 1fr}
     .world-art{min-height:320px;margin-top:10px}
+    .pipeline-flow{grid-template-columns:repeat(3,1fr)}
+    .pipeline-step:nth-child(3)::after{display:none}
+    .pipeline-step:nth-child(-n+3){border-bottom:1px solid var(--line-soft)}
+    .pipeline-step:nth-child(-n+3):nth-child(3n+3)::after{display:none}
+    .pipeline-pairs{grid-template-columns:1fr 1fr}
+    .pipeline-extras{grid-template-columns:repeat(3,1fr)}
+    .pipeline-rules{grid-template-columns:repeat(2,1fr)}
   }
   @media(max-width:700px){
     .nav-toggle{display:grid}
@@ -518,6 +601,13 @@
     .competition{padding:28px}
     .hero-stats{gap:24px}
     .closing{padding-top:90px}
+    .pipeline-flow{grid-template-columns:repeat(2,1fr)}
+    .pipeline-step::after{display:none}
+    .pipeline-pairs{grid-template-columns:1fr}
+    .pipeline-pair-body{grid-template-columns:1fr}
+    .pipeline-pair-body .arrow{transform:rotate(90deg);padding:8px 0}
+    .pipeline-extras{grid-template-columns:repeat(2,1fr)}
+    .pipeline-rules{grid-template-columns:1fr}
   }
   @media(max-width:520px){
     .nav-cta{display:none}
@@ -613,6 +703,7 @@
     <a href="#story">剧情</a>
     <a href="#world">世界</a>
     <a href="#concept">设定图</a>
+    <a href="#pipeline">制作流程</a>
     <a href="#loop">循环</a>
     <a href="#features">玩法</a>
     <a href="#upgrades">强化</a>
@@ -815,12 +906,177 @@
         <figcaption><b>纸张与积木</b>梦中的旧物</figcaption>
       </figure>
     </div>
-    <p class="concept-note reveal">以上为场景物体设定图，点击可查看大图；原型实机画面见 08 / IN-GAME。</p>
+    <p class="concept-note reveal">以上为场景物体设定图，点击可查看大图；原型实机画面见 09 / IN-GAME。</p>
+  </section>
+
+  <section class="section pipeline" id="pipeline">
+    <div class="section-head reveal">
+      <span class="idx">04 / PIPELINE</span>
+      <h2>从设定图，到场景里的旧物</h2>
+      <span class="line"></span>
+    </div>
+    <p class="pipeline-intro reveal">
+      Aholo <strong>Lux3D 官方 3D 生成</strong>参与核心 3D 内容生产，而不是只做概念示意。
+      生成器直接产出场景器物、角色、怪物与找猫谜题的三只猫，全部走同一条图生 3D → 清理 → UE5 装配的流程，
+      保持午夜蓝、冷光、黄铜的统一设定，不拼接不同来源的零散素材。
+    </p>
+
+    <!-- 5步流程 -->
+    <div class="pipeline-flow reveal">
+      <div class="pipeline-step">
+        <div class="en">STEP 01</div>
+        <h3>场景设定图</h3>
+        <p>文案描述或参考图，明确物体体量与色彩基调。</p>
+      </div>
+      <div class="pipeline-step">
+        <div class="en">STEP 02</div>
+        <h3>Lux3D 生成</h3>
+        <p>图生 / 文生，AI 多视图补全、PBR 贴图。</p>
+      </div>
+      <div class="pipeline-step">
+        <div class="en">STEP 03</div>
+        <h3>GLB 导出</h3>
+        <p>官方一键导出，保留完整网格与材质。</p>
+      </div>
+      <div class="pipeline-step">
+        <div class="en">STEP 04</div>
+        <h3>尺度 / 法线清理</h3>
+        <p>厘米单位、Pivot、朝向、双面材质。</p>
+      </div>
+      <div class="pipeline-step">
+        <div class="en">STEP 05</div>
+        <h3>UE5 装配</h3>
+        <p>DataAsset 配置，群系权重，碰撞体。</p>
+      </div>
+    </div>
+
+    <!-- 设定图 → 实机 对比 -->
+    <div class="pipeline-pairs reveal">
+      <article class="pipeline-pair">
+        <div class="pipeline-pair-head">
+          <span class="dot"></span>
+          <h3>八卦镜</h3>
+          <span class="en">LUX3D · MIRROR</span>
+        </div>
+        <div class="pipeline-pair-body">
+          <figure><img src="assets/concept/concept_mirror.jpg" alt="八卦镜设定图"></figure>
+          <div class="arrow">→</div>
+          <figure><img src="assets/menu_bg.jpg" alt="实机中的八卦镜" style="object-position:center 38%"></figure>
+        </div>
+        <div class="pipeline-pair-desc">
+          八角镜体、镜面与红色流苏 <strong>一次生成</strong>；进入场景后承担 15 秒序列解密的核心器物角色。
+        </div>
+      </article>
+      <article class="pipeline-pair">
+        <div class="pipeline-pair-head">
+          <span class="dot"></span>
+          <h3>四合院</h3>
+          <span class="en">LUX3D · COURTYARD</span>
+        </div>
+        <div class="pipeline-pair-body">
+          <figure><img src="assets/concept/concept_courtyard.jpg" alt="四合院设定图"></figure>
+          <div class="arrow">→</div>
+          <figure><img src="assets/gameplay.jpg" alt="实机中的四合院" style="object-position:center 50%"></figure>
+        </div>
+        <div class="pipeline-pair-desc">
+          四门巡礼的院落体量；进入场景后承担 <strong>"请一位客人"</strong> 的遭遇式解密。
+        </div>
+      </article>
+      <article class="pipeline-pair">
+        <div class="pipeline-pair-head">
+          <span class="dot"></span>
+          <h3>笔记本电脑</h3>
+          <span class="en">LUX3D · LAPTOP</span>
+        </div>
+        <div class="pipeline-pair-body">
+          <figure><img src="assets/concept/concept_laptop.jpg" alt="笔记本设定图"></figure>
+          <div class="arrow">→</div>
+          <figure><img src="assets/cats_closeup.jpg" alt="实机中的笔记本与猫" style="object-position:center 35%"></figure>
+        </div>
+        <div class="pipeline-pair-desc">
+          梦境里的异层入口；<strong>45 秒找猫谜题</strong>，三只猫随机藏在附近两格。
+        </div>
+      </article>
+    </div>
+
+    <!-- 额外产出 -->
+    <div class="pipeline-extras-head reveal">
+      <h3>器物之外</h3>
+      <p>角色、怪物、院落，以及找猫谜题的三只猫——全部走同一条图生 3D 流程。</p>
+    </div>
+    <div class="pipeline-extras reveal">
+      <article class="pipeline-extra">
+        <span class="cat"></span>
+        <div class="en">HERO</div>
+        <h4>尤里西斯</h4>
+        <p>候选主角模型，骨骼已生成，接入 manny 动画蓝图。</p>
+      </article>
+      <article class="pipeline-extra">
+        <span class="cat"></span>
+        <div class="en">CRAWLER</div>
+        <h4>徘徊者</h4>
+        <p>没有血条；第一次解密后开始追你。</p>
+      </article>
+      <article class="pipeline-extra">
+        <span class="cat"></span>
+        <div class="en">SOUL SPIDER</div>
+        <h4>摄魂蜘蛛</h4>
+        <p>被它击中，灵魂会被打出肉身。</p>
+      </article>
+      <article class="pipeline-extra">
+        <span class="cat"></span>
+        <div class="en">CATS</div>
+        <h4>找猫谜题</h4>
+        <div class="count">3</div>
+        <p>橘猫耄耋、香蕉猫、oii 猫——真实照片直接生成，梗图不重画，3D 化后依旧好笑。</p>
+      </article>
+      <article class="pipeline-extra">
+        <span class="cat"></span>
+        <div class="en">COURTYARD</div>
+        <h4>四合院 · 俯视</h4>
+        <p>从生成器里直接得到整套院落体量，不需要拼装。</p>
+      </article>
+      <article class="pipeline-extra">
+        <span class="cat"></span>
+        <div class="en">TOTAL</div>
+        <h4>已生成</h4>
+        <div class="count">12</div>
+        <p>个 GLB · 3 类器物 · 一套午夜蓝设定，全部归档至 /Game/HPWH/Assets/Models。</p>
+      </article>
+    </div>
+
+    <!-- 落地规范 -->
+    <div class="pipeline-rules-head reveal">
+      <h3>怎么落地</h3>
+      <p>自主研发的把模型变成可用资产的成熟 workflow。</p>
+    </div>
+    <div class="pipeline-rules reveal">
+      <article class="pipeline-rule">
+        <div class="no">01 / SCALE</div>
+        <h4>尺度与朝向</h4>
+        <p>厘米单位；Pivot 落在底部中心；朝向 +X；单格 ≤ ±350cm，避免堵格。</p>
+      </article>
+      <article class="pipeline-rule">
+        <div class="no">02 / DOUBLE</div>
+        <h4>双面材质</h4>
+        <p>面片反向会导致纯黑；统一生成双面材质修复，所有导入模型都做。</p>
+      </article>
+      <article class="pipeline-rule">
+        <div class="no">03 / COLLISION</div>
+        <h4>碰撞</h4>
+        <p>所有阻挡物使用 BlockAll 网格碰撞，不再用隐形方块作为碰撞载体。</p>
+      </article>
+      <article class="pipeline-rule">
+        <div class="no">04 / DATA</div>
+        <h4>数据配置</h4>
+        <p>DataAsset DA_HPWH_TerrainPrefabs 配置群系预制体与权重，替换资产不改代码。</p>
+      </article>
+    </div>
   </section>
 
   <section class="section loop" id="loop">
     <div class="section-head reveal">
-      <span class="idx">04 / LOOP</span>
+      <span class="idx">05 / LOOP</span>
       <h2>一局游戏，从探索到醒来</h2>
       <span class="line"></span>
     </div>
@@ -836,7 +1092,7 @@
 
   <section class="section features" id="features">
     <div class="section-head reveal">
-      <span class="idx">05 / SYSTEMS</span>
+      <span class="idx">06 / SYSTEMS</span>
       <h2>梦的六条规则</h2>
       <span class="line"></span>
     </div>
@@ -882,7 +1138,7 @@
 
   <section class="section upgrades" id="upgrades">
     <div class="section-head reveal">
-      <span class="idx">06 / UPGRADES</span>
+      <span class="idx">07 / UPGRADES</span>
       <h2>三张卡，改变这一局</h2>
       <span class="line"></span>
     </div>
@@ -927,7 +1183,7 @@
 
   <section class="section cards" id="cards">
     <div class="section-head reveal">
-      <span class="idx">07 / DECK</span>
+      <span class="idx">08 / DECK</span>
       <h2>牌库 · 42 张可抽卡</h2>
       <span class="line"></span>
     </div>
@@ -1240,7 +1496,7 @@
 
   <section class="section puzzles" id="puzzles">
     <div class="section-head reveal">
-      <span class="idx">08 / RITUALS</span>
+      <span class="idx">09 / RITUALS</span>
       <h2>三件旧物，三种解法</h2>
       <span class="line"></span>
     </div>
@@ -1274,7 +1530,7 @@
 
   <section class="section gallery" id="gallery">
     <div class="section-head reveal">
-      <span class="idx">09 / IN-GAME</span>
+      <span class="idx">10 / IN-GAME</span>
       <h2>当前原型实机</h2>
       <span class="line"></span>
     </div>
@@ -1306,7 +1562,7 @@
 
   <section class="section team" id="team">
     <div class="section-head reveal">
-      <span class="idx">10 / TEAM</span>
+      <span class="idx">11 / TEAM</span>
       <h2>参赛信息与职责分工</h2>
       <span class="line"></span>
     </div>
@@ -1449,6 +1705,7 @@
   <div class="brand"><span style="color:var(--gold)">幻</span> 幻魄物语</div>
   <div>玩法原型 · Unreal Engine 5.6 · 2026</div>
   <div>群核科技 Aholo 全球 3D AI 黑客松 · 李东盛</div>
+  <div><a href="https://aaronswartz0217.github.io/Else-Web/introduction.html" target="_blank" rel="noopener" style="color:var(--gold-soft);text-decoration:underline;text-underline-offset:4px;">李东盛 · 个人网站</a></div>
 </footer>
 
 <div class="lightbox" id="lightbox" aria-hidden="true">
